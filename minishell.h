@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 10:50:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/21 11:27:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ struct s_builtins
 	char	*cd_path;
 };
 
-char	*ft_echo(char *arg);
-void	ft_env(char **env);
-int		ft_is_built_in(struct s_builtins blt, char *input, char **env);
 void handler(int sig);
 void rl_replace_line(const char *text, int clear_undo);
+// Builtin Commands
 void ft_pwd(void);
-
+void ft_env(char **env);
+char *ft_echo(char *arg);
+int ft_is_built_in(struct s_builtins blt, char *input, char **env);
+int ft_unset(char **env);
+int ft_export(char **env);
 // LIBFT
+	
 char *ft_strnstr(const char *haystack, const char *needle, size_t len);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t ft_strlen(const char *s);
