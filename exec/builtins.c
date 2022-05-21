@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 11:33:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/21 13:04:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ int ft_is_built_in(struct s_builtins blt, char *input, char **env)
 	if (ft_strncmp(input, blt.echo, 4) == 0)
 		ft_echo(&input[4]);
 	else if (ft_strncmp(input, blt.cd, 2) == 0)
-		chdir(blt.cd_path); // // mkrim will provide me with FULL path to CD
+	{
+		if (chdir(blt.cd_path) == -1) // // mkrim will provide me with FULL path to CD
+		{
+			printf("Minishell: cd: %s: No such file or directory\n", blt.cd_path);
+		}
+	}
 	else if (ft_strncmp(input, blt.export, 6) == 0)
 		ft_export(vr);
 	else if (ft_strncmp(input, blt.unset, 5) == 0)

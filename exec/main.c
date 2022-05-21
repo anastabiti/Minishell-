@@ -16,8 +16,8 @@ void handler(int sig)
 {
 	if (sig == SIGQUIT)
 	{
-		write(1, "\n", 1);
-		rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
+		// write(1, "\n", 1);
+		// rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
 		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
 		rl_redisplay();
 	}
@@ -49,7 +49,7 @@ int main(int ac, char **av, char **env)
 		blt.unset = "unset";
 		blt.env = "env";
 		blt.exit = "exit";
-		blt.cd_path = "/Users/atabiti/Desktop/";
+		blt.cd_path = "/Userws/atabiti/Desktop/";
 		// char **vr = env;
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 		ft_is_built_in(blt, input, env);
