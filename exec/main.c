@@ -17,31 +17,29 @@ void handler(int sig)
 	if (sig == SIGQUIT)
 	{
 		write(1, "\n", 1);
-		rl_on_new_line(); //  Tell the update functions that we have moved onto a new (empty) line
-		// rl_replace_line("", 0); // needs to include the LIB and /include dir to work
+		rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
+		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
 		rl_redisplay();
 	}
 	if (sig == SIGINT)
 	{
 		// kill();
 		write(1, "\n", 1);
-		rl_on_new_line(); //  Tell the update functions that we have moved onto a new (empty) line
-		// rl_replace_line(" ", 0); // needs to include the LIB and /include dir to work
-		rl_redisplay(); // Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
+		rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
+		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
+		rl_redisplay();					// Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
 	}
 }
 int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
+	struct s_builtins blt;
 	while (1)
 	{
 		signal(SIGQUIT, handler);
 		signal(SIGINT, handler);
-
-		struct s_builtins blt;
-
-		char *input = readline("MINI_SHELl >>>>> $ "); // like getnextline : readline will read a line from the terminal and return it,
+		char *input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
 		if (!input)
 			break;
 		blt.echo = "echo";
@@ -65,5 +63,28 @@ int main(int ac, char **av, char **env)
 			}
 			waitpid(pid, 0, 0);
 		}
+		// else
+		// { // open dir >> read its content to find if there is matched command there
+		// 	struct dirent *dd;
+		// 	int check = 0;
+		// 	DIR *dir = opendir("/bin/");
+		// 	char *cmd = "sleep"; // example
+		// 	while (((dd = readdir(dir)) != NULL))
+		// 	{
+		// 		if (ft_strnstr(dd->d_name, cmd, 5))
+		// 		{
+		// 			int pid = fork();
+		// 			if (pid == 0)
+		// 			{
+		// 				char *ea[] = {cmd, "2", NULL};
+		// 				// printf(" %s\n", dd->d_name);
+
+		// 				execve("/bin/sleep", ea, NULL);
+		// 			}
+		// 			waitpid(pid, 0, 0);
+		// 		}
+		// 	}
+		// 	closedir(dir);
+		// }
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 11:27:27 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/21 11:57:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 # define KRED "\x1B[31m"
 # define KGRN "\x1B[32m"
 # include <sys/wait.h>
-
+#include <dirent.h> // open dir
+ 
 struct s_builtins
 {
 	char	*echo;
