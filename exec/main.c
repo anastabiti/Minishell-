@@ -12,26 +12,14 @@
 
 #include "../minishell.h"
 
-// #include <sys/wait.h>
-// void hand(int sig, siginfo_t *info, void *other)
-// {
-// 	if (sig == SIGINT)
-// 	{
-// 		write(1, " sig\n", 4);
-// 		// kill();
-// 	}
-// 	if (sig == SIGQUIT)
-// 		{
-// 			write(1, " sig\n", 4);
-// 		}
-// }
 void handler(int sig)
 {
 	if (sig == SIGQUIT)
 	{
 		write(1, "\n", 1);
-		rl_on_new_line();				 //  Tell the update functions that we have moved onto a new (empty) line
-		rl_replace_line(" ", 0); // needs to include the LIB and /include dir to work
+		rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
+		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
+		rl_redisplay();
 	}
 	if (sig == SIGINT)
 	{
@@ -39,6 +27,7 @@ void handler(int sig)
 		write(1, "\n", 1);
 		rl_on_new_line();				 //  Tell the update functions that we have moved onto a new (empty) line
 		rl_replace_line(" ", 0); // needs to include the LIB and /include dir to work
+		rl_redisplay();					 // Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
 	}
 }
 int main(int ac, char **av, char **env)
@@ -47,15 +36,7 @@ int main(int ac, char **av, char **env)
 	(void)av;
 	while (1)
 	{
-
-		// struct sigaction sa;
-		// sa.sa_sigaction = &hand;
-		// sa.sa_flags = SA_SIGINFO;
-
-		// sigaction(SIGINT, &sa, NULL);
-		// sigaction(SIGQUIT, &sa, NULL);
 		signal(SIGQUIT, handler);
-
 		signal(SIGINT, handler);
 
 		struct s_builtins blt;
