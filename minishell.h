@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 10:08:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/21 10:50:45 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t ft_strlen(const char *s);
 int ft_memcmp(const void *s1, const void *s2, size_t n);
-
+char *ft_strchr(const char *s, int c);
 #endif

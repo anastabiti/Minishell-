@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 10:12:48 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/21 11:12:26 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ char *ft_echo(char *arg)
 int ft_is_built_in(struct s_builtins blt, char *input, char **env)
 {
 	char **vr = env;
+	char *to_be_exported;
+	char *to_be_unset;
+
+	int len;
+
 	int i = 0;
 	if (ft_strncmp(input, blt.echo, 4) == 0)
 	{
@@ -35,9 +40,15 @@ int ft_is_built_in(struct s_builtins blt, char *input, char **env)
 	else if (ft_strncmp(input, blt.export, 6) == 0)
 	{
 
-		char *to_be_exported = "x=2312312312312312312312";
-		while (vr[i] && !(ft_strnstr(vr[i], "x=", 2)))
+		to_be_exported = "VAR=EXPORETED";
+	 len = ft_strlen(to_be_exported);
+		i = 0;
+		while (vr[i])
 		{
+			if (ft_strnstr(vr[i], to_be_exported, len))
+			{
+				return 0;
+			}
 			i++;
 		}
 		vr[i] = to_be_exported;
@@ -47,7 +58,9 @@ int ft_is_built_in(struct s_builtins blt, char *input, char **env)
 	{
 		int x = 0;
 		int i = 0;
-		while (!(ft_strnstr(vr[x], "en_US.UTF-8", 11)) && vr[x] != NULL) // change it later
+		to_be_unset = "VAR=EXPORETED";
+		int lenght  = ft_strlen(to_be_unset);
+		while (!(ft_strnstr(vr[x], to_be_unset, lenght))) // change it later
 		{
 			x++;
 			if (vr[x] == NULL)

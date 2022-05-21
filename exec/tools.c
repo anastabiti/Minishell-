@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:19:32 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 10:09:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/21 10:50:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,20 @@ int ft_memcmp(const void *s1, const void *s2, size_t n)
 		stwo++;
 		n--;
 	}
+	return (0);
+}
+char *ft_strchr(const char *s, int c)
+{
+	unsigned int i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	if (c == '\0')
+		return ((char *)s + i);
 	return (0);
 }
