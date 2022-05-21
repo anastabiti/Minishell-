@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/05/20 09:05:16 by atabiti          ###   ########.fr        #
+#    Updated: 2022/05/21 09:12:54 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ FALGS = -Wall -Werorr -Wextra
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	cc -Iminishell.h  $(FLAGS)  $(OBJ)  -o $(NAME)  -lreadline
-
+	cc  $(FLAGS)  $(OBJ)  -o $(NAME) -lreadline -L/goinfre/atabiti/.brew/opt/readline/lib -I/goinfre/atabiti/.brew/opt/readline/include -Iminishell.h 
 clean :
 		cd ./exec; \
 	rm *.o

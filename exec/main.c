@@ -27,18 +27,18 @@
 // }
 void handler(int sig)
 {
+	if (sig == SIGQUIT)
+	{
+		write(1, "\n", 1);
+		rl_on_new_line();				 //  Tell the update functions that we have moved onto a new (empty) line
+		rl_replace_line(" ", 0); // needs to include the LIB and /include dir to work
+	}
 	if (sig == SIGINT)
 	{
 		// kill();
-		write(1, "\b\b", 2); // move cursor behind of ^C
-		write(1, "  ", 2);	 // remove ^C by printing spaces.
-		write(1, "\b\b", 2); // reset cursor pos
-	}
-	if (sig == SIGQUIT)
-	{
-		write(1, "\b\b", 2); // move cursor behind of ^C
-		write(1, "  ", 2);	 // remove ^C by printing spaces.
-		write(1, "\b\b", 2); // reset cursor pos
+		write(1, "\n", 1);
+		rl_on_new_line();				 //  Tell the update functions that we have moved onto a new (empty) line
+		rl_replace_line(" ", 0); // needs to include the LIB and /include dir to work
 	}
 }
 int main(int ac, char **av, char **env)
@@ -54,9 +54,9 @@ int main(int ac, char **av, char **env)
 
 		// sigaction(SIGINT, &sa, NULL);
 		// sigaction(SIGQUIT, &sa, NULL);
+		signal(SIGQUIT, handler);
 
 		signal(SIGINT, handler);
-		signal(SIGQUIT, handler);
 
 		struct s_builtins blt;
 
