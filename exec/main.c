@@ -32,11 +32,12 @@ int main(int ac, char **av, char **env)
 		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, handler);
 		char *input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
-		if (!input)															 // ctrl-D
+		size_t llenght = ft_strlen(input);
+		if (!input) // ctrl-D
 		{
+			// rl_clear_history();
 			write(2, "exit\n", 5);
-			free(input);
-
+			// free(input);
 			exit(1);
 		}
 		blt.echo = "echo";
