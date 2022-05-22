@@ -34,7 +34,9 @@ int main(int ac, char **av, char **env)
 		char *input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
 		if (!input)															 // ctrl-D
 		{
-			printf("exit\n");
+			write(2, "exit\n", 5);
+			free(input);
+
 			exit(1);
 		}
 		blt.echo = "echo";
@@ -59,6 +61,7 @@ int main(int ac, char **av, char **env)
 			}
 			waitpid(pid, 0, 0);
 		}
+		free(input);
 		// else
 		// { // open dir >> read its content to find if there is matched command there
 		// 	struct dirent *dd;

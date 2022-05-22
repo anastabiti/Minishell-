@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 13:04:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/22 14:28:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int ft_is_built_in(struct s_builtins blt, char *input, char **env)
 	else if (ft_strncmp(input, "exit", 4) == 0)
 	{
 		printf("exit\n");
+		free(input);
 		exit(1);
 	}
 	return 0;
