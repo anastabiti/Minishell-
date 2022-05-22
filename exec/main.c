@@ -16,7 +16,6 @@ void handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		// kill();
 		write(1, "\n", 1);
 		rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
 		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
@@ -34,7 +33,10 @@ int main(int ac, char **av, char **env)
 		signal(SIGINT, handler);
 		char *input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
 		if (!input)
-			break;
+		{
+			printf("exit\n");
+			exit(1);
+		}
 		blt.echo = "echo";
 		blt.cd = "cd";
 		blt.pwd = "pwd";
