@@ -14,13 +14,6 @@
 
 void handler(int sig)
 {
-	if (sig == SIGQUIT)
-	{
-		// write(1, "\n", 1);
-		// rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
-		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
-		rl_redisplay();
-	}
 	if (sig == SIGINT)
 	{
 		// kill();
@@ -37,7 +30,7 @@ int main(int ac, char **av, char **env)
 	struct s_builtins blt;
 	while (1)
 	{
-		signal(SIGQUIT, handler);
+		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, handler);
 		char *input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
 		if (!input)
