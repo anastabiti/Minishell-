@@ -32,7 +32,7 @@ int main(int ac, char **av, char **env)
 		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, handler);
 		char *input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
-		if (!input)
+		if (!input)															 // ctrl-D
 		{
 			printf("exit\n");
 			exit(1);
