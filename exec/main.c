@@ -53,7 +53,8 @@ int main(int ac, char **av, char **env)
 			int pid = fork();
 			if (pid == 0)
 			{
-				char *a[] = {"ls", "-la", NULL};
+				char *cmd_args = "-PA";
+				char *a[] = {"ls", cmd_args, NULL};
 				execve("/bin/ls", a, NULL);
 			}
 			waitpid(pid, 0, 0);
