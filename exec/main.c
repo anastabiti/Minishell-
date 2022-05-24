@@ -62,6 +62,19 @@ int main(int ac, char **av, char **env)
 			}
 			waitpid(pid, 0, 0);
 		}
+		else
+		{
+			char *joinded;
+
+			joinded = ft_strjoin("/bin/", input);
+			int idd = fork();
+			if (idd == 0)
+			{
+				execve(joinded, NULL, NULL);
+			}
+			waitpid(idd, 0, 0);
+		}
+
 		free(input);
 		// else
 		// { // open dir >> read its content to find if there is matched command there

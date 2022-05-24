@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/22 14:51:13 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/24 09:22:08 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int ft_is_built_in(struct s_builtins blt, char *input, char **env);
 int ft_unset(char **env);
 int ft_export(char **env);
 // LIBFT
-	
+char *ft_strjoin(char const *s1, char const *s2);
 char *ft_strnstr(const char *haystack, const char *needle, size_t len);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t ft_strlen(const char *s);

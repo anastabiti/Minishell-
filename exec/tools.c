@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:19:32 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 10:50:40 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/24 09:20:04 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,33 @@ char *ft_strchr(const char *s, int c)
 	if (c == '\0')
 		return ((char *)s + i);
 	return (0);
+}
+
+char *ft_strjoin(char const *s1, char const *s2)
+{
+	size_t mer;
+	size_t lenght;
+	char *merge;
+
+	mer = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	lenght = ft_strlen(s1) + ft_strlen(s2) + 1;
+	merge = (char *)malloc(sizeof(char) * lenght);
+	if (!merge)
+		return (NULL);
+	while (*s1 != '\0')
+	{
+		merge[mer] = *s1;
+		s1++;
+		mer++;
+	}
+	while (*s2 != '\0')
+	{
+		merge[mer] = *s2;
+		s2++;
+		mer++;
+	}
+	merge[mer] = '\0';
+	return (merge);
 }
