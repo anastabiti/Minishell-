@@ -47,7 +47,7 @@ int main(int ac, char **av, char **env)
 		blt.unset = "unset";
 		blt.env = "env";
 		blt.exit = "exit";
-		blt.cd_path = "/Users/atabiti/Desktop/";
+		blt.cd_path = "/usr/bin";
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 		if (ft_is_built_in(blt, input, env) == 0)
 		{
@@ -69,11 +69,7 @@ int main(int ac, char **av, char **env)
 				bin = ft_strjoin("/bin/", input);
 				userbin = ft_strjoin("/usr/bin/", input);
 
-				if ((access(bin, F_OK) == -1) && (access(userbin, F_OK) == -1))
-				{
-					printf("MINISHELL: %s: command not found\n", input);
-				}
-				else
+				if (access(bin, F_OK) == 0)
 				{
 					int idd = fork();
 					if (idd == 0)
@@ -82,12 +78,13 @@ int main(int ac, char **av, char **env)
 					}
 					waitpid(idd, 0, 0);
 				}
-				if ((access(bin, F_OK) == -1) && (access(userbin, F_OK) == -1));
-				else
+				else if (access(userbin, F_OK) == 0)
 				{
+
 					int gg = fork();
 					if (gg == 0)
 					{
+
 						execve(userbin, NULL, NULL);
 					}
 					waitpid(gg, 0, 0);
