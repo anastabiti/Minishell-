@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/24 09:22:08 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/24 09:30:12 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 # include <stdlib.h>
 # include <stdio.h>
-# include <unistd.h>
+#include <unistd.h>
 # include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -28,7 +28,7 @@
 # define KGRN "\x1B[32m"
 # include <sys/wait.h>
 #include <dirent.h> // open dir
- 
+  
 struct s_builtins
 {
 	char	*echo;

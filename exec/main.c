@@ -47,32 +47,41 @@ int main(int ac, char **av, char **env)
 		blt.unset = "unset";
 		blt.env = "env";
 		blt.exit = "exit";
-		blt.cd_path = "/Userws/atabiti/Desktop/";
+		blt.cd_path = "/Users/atabiti/Desktop/";
 		// char **vr = env;
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
-		ft_is_built_in(blt, input, env);
-		if (ft_strncmp(input, "ls", 2) == 0)
+		if (ft_is_built_in(blt, input, env) == 0)
 		{
-			int pid = fork();
-			if (pid == 0)
+			if (ft_strncmp(input, "ls", 2) == 0)
 			{
-				char *cmd_args = "-PA";
-				char *a[] = {"ls", cmd_args, NULL};
-				execve("/bin/ls", a, NULL);
+				int pid = fork();
+				if (pid == 0)
+				{
+					char *cmd_args = "-PA";
+					char *a[] = {"ls", cmd_args, NULL};
+					execve("/bin/ls", a, NULL);
+				}
+				waitpid(pid, 0, 0);
 			}
-			waitpid(pid, 0, 0);
-		}
-		else
-		{
-			char *joinded;
+			else
+			{
+				char *joinded;
+				joinded = ft_strjoin("/bin/", input);
+				if (access(joinded, F_OK) == -1)
+				{
+					printf("MINISHELL: %s: command not found\n", input);
+				}
+				else
+				{
 
-			joinded = ft_strjoin("/bin/", input);
-			int idd = fork();
-			if (idd == 0)
-			{
-				execve(joinded, NULL, NULL);
+					int idd = fork();
+					if (idd == 0)
+					{
+						execve(joinded, NULL, NULL);
+					}
+					waitpid(idd, 0, 0);
+				}
 			}
-			waitpid(idd, 0, 0);
 		}
 
 		free(input);
