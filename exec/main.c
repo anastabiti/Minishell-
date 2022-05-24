@@ -60,7 +60,9 @@ int main(int ac, char **av, char **env)
 					char *a[] = {"ls", cmd_args, NULL};
 					execve("/bin/ls", a, NULL);
 				}
-				waitpid(pid, 0, 0);
+				// waitpid(pid, 0, 0);
+									wait(0);
+
 			}
 			else
 			{
@@ -76,19 +78,21 @@ int main(int ac, char **av, char **env)
 					{
 						execve(bin, NULL, NULL);
 					}
-					waitpid(idd, 0, 0);
+					// waitpid(idd, 0, 0);
+					wait(0) ;
 				}
 				else if (access(userbin, F_OK) == 0)
 				{
-
+					char *cmd[] = {input, NULL};
 					int gg = fork();
 					if (gg == 0)
 					{
-
-						execve(userbin, NULL, NULL);
+						execve(userbin, cmd, NULL);
 					}
-					waitpid(gg, 0, 0);
+					// waitpid(gg, 0, 0);
+					wait(0) ;
 				}
+
 			}
 		}
 
