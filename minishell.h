@@ -6,46 +6,46 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/24 11:36:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/24 11:58:31 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
-# define MINISHELL_H
-# include <stdlib.h>
-# include <stdio.h>
+#define MINISHELL_H
+#include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
-# include <string.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <signal.h>
-# include <sys/types.h>
-# include <limits.h>
-# define KRED "\x1B[31m"
-# define KGRN "\x1B[32m"
-# include <sys/wait.h>
+#include <string.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <limits.h>
+#define KRED "\x1B[31m"
+#define KGRN "\x1B[32m"
+#include <sys/wait.h>
 #include <dirent.h> // open dir
-  
+
 struct s_builtins
 {
-	char	*echo;
-	char	*cd;
-	char	*pwd;
-	char	*export;
-	char	*unset;
-	char	*env;
-	char	*exit;
-	char	*cd_path;
+	char *echo;
+	char *cd;
+	char *pwd;
+	char *export;
+	char *unset;
+	char *env;
+	char *exit;
+	char *cd_path;
 };
 
 void handler(int sig);
 void rl_replace_line(const char *text, int clear_undo);
 void rl_clear_history(void);
-		// Builtin Commands
-char *ft_pwd(void);
+// Builtin Commands
+void ft_pwd(void);
 void ft_env(char **env);
 char *ft_echo(char *arg);
 int ft_is_built_in(struct s_builtins blt, char *input, char **env);

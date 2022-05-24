@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
+// ping is /sbin/ping
 void handler(int sig)
 {
 	if (sig == SIGINT)
@@ -47,7 +47,7 @@ int main(int ac, char **av, char **env)
 		blt.unset = "unset";
 		blt.env = "env";
 		blt.exit = "exit";
-		blt.cd_path = "/usr/bin";
+		blt.cd_path = "..";
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 		if (ft_is_built_in(blt, input, env) == 0)
 		{
@@ -107,8 +107,43 @@ int main(int ac, char **av, char **env)
 				}
 				wait(0);
 			}
-		}
+			// else
+			// {
 
+			// 	int fd[2];
+			// 	pipe(fd);
+			// 	int h = fork();
+			// 	if (h == 0)
+			// 	{
+			// 		dup2(fd[1], 1);
+			// 		close(fd[0]);
+			// 		char *c[] = {"cat", "Makefile", NULL};
+			// 		execve("/bin/cat", c, NULL);
+			// 	}
+
+			// 	// if (fork() == 0)
+			// 	// {
+			// 	// 	dup2(fd[0], 0);
+			// 	// 	char *c[] = {"grep", "S", NULL};
+			// 	// 	execve("/usr/bin/grep", c, NULL);
+			// 	// }
+
+			// 	int id = fork();
+			// 	if (id != 0)
+			// 	{
+			// 		dup2(fd[0], 0);
+			// 		close(fd[1]);
+			// 		char *c[] = {"wc", NULL};
+			// 		execve("/usr/bin/wc", NULL, NULL);
+			// 	}
+			// 	// wait(0);
+			// 	// wait(0);
+			// }
+		}
+		// else
+		// {
+		// 	printf(" minishell: fewf: command not found\n");
+		// }
 		free(input);
 		// else
 		// { // open dir >> read its content to find if there is matched command there
