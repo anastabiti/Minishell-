@@ -73,10 +73,11 @@ int main(int ac, char **av, char **env)
 
 				if (access(bin, F_OK) == 0)
 				{
+					char *cmd[] = {input, NULL};
 					int idd = fork();
 					if (idd == 0)
 					{
-						execve(bin, NULL, NULL);
+						execve(bin, cmd, NULL);
 					}
 					// waitpid(idd, 0, 0);
 					wait(0) ;
