@@ -51,49 +51,61 @@ int main(int ac, char **av, char **env)
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 		if (ft_is_built_in(blt, input, env) == 0)
 		{
-			if (ft_strncmp(input, "ls", 2) == 0)
-			{
-				int pid = fork();
-				if (pid == 0)
-				{
-					char *cmd_args = "-PA";
-					char *a[] = {"ls", cmd_args, NULL};
-					execve("/bin/ls", a, NULL);
-				}
-				// waitpid(pid, 0, 0);
-									wait(0);
+			// if (ft_strncmp(input, "ls", 2) == 0)
+			// {
+			// 	int pid = fork();
+			// 	if (pid == 0)
+			// 	{
+			// 		char *cmd_args = "-PA";
+			// 		char *a[] = {"ls", cmd_args, NULL};
+			// 		execve("/bin/ls", a, NULL);
+			// 	}
+			// 	// waitpid(pid, 0, 0);
+			// 						wait(0);
 
+			// }
+			// else
+			// {
+			char *bin;
+			char *userbin;
+			bin = ft_strjoin("/bin/", input);
+			userbin = ft_strjoin("/usr/bin/", input);
+			char path[PATH_MAX];
+			char *main_path = ft_strjoin(getcwd(path, PATH_MAX), "/");
+
+			main_path = ft_strjoin(main_path, input);
+
+			if (access(bin, F_OK) == 0)
+			{
+				char *cmd[] = {input, NULL};
+				int idd = fork();
+				if (idd == 0)
+				{
+					execve(bin, cmd, NULL);
+				}
+				// waitpid(idd, 0, 0);
+				wait(0);
 			}
-			else
+			else if (access(userbin, F_OK) == 0)
 			{
-				char *bin;
-				char *userbin;
-				bin = ft_strjoin("/bin/", input);
-				userbin = ft_strjoin("/usr/bin/", input);
-
-				if (access(bin, F_OK) == 0)
+				char *cmd[] = {input, NULL};
+				int gg = fork();
+				if (gg == 0)
 				{
-					char *cmd[] = {input, NULL};
-					int idd = fork();
-					if (idd == 0)
-					{
-						execve(bin, cmd, NULL);
-					}
-					// waitpid(idd, 0, 0);
-					wait(0) ;
+					execve(userbin, cmd, NULL);
 				}
-				else if (access(userbin, F_OK) == 0)
+				// waitpid(gg, 0, 0);
+				wait(0);
+			}
+			else if (access(main_path, F_OK) == 0)
+			{
+				char *cmd[] = {input, NULL};
+				int gg = fork();
+				if (gg == 0)
 				{
-					char *cmd[] = {input, NULL};
-					int gg = fork();
-					if (gg == 0)
-					{
-						execve(userbin, cmd, NULL);
-					}
-					// waitpid(gg, 0, 0);
-					wait(0) ;
+					execve(main_path, cmd, NULL);
 				}
-
+				wait(0);
 			}
 		}
 

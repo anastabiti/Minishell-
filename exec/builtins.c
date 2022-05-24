@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/24 09:38:40 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/24 11:37:58 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,20 @@ int ft_is_built_in(struct s_builtins blt, char *input, char **env)
 	{
 		ft_pwd();
 		return 1;
-
 	}
-		else if (ft_strncmp(input, "exit", 4) == 0)
-		{
-			printf("exit\n");
-			free(input);
-			exit(1);
+	else if (ft_strncmp(input, "exit", 4) == 0)
+	{
+		printf("exit\n");
+		free(input);
+		exit(1);
 	}
 	return 0;
 }
 
-void ft_pwd(void)
+char *ft_pwd(void)
 {
 	char pw[PATH_MAX];
-	printf("%s\n", getcwd(pw, PATH_MAX));
+	char *p = getcwd(pw, PATH_MAX);
+	printf("%s\n", p);
+	return p;
 }
