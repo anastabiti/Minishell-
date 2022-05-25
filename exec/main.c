@@ -110,7 +110,7 @@ int main(int ac, char **av, char **env)
 			else //if there is a pipe fork and dup2 
 			{
 
-				int fd[2];
+				int fd[4];
 				pipe(fd);
 				int h = fork();
 				if (h == 0)
