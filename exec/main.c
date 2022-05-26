@@ -107,38 +107,48 @@ int main(int ac, char **av, char **env)
 				}
 				wait(0);
 			}
-			else //if there is a pipe fork and dup2 
+			else // if there is a pipe fork and dup2
 			{
-
 				int fd[4];
 				pipe(fd);
-				int h = fork();
-				if (h == 0)
+				pipe(fd + 2);
+
+				if (fork() == 0)
 				{
 					dup2(fd[1], 1);
+
 					close(fd[0]);
-					char *c[] = {"cat", "Makefile", NULL};
-					execve("/bin/cat", c, NULL);
+					close(fd[2]);
+					close(fd[3]);
+					char *cmd[] = {"ls", NULL};
+					execve("/bin/ls", cmd, NULL);
 				}
-
-				// if (fork() == 0)
-				// {
-				// 	dup2(fd[0], 0);
-				// 	char *c[] = {"grep", "S", NULL};
-				// 	execve("/usr/bin/grep", c, NULL);
-				// }
-
-				int id = fork();
-				if (id == 0)
+				if (fork() == 0)
 				{
 					dup2(fd[0], 0);
+					dup2(fd[3], 1);
 					close(fd[1]);
-					char *c[] = {"wc", NULL};
-					execve("/usr/bin/wc", NULL, NULL);
-				}
+					close(fd[2]);
+					char *cmd[] = {"cat", "Makefile", NULL};
+					execve("/bin/cat", cmd, NULL);
 
-				close(fd[1]);
+				
+				}
+				if (fork() == 0)
+				{
+					dup2(fd[2], 0);
+					close(fd[0]);
+					close(fd[1]);
+					close(fd[3]);
+					char *cmd[] = {"wc", "-l", NULL};
+					execve("/usr/bin/wc", cmd, NULL);
+				}
 				close(fd[0]);
+				close(fd[1]);
+
+				close(fd[2]);
+				close(fd[3]);
+				wait(0);
 				wait(0);
 				wait(0);
 			}
