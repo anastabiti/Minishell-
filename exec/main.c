@@ -111,7 +111,8 @@ int main(int ac, char **av, char **env)
 			{
 				int fd[4];
 				pipe(fd);
-				pipe(fd + 2);
+				pipe(&fd[2]);
+				// pipe(fd + 2);
 
 				if (fork() == 0)
 				{
@@ -131,8 +132,6 @@ int main(int ac, char **av, char **env)
 					close(fd[2]);
 					char *cmd[] = {"cat", "Makefile", NULL};
 					execve("/bin/cat", cmd, NULL);
-
-				
 				}
 				if (fork() == 0)
 				{
