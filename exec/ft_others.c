@@ -6,22 +6,22 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/26 10:44:52 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/26 11:22:55 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_bin_usr(char *input)
+int ft_bin_usr_sbin(char *input)
 {
 	char *bin;
 	char *userbin;
 	char *sbin;
-	sbin = ft_strjoin("/sbin/", input);
-	bin = ft_strjoin("/bin/", input);
-	userbin = ft_strjoin("/usr/bin/", input);
+	sbin = ft_strjoin("/sbin/./", input);
+	bin = ft_strjoin("/bin/./", input);
+	userbin = ft_strjoin("/usr/bin/./", input);
 	char path[PATH_MAX];
-	char *main_path = ft_strjoin(getcwd(path, PATH_MAX), "/");
+	char *main_path = ft_strjoin(getcwd(path, PATH_MAX), "./");
 
 	main_path = ft_strjoin(main_path, input);
 	if (access(bin, F_OK) == 0)
@@ -35,7 +35,7 @@ int ft_bin_usr(char *input)
 		// waitpid(idd, 0, 0);
 		wait(0);
 	}
-	else if (access(userbin, F_OK) == 0)
+	else if (access(userbin, F_OK) == 0 || access(input, F_OK) == 0)
 	{
 		char *cmd[] = {input, NULL};
 		int gg = fork();
