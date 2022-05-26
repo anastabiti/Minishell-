@@ -6,13 +6,13 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/05/22 15:03:58 by atabiti          ###   ########.fr        #
+#    Updated: 2022/05/26 10:35:18 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-SRC =   ./exec/builtins.c  ./execft_env.c    ./execmain.c ./exectools.c  redirections.c    ft_strnstr.c   ft_unset.c ft_export.c  
-OBJ =  ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o   ./exec/tools.o      ./exec/redirections.o  ./exec/ft_strnstr.o  ./exec/ft_unset.o ./exec/ft_export.o
+SRC =   ./exec/builtins.c  ./exec/ft_env.c    ./exec/main.c ./exec/tools.c  redirections.c    ./exec/ft_strnstr.c   ./exec/ft_unset.c ./exec/ft_export.c  ./exec/ft_others.c   
+OBJ =  ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o   ./exec/tools.o      ./exec/redirections.o  ./exec/ft_strnstr.o  ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o
 FALGS = -Wall -Werorr -Wextra 
 all : $(NAME)
 

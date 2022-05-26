@@ -48,109 +48,80 @@ int main(int ac, char **av, char **env)
 		blt.env = "env";
 		blt.exit = "exit";
 		blt.cd_path = "..";
+		int there_is_pipe = 0;
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 		if (ft_is_built_in(blt, input, env) == 0)
 		{
-			// if (ft_strncmp(input, "ls", 2) == 0)
-			// {
-			// 	int pid = fork();
-			// 	if (pid == 0)
+			ft_bin_usr(input);
+			there_is_pipe = 2;
+			// if (there_is_pipe >= 1) // if there is a pipe fork and dup2
 			// 	{
-			// 		char *cmd_args = "-PA";
-			// 		char *a[] = {"ls", cmd_args, NULL};
-			// 		execve("/bin/ls", a, NULL);
+			// 		int i = 0;
+			// 		int fd[2];
+			// 		char *cmd[4];
+			// 		cmd[0] = "/bin/ls";
+			// 		cmd[1] = "-l";
+			// 		cmd[2] = "/usr/bin/wc";
+			// 		cmd[3] = "-l";
+
+			// 		while (i < there_is_pipe)
+			// 		{
+			// 			// pipe(fd + i);
+			// 			if (fork() == 0)
+			// 			{
+			// 				// dup2(fd[1], 1);
+			// 				execve(cmd[i], &cmd[i + 1], NULL);
+			// 			}
+			// 			i++;
+			// 		}
+			// 		int x = 0;
+			// 		while (x < 2)
+			// 		{
+			// 			wait(0);
+			// 			x++;
+			// 		}
+			// 		// int fd[4];
+			// 		// pipe(fd);
+			// 		// pipe(&fd[2]);
+			// 		// // pipe(fd + 2);
+
+			// 		// if (fork() == 0)
+			// 		// {
+			// 		// 	dup2(fd[1], 1);
+
+			// 		// 	close(fd[0]);
+			// 		// 	close(fd[2]);
+			// 		// 	close(fd[3]);
+			// 		// 	char *cmd[] = {"ls", NULL};
+			// 		// 	execve("/bin/ls", cmd, NULL);
+			// 		// }
+			// 		// if (fork() == 0)
+			// 		// {
+			// 		// 	dup2(fd[0], 0);
+			// 		// 	dup2(fd[3], 1);
+			// 		// 	close(fd[1]);
+			// 		// 	close(fd[2]);
+			// 		// 	char *cmd[] = {"cat", "Makefile", NULL};
+			// 		// 	execve("/bin/cat", cmd, NULL);
+			// 		// }
+			// 		// if (fork() == 0)
+			// 		// {
+			// 		// 	dup2(fd[2], 0);
+			// 		// 	close(fd[0]);
+			// 		// 	close(fd[1]);
+			// 		// 	close(fd[3]);
+			// 		// 	char *cmd[] = {"wc", "-l", NULL};
+			// 		// 	execve("/usr/bin/wc", cmd, NULL);
+			// 		// }
+			// 		// close(fd[0]);
+			// 		// close(fd[1]);
+
+			// 		// close(fd[2]);
+			// 		// close(fd[3]);
+			// 		// wait(0);
+			// 		// wait(0);
+			// 		// wait(0);
 			// 	}
-			// 	// waitpid(pid, 0, 0);
-			// 						wait(0);
-
-			// }
-			// else
-			// {
-			char *bin;
-			char *userbin;
-			bin = ft_strjoin("/bin/", input);
-			userbin = ft_strjoin("/usr/bin/", input);
-			char path[PATH_MAX];
-			char *main_path = ft_strjoin(getcwd(path, PATH_MAX), "/");
-
-			main_path = ft_strjoin(main_path, input);
-
-			if (access(bin, F_OK) == 0)
-			{
-				char *cmd[] = {input, NULL};
-				int idd = fork();
-				if (idd == 0)
-				{
-					execve(bin, cmd, NULL);
-				}
-				// waitpid(idd, 0, 0);
-				wait(0);
-			}
-			else if (access(userbin, F_OK) == 0)
-			{
-				char *cmd[] = {input, NULL};
-				int gg = fork();
-				if (gg == 0)
-				{
-					execve(userbin, cmd, NULL);
-				}
-				// waitpid(gg, 0, 0);
-				wait(0);
-			}
-			else if (access(main_path, F_OK) == 0)
-			{
-				char *cmd[] = {input, NULL};
-				int gg = fork();
-				if (gg == 0)
-				{
-					execve(main_path, cmd, NULL);
-				}
-				wait(0);
-			}
-			else // if there is a pipe fork and dup2
-			{
-				int fd[4];
-				pipe(fd);
-				pipe(&fd[2]);
-				// pipe(fd + 2);
-
-				if (fork() == 0)
-				{
-					dup2(fd[1], 1);
-
-					close(fd[0]);
-					close(fd[2]);
-					close(fd[3]);
-					char *cmd[] = {"ls", NULL};
-					execve("/bin/ls", cmd, NULL);
-				}
-				if (fork() == 0)
-				{
-					dup2(fd[0], 0);
-					dup2(fd[3], 1);
-					close(fd[1]);
-					close(fd[2]);
-					char *cmd[] = {"cat", "Makefile", NULL};
-					execve("/bin/cat", cmd, NULL);
-				}
-				if (fork() == 0)
-				{
-					dup2(fd[2], 0);
-					close(fd[0]);
-					close(fd[1]);
-					close(fd[3]);
-					char *cmd[] = {"wc", "-l", NULL};
-					execve("/usr/bin/wc", cmd, NULL);
-				}
-				close(fd[0]);
-				close(fd[1]);
-
-				close(fd[2]);
-				close(fd[3]);
-				wait(0);
-				wait(0);
-				wait(0);
-			}
 		}
 		// else
 		// {
