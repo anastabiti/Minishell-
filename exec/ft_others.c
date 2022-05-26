@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/26 10:35:26 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/26 10:44:52 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int ft_bin_usr(char *input)
 {
 	char *bin;
 	char *userbin;
+	char *sbin;
+	sbin = ft_strjoin("/sbin/", input);
 	bin = ft_strjoin("/bin/", input);
 	userbin = ft_strjoin("/usr/bin/", input);
 	char path[PATH_MAX];
@@ -51,6 +53,14 @@ int ft_bin_usr(char *input)
 		if (gg == 0)
 		{
 			execve(main_path, cmd, NULL);
+		}
+		wait(0);
+	}
+	else if (access(sbin, F_OK) == 0)
+	{
+		if (fork() == 0)
+		{
+			execve(sbin, NULL, NULL);
 		}
 		wait(0);
 	}

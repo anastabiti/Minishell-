@@ -52,7 +52,7 @@ int main(int ac, char **av, char **env)
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 		if (ft_is_built_in(blt, input, env) == 0)
 		{
-			ft_bin_usr(input);
+			ft_bin_usr(input); // run other commands in /usr/bin/ and in /bin/
 			there_is_pipe = 2;
 			// if (there_is_pipe >= 1) // if there is a pipe fork and dup2
 			// 	{
