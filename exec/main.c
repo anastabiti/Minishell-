@@ -55,28 +55,25 @@ int main(int ac, char **av, char **env)
 			ft_bin_usr_sbin(input); // run other commands in /usr/bin/ and in /bin/
 			there_is_pipe = 4;
 
-			char *ls[] = {"ls", "-l", NULL};
-			char *grep[] = {"grep", "a", NULL};
-			char *echo[] = {"echo", "anas ", NULL};
-			char *wc[] = {"wc", "-l", NULL};
-			char **cmds[] = {ls, grep, echo, wc, NULL};
+			char *ls[] = {"/bin/ls", "ls", NULL};
+			// char *grep[] = {"/usr/bin/grep", "grep",  "a", NULL};
+			char *echo[] = {"/bin/echo", "anas", NULL};
+			char *wc[] = {"/usr/bin/wc", "-l", NULL};
+			char **cmds[] = {echo, NULL};
 			int fd[2];
 			int i = 0;
 			int fd_in = 0;
-			while (*cmds != NULL)
+			while (cmds[i++] != NULL)
 			{
 
 				pipe(fd);
 				if (fork() == 0)
 				{
-					dup2(fd_in, 1);
-
+					dup2(fd_in, 0);
 					if (*(cmds + 1) != NULL)
-
 						dup2(fd[1], 1);
-
 					close(fd[0]);
-					execve(*cmds[0], cmds[i], NULL);
+					execve(*cmds[0], *cmds, NULL);
 				}
 				else
 				{
@@ -84,7 +81,6 @@ int main(int ac, char **av, char **env)
 					close(fd[1]);
 					fd_in = fd[0];
 					// printf(" %s\n", cmds[0][1]);
-					cmds++;
 				}
 			}
 
