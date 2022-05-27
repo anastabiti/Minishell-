@@ -53,7 +53,41 @@ int main(int ac, char **av, char **env)
 		if (ft_is_built_in(blt, input, env) == 0)
 		{
 			ft_bin_usr_sbin(input); // run other commands in /usr/bin/ and in /bin/
-			there_is_pipe = 2;
+			there_is_pipe = 4;
+
+			char *ls[] = {"ls", "-l", NULL};
+			char *grep[] = {"grep", "a", NULL};
+			char *echo[] = {"echo", "anas ", NULL};
+			char *wc[] = {"wc", "-l", NULL};
+			char **cmds[] = {ls, grep, echo, wc, NULL};
+			int fd[2];
+			int i = 0;
+			int fd_in = 0;
+			while (*cmds != NULL)
+			{
+
+				pipe(fd);
+				if (fork() == 0)
+				{
+					dup2(fd_in, 1);
+
+					if (*(cmds + 1) != NULL)
+
+						dup2(fd[1], 1);
+
+					close(fd[0]);
+					execve(*cmds[0], cmds[i], NULL);
+				}
+				else
+				{
+					wait(NULL);
+					close(fd[1]);
+					fd_in = fd[0];
+					// printf(" %s\n", cmds[0][1]);
+					cmds++;
+				}
+			}
+
 			// if (there_is_pipe >= 1) // if there is a pipe fork and dup2
 			// 	{
 			// 		int i = 0;
