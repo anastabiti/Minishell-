@@ -28,12 +28,14 @@ int main(int ac, char **av, char **env)
 	(void)av;
 	struct s_builtins blt;
 	struct s_list *list;
+	char *input;
 	list = (struct s_list *)malloc(sizeof(struct s_list) * 2);
 	while (1)
 	{
+
 		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, handler);
-		char *input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
+		input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
 		// size_t llenght = ft_strlen(input);
 		if (!input) // ctrl-D
 		{
@@ -56,15 +58,13 @@ int main(int ac, char **av, char **env)
 		list[0].cmd[0] = "/bin/ls";
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
-
-		list[1].cmd[0] = "/bin/echo";
-		list[1].cmd[1] = "-lds";
+		list->next = &list[1];
+		list[1].cmd[0] = "/usr/bin/wc";
+		list[1].cmd[1] = "-l";
 		list[1].cmd[2] = NULL;
 		// list->args = {"/bin/ls", "ls", NULL};
 
-		;
-
-		list->next = NULL;
+		list[1].next = NULL;
 		there_is_pipe = 1;
 
 		if (there_is_pipe == 0)
@@ -74,7 +74,7 @@ int main(int ac, char **av, char **env)
 				ft_bin_usr_sbin(input);
 			}
 		}
-		if (there_is_pipe > 0)
+		else
 		{
 			// if (ft_is_built_in(blt, input, env) == 0 && ft_bin_usr_sbin(input) == 0)
 
@@ -87,62 +87,75 @@ int main(int ac, char **av, char **env)
 			// char *echo[] = {"/bin/echo", "anas", NULL};
 			// 	char *wc[] = {"/usr/bin/wc", "-l", NULL};
 			// 	char **cmds[] = {echo, NULL};
-			int fd[2];
+
 			int i = 0;
 			int fd_in = 0;
 
 			// while (i < there_is_pipe)
 			// {
+			int fd[2];
 
-				// pipe(fd);
-				if (fork() == 0)
-				{
-					// dup2(fd_in, 0);
-					// if (list[i].cmd != NULL)
-					// 	dup2(fd[1], 1);
-					// close(fd[0]);
-					execve(list[1].cmd[0], list[1].cmd, NULL);
-					// execve(", echo, NULL);
+			pipe(fd);
+			if (fork() == 0)
+			{
+				// dup2(fd_in, 0);
+				// if (list[i].cmd != NULL)
+				dup2(fd[1], 1);
+				close(fd[0]);
+				execve(list[0].cmd[0], list[0].cmd, NULL);
+				// execve(", echo, NULL);
 
-					printf("exec failed \n");
-				}
-				else
-				{
-					wait(NULL);
-					// close(fd[1]);
-					// fd_in = fd[0];
-					// i++;
-					// printf(" %s\n", cmds[0][1]);
-				}
-			
+				printf("exec failed \n");
+			}
+			if (fork() == 0)
+			{
+				dup2(fd[0], 0);
+				close(fd[1]);
+				execve(list[1].cmd[0], list[0].cmd, NULL);
+				printf("exec failed \n");
+			}
+
+			else
+			{
+				close(fd[0]);
+				close(fd[1]);
+				wait(NULL);
+				wait(NULL);
+			}
+			// close(fd[1]);
+			// fd_in = fd[0];
+			// i++;
+			// printf(" %s\n", cmds[0][1]);
 		}
+
 		// else
 		// {
 		// 	printf(" minishell: fewf: command not found\n");
 		// }
-		free(input);
-		// else
-		// { // open dir >> read its content to find if there is matched command there
-		// 	struct dirent *dd;
-		// 	int check = 0;
-		// 	DIR *dir = opendir("/bin/");
-		// 	char *cmd = "sleep"; // example
-		// 	while (((dd = readdir(dir)) != NULL))
-		// 	{
-		// 		if (ft_strnstr(dd->d_name, cmd, 5))
-		// 		{
-		// 			int pid = fork();
-		// 			if (pid == 0)
-		// 			{
-		// 				char *ea[] = {cmd, "2", NULL};
-		// 				// printf(" %s\n", dd->d_name);
-
-		// 				execve("/bin/sleep", ea, NULL);
-		// 			}
-		// 			waitpid(pid, 0, 0);
-		// 		}
-		// 	}
-		// 	closedir(dir);
-		// }
 	}
+	free(input);
+
+	// else
+	// { // open dir >> read its content to find if there is matched command there
+	// 	struct dirent *dd;
+	// 	int check = 0;
+	// 	DIR *dir = opendir("/bin/");
+	// 	char *cmd = "sleep"; // example
+	// 	while (((dd = readdir(dir)) != NULL))
+	// 	{
+	// 		if (ft_strnstr(dd->d_name, cmd, 5))
+	// 		{
+	// 			int pid = fork();
+	// 			if (pid == 0)
+	// 			{
+	// 				char *ea[] = {cmd, "2", NULL};
+	// 				// printf(" %s\n", dd->d_name);
+
+	// 				execve("/bin/sleep", ea, NULL);
+	// 			}
+	// 			waitpid(pid, 0, 0);
+	// 		}
+	// 	}
+	// 	closedir(dir);
+	// }
 }

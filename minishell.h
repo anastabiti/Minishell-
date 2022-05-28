@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/28 11:24:39 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/28 12:54:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ struct s_builtins
 };
 struct s_list
 {
-	char **cmd;
+	char *cmd[50];
 	struct s_list *next;
 };
 
