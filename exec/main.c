@@ -75,7 +75,7 @@ int main(int ac, char **av, char **env)
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[3].next = NULL;
-		there_is_pipe = 1;
+		there_is_pipe = 3;
 
 		if (there_is_pipe == 0)
 		{
@@ -91,11 +91,16 @@ int main(int ac, char **av, char **env)
 
 			// while (i < there_is_pipe)
 			// {
-			int fd[6];
+			int fd[there_is_pipe * 2];
+			while (i < there_is_pipe)
+			{
+				pipe(fd + i * 2);
+				i++;
+			}
 
-			pipe(fd);
-			pipe(fd + 2);
-			pipe(fd + 4);
+			// pipe(fd);
+			// pipe(fd + 2);
+			// pipe(fd + 4);
 			if (fork() == 0)
 
 			{
