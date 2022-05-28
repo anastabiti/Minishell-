@@ -53,16 +53,19 @@ int main(int ac, char **av, char **env)
 		int there_is_pipe = 0;
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 
-		list->cmd[0] = "/bin/ls";
-		list->cmd[1] = "-l";
-		list->cmd[2] = NULL;
+		list[0].cmd[0] = "/bin/ls";
+		list[0].cmd[1] = "-l";
+		list[0].cmd[2] = NULL;
 
+		list[1].cmd[0] = "/bin/echo";
+		list[1].cmd[1] = "-lds";
+		list[1].cmd[2] = NULL;
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		;
 
 		list->next = NULL;
-		there_is_pipe = 2;
+		there_is_pipe = 1;
 
 		if (there_is_pipe == 0)
 		{
@@ -81,35 +84,37 @@ int main(int ac, char **av, char **env)
 
 			// 	char *ls[] = {"/bin/ls", "ls", NULL};
 			// 	// char *grep[] = {"/usr/bin/grep", "grep",  "a", NULL};
-			char *echo[] = {"/bin/echo", "anas", NULL};
+			// char *echo[] = {"/bin/echo", "anas", NULL};
 			// 	char *wc[] = {"/usr/bin/wc", "-l", NULL};
 			// 	char **cmds[] = {echo, NULL};
 			int fd[2];
 			int i = 0;
 			int fd_in = 0;
-			// while (list->next != NULL)
+
+			// while (i < there_is_pipe)
 			// {
 
-			// pipe(fd);
-			if (fork() == 0)
-			{
-				// dup2(fd_in, 0);
-				// if (list->cmd[0] != NULL)
-				// 	dup2(fd[1], 1);
-				// close(fd[0]);
-				execve(list->cmd[0], list->cmd, NULL);
-				// execve(", echo, NULL);
+				// pipe(fd);
+				if (fork() == 0)
+				{
+					// dup2(fd_in, 0);
+					// if (list[i].cmd != NULL)
+					// 	dup2(fd[1], 1);
+					// close(fd[0]);
+					execve(list[1].cmd[0], list[1].cmd, NULL);
+					// execve(", echo, NULL);
 
-				printf("exec failed \n");
-			}
-			else
-			{
-				wait(NULL);
-				// close(fd[1]);
-				// fd_in = fd[0];
-				// printf(" %s\n", cmds[0][1]);
-			}
-			// }
+					printf("exec failed \n");
+				}
+				else
+				{
+					wait(NULL);
+					// close(fd[1]);
+					// fd_in = fd[0];
+					// i++;
+					// printf(" %s\n", cmds[0][1]);
+				}
+			
 		}
 		// else
 		// {
