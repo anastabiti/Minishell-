@@ -75,7 +75,7 @@ int main(int ac, char **av, char **env)
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[3].next = NULL;
-		there_is_pipe = 0;
+		there_is_pipe = 3;
 
 		if (there_is_pipe == 0)
 		{
@@ -88,6 +88,7 @@ int main(int ac, char **av, char **env)
 		{
 			int i = 0;
 			int fd_in = 0;
+		
 
 			// while (i < there_is_pipe)
 			// {
@@ -98,107 +99,109 @@ int main(int ac, char **av, char **env)
 				i++;
 			}
 
-			while (i < there_is_pipe )
+			// while (i < there_is_pipe + 1)
+			// {
+			// 	if (fork() == 0)
+			// 	{
+			// 		dup2(fd_in, 0);
+			// 		if (i < there_is_pipe)
+			// 			dup2(fd[i + 1], 1);
+			// 		close(fd[0]);
+			// 		execve(list[i].cmd[0], list[i].cmd, NULL);
+			// 	}
+			// 	else
+			// 	{
+
+			// 		wait(NULL);
+			// 		close(fd[1]);
+			// 		fd_in = fd[0];
+			// 		i++;
+			// 	}
+			// }
+		
+		pipe(fd);
+		pipe(fd + 2);
+		pipe(fd + 4);
+			if (fork() == 0)
+
 			{
-				if (fork() == 0)
-				{
-					dup2(fd[i + 1], 1);
-					if (i < there_is_pipe)
-						dup2(fd[i * 2], 0);
-					close(fd[i]);
-					execve(list[i].cmd[0], list[i].cmd, NULL);
-				}
-				else
-				{
-					close(fd[i]);
-					wait(NULL);
-					i++;
-				}
+				// dup2(fd_in, 0);
+				// if (list[i].cmd != NULL)
+				dup2(fd[1], 1);
+
+				close(fd[2]);
+				close(fd[3]);
+				close(fd[0]);
+				close(fd[1]);
+				close(fd[5]);
+				close(fd[4]);
+				execve(list[0].cmd[0], list[0].cmd, NULL);
+				// execve(", echo, NULL);
+
+				printf("exec failed \n");
 			}
+			if (fork() == 0)
+			{
+				dup2(fd[0], 0);
+				dup2(fd[3], 1);
+
+				close(fd[2]);
+				close(fd[3]);
+				close(fd[0]);
+				close(fd[5]);
+				close(fd[4]);
+				close(fd[1]);
+				execve(list[1].cmd[0], list[1].cmd, NULL);
+				printf("exec failed \n");
+			}
+			///
+			if (fork() == 0)
+			{
+				dup2(fd[2], 0);
+				dup2(fd[5], 1);
+
+				close(fd[2]);
+				close(fd[3]);
+				close(fd[0]);
+				close(fd[5]);
+				close(fd[4]);
+				close(fd[1]);
+				execve(list[2].cmd[0], list[2].cmd, NULL);
+				printf("exec failed \n");
+			}
+			//
+			if (fork() == 0)
+			{
+				dup2(fd[4], 0);
+
+				close(fd[2]);
+				close(fd[3]);
+				close(fd[0]);
+				close(fd[1]);
+				close(fd[5]);
+				close(fd[4]);
+				execve(list[3].cmd[0], list[3].cmd, NULL);
+				printf("exec failed \n");
+			}
+
+			else
+			{
+				close(fd[5]);
+				close(fd[4]);
+				close(fd[2]);
+				close(fd[3]);
+				close(fd[0]);
+				close(fd[1]);
+				wait(NULL);
+				wait(NULL);
+				wait(NULL);
+				wait(NULL);
+			}
+			// close(fd[1]);
+			// fd_in = fd[0];
+			// i++;
+			// printf(" %s\n", cmds[0][1]);
 		}
-		// pipe(fd);
-		// pipe(fd + 2);
-		// pipe(fd + 4);
-		// 	if (fork() == 0)
-
-		// 	{
-		// 		// dup2(fd_in, 0);
-		// 		// if (list[i].cmd != NULL)
-		// 		dup2(fd[1], 1);
-
-		// 		close(fd[2]);
-		// 		close(fd[3]);
-		// 		close(fd[0]);
-		// 		close(fd[1]);
-		// 		close(fd[5]);
-		// 		close(fd[4]);
-		// 		execve(list[0].cmd[0], list[0].cmd, NULL);
-		// 		// execve(", echo, NULL);
-
-		// 		printf("exec failed \n");
-		// 	}
-		// 	if (fork() == 0)
-		// 	{
-		// 		dup2(fd[0], 0);
-		// 		dup2(fd[3], 1);
-
-		// 		close(fd[2]);
-		// 		close(fd[3]);
-		// 		close(fd[0]);
-		// 		close(fd[5]);
-		// 		close(fd[4]);
-		// 		close(fd[1]);
-		// 		execve(list[1].cmd[0], list[1].cmd, NULL);
-		// 		printf("exec failed \n");
-		// 	}
-		// 	///
-		// 	if (fork() == 0)
-		// 	{
-		// 		dup2(fd[2], 0);
-		// 		dup2(fd[5], 1);
-
-		// 		close(fd[2]);
-		// 		close(fd[3]);
-		// 		close(fd[0]);
-		// 		close(fd[5]);
-		// 		close(fd[4]);
-		// 		close(fd[1]);
-		// 		execve(list[2].cmd[0], list[2].cmd, NULL);
-		// 		printf("exec failed \n");
-		// 	}
-		// 	//
-		// 	if (fork() == 0)
-		// 	{
-		// 		dup2(fd[4], 0);
-
-		// 		close(fd[2]);
-		// 		close(fd[3]);
-		// 		close(fd[0]);
-		// 		close(fd[1]);
-		// 		close(fd[5]);
-		// 		close(fd[4]);
-		// 		execve(list[3].cmd[0], list[3].cmd, NULL);
-		// 		printf("exec failed \n");
-		// 	}
-
-		// 	else
-		// 	{
-		// 		close(fd[5]);
-		// 		close(fd[4]);
-		// 		close(fd[2]);
-		// 		close(fd[3]);
-		// 		close(fd[0]);
-		// 		close(fd[1]);
-		// 		wait(NULL);
-		// 		wait(NULL);
-		// 		wait(NULL);
-		// 		wait(NULL);
-		// 	}
-		// 	// close(fd[1]);
-		// 	// fd_in = fd[0];
-		// 	// i++;
-		// 	// printf(" %s\n", cmds[0][1]);
-		// }
 
 		// else
 		// {
