@@ -53,110 +53,63 @@ int main(int ac, char **av, char **env)
 		int there_is_pipe = 0;
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
 
-		list->cmd[0] = "ls";
-		list->next = NULL;
-		if (ft_is_built_in(blt, input, env) == 0)
-		{
-			ft_bin_usr_sbin(input); // run other commands in /usr/bin/ and in /bin/
-			there_is_pipe = 4;
+		list->cmd[0] = "/bin/ls";
+		list->cmd[1] = "-l";
+		list->cmd[2] = NULL;
 
-			char *ls[] = {"/bin/ls", "ls", NULL};
-			// char *grep[] = {"/usr/bin/grep", "grep",  "a", NULL};
+		// list->args = {"/bin/ls", "ls", NULL};
+
+		;
+
+		list->next = NULL;
+		there_is_pipe = 2;
+
+		if (there_is_pipe == 0)
+		{
+			if (ft_is_built_in(blt, input, env) == 0)
+			{
+				ft_bin_usr_sbin(input);
+			}
+		}
+		if (there_is_pipe > 0)
+		{
+			// if (ft_is_built_in(blt, input, env) == 0 && ft_bin_usr_sbin(input) == 0)
+
+			// {
+			// 	// run other commands in /usr/bin/ and in /bin/
+			// 	there_is_pipe = 4;
+
+			// 	char *ls[] = {"/bin/ls", "ls", NULL};
+			// 	// char *grep[] = {"/usr/bin/grep", "grep",  "a", NULL};
 			char *echo[] = {"/bin/echo", "anas", NULL};
-			char *wc[] = {"/usr/bin/wc", "-l", NULL};
-			char **cmds[] = {echo, NULL};
+			// 	char *wc[] = {"/usr/bin/wc", "-l", NULL};
+			// 	char **cmds[] = {echo, NULL};
 			int fd[2];
 			int i = 0;
 			int fd_in = 0;
-			while (list->next != NULL)
+			// while (list->next != NULL)
+			// {
+
+			// pipe(fd);
+			if (fork() == 0)
 			{
+				// dup2(fd_in, 0);
+				// if (list->cmd[0] != NULL)
+				// 	dup2(fd[1], 1);
+				// close(fd[0]);
+				execve(list->cmd[0], list->cmd, NULL);
+				// execve(", echo, NULL);
 
-				pipe(fd);
-				if (fork() == 0)
-				{
-					dup2(fd_in, 0);
-					if (*(cmds + 1) != NULL)
-						dup2(fd[1], 1);
-					close(fd[0]);
-					execve(list->cmd[0], &list->cmd[0], NULL);
-				}
-				else
-				{
-					wait(NULL);
-					close(fd[1]);
-					fd_in = fd[0];
-					// printf(" %s\n", cmds[0][1]);
-				}
+				printf("exec failed \n");
 			}
-
-			// if (there_is_pipe >= 1) // if there is a pipe fork and dup2
-			// 	{
-			// 		int i = 0;
-			// 		int fd[2];
-			// 		char *cmd[4];
-			// 		cmd[0] = "/bin/ls";
-			// 		cmd[1] = "-l";
-			// 		cmd[2] = "/usr/bin/wc";
-			// 		cmd[3] = "-l";
-
-			// 		while (i < there_is_pipe)
-			// 		{
-			// 			// pipe(fd + i);
-			// 			if (fork() == 0)
-			// 			{
-			// 				// dup2(fd[1], 1);
-			// 				execve(cmd[i], &cmd[i + 1], NULL);
-			// 			}
-			// 			i++;
-			// 		}
-			// 		int x = 0;
-			// 		while (x < 2)
-			// 		{
-			// 			wait(0);
-			// 			x++;
-			// 		}
-			// 		// int fd[4];
-			// 		// pipe(fd);
-			// 		// pipe(&fd[2]);
-			// 		// // pipe(fd + 2);
-
-			// 		// if (fork() == 0)
-			// 		// {
-			// 		// 	dup2(fd[1], 1);
-
-			// 		// 	close(fd[0]);
-			// 		// 	close(fd[2]);
-			// 		// 	close(fd[3]);
-			// 		// 	char *cmd[] = {"ls", NULL};
-			// 		// 	execve("/bin/ls", cmd, NULL);
-			// 		// }
-			// 		// if (fork() == 0)
-			// 		// {
-			// 		// 	dup2(fd[0], 0);
-			// 		// 	dup2(fd[3], 1);
-			// 		// 	close(fd[1]);
-			// 		// 	close(fd[2]);
-			// 		// 	char *cmd[] = {"cat", "Makefile", NULL};
-			// 		// 	execve("/bin/cat", cmd, NULL);
-			// 		// }
-			// 		// if (fork() == 0)
-			// 		// {
-			// 		// 	dup2(fd[2], 0);
-			// 		// 	close(fd[0]);
-			// 		// 	close(fd[1]);
-			// 		// 	close(fd[3]);
-			// 		// 	char *cmd[] = {"wc", "-l", NULL};
-			// 		// 	execve("/usr/bin/wc", cmd, NULL);
-			// 		// }
-			// 		// close(fd[0]);
-			// 		// close(fd[1]);
-
-			// 		// close(fd[2]);
-			// 		// close(fd[3]);
-			// 		// wait(0);
-			// 		// wait(0);
-			// 		// wait(0);
-			// 	}
+			else
+			{
+				wait(NULL);
+				// close(fd[1]);
+				// fd_in = fd[0];
+				// printf(" %s\n", cmds[0][1]);
+			}
+			// }
 		}
 		// else
 		// {
