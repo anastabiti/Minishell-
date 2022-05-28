@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/26 10:46:06 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/28 10:07:24 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ struct s_builtins
 	char *env;
 	char *exit;
 	char *cd_path;
+};
+struct s_list
+{
+	char **cmd;
+	struct s_list *next;
 };
 
 void handler(int sig);

@@ -27,6 +27,8 @@ int main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	struct s_builtins blt;
+	struct s_list *list;
+	list = (struct s_list *)malloc(sizeof(struct s_list) * 2);
 	while (1)
 	{
 		signal(SIGQUIT, SIG_IGN);
@@ -50,6 +52,9 @@ int main(int ac, char **av, char **env)
 		blt.cd_path = "..";
 		int there_is_pipe = 0;
 		add_history(input); // to save commandes history >> you can access it by up arrow ^.
+
+		list->cmd[0] = "ls";
+		list->next = NULL;
 		if (ft_is_built_in(blt, input, env) == 0)
 		{
 			ft_bin_usr_sbin(input); // run other commands in /usr/bin/ and in /bin/
@@ -63,7 +68,7 @@ int main(int ac, char **av, char **env)
 			int fd[2];
 			int i = 0;
 			int fd_in = 0;
-			while (cmds[i++] != NULL)
+			while (list->next != NULL)
 			{
 
 				pipe(fd);
@@ -73,7 +78,7 @@ int main(int ac, char **av, char **env)
 					if (*(cmds + 1) != NULL)
 						dup2(fd[1], 1);
 					close(fd[0]);
-					execve(*cmds[0], *cmds, NULL);
+					execve(list->cmd[0], &list->cmd[0], NULL);
 				}
 				else
 				{
