@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 09:54:57 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 11:48:46 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,20 @@ struct s_builtins
 };
 struct s_list
 {
+	struct s_builtins *blt;
 	char *cmd[50];
 	struct s_list *next;
+	int fd_out;
 };
 
 void handler(int sig);
 void rl_replace_line(const char *text, int clear_undo);
 void rl_clear_history(void);
 // Builtin Commands
-void ft_pwd(void);
+void ft_pwd(int fd_out);
 void ft_env(char **env);
 int ft_echo(char *arg, int fd);
-int ft_is_built_in(struct s_builtins blt, char *input, char **env, int fd);
+int ft_is_built_in(struct s_list *list, char *input, char **env, int fd);
 int ft_unset(char **env);
 int ft_export(char **env);
 // Other
@@ -75,6 +77,6 @@ char *ft_read(char *input);
 // signals
 void handler(int sig);
 // init data
-struct s_builtins ft_init(struct s_builtins blt);
+struct s_list *ft_init(struct s_list *blt);
 
 #endif

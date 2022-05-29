@@ -17,18 +17,19 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	struct s_builtins blt;
+	// struct s_builtins blt;
 	struct s_list *list;
 	char *input;
-	list = (struct s_list *)malloc(sizeof(struct s_list) * 4);
+	list = (struct s_list *)malloc(sizeof(struct s_list) * 422);
+	list->blt = (struct s_builtins *)malloc(sizeof(struct s_builtins) * 412);
 	int fd = 1;
 	while (1)
 	{
 
 		input = ft_read(input);
 		//
-		int there_is_pipe = 0;
-		blt = ft_init(blt);
+		int there_is_pipe = 1;
+		list = ft_init(list);
 		list[0].cmd[0] = "/bin/ls";
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
@@ -49,11 +50,11 @@ int main(int ac, char **av, char **env)
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[3].next = NULL;
-		there_is_pipe = 2;
+		there_is_pipe = 0;
 
 		if (there_is_pipe == 0)
 		{
-			if (ft_is_built_in(blt, input, env, fd) == 0)
+			if (ft_is_built_in(list, input, env, fd) == 0)
 			{
 				ft_bin_usr_sbin(input);
 			}
@@ -72,13 +73,13 @@ int main(int ac, char **av, char **env)
 					if (i < there_is_pipe)
 						dup2(fd[1], 1);
 					close(fd[0]);
-					// if (i == 0)
-					// {
-					// 	ft_echo("anas", fd[1]);
-					// 	return 0;
-					// }
-					// if (i > 0)
-					execve(list[i].cmd[0], list[i].cmd, NULL);
+					if (i == 0)
+					{
+						ft_pwd(fd[1]);
+						return 0;
+					}
+					if (i > 0)
+						execve(list[1].cmd[0], list[1].cmd, NULL);
 				}
 				else
 				{

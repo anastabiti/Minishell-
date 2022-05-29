@@ -6,21 +6,21 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:43:04 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 08:48:20 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 11:48:34 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-struct s_builtins ft_init(struct s_builtins blt)
+struct s_list *ft_init(struct s_list *list)
 {
-	blt.echo = "echo";
-	blt.cd = "cd";
-	blt.pwd = "pwd";
-	blt.export = "export";
-	blt.unset = "unset";
-	blt.env = "env";
-	blt.exit = "exit";
-	blt.cd_path = "..";
-	return (blt);
+	list->blt->echo = "echo";
+	list->blt->cd = "cd";
+	list->blt->pwd = "pwd";
+	list->blt->export = "export";
+	list->blt->unset = "unset";
+	list->blt->env = "env";
+	list->blt->exit = "exit";
+	list->blt->cd_path = "..";
+	return list;
 }
