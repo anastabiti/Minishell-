@@ -6,26 +6,27 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/28 14:10:27 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 09:52:59 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_echo(char *arg)
+int ft_echo(char *arg, int fd)
 {
 	// if(you pass -n you must remove newline )
-	printf("%s\n", arg);
+	// printf("%s\n", arg);
+	ft_putstr_fd(arg, fd);
 	return 0;
 }
 
-int ft_is_built_in(struct s_builtins blt, char *input, char **env)
+int ft_is_built_in(struct s_builtins blt, char *input, char **env, int fd)
 {
 	char **vr = env;
 	int i = 0;
 	if (ft_strncmp(input, blt.echo, 4) == 0)
 	{
-		ft_echo(&input[4]);
+		ft_echo(&input[4], fd);
 		return 1;
 	}
 	else if (ft_strncmp(input, blt.cd, 2) == 0)
@@ -66,9 +67,9 @@ int ft_is_built_in(struct s_builtins blt, char *input, char **env)
 	return 0;
 }
 
- void ft_pwd(void)
+void ft_pwd(void)
 {
 	char pw[PATH_MAX];
-	 getcwd(pw, PATH_MAX);
+	getcwd(pw, PATH_MAX);
 	printf("%s\n", pw);
 }

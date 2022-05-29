@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 08:47:42 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 09:54:57 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void rl_clear_history(void);
 // Builtin Commands
 void ft_pwd(void);
 void ft_env(char **env);
-int ft_echo(char *arg);
-int ft_is_built_in(struct s_builtins blt, char *input, char **env);
+int ft_echo(char *arg, int fd);
+int ft_is_built_in(struct s_builtins blt, char *input, char **env, int fd);
 int ft_unset(char **env);
 int ft_export(char **env);
 // Other
@@ -65,6 +65,10 @@ int ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t ft_strlen(const char *s);
 int ft_memcmp(const void *s1, const void *s2, size_t n);
 char *ft_strchr(const char *s, int c);
+// output libft
+void ft_putstr_fd(char *s, int fd);
+void ft_putchar_fd(char c, int fd);
+void ft_putendl_fd(char *s, int fd);
 // read input
 char *ft_read(char *input);
 
