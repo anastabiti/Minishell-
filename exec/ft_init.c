@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:43:04 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 11:48:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 12:45:33 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ struct s_list *ft_init(struct s_list *list)
 	list->blt->unset = "unset";
 	list->blt->env = "env";
 	list->blt->exit = "exit";
-	list->blt->cd_path = "..";
+	list->blt->cd_path = "/Users/atabiti/fDesktop/PDF";
 	return list;
 }

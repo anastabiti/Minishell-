@@ -20,7 +20,7 @@ int main(int ac, char **av, char **env)
 	// struct s_builtins blt;
 	struct s_list *list;
 	char *input;
-	list = (struct s_list *)malloc(sizeof(struct s_list) * 20);
+	list = (struct s_list *)malloc(sizeof(struct s_list));
 	list->blt = (struct s_builtins *)malloc(sizeof(struct s_builtins) * 412);
 	int fd = 1;
 	list->environ = env;
@@ -35,8 +35,8 @@ int main(int ac, char **av, char **env)
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
 		list[0].next = &list[1];
-		list[1].cmd[0] = "/usr/bin/wc";
-		list[1].cmd[1] = "-c";
+		list[1].cmd[0] = "/usr/bin/grep";
+		list[1].cmd[1] = "112";
 		list[1].cmd[2] = NULL;
 		///
 		list[1].next = &list[2];
@@ -52,7 +52,7 @@ int main(int ac, char **av, char **env)
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[3].next = NULL;
-		there_is_pipe = 1;
+		there_is_pipe = 3;
 
 		if (there_is_pipe == 0)
 		{
@@ -82,6 +82,7 @@ int main(int ac, char **av, char **env)
 					// }
 					// if (i > 0)
 					execve(list[i].cmd[0], list[i].cmd, NULL);
+					printf("FAILED \n");
 				}
 				else
 				{
