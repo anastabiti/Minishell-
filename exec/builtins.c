@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 11:34:53 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 12:09:45 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ int ft_echo(char *arg, int fd)
 	return 0;
 }
 
-int ft_is_built_in(struct s_list *list, char *input, char **env, int fd)
+int ft_is_built_in(struct s_list *list)
 {
-	char **vr = env;
+	char **vr = list->environ;
 	int i = 0;
-	if (ft_strncmp(input, list->blt->echo, 4) == 0)
+	if (ft_strncmp(list->input, list->blt->echo, 4) == 0)
 	{
-		ft_echo(&input[4], fd);
+		ft_echo(&list->input[4], list->fd_out);
 		return 1;
 	}
-	else if (ft_strncmp(input, list->blt->cd, 2) == 0)
+	else if (ft_strncmp(list->input, list->blt->cd, 2) == 0)
 	{
 		if (chdir(list->blt->cd_path) == -1) // // mkrim will provide me with FULL path to CD
 		{
@@ -37,31 +37,31 @@ int ft_is_built_in(struct s_list *list, char *input, char **env, int fd)
 		}
 		return 1;
 	}
-	else if (ft_strncmp(input, list->blt->export, 6) == 0)
+	else if (ft_strncmp(list->input, list->blt->export, 6) == 0)
 	{
 		ft_export(vr);
 		return 1;
 	}
-	else if (ft_strncmp(input, list->blt->unset, 5) == 0)
+	else if (ft_strncmp(list->input, list->blt->unset, 5) == 0)
 	{
 		ft_unset(vr);
 		return 1;
 	}
 	////////////////////////////////////////////////////////////////////////
-	else if (ft_strncmp(input, list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
+	else if (ft_strncmp(list->input, list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
 	{
-		ft_env(vr);
+		ft_env(list->environ);
 		return 1;
 	}
-	else if (ft_strncmp(input, list->blt->pwd, 3) == 0)
+	else if (ft_strncmp(list->input, list->blt->pwd, 3) == 0)
 	{
-		ft_pwd(fd);
+		ft_pwd(list->fd_out);
 		return 1;
 	}
-	else if (ft_strncmp(input, "exit", 4) == 0)
+	else if (ft_strncmp(list->input, "exit", 4) == 0)
 	{
 		printf("exit\n");
-		free(input);
+		free(list->input);
 		exit(1);
 	}
 	return 0;

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 11:48:46 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 12:05:03 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ struct s_list
 	char *cmd[50];
 	struct s_list *next;
 	int fd_out;
+	char *input;
+	char **environ;
 };
 
 void handler(int sig);
@@ -55,7 +57,7 @@ void rl_clear_history(void);
 void ft_pwd(int fd_out);
 void ft_env(char **env);
 int ft_echo(char *arg, int fd);
-int ft_is_built_in(struct s_list *list, char *input, char **env, int fd);
+int ft_is_built_in(struct s_list *list);
 int ft_unset(char **env);
 int ft_export(char **env);
 // Other

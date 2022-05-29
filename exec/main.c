@@ -26,10 +26,11 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 
-		input = ft_read(input);
+		list->environ = env;
+		list->input = ft_read(list->input);
 		//
 		int there_is_pipe = 1;
-		list = ft_init(list);
+		ft_init(list);
 		list[0].cmd[0] = "/bin/ls";
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
@@ -54,9 +55,9 @@ int main(int ac, char **av, char **env)
 
 		if (there_is_pipe == 0)
 		{
-			if (ft_is_built_in(list, input, env, fd) == 0)
+			if (ft_is_built_in(list) == 0)
 			{
-				ft_bin_usr_sbin(input);
+				ft_bin_usr_sbin(list->input);
 			}
 		}
 		else
