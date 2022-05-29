@@ -6,17 +6,17 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/24 11:58:25 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/28 14:10:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char *ft_echo(char *arg)
+int ft_echo(char *arg)
 {
 	// if(you pass -n you must remove newline )
 	printf("%s\n", arg);
-	return arg;
+	return 0;
 }
 
 int ft_is_built_in(struct s_builtins blt, char *input, char **env)

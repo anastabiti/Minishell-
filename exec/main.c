@@ -75,7 +75,7 @@ int main(int ac, char **av, char **env)
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[3].next = NULL;
-		there_is_pipe = 3;
+		there_is_pipe = 0;
 
 		if (there_is_pipe == 0)
 		{
@@ -88,7 +88,6 @@ int main(int ac, char **av, char **env)
 		{
 			int i = 0;
 			int fd_in = 0;
-		
 
 			// while (i < there_is_pipe)
 			// {
@@ -118,10 +117,10 @@ int main(int ac, char **av, char **env)
 			// 		i++;
 			// 	}
 			// }
-		
-		pipe(fd);
-		pipe(fd + 2);
-		pipe(fd + 4);
+
+			pipe(fd);
+			pipe(fd + 2);
+			pipe(fd + 4);
 			if (fork() == 0)
 
 			{
@@ -165,9 +164,10 @@ int main(int ac, char **av, char **env)
 				close(fd[0]);
 				close(fd[5]);
 				close(fd[4]);
+
 				close(fd[1]);
 				execve(list[2].cmd[0], list[2].cmd, NULL);
-				printf("exec failed \n");
+				// printf("exec failed \n");
 			}
 			//
 			if (fork() == 0)
