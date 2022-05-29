@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f.c                                                :+:      :+:    :+:   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 10:57:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/26 10:57:36 by atabiti          ###   ########.fr       */
+/*   Created: 2022/05/29 08:43:04 by atabiti           #+#    #+#             */
+/*   Updated: 2022/05/29 08:48:20 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../minishell.h"
 
-int main()
+struct s_builtins ft_init(struct s_builtins blt)
 {
-	printf("sfsv svf\n ");
+	blt.echo = "echo";
+	blt.cd = "cd";
+	blt.pwd = "pwd";
+	blt.export = "export";
+	blt.unset = "unset";
+	blt.env = "env";
+	blt.exit = "exit";
+	blt.cd_path = "..";
+	return (blt);
 }

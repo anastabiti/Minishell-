@@ -12,16 +12,7 @@
 
 #include "../minishell.h"
 // ping is /sbin/ping
-void handler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		write(1, "\n", 1);
-		rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
-		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
-		rl_redisplay();					// Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
-	}
-}
+
 int main(int ac, char **av, char **env)
 {
 	(void)ac;
@@ -33,28 +24,10 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 
-		signal(SIGQUIT, SIG_IGN);
-		signal(SIGINT, handler);
-		input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
-		// size_t llenght = ft_strlen(input);
-		if (!input) // ctrl-D
-		{
-			rl_clear_history();
-			write(2, "exit\n", 5);
-			free(input);
-			exit(1);
-		}
-		blt.echo = "echo";
-		blt.cd = "cd";
-		blt.pwd = "pwd";
-		blt.export = "export";
-		blt.unset = "unset";
-		blt.env = "env";
-		blt.exit = "exit";
-		blt.cd_path = "..";
+		input = ft_read(input);
+		//
 		int there_is_pipe = 0;
-		add_history(input); // to save commandes history >> you can access it by up arrow ^.
-
+		blt = ft_init(blt);
 		list[0].cmd[0] = "/bin/ls";
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;

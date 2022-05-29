@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 08:26:03 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 08:47:42 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,12 @@ int ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t ft_strlen(const char *s);
 int ft_memcmp(const void *s1, const void *s2, size_t n);
 char *ft_strchr(const char *s, int c);
+// read input
+char *ft_read(char *input);
+
+// signals
+void handler(int sig);
+// init data
+struct s_builtins ft_init(struct s_builtins blt);
+
 #endif
