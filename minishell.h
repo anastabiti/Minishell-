@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 12:05:03 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/29 12:17:35 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ struct s_builtins
 	char *env;
 	char *exit;
 	char *cd_path;
+	char *cmd[100];
 };
 struct s_list
 {

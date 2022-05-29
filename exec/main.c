@@ -20,14 +20,14 @@ int main(int ac, char **av, char **env)
 	// struct s_builtins blt;
 	struct s_list *list;
 	char *input;
-	list = (struct s_list *)malloc(sizeof(struct s_list) * 422);
+	list = (struct s_list *)malloc(sizeof(struct s_list) * 20);
 	list->blt = (struct s_builtins *)malloc(sizeof(struct s_builtins) * 412);
 	int fd = 1;
+	list->environ = env;
 	while (1)
 	{
 
-		list->environ = env;
-		list->input = ft_read(list->input);
+			list->input = ft_read(list->input);
 		//
 		int there_is_pipe = 1;
 		ft_init(list);
@@ -47,11 +47,12 @@ int main(int ac, char **av, char **env)
 		list[2].next = &list[3];
 		list[3].cmd[0] = "/usr/bin/wc";
 		list[3].cmd[1] = NULL;
+
 		// list[3].cmd[2] = NULL;
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[3].next = NULL;
-		there_is_pipe = 0;
+		there_is_pipe = 1;
 
 		if (there_is_pipe == 0)
 		{
@@ -74,13 +75,13 @@ int main(int ac, char **av, char **env)
 					if (i < there_is_pipe)
 						dup2(fd[1], 1);
 					close(fd[0]);
-					if (i == 0)
-					{
-						ft_pwd(fd[1]);
-						return 0;
-					}
-					if (i > 0)
-						execve(list[1].cmd[0], list[1].cmd, NULL);
+					// if (i == 0)
+					// {
+					// 	ft_pwd(fd[1]);
+					// 	return 0;
+					// }
+					// if (i > 0)
+					execve(list[i].cmd[0], list[i].cmd, NULL);
 				}
 				else
 				{
