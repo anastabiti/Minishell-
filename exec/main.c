@@ -61,7 +61,7 @@ int main(int ac, char **av, char **env)
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[5].next = NULL;
-		list->there_is_pipe = 5;
+		list->there_is_pipe = 0;
 
 		if (list->there_is_pipe == 0)
 		{
