@@ -1,0 +1,9 @@
+{
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/Users/atabiti/Desktop/MINILAST",
+			"binaryPath": "/Users/atabiti/Desktop/MINILAST/minishell",
+			"binaryArgs": []
+		}
+	]
+}
