@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 12:09:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/30 08:47:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int ft_is_built_in(struct s_list *list)
 	{
 		printf("exit\n");
 		free(list->input);
-		exit(1);
+		exit(0);
 	}
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 12:17:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/30 09:25:37 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ struct s_list
 	int fd_out;
 	char *input;
 	char **environ;
+	int there_is_pipe;
 };
 
 void handler(int sig);
@@ -76,7 +77,8 @@ void ft_putchar_fd(char c, int fd);
 void ft_putendl_fd(char *s, int fd);
 // read input
 char *ft_read(char *input);
-
+//pipes
+int ft_pipe(struct s_list *list);
 // signals
 void handler(int sig);
 // init data

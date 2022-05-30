@@ -27,22 +27,22 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 
-			list->input = ft_read(list->input);
+		list->input = ft_read(list->input);
 		//
-		int there_is_pipe = 1;
+		
 		ft_init(list);
 		list[0].cmd[0] = "/bin/ls";
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
 		list[0].next = &list[1];
 		list[1].cmd[0] = "/usr/bin/grep";
-		list[1].cmd[1] = "112";
+		list[1].cmd[1] = "mini";
 		list[1].cmd[2] = NULL;
 		///
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "/bin/echo";
-		list[2].cmd[1] = "anas";
+		list[2].cmd[0] = "/usr/bin/wc";
+		list[2].cmd[1] = "-l";
 		list[2].cmd[2] = NULL;
 		list[2].next = &list[3];
 		list[3].cmd[0] = "/usr/bin/wc";
@@ -52,47 +52,8 @@ int main(int ac, char **av, char **env)
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[3].next = NULL;
-		there_is_pipe = 3;
-
-		if (there_is_pipe == 0)
-		{
-			if (ft_is_built_in(list) == 0)
-			{
-				ft_bin_usr_sbin(list->input);
-			}
-		}
-		else
-		{
-			int i = 0;
-			int fd_in = 0;
-			int fd[2];
-			while (i < there_is_pipe + 1)
-			{
-				pipe(fd);
-				if (fork() == 0)
-				{
-					dup2(fd_in, 0);
-					if (i < there_is_pipe)
-						dup2(fd[1], 1);
-					close(fd[0]);
-					// if (i == 0)
-					// {
-					// 	ft_pwd(fd[1]);
-					// 	return 0;
-					// }
-					// if (i > 0)
-					execve(list[i].cmd[0], list[i].cmd, NULL);
-					printf("FAILED \n");
-				}
-				else
-				{
-					wait(NULL);
-					close(fd[1]);
-					fd_in = fd[0];
-					i++;
-				}
-			}
-		}
+		ft_pipe(list);
+//
 	}
 	free(input);
 }
