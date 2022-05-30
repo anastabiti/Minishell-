@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/30 10:17:44 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/30 10:51:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,24 @@ int ft_bin_usr_sbin(char *input)
 		// waitpid(idd, 0, 0);
 		wait(0);
 	}
-	else if (access(userbin, F_OK) == 0 || access(input, F_OK) == 0)
+	else if (access(userbin, F_OK) == 0)
 	{
 		char *cmd[] = {input, NULL};
 		int gg = fork();
 		if (gg == 0)
 		{
 			execve(userbin, cmd, NULL);
+		}
+		// waitpid(gg, 0, 0);
+		wait(0);
+	}
+	else if (access(input, F_OK) == 0)
+	{
+		char *cmd[] = {input, NULL};
+		int gg = fork();
+		if (gg == 0)
+		{
+			execve(input, cmd, NULL);
 		}
 		// waitpid(gg, 0, 0);
 		wait(0);
