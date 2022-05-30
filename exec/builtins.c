@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/30 08:47:10 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/30 10:01:51 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int ft_echo(char *arg, int fd)
 	return 0;
 }
 
-int ft_is_built_in(struct s_list *list)
+int  ft_is_built_in(struct s_list *list)
 {
 	char **vr = list->environ;
 	int i = 0;

@@ -29,7 +29,7 @@ int main(int ac, char **av, char **env)
 
 		list->input = ft_read(list->input);
 		//
-		
+
 		ft_init(list);
 		list[0].cmd[0] = "/bin/ls";
 		list[0].cmd[1] = "-l";
@@ -48,12 +48,16 @@ int main(int ac, char **av, char **env)
 		list[3].cmd[0] = "/usr/bin/wc";
 		list[3].cmd[1] = NULL;
 
+		list[3].next = &list[4];
+		list[4].cmd[0] = "/bin/ps";
+		list[4].cmd[1] = NULL;
+
 		// list[3].cmd[2] = NULL;
 		// list->args = {"/bin/ls", "ls", NULL};
 
-		list[3].next = NULL;
+		list[4].next = NULL;
 		ft_pipe(list);
-//
+		//
 	}
 	free(input);
 }
