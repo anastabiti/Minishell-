@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `exec/builtins.o', needed by `minishell'.  Stop.
 
-
-# Make data base, printed on Mon May 30 11:09:15 2022
+# Make data base, printed on Mon May 30 11:15:18 2022
 
 # Variables
 
@@ -19,9 +16,9 @@ make: *** No rule to make target `exec/builtins.o', needed by `minishell'.  Stop
 # automatic
 ?F = $(notdir $?)
 # makefile (from `Makefile', line 20)
-OBJ = ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o ./exec/tools.o      ./exec/redirections.o  ./exec/ft_strnstr.o ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o ./exec/ft_readline.o ./exec/ft_init.o  ./exec/ft_putchar_fd.o ./exec/ft_putstr_fd.o           ./exec/ft_putendl_fd.o  ./exec/ftpipe.o 
+OBJ = ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o ./exec/tools.o      ./exec/redirections.o  ./libft/ft_strnstr.o ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o ./exec/ft_readline.o ./exec/ft_init.o  ./libft/ft_putchar_fd.o ./libft/ft_putstr_fd.o           ./libft/ft_putendl_fd.o  ./exec/ftpipe.o 
 # makefile (from `Makefile', line 14)
-SRC = ./exec/builtins.c  ./exec/ft_env.c ./exec/main.c ./exec/tools.c  redirections.c ./exec/ft_strnstr.c   ./exec/ft_unset.c ./exec/ft_export.c ./exec/ft_others.c   ./exec/ft_readline.c  ./exec/ft_init.c ./exec/ft_putchar_fd.c ./exec/ft_putstr_fd.c           ./exec/ft_putendl_fd.c  ./exec/ftpipe.c 
+SRC = ./exec/builtins.c  ./exec/ft_env.c ./exec/main.c ./exec/tools.c  redirections.c ./libft/ft_strnstr.c   ./exec/ft_unset.c ./exec/ft_export.c ./exec/ft_others.c   ./exec/ft_readline.c  ./exec/ft_init.c ./libft/ft_putchar_fd.c ./libft/ft_putstr_fd.c           ./libft/ft_putendl_fd.c  ./exec/ftpipe.c 
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -81,7 +78,7 @@ VSCODE_CODE_CACHE_PATH = /Users/atabiti/Library/Application Support/Code/CachedD
 # environment
 LOGNAME = atabiti
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 ZSH = /Users/atabiti/.oh-my-zsh
 # environment
@@ -123,7 +120,6 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cc8c003323/T/
 # environment
 VSCODE_IPC_HOOK = /Users/atabiti/Library/Application Support/Code/1.67.0-main.sock
 # makefile
- 
 MAKEFLAGS = Rrqp
 # environment
 MFLAGS = -Rrqp
@@ -178,6 +174,12 @@ VSCODE_PID = 77977
 
 # Files
 
+# Not a target:
+libft/ft_putendl_fd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 all: minishell
 #  Command-line target.
 #  Implicit rule search has been done.
@@ -215,7 +217,7 @@ exec/ft_env.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-30 09:26:06
+#  Last modified 2022-05-30 11:14:25
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -227,7 +229,7 @@ exec/redirections.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-minishell: exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirections.o exec/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o exec/ft_putchar_fd.o exec/ft_putstr_fd.o exec/ft_putendl_fd.o exec/ftpipe.o
+minishell: exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -253,24 +255,12 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 36):
+#  commands to execute (from `Makefile', line 38):
 	rm $(NAME)
 	
 
 # Not a target:
 exec/ft_readline.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-exec/ft_strnstr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-exec/ft_putstr_fd.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -293,12 +283,6 @@ exec/main.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-exec/ft_putchar_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 re: fclean all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -307,9 +291,14 @@ re: fclean all
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
+make: *** No rule to make target `exec/builtins.o', needed by `minishell'.  Stop.
+
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 32):
 	cd ./exec; \
+	rm *.o
+	cd ./libft; \
 	rm *.o
 	
 
@@ -320,7 +309,19 @@ exec/ft_others.o:
 #  File has not been updated.
 
 # Not a target:
-exec/ft_putendl_fd.o:
+libft/ft_strnstr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+libft/ft_putstr_fd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+libft/ft_putchar_fd.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -344,6 +345,6 @@ exec/ft_export.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon May 30 11:09:15 2022
+# Finished Make data base on Mon May 30 11:15:18 2022
 
  

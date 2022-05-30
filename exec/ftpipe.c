@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/30 10:50:42 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/30 12:48:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,7 @@
 int ft_pipe(struct s_list *list)
 
 {
-	list->there_is_pipe = 0;
 
-	if (list->there_is_pipe == 0)
-	{
-		if (ft_is_built_in(list) == 0)
-		{
-			ft_bin_usr_sbin(list->input);
-		}
-	}
 	if (list->there_is_pipe > 0)
 	{
 		//
@@ -57,45 +49,50 @@ int ft_pipe(struct s_list *list)
 				// 	return 0;
 				// }
 				// if (i > 0)
-				if (i == 0)
+				// if (i == 0)
 
-				{
-					if (access(list->input, F_OK) == 0)
+				// {
+
+				// 	if (access(list->input, F_OK) == 0)
+				// 	{
+				// 		char *cmd[] = {list->input, NULL};
+
+				// 		execve(list->input, cmd, NULL);
+				// 	}
+
+				// 	else if (access(bin, F_OK) == 0)
+				// 	{
+				// 		char *cmd[] = {list->input, NULL};
+
+				// 		execve(bin, cmd, NULL);
+				// 	}
+				// 	else if (access(userbin, F_OK) == 0)
+				// 	{
+				// 		char *cmd[] = {list->input, NULL};
+
+				// 		execve(userbin, cmd, NULL);
+				// 	}
+
+				// 	else if (access(main_path, F_OK) == 0)
+				// 	{
+				// 		char *cmd[] = {list->input, NULL};
+
+				// 		execve(main_path, cmd, NULL);
+				// 	}
+				// 	else if (access(sbin, F_OK) == 0)
+				// 	{
+				// 		execve(sbin, NULL, NULL);
+				// 	}
+				// 	exit(1);
+				// }
+				// if (i > 0)
+				// {
+					if (execve(list[i].cmd[0], list[i].cmd, NULL) == -1)
 					{
-						char *cmd[] = {list->input, NULL};
-
-						execve(list->input, cmd, NULL);
+						printf("failed\n");
+						return 0;
 					}
-					if (access(bin, F_OK) == 0)
-					{
-						char *cmd[] = {list->input, NULL};
-
-						execve(bin, cmd, NULL);
-					}
-					if (access(userbin, F_OK) == 0)
-					{
-						char *cmd[] = {list->input, NULL};
-
-						execve(userbin, cmd, NULL);
-					}
-
-					if (access(main_path, F_OK) == 0)
-					{
-						char *cmd[] = {list->input, NULL};
-
-						execve(main_path, cmd, NULL);
-					}
-					if (access(sbin, F_OK) == 0)
-					{
-						execve(sbin, NULL, NULL);
-					}
-
-					return 0;
-				}
-				if (i > 0)
-				{
-					execve(list[3].cmd[0], list[3].cmd, NULL);
-				}
+				
 			}
 			else
 			{

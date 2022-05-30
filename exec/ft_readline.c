@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:32:15 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 08:48:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/30 12:00:04 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ char *ft_read(char *input)
 	// size_t llenght = ft_strlen(input);
 	if (!input) // ctrl-D
 	{
-		rl_clear_history();
 		write(2, "exit\n", 5);
+		rl_clear_history();
+
 		free(input);
 		exit(1);
 	}
