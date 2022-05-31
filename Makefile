@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/05/30 11:14:25 by atabiti          ###   ########.fr        #
+#    Updated: 2022/05/31 09:19:07 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	clang -g $(FLAGS)  $(OBJ)  -o $(NAME) -lreadline -L/Users/atabiti/.brew/Cellar/readline/8.1.2/lib -I/Users/atabiti/.brew/Cellar/readline/8.1.2/include
+	gcc exec/ft_echo.c -o ftecho
+	
 clean :
 		cd ./exec; \
 	rm *.o
 		cd ./libft; \
 			rm *.o
-	
+	rm ftecho
 fclean : clean
 	rm $(NAME)
 re : fclean all
