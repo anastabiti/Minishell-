@@ -41,27 +41,10 @@ int main(int ac, char **av, char **env)
 		list[1].cmd[2] = NULL;
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "/Users/atabiti/Desktop/";
-		list[2].cmd[2] = "/Users/atabiti/";
+		list[2].cmd[0] = "/bin/echo";
+		list[2].cmd[2] = "ANAS";
 		list[2].cmd[3] = NULL;
-
-		list[2].next = &list[3];
-		list[3].cmd[0] = "./builtins_bin/ft_cd";
-		list[3].cmd[1] = "/Users/atabiti/Desktop/";
-		list[3].cmd[2] = NULL;
-
-		list[3].next = &list[4];
-		list[4].cmd[0] = "/bin/ps";
-		list[4].cmd[1] = NULL;
-		list[4].next = &list[5];
-
-		list[5].cmd[0] = "/sbin/ifconfig";
-		list[5].cmd[1] = NULL;
-
-		// list[3].cmd[2] = NULL;
-		// list->args = {"/bin/ls", "ls", NULL};
-
-		list[5].next = NULL;
+		list[2].next = NULL;
 		list->there_is_pipe = 1;
 
 		if (list->there_is_pipe == 0)

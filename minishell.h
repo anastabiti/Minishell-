@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/30 09:25:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/31 11:04:05 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void handler(int sig);
 void rl_replace_line(const char *text, int clear_undo);
 void rl_clear_history(void);
 // Builtin Commands
-void ft_pwd(int fd_out);
+int ft_pwd(int fd_out);
 void ft_env(char **env);
 int ft_echo(char *arg, int fd);
 int ft_is_built_in(struct s_list *list);

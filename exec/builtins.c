@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/31 10:14:44 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/31 11:04:31 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int ft_echo(char *arg, int fd)
 	return 0;
 }
 
-int  ft_is_built_in(struct s_list *list)
+int ft_is_built_in(struct s_list *list)
 {
 	char **vr = list->environ;
 	int i = 0;
@@ -55,7 +55,7 @@ int  ft_is_built_in(struct s_list *list)
 	}
 	else if (ft_strncmp(list->input, list->blt->pwd, 3) == 0)
 	{
-		ft_pwd(list->fd_out);
+		if(ft_pwd(list->fd_out) == 1)
 		return 1;
 	}
 	else if (ft_strncmp(list->input, "exit", 4) == 0)
@@ -67,9 +67,10 @@ int  ft_is_built_in(struct s_list *list)
 	return 0;
 }
 
-void ft_pwd(int fd_out)
+int ft_pwd(int fd_out)
 {
 	char pw[PATH_MAX];
 	getcwd(pw, PATH_MAX);
 	ft_putendl_fd(pw, fd_out);
+	return 1;
 }
