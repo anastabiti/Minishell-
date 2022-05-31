@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/31 11:04:31 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/31 12:58:03 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int ft_is_built_in(struct s_list *list)
 	////////////////////////////////////////////////////////////////////////
 	else if (ft_strncmp(list->input, list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
 	{
-		ft_env(list->environ);
+		ft_env(list->environ, list);
 		return 1;
 	}
 	else if (ft_strncmp(list->input, list->blt->pwd, 3) == 0)
 	{
-		if(ft_pwd(list->fd_out) == 1)
+		ft_pwd(list->fd_out);
 		return 1;
 	}
 	else if (ft_strncmp(list->input, "exit", 4) == 0)
@@ -63,6 +63,10 @@ int ft_is_built_in(struct s_list *list)
 		printf("exit\n");
 		free(list->input);
 		exit(0);
+	}
+	else
+	{
+		return 0;
 	}
 	return 0;
 }
