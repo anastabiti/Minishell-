@@ -31,23 +31,26 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "/bin/ls";
-		list[0].cmd[1] = "-l";
+		list[0].cmd[0] = "./builtins_bin/ft_cd";
+		list[0].cmd[1] = "/Users/atabiti/Desktop/";
 		list[0].cmd[2] = NULL;
 		list[0].next = &list[1];
-		list[1].cmd[0] = "ftecho";
+		list[1].cmd[0] = "./builtins_bin/ftecho";
 		list[1].cmd[1] = "anas";
 
-		list[1].cmd[2] = NULL;
+		list[1].cmd[1] = "/Users/atabiti/";
 		///
+		list[1].cmd[2] = NULL;
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "/usr/bin/wc";
-		list[2].cmd[2] = NULL;
+		list[2].cmd[0] = "/Users/atabiti/Desktop/";
+		list[2].cmd[2] = "/Users/atabiti/";
+		list[2].cmd[3] = NULL;
 
 		list[2].next = &list[3];
-		list[3].cmd[0] = "/usr/bin/who";
-		list[3].cmd[1] = NULL;
+		list[3].cmd[0] = "./builtins_bin/ft_cd";
+		list[3].cmd[1] = "/Users/atabiti/Desktop/";
+		list[3].cmd[2] = NULL;
 
 		list[3].next = &list[4];
 		list[4].cmd[0] = "/bin/ps";
