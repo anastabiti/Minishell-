@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 09:02:59 by atabiti           #+#    #+#             */
+/*   Updated: 2022/05/31 09:05:15 by atabiti          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../minishell.h"
+
+void ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+void ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return;
+	while (*s != '\0')
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
+}
+int ft_echo(char *arg, int fd)
+{
+	// if(you pass -n you must remove newline )
+	// ft_putendl_fd(arg, fd);
+	ft_putstr_fd(arg, fd);
+	return 0;
+}
+
+int main(int ac, char **av)
+{
+	ft_echo(av[1], 1);
+}

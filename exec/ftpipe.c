@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/30 12:48:10 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/05/31 09:08:29 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int ft_pipe(struct s_list *list)
 				close(fd[0]);
 				// if (i == 0)
 				// {
+				// 	if(strncmp(list->input, "echo");)
 				// 	ft_pwd(fd[1]);
 				// 	return 0;
 				// }
@@ -85,15 +86,14 @@ int ft_pipe(struct s_list *list)
 				// 	}
 				// 	exit(1);
 				// }
-				// if (i > 0)
-				// {
+				
 					if (execve(list[i].cmd[0], list[i].cmd, NULL) == -1)
 					{
 						printf("failed\n");
 						return 0;
 					}
-				
-			}
+				}
+		
 			else
 			{
 				wait(NULL);

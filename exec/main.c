@@ -35,15 +35,16 @@ int main(int ac, char **av, char **env)
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
 		list[0].next = &list[1];
-		list[1].cmd[0] = "/usr/bin/grep";
-		list[1].cmd[1] = "mini";
+		list[1].cmd[0] = "ftecho";
+		list[1].cmd[1] = "anas";
+
 		list[1].cmd[2] = NULL;
 		///
 		list[1].next = &list[2];
 
 		list[2].cmd[0] = "/usr/bin/wc";
-		list[2].cmd[1] = "-l";
 		list[2].cmd[2] = NULL;
+
 		list[2].next = &list[3];
 		list[3].cmd[0] = "/usr/bin/who";
 		list[3].cmd[1] = NULL;
@@ -56,12 +57,11 @@ int main(int ac, char **av, char **env)
 		list[5].cmd[0] = "/sbin/ifconfig";
 		list[5].cmd[1] = NULL;
 
-
 		// list[3].cmd[2] = NULL;
 		// list->args = {"/bin/ls", "ls", NULL};
 
 		list[5].next = NULL;
-		list->there_is_pipe = 0;
+		list->there_is_pipe = 1;
 
 		if (list->there_is_pipe == 0)
 		{
