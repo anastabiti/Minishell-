@@ -31,14 +31,12 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "./builtins_bin/ft_cd";
-		list[0].cmd[1] = "/Users/atabiti/Desktop/";
-		list[0].cmd[2] = NULL;
+		list[0].cmd[0] = "/usr/bin/wc";
+		list[0].cmd[1] = NULL;
 		list[0].next = &list[1];
-		list[1].cmd[0] = "./builtins_bin/ftecho";
-		list[1].cmd[1] = "anas";
+		list[1].cmd[0] = "/usr/bin/wc";
+		list[1].cmd[1] = NULL;
 
-		list[1].cmd[1] = "/Users/atabiti/";
 		///
 		list[1].cmd[2] = NULL;
 		list[1].next = &list[2];
@@ -75,6 +73,7 @@ int main(int ac, char **av, char **env)
 		}
 		if (list->there_is_pipe > 0)
 		{
+
 			ft_pipe(list);
 		}
 		//
