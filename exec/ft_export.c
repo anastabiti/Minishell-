@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 11:28:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:32:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_export(char **env)
 {
-	char *to_be_exported = "VAR=EXPORETED";
+	char *to_be_exported = "PATH=exe/ddd/dd:/dd/wew23";
 	int len;
 
 	len = ft_strlen(to_be_exported);

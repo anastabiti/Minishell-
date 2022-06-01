@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/01 13:17:52 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:31:46 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,27 @@ int ft_bin_usr_sbin(struct s_list *list)
 	char *main_path;
 	char *pwd = ft_strjoin(getcwd(path, PATH_MAX), "/");
 	main_path = ft_strjoin(pwd, list->input);
-
-	///
-	int x = 0;
-	int lenght = ft_strlen("PATH=");
-	while (!(ft_strnstr(list->environ[x], "PATH=", lenght)))
+	if (ft_strncmp("123", list->input, 3) == 0)
 	{
-		x++;
-		if (list->environ[x] == NULL)
-			return 0;
-	}
+		///
+		int x = 0;
+		int lenght = ft_strlen("PATH=");
+		while (!(ft_strnstr(list->environ[x], "PATH=", lenght)))
+		{
+			x++;
+			if (list->environ[x] == NULL)
+				return 0;
+		}
 
-	///
-	char **new = ft_split(list->environ[x], ':');
-	int i = 0;
-	while (new[i])
-	{
-		printf("%s      \n", new[i]);
-		i++;
+		///
+		char **new = ft_split(list->environ[x], ':');
+		int i = 0;
+		while (new[i])
+		{
+			printf("%s      \n", new[i]);
+			i++;
+		}
 	}
-
 	if (access(bin, F_OK) == 0)
 	{
 		char *cmd[] = {list->input, NULL};
