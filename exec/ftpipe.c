@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/01 09:31:47 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 11:37:44 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int ft_pipe(struct s_list *list)
 		int fd[2];
 		while (i < list->cmd_nbr)
 		{
-			if (i == 0)
-			{
-			
-				ft_is_built_in(list);
-				i++;
-			}
+			// if (i == 0)
+			// {
+
+			// 	ft_is_built_in(list);
+			// 	i++;
+			// }
 
 			while (i < list->cmd_nbr)
 			{
@@ -55,8 +55,9 @@ int ft_pipe(struct s_list *list)
 
 					if (execve(list[i].cmd[0], list[i].cmd, NULL) == -1)
 					{
-						printf("failed\n");
-						return 0;
+						// printf("command not found\n");
+						write(2, "MINISHELL command not found\n", 28);
+						exit(1);
 					}
 				}
 
