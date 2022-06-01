@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/01 11:37:44 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 11:54:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,20 @@ int ft_pipe(struct s_list *list)
 			{
 				pipe(fd);
 
-				id = fork();
-				// if (i == 0)
-				// {
+				if (i == 0)
+				{
 
-				// 	list->fd_out = fd[1];
-				// 	ft_is_built_in(list);
-				// 	i++;
-				// }
+					// list->fd_out = fd[1];
+					// dup2(fd[1], list->fd_out);
+					// close(fd[1]);
+					// close(list->fd_out);
+
+					ft_is_built_in(list);
+
+					i++;
+				}
+				id = fork();
+
 				if (id == 0)
 				{
 
@@ -52,7 +58,6 @@ int ft_pipe(struct s_list *list)
 						dup2(fd[1], 1);
 
 					close(fd[0]);
-
 					if (execve(list[i].cmd[0], list[i].cmd, NULL) == -1)
 					{
 						// printf("command not found\n");
