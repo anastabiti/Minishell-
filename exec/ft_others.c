@@ -52,7 +52,7 @@ int ft_bin_usr_sbin(struct s_list *list)
 		if (access(last, F_OK) == 0)
 		{
 
-			printf("%s\n", last);
+			// printf("%s\n", last);
 
 			if (fork() == 0)
 			{
