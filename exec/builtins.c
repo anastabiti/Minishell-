@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/31 12:58:03 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 08:59:30 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int ft_pwd(int fd_out)
 {
 	char pw[PATH_MAX];
 	getcwd(pw, PATH_MAX);
-	ft_putendl_fd(pw, fd_out);
+	// ft_putendl_fd(pw, fd_out);
+	printf("%s\n", pw);
 	return 1;
 }

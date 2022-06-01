@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/31 13:52:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 09:14:50 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,29 @@ int ft_pipe(struct s_list *list)
 		int fd_in = 0;
 		int fd[2];
 
-		while (i < list->there_is_pipe + 1)
+		while (i < list->cmd_nbr)
 		{
 			pipe(fd);
+			if (ft_is_built_in(list) == 1)
+			{
 
+				i++;
+			}
 			id = fork();
 			// if (i == 0)
 			// {
+
+			// 	list->fd_out = fd[1];
 			// 	ft_is_built_in(list);
 			// 	i++;
 			// }
 			if (id == 0)
 			{
+
 				dup2(fd_in, 0);
 				if (i < list->there_is_pipe)
 
-				 	dup2(fd[1], 1);
+					dup2(fd[1], 1);
 
 				close(fd[0]);
 
@@ -49,8 +56,9 @@ int ft_pipe(struct s_list *list)
 				}
 			}
 
-			else
+			if (id > 0)
 			{
+
 				list->fd_out = fd[1];
 				close(fd[1]);
 				// close(fd[0]);

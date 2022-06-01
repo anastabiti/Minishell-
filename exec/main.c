@@ -32,22 +32,21 @@ int main(int ac, char **av, char **env)
 
 		ft_init(list);
 		list[0].cmd[0] = "/bin/echo";
-		list[0].cmd[1] = "0123";
+		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
 		list[0].next = &list[1];
 		list[1].cmd[0] = "/usr/bin/wc";
 		list[1].cmd[1] = NULL;
 
 		///
-		list[1].cmd[2] = NULL;
 		list[1].next = &list[2];
 
 		list[2].cmd[0] = "/bin/echo";
-		list[2].cmd[2] = "ANAS";
-		list[2].cmd[3] = NULL;
+		list[2].cmd[1] = "ANAS";
+		list[2].cmd[2] = NULL;
 		list[2].next = NULL;
 		list->there_is_pipe = 1;
-
+		list->cmd_nbr = 2;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)
@@ -60,7 +59,6 @@ int main(int ac, char **av, char **env)
 
 			ft_pipe(list);
 		}
-		//
 	}
 	free(input);
 }
