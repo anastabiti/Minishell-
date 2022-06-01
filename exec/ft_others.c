@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/01 13:44:42 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:46:46 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,22 @@ int ft_bin_usr_sbin(struct s_list *list)
 	i = 0;
 	while (new[i])
 	{
-		// printf("%s\n", new[i]);
+		printf("%s\n", new[i]);
 		i++;
 	}
 
 	i = 0;
 	while (!new[i++])
 	{
-		bin = ft_strjoin(new[i], list->input);
-		if (access(bin, F_OK) == 0)
+		bin = ft_strjoin(new[i], "/");
+		char *last = ft_strjoin(bin, "/");
+		if (access(last, F_OK) == 0)
 		{
 			if (fork() == 0)
 			{
 
 				char *cmd[] = {list->input, NULL};
-				execve(bin, cmd, NULL);
+				execve(last, cmd, NULL);
 			}
 			else
 			{
