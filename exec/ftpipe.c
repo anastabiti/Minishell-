@@ -35,19 +35,7 @@ int ft_pipe(struct s_list *list)
 			{
 				pipe(fd);
 
-				if (i == 0)
-				{
-
-					// list->fd_out = fd[1];
-					// dup2(fd[1], list->fd_out);
-					// close(fd[1]);
-					// close(list->fd_out);
-
-					ft_is_built_in(list);
-
-					i++;
-				}
-				id = fork();
+							id = fork();
 
 				if (id == 0)
 				{
@@ -58,6 +46,13 @@ int ft_pipe(struct s_list *list)
 						dup2(fd[1], 1);
 
 					close(fd[0]);
+					if (i == 0)
+					{
+
+						ft_bin_usr_sbin(list);
+
+						i++;
+					}
 					if (execve(list[i].cmd[0], list[i].cmd, NULL) == -1)
 					{
 						// printf("command not found\n");

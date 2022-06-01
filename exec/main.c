@@ -37,7 +37,9 @@ int main(int ac, char **av, char **env)
 
 		list[0].next = &list[1];
 		list[1].cmd[0] = "/usr/bin/wc";
-		list[1].cmd[1] = NULL;
+		list[1].cmd[1] = "-l";
+
+		list[1].cmd[2] = NULL;
 
 		///
 		list[1].next = &list[2];

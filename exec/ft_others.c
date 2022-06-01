@@ -54,17 +54,17 @@ int ft_bin_usr_sbin(struct s_list *list)
 
 			// printf("%s\n", last);
 
-			if (fork() == 0)
-			{
+			// if (fork() == 0)
+			// {
 
 				char *cmd[] = {list->input, NULL};
 				execve(last, cmd, NULL);
-			}
-			else
-			{
-				wait(0);
-				break;
-			}
+			// }
+			// else
+			// {
+			// 	wait(0);
+			// 	break;
+			// }
 		}
 		else
 		{
