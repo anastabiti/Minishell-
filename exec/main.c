@@ -45,13 +45,13 @@ int main(int ac, char **av, char **env)
 		list[2].cmd[1] = "ANAS";
 		list[2].cmd[2] = NULL;
 		list[2].next = NULL;
-		list->there_is_pipe = 1;
+		list->there_is_pipe = 0;
 		list->cmd_nbr = 2;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)
 			{
-				ft_bin_usr_sbin(list->input);
+				ft_bin_usr_sbin(list);
 			}
 		}
 		if (list->there_is_pipe > 0)
