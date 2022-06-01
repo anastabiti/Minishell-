@@ -31,7 +31,7 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "/bin/echo";
+		list[0].cmd[0] = "/usr/bin/wc";
 		list[0].cmd[1] = "-l";
 		list[0].cmd[2] = NULL;
 		list[0].next = &list[1];
