@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:15:57 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/21 11:39:19 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:10:03 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int ft_unset(char **env)
 
 	int i = 0;
 	// to_be_unset = "VAR=EXPORETED"; // mkrim must provide me with the string  to  unset
-	to_be_unset = "USER=atabiti";	 // mkrim must provide me with the string  to  unset
+	to_be_unset = "USER=atabiti"; // mkrim must provide me with the string  to  unset
 
 	int lenght = ft_strlen(to_be_unset);
-	while (!(ft_strnstr(env[x], to_be_unset, lenght))) // change it later
+	while (!(ft_strnstr(env[x], to_be_unset, lenght)))
 	{
 		x++;
 		if (env[x] == NULL)
