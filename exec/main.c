@@ -46,13 +46,13 @@ int main(int ac, char **av, char **env)
 		///
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "grep";
-		list[2].cmd[1] = "a";
+		list[2].cmd[0] = "pwd";
+		list[2].cmd[1] = "-L";
 		list[2].cmd[2] = NULL;
 
 		list[2].next = NULL;
-		list->there_is_pipe = 1;
-		list->cmd_nbr = 2;
+		list->there_is_pipe = 2;
+		list->cmd_nbr = 3;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)
