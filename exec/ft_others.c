@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 09:17:24 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 09:36:43 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,24 @@ int ft_bin_usr_sbin(struct s_list *list)
 
 	///
 	new = ft_split(list->environ[x], ':');
+
+	i = 0;
+	int r = ft_strlen(new[0]);
+	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
+	{
+		while (i < r)
+		{
+			new[0][i] = new[0][i + 5];
+			i++;
+		}
+	}
+	new[i] = NULL;
 	i = 0;
 	while (new[i])
 	{
 		printf("%s\n", new[i]);
 		i++;
 	}
-	i = 0;
-	int r = ft_strlen("PATH=");
-	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
-	{
-		while (i < ft_strlen(new[0]) - 5)
-		{
-			new[0][i] = new[0][r];
-			r++;
-			i++;
-		}
-	}
-	new[i] = NULL;
-	printf("%s\n", new[0]);
-
 	i = 0;
 	bin = ft_strjoin(new[i], "/");
 	while (new[i])
