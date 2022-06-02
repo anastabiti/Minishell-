@@ -39,15 +39,15 @@ int main(int ac, char **av, char **env)
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "pwd";
-		list[1].cmd[1] = "-L";
-		list[1].cmd[2] = NULL;
+		list[1].cmd[0] = "ps";
+		// list[1].cmd[1] = "-L";
+		list[1].cmd[1] = NULL;
 
 		///
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "pwd";
-		list[2].cmd[1] = "-L";
+		list[2].cmd[0] = "grep";
+		list[2].cmd[1] = "a";
 		list[2].cmd[2] = NULL;
 
 		list[2].next = NULL;
