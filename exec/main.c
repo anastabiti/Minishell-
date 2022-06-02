@@ -47,8 +47,8 @@ int main(int ac, char **av, char **env)
 		///
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "echo";
-		list[2].cmd[1] = "sssANAS";
+		list[2].cmd[0] = "ls";
+		list[2].cmd[1] = "-l";
 		list[2].cmd[2] = NULL;
 		list[2].next = NULL;
 		list->there_is_pipe = 2;

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 12:11:50 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 12:23:28 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int ft_bin_usr_sbin(struct s_list *list)
 	}
 	new[i] = NULL;
 	// current = ft_strjoin(current, "/");
-	// current = ft_strjoin(current, list[0].cmd[0]);
+	// current = ft_strjoin(current, list[list->cmd_iteration].cmd[0]);
 	// i = 0;
 	// while (new[i])
 	// {
@@ -62,12 +62,13 @@ int ft_bin_usr_sbin(struct s_list *list)
 			char *cmd[] = {list[list->cmd_iteration].cmd[0], list[list->cmd_iteration].cmd[1], NULL};
 			if (execve(last, cmd, list->environ) == -1)
 				write(2, "exeve failed\n", 14);
+				exit(1);
 		}
 
 		// else if (access(current, F_OK) == 0) // check each PATH to find the right binaries to run them
 		// {
 
-		// 	char *cmd[] = {list->input, NULL};
+		// 	char *cmd[] = {list[list->cmd_iteration].cmd[0], NULL};
 		// 	if (execve(current, cmd, list->environ) == -1)
 		// 		write(2, "exeve failed\n", 14);
 		// }
@@ -82,5 +83,7 @@ int ft_bin_usr_sbin(struct s_list *list)
 	}
 
 	write(2, "MINISHELL command not found\n", 28);
+					exit(1);
+
 	return 0;
 }

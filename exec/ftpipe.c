@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 12:06:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 12:21:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,11 @@ int ft_pipe(struct s_list *list)
 
 			if (id > 0)
 			{
+				wait(NULL);
 
 				list->fd_out = fd[1];
 				close(fd[1]);
 				// close(fd[0]);
-
-				wait(NULL);
 
 				fd_in = fd[0];
 
