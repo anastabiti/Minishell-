@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 09:32:43 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 12:01:59 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ struct s_list
 	int i;
 	int cmd_nbr;
 	int there_is_pipe;
+	int cmd_iteration;
 };
 
 void handler(int sig);
