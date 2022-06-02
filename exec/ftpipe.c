@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/01 11:54:14 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 08:56:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int ft_pipe(struct s_list *list)
 			{
 				pipe(fd);
 
-							id = fork();
+				id = fork();
 
 				if (id == 0)
 				{

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/01 13:46:46 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 09:17:24 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,25 @@ int ft_bin_usr_sbin(struct s_list *list)
 
 	///
 	new = ft_split(list->environ[x], ':');
-	// i = 0;
-	// while (new[i])
-	// {
-	// 	printf("%s\n", new[i]);
-	// 	i++;
-	// }
+	i = 0;
+	while (new[i])
+	{
+		printf("%s\n", new[i]);
+		i++;
+	}
+	i = 0;
+	int r = ft_strlen("PATH=");
+	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
+	{
+		while (i < ft_strlen(new[0]) - 5)
+		{
+			new[0][i] = new[0][r];
+			r++;
+			i++;
+		}
+	}
+	new[i] = NULL;
+	printf("%s\n", new[0]);
 
 	i = 0;
 	bin = ft_strjoin(new[i], "/");
@@ -51,20 +64,9 @@ int ft_bin_usr_sbin(struct s_list *list)
 		char *last = ft_strjoin(bin, list->input);
 		if (access(last, F_OK) == 0)
 		{
-
-			// printf("%s\n", last);
-
-			// if (fork() == 0)
-			// {
-
-				char *cmd[] = {list->input, NULL};
-				execve(last, cmd, NULL);
-			// }
-			// else
-			// {
-			// 	wait(0);
-			// 	break;
-			// }
+			char *cmd[] = {list->input, NULL};
+			if (execve(last, cmd, NULL) == -1)
+				write(2, "exeve failed\n", 14);
 		}
 		else
 		{
@@ -74,6 +76,8 @@ int ft_bin_usr_sbin(struct s_list *list)
 			i++;
 		}
 	}
+	write(2, "MINISHELL command not found\n", 28);
+
 	// if (access(bin, F_OK) == 0)
 	// {
 	// 	char *cmd[] = {list->input, NULL};
