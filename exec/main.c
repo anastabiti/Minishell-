@@ -31,23 +31,25 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "cd";
-		list[0].cmd[1] = "/bin/";
-		list[0].cmd[2] = NULL;
+		list[0].cmd[0] = "cat";
+		list[0].cmd[1] = "-n";
+		list[0].cmd[2] = "Makefile";
+
+		list[0].cmd[3] = NULL;
 
 		// list[0].next = &list[1];
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "echo";
-		// list[1].cmd[1] = "-L";
+		list[1].cmd[0] = "cat";
+		list[1].cmd[1] = "Makefile";
 		list[1].cmd[1] = NULL;
 
 		///
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "wc";
-		list[2].cmd[1] = "-l";
+		list[2].cmd[0] = "grep";
+		list[2].cmd[1] = "By: atabiti";
 		list[2].cmd[2] = NULL;
 
 		list[2].next = NULL;

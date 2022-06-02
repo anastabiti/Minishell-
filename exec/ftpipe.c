@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 16:23:17 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 17:49:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,7 @@ int ft_pipe(struct s_list *list)
 		{
 
 			pipe(fd);
-			if (ft_strncmp("cd", list[list->cmd_iteration].cmd[0], 2) == 0)
-			{
-				chdir(list->blt->cd_path);
-			}
-			else if (ft_strncmp("echo", list[list->cmd_iteration].cmd[0], 4) == 0)
-			{
-				ft_echo("anas 1337\n", 1);
-			}
+
 			id = fork();
 
 			if (id == 0)
@@ -52,7 +45,8 @@ int ft_pipe(struct s_list *list)
 				dup2(fd_in, 0);
 				if (list->cmd_iteration < list->there_is_pipe)
 
-					dup2(fd[1], 1);
+					// close(1);
+				dup2(fd[1], 1);
 
 				close(fd[0]);
 				// if (i == 0)
@@ -69,17 +63,27 @@ int ft_pipe(struct s_list *list)
 				// }
 			}
 
-			if (id > 0)
+			else
 			{
+				if (ft_strncmp("cd", list[list->cmd_iteration].cmd[0], 2) == 0)
+				{
+					chdir(list->blt->cd_path);
+				}
+				else if (ft_strncmp("echo", list[list->cmd_iteration].cmd[0], 4) == 0)
+				{
+					list->fd_out = dup(1);
+
+					ft_echo("anas 1337\n", list->fd_out);
+				}
 				wait(NULL);
-				if (list->cmd_iteration < list->there_is_pipe)
-				{
-					list->fd_out = fd[1];
-				}
-				else
-				{
-					list->fd_out = 1;
-				}
+				// if (list->cmd_iteration < list->there_is_pipe)
+				// {
+				list->fd_out = fd[1];
+				// }
+				// else
+				// {
+				// 	list->fd_out = 1;
+				// }
 
 				close(fd[1]);
 				// close(fd[0]);
