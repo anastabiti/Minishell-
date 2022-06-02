@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 12:23:28 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 13:42:12 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ int ft_bin_usr_sbin(struct s_list *list)
 		char *last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
 		if (access(last, F_OK) == 0) // check each PATH to find the right binaries to run them
 		{
-			char *cmd[] = {list[list->cmd_iteration].cmd[0], list[list->cmd_iteration].cmd[1], NULL};
+			char *cmd[] = {list[list->cmd_iteration].cmd[1], NULL};
 			if (execve(last, cmd, list->environ) == -1)
 				write(2, "exeve failed\n", 14);
-				exit(1);
+			exit(1);
 		}
 
 		// else if (access(current, F_OK) == 0) // check each PATH to find the right binaries to run them
@@ -83,7 +83,7 @@ int ft_bin_usr_sbin(struct s_list *list)
 	}
 
 	write(2, "MINISHELL command not found\n", 28);
-					exit(1);
+	exit(1);
 
 	return 0;
 }

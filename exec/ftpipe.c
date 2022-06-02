@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 12:21:11 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 13:50:20 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int ft_pipe(struct s_list *list)
 		{
 
 			pipe(fd);
-
+			if (ft_strncmp("cd", list[list->cmd_iteration].cmd[0], 2) == 0)
+			{
+				chdir(list->blt->cd_path);
+			}
 			id = fork();
 
 			if (id == 0)
