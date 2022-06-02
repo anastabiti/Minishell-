@@ -1,7 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/atabiti/Desktop/MINILAST'
 cc    -c -o exec/builtins.o exec/builtins.c
- 
 cc    -c -o exec/ft_env.o exec/ft_env.c
 cc    -c -o exec/main.o exec/main.c
 cc    -c -o exec/tools.o exec/tools.c
@@ -12,7 +11,6 @@ cc    -c -o exec/ft_export.o exec/ft_export.c
 cc    -c -o exec/ft_others.o exec/ft_others.c
 cc    -c -o exec/ft_readline.o exec/ft_readline.c
 cc    -c -o exec/ft_init.o exec/ft_init.c
- 
 cc    -c -o libft/ft_putchar_fd.o libft/ft_putchar_fd.c
 cc    -c -o libft/ft_putstr_fd.o libft/ft_putstr_fd.c
 cc    -c -o libft/ft_putendl_fd.o libft/ft_putendl_fd.c
