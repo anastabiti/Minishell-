@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 09:36:43 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 09:42:25 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,23 @@ int ft_bin_usr_sbin(struct s_list *list)
 {
 	char *bin;
 
-	// char path[PATH_MAX];
-	// char *main_path;
-	// char *pwd = ft_strjoin(getcwd(path, PATH_MAX), "/");
-	// main_path = ft_strjoin(pwd, list->input);
 	int i;
-	///
 	char **new;
 
-	///
 	int x = 0;
 	int lenght = ft_strlen("PATH=");
-	while (!(ft_strnstr(list->environ[x], "PATH=", lenght)))
+	while (!(ft_strnstr(list->environ[x], "PATH=", lenght))) // search for PATH=
 	{
 		x++;
 		if (list->environ[x] == NULL)
 			return 0;
 	}
 
-	///
-	new = ft_split(list->environ[x], ':');
+	new = ft_split(list->environ[x], ':'); // split PATH= to seperate paths
 
 	i = 0;
 	int r = ft_strlen(new[0]);
-	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
+	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1) // remove PATH= from start of the sring
 	{
 		while (i < r)
 		{
@@ -48,19 +41,19 @@ int ft_bin_usr_sbin(struct s_list *list)
 		}
 	}
 	new[i] = NULL;
+	// i = 0;
+	// while (new[i])
+	// {
+	// 	printf("%s\n", new[i]);
+	// 	i++;
+	// }
 	i = 0;
-	while (new[i])
-	{
-		printf("%s\n", new[i]);
-		i++;
-	}
-	i = 0;
-	bin = ft_strjoin(new[i], "/");
+	bin = ft_strjoin(new[i], "/"); // add / to path in order to execute binaries
 	while (new[i])
 	{
 
 		char *last = ft_strjoin(bin, list->input);
-		if (access(last, F_OK) == 0)
+		if (access(last, F_OK) == 0) // check each PATH to find the right binaries to run them
 		{
 			char *cmd[] = {list->input, NULL};
 			if (execve(last, cmd, NULL) == -1)
@@ -75,58 +68,5 @@ int ft_bin_usr_sbin(struct s_list *list)
 		}
 	}
 	write(2, "MINISHELL command not found\n", 28);
-
-	// if (access(bin, F_OK) == 0)
-	// {
-	// 	char *cmd[] = {list->input, NULL};
-	// 	int idd = fork();
-	// 	if (idd == 0)
-	// 	{
-	// 		execve(bin, cmd, NULL);
-	// 	}
-	// 	// waitpid(idd, 0, 0);
-	// 	wait(0);
-	// }
-	// else if (access(userbin, F_OK) == 0)
-	// {
-	// 	char *cmd[] = {list->input, NULL};
-	// 	int gg = fork();
-	// 	if (gg == 0)
-	// 	{
-	// 		execve(userbin, cmd, NULL);
-	// 	}
-	// 	// waitpid(gg, 0, 0);
-	// 	wait(0);
-	// }
-	// else if (access(list->input, F_OK) == 0)
-	// {
-	// 	char *cmd[] = {list->input, NULL};
-	// 	int gg = fork();
-	// 	if (gg == 0)
-	// 	{
-	// 		execve(list->input, cmd, NULL);
-	// 	}
-	// 	// waitpid(gg, 0, 0);
-	// 	wait(0);
-	// }
-	// else if (access(main_path, F_OK) == 0)
-	// {
-	// 	char *cmd[] = {list->input, NULL};
-	// 	int gg = fork();
-	// 	if (gg == 0)
-	// 	{
-	// 		execve(main_path, cmd, NULL);
-	// 	}
-	// 	wait(0);
-	// }
-	// else if (access(sbin, F_OK) == 0)
-	// {
-	// 	if (fork() == 0)
-	// 	{
-	// 		execve(sbin, NULL, NULL);
-	// 	}
-	// 	wait(0);
-	// }
-
 	return 0;
 }
