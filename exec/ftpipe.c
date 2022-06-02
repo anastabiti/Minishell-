@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 13:50:20 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 16:23:17 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int ft_pipe(struct s_list *list)
 			{
 				chdir(list->blt->cd_path);
 			}
+			else if (ft_strncmp("echo", list[list->cmd_iteration].cmd[0], 4) == 0)
+			{
+				ft_echo("anas 1337\n", 1);
+			}
 			id = fork();
 
 			if (id == 0)
@@ -68,8 +72,15 @@ int ft_pipe(struct s_list *list)
 			if (id > 0)
 			{
 				wait(NULL);
+				if (list->cmd_iteration < list->there_is_pipe)
+				{
+					list->fd_out = fd[1];
+				}
+				else
+				{
+					list->fd_out = 1;
+				}
 
-				list->fd_out = fd[1];
 				close(fd[1]);
 				// close(fd[0]);
 
