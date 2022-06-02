@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 09:42:25 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/02 10:00:34 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 int ft_bin_usr_sbin(struct s_list *list)
 {
 	char *bin;
-
+	char *current;
 	int i;
 	char **new;
-
+	char pw[PATH_MAX];
 	int x = 0;
+	current = getcwd(pw, PATH_MAX);
+
 	int lenght = ft_strlen("PATH=");
 	while (!(ft_strnstr(list->environ[x], "PATH=", lenght))) // search for PATH=
 	{
@@ -41,6 +43,8 @@ int ft_bin_usr_sbin(struct s_list *list)
 		}
 	}
 	new[i] = NULL;
+	current = ft_strjoin(current, "/");
+	current = ft_strjoin(current, list->input);
 	// i = 0;
 	// while (new[i])
 	// {
@@ -56,9 +60,18 @@ int ft_bin_usr_sbin(struct s_list *list)
 		if (access(last, F_OK) == 0) // check each PATH to find the right binaries to run them
 		{
 			char *cmd[] = {list->input, NULL};
-			if (execve(last, cmd, NULL) == -1)
+			if (execve(last, cmd, list->environ) == -1)
 				write(2, "exeve failed\n", 14);
 		}
+
+		else if (access(current, F_OK) == 0) // check each PATH to find the right binaries to run them
+		{
+
+			char *cmd[] = {list->input, NULL};
+			if (execve(current, cmd, list->environ) == -1)
+				write(2, "exeve failed\n", 14);
+		}
+
 		else
 		{
 			bin = ft_strjoin(new[i], "/");
@@ -67,6 +80,7 @@ int ft_bin_usr_sbin(struct s_list *list)
 			i++;
 		}
 	}
+
 	write(2, "MINISHELL command not found\n", 28);
 	return 0;
 }
