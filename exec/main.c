@@ -50,11 +50,14 @@ int main(int ac, char **av, char **env)
 
 		list[2].cmd[0] = "grep";
 		list[2].cmd[1] = "By: atabiti";
-		list[2].cmd[2] = NULL;
+		list[2].next = &list[3];
 
-		list[2].next = NULL;
-		list->there_is_pipe = 2;
-		list->cmd_nbr = 3;
+				list[3].cmd[0] = "grep";
+		list[3].cmd[1] = "dsr";
+		list[3].cmd[2] = NULL;
+		list[3].next = NULL;
+		list->there_is_pipe = 3;
+		list->cmd_nbr = 4;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)
