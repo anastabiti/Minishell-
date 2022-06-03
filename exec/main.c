@@ -34,22 +34,22 @@ int main(int ac, char **av, char **env)
 		list[0].cmd[0] = "echo";
 
 		list[0].cmd[1] = "1";
-		
+
 		list[0].cmd[2] = NULL;
 
 		// list[0].next = &list[1];
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "echo";
-		list[1].cmd[1] = "-csl";
+		list[1].cmd[0] = "cd";
+		list[1].cmd[1] = "/bin";
 
 		list[1].cmd[2] = NULL;
 
 		///
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "wc";
+		list[2].cmd[0] = "pwd";
 		list[2].cmd[1] = NULL;
 		list[2].next = &list[3];
 
@@ -57,8 +57,8 @@ int main(int ac, char **av, char **env)
 		list[3].cmd[1] = "-ai";
 		list[3].cmd[2] = NULL;
 		list[3].next = NULL;
-		list->there_is_pipe = 1;
-		list->cmd_nbr = 2;
+		list->there_is_pipe = 2;
+		list->cmd_nbr = 3;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)
