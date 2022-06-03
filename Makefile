@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/06/03 12:40:47 by atabiti          ###   ########.fr        #
+#    Updated: 2022/06/03 13:01:18 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,9 @@ $(NAME) : $(OBJ)
 		gcc builtins_bin/ft_echo.c -o builtins_bin/ftecho 
 		gcc builtins_bin/ft_cd.c -o builtins_bin/ftcd 
 		gcc builtins_bin/ft_pwd.c -o builtins_bin/ftpwd 
-		# gcc builtins_bin/ft_unset.c -o builtins_bin/ftunset 
+		gcc builtins_bin/ft_unset.c -o builtins_bin/ftunset 
 		gcc builtins_bin/ft_env.c -o builtins_bin/ftenv 
-		# gcc builtins_bin/ft_export.c -o builtins_bin/ftexport 
+		gcc builtins_bin/ft_export.c -o builtins_bin/ftexport 
 			gcc builtins_bin/ft_exit.c -o builtins_bin/ftexit
 
 

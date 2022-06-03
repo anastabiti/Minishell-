@@ -41,8 +41,8 @@ int main(int ac, char **av, char **env)
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "cd";
-		list[1].cmd[1] = "/bin";
+		list[1].cmd[0] = "export";
+		list[1].cmd[1] = "ff=ff";
 
 		list[1].cmd[2] = NULL;
 
