@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 10:10:12 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 13:25:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int ft_echo(char *arg, int fd)
 	int len = ft_strlen(arg);
 
 	write(fd, arg, len);
+	write(fd, "\n", 1);
+
 	return 0;
 }
 
@@ -28,7 +30,7 @@ int ft_is_built_in(struct s_list *list)
 	int i = 0;
 	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
 	{
-		ft_echo("1337", list->fd_out);
+		ft_echo(list[0].cmd[1], list->fd_out);
 		return 1;
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->cd, 2) == 0)

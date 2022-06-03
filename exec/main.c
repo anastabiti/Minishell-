@@ -31,9 +31,9 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "export";
+		list[0].cmd[0] = "echo";
 
-		list[0].cmd[1] = "dssdfdsfdsfds=12312312312312312312312312312";
+		list[0].cmd[1] = "-la";
 
 		list[0].cmd[2] = NULL;
 
@@ -41,10 +41,10 @@ int main(int ac, char **av, char **env)
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "export";
-		list[1].cmd[1] = "ff=ff";
+		list[1].cmd[0] = "wc";
+		// list[1].cmd[1] = "ff=ff";
 
-		list[1].cmd[2] = NULL;
+		list[1].cmd[1] = NULL;
 
 		///
 		list[1].next = &list[2];
@@ -57,8 +57,8 @@ int main(int ac, char **av, char **env)
 		
 		list[3].cmd[1] = NULL;
 		list[3].next = NULL;
-		list->there_is_pipe = 2;
-		list->cmd_nbr = 3;
+		list->there_is_pipe = 0;
+		list->cmd_nbr = 1;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)
