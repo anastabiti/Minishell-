@@ -31,18 +31,17 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "cat";
+		list[0].cmd[0] = "echo";
 		list[0].cmd[1] = "-n";
-		list[0].cmd[2] = "Makefile";
 
-		list[0].cmd[3] = NULL;
+		list[0].cmd[2] = NULL;
 
 		// list[0].next = &list[1];
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "cat";
-		list[1].cmd[1] = "Makefile";
+		list[1].cmd[0] = "wc";
+
 		list[1].cmd[1] = NULL;
 
 		///
@@ -56,8 +55,8 @@ int main(int ac, char **av, char **env)
 		list[3].cmd[1] = "-ai";
 		list[3].cmd[2] = NULL;
 		list[3].next = NULL;
-		list->there_is_pipe = 3;
-		list->cmd_nbr = 4;
+		list->there_is_pipe = 1;
+		list->cmd_nbr = 2;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)
