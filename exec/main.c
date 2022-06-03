@@ -31,9 +31,9 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "echo";
+		list[0].cmd[0] = "export";
 
-		list[0].cmd[1] = "1";
+		list[0].cmd[1] = "dssdfdsfdsfds=12312312312312312312312312312";
 
 		list[0].cmd[2] = NULL;
 
@@ -49,7 +49,7 @@ int main(int ac, char **av, char **env)
 		///
 		list[1].next = &list[2];
 
-		list[2].cmd[0] = "pwd";
+		list[2].cmd[0] = "env";
 		list[2].cmd[1] = NULL;
 		list[2].next = &list[3];
 
@@ -57,8 +57,8 @@ int main(int ac, char **av, char **env)
 		
 		list[3].cmd[1] = NULL;
 		list[3].next = NULL;
-		list->there_is_pipe = 3;
-		list->cmd_nbr = 4;
+		list->there_is_pipe = 2;
+		list->cmd_nbr = 3;
 		if (list->there_is_pipe == 0)
 		{
 			if (ft_is_built_in(list) == 0)

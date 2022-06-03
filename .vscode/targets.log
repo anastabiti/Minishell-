@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Fri Jun  3 12:31:56 2022
+# Make data base, printed on Fri Jun  3 12:41:16 2022
 
 # Variables
 
@@ -18,7 +18,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 ?F = $(notdir $?)
 # makefile (from `Makefile', line 20)
 OBJ = ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o ./exec/tools.o      ./exec/redirections.o  ./libft/ft_strnstr.o ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o ./exec/ft_readline.o ./exec/ft_init.o  ./libft/ft_putchar_fd.o ./libft/ft_putstr_fd.o           ./libft/ft_putendl_fd.o  ./exec/ftpipe.o   ./libft/ft_split.o ./libft/ft_strdup.o ./libft/ft_memcpy.o   ./libft/ft_strlcpy.o ./libft/ft_memmove.o 
- 
 # makefile (from `Makefile', line 14)
 SRC = ./exec/builtins.c  ./exec/ft_env.c ./exec/main.c ./exec/tools.c  redirections.c ./libft/ft_strnstr.c   ./exec/ft_unset.c ./exec/ft_export.c ./exec/ft_others.c   ./exec/ft_readline.c  ./exec/ft_init.c ./libft/ft_putchar_fd.c ./libft/ft_putstr_fd.c           ./libft/ft_putendl_fd.c  ./exec/ftpipe.c   ./libft/ft_split.c  ./libft/ft_strdup.c   ./libft/ft_memcpy.c ./libft/ft_strlcpy.c   ./libft/ft_memmove.c 
 # environment
@@ -163,7 +162,6 @@ LANG = C
 VSCODE_PID = 9472
 # variable set hash-table stats:
 # Load=74/1024=7%, Rehash=0, Collisions=4/101=4%
- 
 
 # Pattern-specific Variable Values
 
@@ -184,7 +182,7 @@ VSCODE_PID = 9472
 # Not a target:
 libft/ft_putendl_fd.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -202,7 +200,7 @@ all: minishell
 # Not a target:
 libft/ft_memcpy.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -211,7 +209,7 @@ libft/ft_memcpy.o:
 # Not a target:
 exec/ftpipe.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -220,7 +218,7 @@ exec/ftpipe.o:
 # Not a target:
 exec/builtins.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:52
+#  Last modified 2022-06-03 12:40:52
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -235,7 +233,7 @@ exec/builtins.o:
 # Not a target:
 libft/ft_split.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -244,7 +242,7 @@ libft/ft_split.o:
 # Not a target:
 exec/ft_env.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:52
+#  Last modified 2022-06-03 12:40:52
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -253,7 +251,7 @@ exec/ft_env.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:41
+#  Last modified 2022-06-03 12:40:47
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -262,7 +260,7 @@ Makefile:
 # Not a target:
 exec/redirections.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:52
+#  Last modified 2022-06-03 12:40:52
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -270,7 +268,7 @@ exec/redirections.o:
 
 minishell: exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o libft/ft_split.o libft/ft_strdup.o libft/ft_memcpy.o libft/ft_strlcpy.o libft/ft_memmove.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -280,8 +278,9 @@ minishell: exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirecti
 	gcc builtins_bin/ft_echo.c -o builtins_bin/ftecho 
 	gcc builtins_bin/ft_cd.c -o builtins_bin/ftcd 
 	gcc builtins_bin/ft_pwd.c -o builtins_bin/ftpwd 
+ 
 	# gcc builtins_bin/ft_unset.c -o builtins_bin/ftunset 
-	# gcc builtins_bin/ft_env.c -o builtins_bin/ftenv 
+	gcc builtins_bin/ft_env.c -o builtins_bin/ftenv 
 	# gcc builtins_bin/ft_export.c -o builtins_bin/ftexport 
 	gcc builtins_bin/ft_exit.c -o builtins_bin/ftexit
 	
@@ -289,7 +288,7 @@ minishell: exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirecti
 # Not a target:
 exec/ft_unset.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:52
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -298,7 +297,7 @@ exec/ft_unset.o:
 # Not a target:
 exec/tools.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:52
+#  Last modified 2022-06-03 12:40:52
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -315,7 +314,7 @@ fclean: clean
 # Not a target:
 exec/ft_readline.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -324,7 +323,7 @@ exec/ft_readline.o:
 # Not a target:
 exec/ft_init.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -339,7 +338,7 @@ exec/ft_init.o:
 # Not a target:
 exec/main.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:52
+#  Last modified 2022-06-03 12:40:52
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -366,7 +365,7 @@ clean:
 # Not a target:
 exec/ft_others.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -375,7 +374,7 @@ exec/ft_others.o:
 # Not a target:
 libft/ft_strlcpy.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -384,7 +383,7 @@ libft/ft_strlcpy.o:
 # Not a target:
 libft/ft_strdup.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -393,7 +392,7 @@ libft/ft_strdup.o:
 # Not a target:
 libft/ft_memmove.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -402,7 +401,7 @@ libft/ft_memmove.o:
 # Not a target:
 libft/ft_strnstr.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:52
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -411,7 +410,7 @@ libft/ft_strnstr.o:
 # Not a target:
 libft/ft_putstr_fd.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -420,7 +419,7 @@ libft/ft_putstr_fd.o:
 # Not a target:
 libft/ft_putchar_fd.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -429,7 +428,7 @@ libft/ft_putchar_fd.o:
 # Not a target:
 exec/ft_export.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 12:31:53
+#  Last modified 2022-06-03 12:40:53
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -448,6 +447,6 @@ exec/ft_export.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Jun  3 12:31:56 2022
+# Finished Make data base on Fri Jun  3 12:41:16 2022
 
  

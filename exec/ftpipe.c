@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 12:31:12 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 12:43:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,13 @@ int ft_pipe(struct s_list *list)
 
 				{
 					execve("builtins_bin/ftpwd", list[list->cmd_iteration].cmd, list->environ);
+					write(2, "sss", 3);
+					exit(1);
+				}
+				else if (ft_strncmp("env", list[list->cmd_iteration].cmd[0], 3) == 0)
+
+				{
+					execve("builtins_bin/ftenv", list[list->cmd_iteration].cmd, list->environ);
 					write(2, "sss", 3);
 					exit(1);
 				}
