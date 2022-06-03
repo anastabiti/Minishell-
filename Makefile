@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/06/03 13:01:18 by atabiti          ###   ########.fr        #
+#    Updated: 2022/06/03 13:11:43 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,13 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	clang -g $(FLAGS)  $(OBJ)  -o $(NAME) -lreadline -L/Users/atabiti/.brew/Cellar/readline/8.1.2/lib -I/Users/atabiti/.brew/Cellar/readline/8.1.2/include 
-		gcc builtins_bin/ft_echo.c -o builtins_bin/ftecho 
-		gcc builtins_bin/ft_cd.c -o builtins_bin/ftcd 
-		gcc builtins_bin/ft_pwd.c -o builtins_bin/ftpwd 
-		gcc builtins_bin/ft_unset.c -o builtins_bin/ftunset 
-		gcc builtins_bin/ft_env.c -o builtins_bin/ftenv 
-		gcc builtins_bin/ft_export.c -o builtins_bin/ftexport 
-			gcc builtins_bin/ft_exit.c -o builtins_bin/ftexit
+		gcc builtins_bin/ft_echo.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c ./exec/tools.c   ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftecho 
+		gcc builtins_bin/ft_cd.c  ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftcd 
+		gcc builtins_bin/ft_pwd.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftpwd 
+		gcc builtins_bin/ft_unset.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftunset 
+		gcc builtins_bin/ft_env.c  ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c ./exec/tools.c ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftenv 
+		gcc builtins_bin/ft_export.c ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftexport
+			gcc builtins_bin/ft_exit.c ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c ./exec/tools.c ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftexit
 
 
 	
@@ -44,7 +44,7 @@ clean :
 		cd ./libft; \
 			rm *.o
 		cd ./builtins_bin; \
-	rm ftecho  ftcd  ftpwd ftunset  ftenv ftexport 
+	rm ftecho  ftcd  ftpwd ftunset  ftenv ftexport ftexit
 	
 fclean : clean
 	rm $(NAME)
