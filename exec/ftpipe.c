@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 09:10:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 09:37:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ int ft_pipe(struct s_list *list)
 			else if (ft_strncmp("echo", list[list->cmd_iteration].cmd[0], 4) == 0)
 			{
 				char *b = "anas";
-				// write(fd[1], &b, 4);
-				ft_putendl_fd("1", fd[1]);
-						}
+				int len = ft_strlen(b);
+
+				write(fd[1], b, len);
+			}
 
 			id = fork();
 
