@@ -6,12 +6,11 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 13:01:52 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:05:37 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 int ft_pipe(struct s_list *list)
 {
 
@@ -58,50 +57,54 @@ int ft_pipe(struct s_list *list)
 				{
 					execve("builtins_bin/ftecho", list[list->cmd_iteration].cmd, list->environ);
 					write(2, "sss", 3);
-					exit(1);
+					exit(127);
 				}
 				else if (ft_strncmp("cd", list[list->cmd_iteration].cmd[0], 2) == 0)
 
 				{
-					execve("builtins_bin/ftcd", list[list->cmd_iteration].cmd, list->environ);
-					write(2, "sss", 3);
-					exit(1);
+					if (execve("builtins_bin/ftcd", list[list->cmd_iteration].cmd, list->environ) == -1)
+					{
+						// write(2, "sss", 3);
+
+						exit(1);
+					}
 				}
 				else if (ft_strncmp("exit", list[list->cmd_iteration].cmd[0], 4) == 0)
 
 				{
 					execve("builtins_bin/ftexit", list[list->cmd_iteration].cmd, list->environ);
 					write(2, "sss", 3);
-					exit(1);
+					exit(127);
 				}
 				else if (ft_strncmp("pwd", list[list->cmd_iteration].cmd[0], 3) == 0)
 
 				{
 					execve("builtins_bin/ftpwd", list[list->cmd_iteration].cmd, list->environ);
 					write(2, "sss", 3);
-					exit(1);
+					exit(127);
 				}
 				else if (ft_strncmp("env", list[list->cmd_iteration].cmd[0], 3) == 0)
 
 				{
 					execve("builtins_bin/ftenv", list[list->cmd_iteration].cmd, list->environ);
 					write(2, "sss", 3);
-					exit(1);
+					exit(127);
 				}
 				else if (ft_strncmp("unset", list[list->cmd_iteration].cmd[0], 5) == 0)
 
 				{
 					execve("builtins_bin/ftunset", list[list->cmd_iteration].cmd, list->environ);
 					write(2, "sss", 3);
-					exit(1);
+					exit(127);
 				}
 				else if (ft_strncmp("export", list[list->cmd_iteration].cmd[0], 6) == 0)
 
 				{
 					execve("builtins_bin/ftexport", list[list->cmd_iteration].cmd, list->environ);
 					write(2, "sss", 3);
-					exit(1);
+					exit(127);
 				}
+
 				else
 				{
 					ft_bin_usr_sbin(list);
@@ -119,7 +122,12 @@ int ft_pipe(struct s_list *list)
 			else
 			{
 
-				wait(NULL);
+				wait(&g_status);
+				if (ft_strncmp("$?", list[list->cmd_iteration].cmd[0], 2) == 0)
+				{
+					printf("%d\n", g_status);
+					// printf("%d\n", WTERMSIG(g_status));
+				}
 				// if (list->cmd_iteration < list->there_is_pipe)
 				// {
 				list->fd_out = fd[1];

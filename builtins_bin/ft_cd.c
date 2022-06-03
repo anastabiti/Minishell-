@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 11:16:36 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 11:18:56 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:00:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int main(int ac, char **av)
 {
 	if (chdir(av[1]) == -1)
 	{
-		write(2, "Cd failed", 10);
+		// write(2, "Cd failed\n", 10);
+		exit(127);
 	}
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 10:34:28 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 14:47:45 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #define KGRN "\x1B[32m"
 #include <sys/wait.h>
 #include <dirent.h> // open dir
-
+int g_status;
 struct s_builtins
 {
 	char *echo;
