@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 15:05:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:25:22 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_pipe(struct s_list *list)
 	{
 
 		int i = 0;
-		int id = 1;
+		int id;
 		int fd_in = 0;
 		int fd[2];
 		// while (i < list->cmd_nbr)
@@ -66,7 +66,7 @@ int ft_pipe(struct s_list *list)
 					{
 						// write(2, "sss", 3);
 
-						exit(1);
+						exit(31);
 					}
 				}
 				else if (ft_strncmp("exit", list[list->cmd_iteration].cmd[0], 4) == 0)
@@ -122,10 +122,11 @@ int ft_pipe(struct s_list *list)
 			else
 			{
 
-				wait(&g_status);
+				// wait(&g_status);
+				waitpid(id, &g_status, 0);
 				if (ft_strncmp("$?", list[list->cmd_iteration].cmd[0], 2) == 0)
 				{
-					printf("%d\n", g_status);
+					printf("%d\n",WIFEXITED(g_status));
 					// printf("%d\n", WTERMSIG(g_status));
 				}
 				// if (list->cmd_iteration < list->there_is_pipe)

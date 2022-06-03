@@ -33,7 +33,7 @@ int main(int ac, char **av, char **env)
 		ft_init(list);
 		list[0].cmd[0] = "cd";
 
-		list[0].cmd[1] = "exfec/";
+		list[0].cmd[1] = "exece/";
 
 		list[0].cmd[2] = NULL;
 
