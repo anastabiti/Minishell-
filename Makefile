@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/06/03 11:21:38 by atabiti          ###   ########.fr        #
+#    Updated: 2022/06/03 11:26:51 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ clean :
 		cd ./libft; \
 			rm *.o
 		cd ./builtins_bin; \
-	rm ftecho
-	rm ftcd
+	rm ftecho \
+	rm ftcd 
 fclean : clean
 	rm $(NAME)
 re : fclean all

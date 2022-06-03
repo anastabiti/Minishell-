@@ -5,5 +5,8 @@
 			"binaryPath": "/Users/atabiti/Desktop/MINILAST/minishell",
 			"binaryArgs": []
 		}
-	]
+	],
+	"files.associations": {
+		"minishell.h": "c"
+	}
 }
