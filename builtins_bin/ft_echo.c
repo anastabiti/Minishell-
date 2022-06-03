@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 09:02:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/31 09:19:54 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 09:09:29 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void ft_putendl_fd(char *s, int fd)
 
 void ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	write(fd, &c, fd);
 }
 void ft_putstr_fd(char *s, int fd)
 {
