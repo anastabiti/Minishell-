@@ -31,7 +31,7 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "echo";
+		list[0].cmd[0] = "cd";
 
 		list[0].cmd[1] = NULL;
 
@@ -54,7 +54,7 @@ int main(int ac, char **av, char **env)
 		list[3].cmd[1] = "-ai";
 		list[3].cmd[2] = NULL;
 		list[3].next = NULL;
-		list->there_is_pipe = 1;
+		list->there_is_pipe = 0;
 		list->cmd_nbr = 2;
 		if (list->there_is_pipe == 0)
 		{

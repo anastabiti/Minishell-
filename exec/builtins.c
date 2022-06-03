@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/02 13:28:48 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 09:47:30 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int ft_echo(char *arg, int fd)
 {
 	// if(you pass -n you must remove newline )
 	// ft_putendl_fd(arg, fd);
-	ft_putstr_fd(arg, fd);
+	int len = ft_strlen(arg);
+
+	write(fd, arg, len);
 	return 0;
 }
 
@@ -26,14 +28,17 @@ int ft_is_built_in(struct s_list *list)
 	int i = 0;
 	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
 	{
-		ft_echo(&list->input[4], list->fd_out);
+		ft_echo("1337", list->fd_out);
 		return 1;
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->cd, 2) == 0)
 	{
 		if (chdir(list->blt->cd_path) == -1) // // mkrim will provide me with FULL path to CD
 		{
-			printf("Minishell: cd: %s: No such file or directory\n", list->blt->cd_path);
+			// printf("Minishell: cd: %s: No such file or directory\n", list->blt->cd_path);
+			char *error = "Minishell: cd: No such file or directory\n";
+			int len = ft_strlen(error);
+			write(2, error, len);
 		}
 		return 1;
 	}
