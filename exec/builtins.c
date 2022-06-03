@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 09:47:30 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 10:10:12 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ int ft_is_built_in(struct s_list *list)
 int ft_pwd(int fd_out)
 {
 	char pw[PATH_MAX];
-	getcwd(pw, PATH_MAX);
-	ft_putendl_fd(pw, fd_out);
+	char *pwd = getcwd(pw, PATH_MAX);
+	// ft_putendl_fd(pw, fd_out);
+	int len = ft_strlen(pwd);
+	write(fd_out, pwd, len);
 	return 1;
 }
