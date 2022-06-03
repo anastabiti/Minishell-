@@ -1,29 +1,5 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/atabiti/Desktop/MINILAST'
-cc    -c -o exec/builtins.o exec/builtins.c
-cc    -c -o exec/ft_env.o exec/ft_env.c
-cc    -c -o exec/main.o exec/main.c
-cc    -c -o exec/tools.o exec/tools.c
-cc    -c -o exec/redirections.o exec/redirections.c
-cc    -c -o libft/ft_strnstr.o libft/ft_strnstr.c
-cc    -c -o exec/ft_unset.o exec/ft_unset.c
-cc    -c -o exec/ft_export.o exec/ft_export.c
-cc    -c -o exec/ft_others.o exec/ft_others.c
-cc    -c -o exec/ft_readline.o exec/ft_readline.c
-cc    -c -o exec/ft_init.o exec/ft_init.c
-cc    -c -o libft/ft_putchar_fd.o libft/ft_putchar_fd.c
- 
-cc    -c -o libft/ft_putstr_fd.o libft/ft_putstr_fd.c
-cc    -c -o libft/ft_putendl_fd.o libft/ft_putendl_fd.c
-cc    -c -o exec/ftpipe.o exec/ftpipe.c
-cc    -c -o libft/ft_split.o libft/ft_split.c
-cc    -c -o libft/ft_strdup.o libft/ft_strdup.c
-cc    -c -o libft/ft_memcpy.o libft/ft_memcpy.c
-cc    -c -o libft/ft_strlcpy.o libft/ft_strlcpy.c
- 
-cc    -c -o libft/ft_memmove.o libft/ft_memmove.c
-clang -g   ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o ./exec/tools.o      ./exec/redirections.o  ./libft/ft_strnstr.o ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o ./exec/ft_readline.o ./exec/ft_init.o  ./libft/ft_putchar_fd.o ./libft/ft_putstr_fd.o           ./libft/ft_putendl_fd.o  ./exec/ftpipe.o   ./libft/ft_split.o ./libft/ft_strdup.o ./libft/ft_memcpy.o   ./libft/ft_strlcpy.o ./libft/ft_memmove.o   -o minishell -lreadline -L/Users/atabiti/.brew/Cellar/readline/8.1.2/lib -I/Users/atabiti/.brew/Cellar/readline/8.1.2/include
-gcc builtins_bin/ft_echo.c -o builtins_bin/ftecho
-gcc builtins_bin/ft_cd.c -o builtins_bin/ftcd
+make: Nothing to be done for `all'.
 make: Leaving directory `/Users/atabiti/Desktop/MINILAST'
  
