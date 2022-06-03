@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:30:11 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 10:35:18 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 10:55:54 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int main(int ac, char **av)
 	int len = ft_strlen(av[1]);
 
 	write(1, av[1], len);
+	write(1, "\n", 1);
+
 	return 0;
 }

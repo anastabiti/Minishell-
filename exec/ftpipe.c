@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 10:38:30 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/03 10:57:47 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,14 @@ int ft_pipe(struct s_list *list)
 				// {
 				if (ft_strncmp("echo", list[list->cmd_iteration].cmd[0], 4) == 0)
 				{
-					execve(list[i].cmd[0], list[i].cmd, NULL);
+					execve("builtins_bin/ftecho", list[i].cmd, list->environ);
+					write(2, "sss", 3);
+					exit(1);
 				}
-				ft_bin_usr_sbin(list);
+				else
+				{
+					ft_bin_usr_sbin(list);
+				}
 
 				// }
 				// if (execve(list[i].cmd[0], list[i].cmd, NULL) == -1)
@@ -75,7 +80,7 @@ int ft_pipe(struct s_list *list)
 				wait(NULL);
 				// if (list->cmd_iteration < list->there_is_pipe)
 				// {
-				// list->fd_out = fd[1];
+				list->fd_out = fd[1];
 				// }
 				// else
 				// {

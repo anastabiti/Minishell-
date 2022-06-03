@@ -33,15 +33,16 @@ int main(int ac, char **av, char **env)
 		ft_init(list);
 		list[0].cmd[0] = "echo";
 
-		list[0].cmd[1] = "NULL";
-		list[0].cmd[1] = NULL;
+		list[0].cmd[1] = "1";
+		
+		list[0].cmd[2] = NULL;
 
 		// list[0].next = &list[1];
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "wc";
-		list[1].cmd[1] = "-l";
+		list[1].cmd[0] = "echo";
+		list[1].cmd[1] = "-csl";
 
 		list[1].cmd[2] = NULL;
 
