@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 14:56:56 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/04 11:02:57 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int ft_bin_usr_sbin(struct s_list *list)
 	}
 
 	// write(2, "MINISHELL command not found\n", 28);
-	exit(127);
 
 	return 0;
 }

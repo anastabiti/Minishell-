@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/04 10:58:19 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/04 11:19:19 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int ft_is_built_in(struct s_list *list)
 		g_status = ft_echo(list[0].cmd[1], list->fd_out);
 		return 1;
 	}
-	else if (ft_strncmp(list[list->cmd_iteration].cmd[0], list->blt->cd, 2) == 0)
+	else if (ft_strncmp(list->input, list->blt->cd, 2) == 0)
 	{
 		if (chdir(list->blt->cd_path) == -1) // // mkrim will provide me with FULL path to CD
 		{
@@ -75,7 +75,7 @@ int ft_is_built_in(struct s_list *list)
 		g_status = ft_pwd(list->fd_out);
 		return 1;
 	}
-	else if (ft_strncmp(list[list->cmd_iteration].cmd[0], "$?", 2) == 0)
+	else if (ft_strncmp(list->input, "$?", 2) == 0)
 	{
 		printf("%d\n", g_status);
 		return 1;
@@ -86,10 +86,7 @@ int ft_is_built_in(struct s_list *list)
 		free(list->input);
 		exit(0);
 	}
-	else
-	{
-		return 0;
-	}
+
 	return 0;
 }
 

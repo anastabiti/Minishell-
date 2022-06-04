@@ -31,7 +31,7 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
-		list[0].cmd[0] = "cd";
+		list[0].cmd[0] = "cdfgfd";
 
 		list[0].cmd[1] = "execere/";
 
@@ -61,24 +61,25 @@ int main(int ac, char **av, char **env)
 		list->cmd_nbr = 2;
 		if (list->there_is_pipe == 0)
 		{
-			list->cmd_iteration = 0;
-			int i = 0;
-			while (list->cmd_iteration < list->cmd_nbr)
+			if (ft_is_built_in(list) == 1)
 			{
-				ft_is_built_in(list);
-
 				list->cmd_iteration++;
+			}
 
-				// 	else
-				// 	{
-				// 		if (fork() == 0)
-				// 		{
-				// 			ft_bin_usr_sbin(list);
-				// 		}
-				// 		else
-				// 			wait(&g_status);
-				// 		list->cmd_iteration++;
-				// 	}
+			else
+			{
+				if (fork() == 0)
+				{
+					ft_bin_usr_sbin(list);
+				}
+				else
+				{
+					wait(&g_status);
+					if (WIFEXITED(g_status))
+					{
+						g_status = WEXITSTATUS(g_status);
+					}
+				}
 			}
 		}
 		if (list->there_is_pipe > 0)
