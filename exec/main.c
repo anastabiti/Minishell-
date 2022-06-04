@@ -65,20 +65,20 @@ int main(int ac, char **av, char **env)
 			int i = 0;
 			while (list->cmd_iteration < list->cmd_nbr)
 			{
-				if (ft_is_built_in(list) == 0)
-				{
-					list->cmd_iteration++;
-				}
-				else
-				{
-					if (fork() == 0)
-					{
-						ft_bin_usr_sbin(list);
-					}
-					else
-						wait(&g_status);
-					list->cmd_iteration++;
-				}
+				ft_is_built_in(list);
+
+				list->cmd_iteration++;
+
+				// 	else
+				// 	{
+				// 		if (fork() == 0)
+				// 		{
+				// 			ft_bin_usr_sbin(list);
+				// 		}
+				// 		else
+				// 			wait(&g_status);
+				// 		list->cmd_iteration++;
+				// 	}
 			}
 		}
 		if (list->there_is_pipe > 0)
