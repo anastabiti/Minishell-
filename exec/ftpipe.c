@@ -122,8 +122,8 @@ int ft_pipe(struct s_list *list)
 			else
 			{
 
-				// wait(&g_status);
-				waitpid(id, &g_status, 0);
+				wait(NULL);
+				// waitpid(id, &g_status, 0);
 				// if (ft_strncmp("$?", list[list->cmd_iteration].cmd[0], 2) == 0)
 				// {
 				// 	printf("%d\n",WIFEXITED(g_status));

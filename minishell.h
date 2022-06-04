@@ -28,7 +28,7 @@
 #define KGRN "\x1B[32m"
 #include <sys/wait.h>
 #include <dirent.h> // open dir
-int g_status;
+
 struct s_builtins
 {
 	char *echo;

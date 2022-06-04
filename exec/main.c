@@ -69,17 +69,17 @@ int main(int ac, char **av, char **env)
 				}
 				else
 				{
-					wait(&g_status);
-					if (WIFEXITED(g_status))
-					{
-						g_status = WEXITSTATUS(g_status);
-					}
+					wait(NULL);
+					// if (WIFEXITED(g_status))
+					// {
+					// 	g_status = WEXITSTATUS(g_status);
+					// }
 				}
 			}
-			else
-			{
-				g_status = 127;
-			}
+			// else
+			// {
+			// 	g_status = 127;
+			// }
 		}
 
 		if (list->there_is_pipe > 0)
