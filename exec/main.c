@@ -61,12 +61,7 @@ int main(int ac, char **av, char **env)
 		list->cmd_nbr = 2;
 		if (list->there_is_pipe == 0)
 		{
-			if (ft_is_built_in(list) == 1)
-			{
-				list->cmd_iteration++;
-			}
-
-			else
+			if (ft_is_built_in(list) == 0)
 			{
 				if (fork() == 0)
 				{
@@ -81,6 +76,14 @@ int main(int ac, char **av, char **env)
 					}
 				}
 			}
+			else
+			{
+				g_status = 127;
+			}
+		}
+
+		else
+		{
 		}
 		if (list->there_is_pipe > 0)
 		{
