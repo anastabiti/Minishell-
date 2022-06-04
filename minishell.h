@@ -56,6 +56,7 @@ struct s_list
 };
 
 void handler(int sig);
+int prompt_and_parse(char **u, char **d);
 void rl_replace_line(const char *text, int clear_undo);
 void rl_clear_history(void);
 // Builtin Commands
