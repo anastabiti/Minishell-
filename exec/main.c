@@ -41,7 +41,7 @@ int main(int ac, char **av, char **env)
 		// list[1].cmd[0] = "/usr/bin/wc";
 		// list[1].cmd[1] = "-l";
 		list[0].next = &list[1];
-		list[1].cmd[0] = "$?";
+		list[1].cmd[0] = "ls";
 		// list[1].cmd[1] = "ff=ff";
 
 		list[1].cmd[1] = NULL;
@@ -57,7 +57,7 @@ int main(int ac, char **av, char **env)
 
 		list[3].cmd[1] = NULL;
 		list[3].next = NULL;
-		list->there_is_pipe = 0;
+		list->there_is_pipe = 1;
 		list->cmd_nbr = 2;
 		if (list->there_is_pipe == 0)
 		{
@@ -82,9 +82,6 @@ int main(int ac, char **av, char **env)
 			}
 		}
 
-		else
-		{
-		}
 		if (list->there_is_pipe > 0)
 		{
 
