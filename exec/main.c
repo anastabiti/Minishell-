@@ -99,8 +99,8 @@ int main(int ac, char **av, char **env)
 
 		// list[3].cmd[1] = downstream[4];
 		// list[3].cmd = downstream[4];
-		list->there_is_pipe = 3;
-		list->cmd_nbr = 4;
+		list->there_is_pipe = 0;
+		list->cmd_nbr = 1;
 		if (downstream[0] == NULL)
 		{
 

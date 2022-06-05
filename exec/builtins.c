@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/05 11:06:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/05 11:10:54 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int ft_is_built_in(struct s_list *list)
 	else if (ft_strncmp(list[0].cmd[0], list->blt->export, 6) == 0)
 	{
 		ft_export(vr);
-		return 0;
+		return 1;
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->unset, 5) == 0)
 	{
@@ -56,11 +56,11 @@ int ft_is_built_in(struct s_list *list)
 		return 1;
 	}
 	////////////////////////////////////////////////////////////////////////
-	else if (ft_strncmp(list[0].cmd[0], list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
-	{
-		ft_unset(vr);
-		return 1;
-	}
+	// else if (ft_strncmp(list[0].cmd[0], list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
+	// {
+	// 	ft_unset(vr);
+	// 	return 1;
+	// }
 	////////////////////////////////////////////////////////////////////////
 	else if (ft_strncmp(list[0].cmd[0], list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
 	{

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:50:22 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/31 14:13:13 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/05 11:08:35 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_env(char **env, struct s_list *list)
 	while (*var != NULL)
 	{
 		// printf("%s\n", *var);
-		ft_putendl_fd(*var, 1 );
+		ft_putendl_fd(*var, 1);
 		var++;
 	}
 }
