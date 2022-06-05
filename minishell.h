@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/03 14:47:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/05 08:50:39 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ struct s_list
 };
 
 void handler(int sig);
-int prompt_and_parse(char **u, char **d);
+int prompt_and_parse(char **upstream, char **downstream, char *line);
 void rl_replace_line(const char *text, int clear_undo);
 void rl_clear_history(void);
 // Builtin Commands

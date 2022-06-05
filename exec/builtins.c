@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/04 11:19:19 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/05 08:57:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int ft_is_built_in(struct s_list *list)
 	int i = 0;
 	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
 	{
-		 ft_echo(list[0].cmd[1], list->fd_out);
+		ft_echo(list[0].cmd[1], list->fd_out);
 		return 1;
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->cd, 2) == 0)
@@ -38,7 +38,7 @@ int ft_is_built_in(struct s_list *list)
 		if (chdir(list->blt->cd_path) == -1) // // mkrim will provide me with FULL path to CD
 		{
 			// printf("Minishell: cd: %s: No such file or directory\n", list->blt->cd_path);
-			
+
 			char *error = "Minishell: cd: No such file or directory\n";
 			int len = ft_strlen(error);
 			write(2, error, len);
@@ -47,7 +47,7 @@ int ft_is_built_in(struct s_list *list)
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->export, 6) == 0)
 	{
-		  ft_export(vr);
+		ft_export(vr);
 		return 0;
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->unset, 5) == 0)
@@ -70,7 +70,7 @@ int ft_is_built_in(struct s_list *list)
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->pwd, 3) == 0)
 	{
-		 ft_pwd(list->fd_out);
+		ft_pwd(list->fd_out);
 		return 1;
 	}
 	// else if (ft_strncmp(list->input, "$?", 2) == 0)
@@ -95,5 +95,7 @@ int ft_pwd(int fd_out)
 	// ft_putendl_fd(pw, fd_out);
 	int len = ft_strlen(pwd);
 	write(fd_out, pwd, len);
+	write(fd_out, "\n", 1);
+
 	return 1;
 }

@@ -12,9 +12,8 @@
 
 #include "../minishell.h"
 // ping is /sbin/ping
-int prompt_and_parse(char **upstream, char **downstream) // not mine is from a course i use it to accelerate work
+int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine is from a course i use it to accelerate work
 {
-	char *line;
 
 	downstream[0] = NULL;
 	// printf("> ");
@@ -62,10 +61,10 @@ int main(int ac, char **av, char **env)
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, handler);
 
-	while (prompt_and_parse(upstream, downstream) > 0)
+	while (prompt_and_parse(upstream, downstream, list->input) > 0)
 	{
 
-		list->input = ft_read(list->input);
+		// list->input = ft_read(list->input);
 		//
 
 		ft_init(list);
@@ -73,7 +72,7 @@ int main(int ac, char **av, char **env)
 		// list[0].cmd[0] = "cdfgfd";
 
 		list[0].cmd[1] = upstream[1];
-
+		printf("%s\n %s\n", list[0].cmd[0], list[0].cmd[1]); // list[0].cmd[2] = upstream[2];
 		// list[0].cmd[2] = upstream[2];
 
 		// // list[0].next = &list[1];
@@ -100,30 +99,28 @@ int main(int ac, char **av, char **env)
 		// list->cmd_nbr = 2;
 		if (downstream[0] == NULL)
 		{
-			{
 
-				// if (list->there_is_pipe == 0)
-				// {
-				if (ft_is_built_in(list) == 0)
+			// if (list->there_is_pipe == 0)
+			// {
+			if (ft_is_built_in(list) == 0)
+			{
+				if (fork() == 0)
 				{
-					if (fork() == 0)
-					{
-						ft_bin_usr_sbin(list);
-					}
-					else
-					{
-						wait(NULL);
-						// if (WIFEXITED(g_status))
-						// {
-						// 	g_status = WEXITSTATUS(g_status);
-						// }
-					}
+					ft_bin_usr_sbin(list);
 				}
-				// else
-				// {
-				// 	g_status = 127;
-				// }
+				else
+				{
+					wait(NULL);
+					// if (WIFEXITED(g_status))
+					// {
+					// 	g_status = WEXITSTATUS(g_status);
+					// }
+				}
 			}
+			// else
+			// {
+			// 	g_status = 127;
+			// }
 
 			// if (list->there_is_pipe > 0)
 			// {
@@ -131,7 +128,8 @@ int main(int ac, char **av, char **env)
 			// 	ft_pipe(list);
 			// }
 		}
-		// free(input);
 	}
+	free(input);
+
 	return 0;
 }
