@@ -72,17 +72,17 @@ int main(int ac, char **av, char **env)
 		// list[0].cmd[0] = "cdfgfd";
 
 		list[0].cmd[1] = upstream[1];
-		printf("%s\n %s\n", list[0].cmd[0], list[0].cmd[1]); // list[0].cmd[2] = upstream[2];
+		// printf("%s\n %s\n", list[0].cmd[0], list[0].cmd[1]); // list[0].cmd[2] = upstream[2];
 		// list[0].cmd[2] = upstream[2];
 
 		// // list[0].next = &list[1];
 		// // list[1].cmd[0] = "/usr/bin/wc";
 		// // list[1].cmd[1] = "-l";
-		list[0].next = NULL;
-		// list[1].cmd[0] = "ls";
-		// // list[1].cmd[1] = "ff=ff";
+		list[0].next = &list[1];
+		list[1].cmd[0] = downstream[0];
+		// list[1].cmd[1] = "ff=ff";
 
-		// list[1].cmd[1] = NULL;
+		list[1].cmd[1] = downstream[1];
 
 		// ///
 		// list[1].next = &list[2];
@@ -95,8 +95,8 @@ int main(int ac, char **av, char **env)
 
 		// list[3].cmd[1] = NULL;
 		// list[3].next = NULL;
-		// list->there_is_pipe = 1;
-		// list->cmd_nbr = 2;
+		list->there_is_pipe = 1;
+		list->cmd_nbr = 2;
 		if (downstream[0] == NULL)
 		{
 
@@ -121,13 +121,15 @@ int main(int ac, char **av, char **env)
 			// {
 			// 	g_status = 127;
 			// }
-
+		}
+		else
+		{
 			// if (list->there_is_pipe > 0)
 			// {
 
-			// 	ft_pipe(list);
-			// }
+			ft_pipe(list);
 		}
+		// }
 	}
 	free(input);
 
