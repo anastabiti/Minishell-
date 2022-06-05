@@ -100,7 +100,7 @@ int main(int ac, char **av, char **env)
 		// list[3].cmd[1] = downstream[4];
 		// list[3].cmd = downstream[4];
 		list->there_is_pipe = 0;
-		list->cmd_nbr = 1;
+		list->cmd_nbr = 2;
 		if (downstream[0] == NULL)
 		{
 
@@ -112,14 +112,12 @@ int main(int ac, char **av, char **env)
 				{
 					ft_bin_usr_sbin(list);
 				}
-				else
-				{
-					wait(NULL);
-					// if (WIFEXITED(g_status))
-					// {
-					// 	g_status = WEXITSTATUS(g_status);
-					// }
-				}
+
+				wait(NULL);
+				// if (WIFEXITED(g_status))
+				// {
+				// 	g_status = WEXITSTATUS(g_status);
+				// }
 			}
 			// else
 			// {
