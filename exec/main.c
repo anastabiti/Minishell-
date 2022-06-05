@@ -34,8 +34,9 @@ int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine
 		if (strcmp(*upstream, "|") == 0)
 		{
 			*upstream = NULL;
-			while ((*downstream++ = strtok(NULL, " \t")))
+			while ((*downstream++ = strtok(NULL, " |")))
 				/* Empty body */;
+
 			return 1;
 		}
 		upstream++;
@@ -43,6 +44,7 @@ int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine
 
 	return 1;
 }
+// ps | pwd | wc
 int main(int ac, char **av, char **env)
 {
 	(void)ac;
@@ -72,7 +74,9 @@ int main(int ac, char **av, char **env)
 		// list[0].cmd[0] = "cdfgfd";
 
 		list[0].cmd[1] = upstream[1];
-		// printf("%s\n %s\n", list[0].cmd[0], list[0].cmd[1]); // list[0].cmd[2] = upstream[2];
+		// printf("%s\n %s\n", upstream[0], upstream[1]);																				 // list[0].cmd[2] = upstream[2];
+		// printf("%s\n %s %s %s\n", downstream[0], downstream[1], downstream[2], downstream[3]); // list[0].cmd[2] = upstream[2];
+
 		// list[0].cmd[2] = upstream[2];
 
 		// // list[0].next = &list[1];
@@ -82,21 +86,21 @@ int main(int ac, char **av, char **env)
 		list[1].cmd[0] = downstream[0];
 		// list[1].cmd[1] = "ff=ff";
 
-		list[1].cmd[1] = downstream[1];
+		// list[1].cmd[1] = downstream[1];
 
 		// ///
-		// list[1].next = &list[2];
+		list[1].next = &list[2];
 
-		// list[2].cmd[0] = "env";
-		// list[2].cmd[1] = NULL;
-		// list[2].next = &list[3];
+		list[2].cmd[0] = downstream[1];
+		list[2].cmd[1] = downstream[2];
+		list[2].next = &list[3];
 
 		// list[3].cmd[0] = "wc";
 
 		// list[3].cmd[1] = NULL;
 		// list[3].next = NULL;
-		list->there_is_pipe = 1;
-		list->cmd_nbr = 2;
+		list->there_is_pipe = 2;
+		list->cmd_nbr = 3;
 		if (downstream[0] == NULL)
 		{
 
