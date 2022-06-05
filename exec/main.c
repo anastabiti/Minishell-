@@ -14,24 +14,35 @@
 // ping is /sbin/ping
 int prompt_and_parse(char **upstream, char **downstream) // not mine is from a course i use it to accelerate work
 {
-     char *line;
+	char *line;
 
-    downstream[0] = NULL;
-    // printf("> ");
+	downstream[0] = NULL;
+	// printf("> ");
 	line = readline("[MINISHELl]$ ");
-    if ( line== NULL)
-        return -1;
-    *upstream++ = strtok(line, " \t");
-    while (*upstream = strtok(NULL, " \t")) {
-        if (strcmp(*upstream, "|") == 0) {
-	    *upstream = NULL;
-	    while (*downstream++ = strtok(NULL, " \t"))
-	        /* Empty body */ ;
-	    return 1;
+	if (line == NULL)
+	{
+		write(2, "exit\n", 5);
+		rl_clear_history();
+
+		free(line);
+		exit(1);
 	}
-	upstream++;
-    }
-    return 1;
+	add_history(line); // to save commandes history >> you can access it by up arrow ^.
+
+	*upstream++ = strtok(line, " \t");
+	while ((*upstream = strtok(NULL, " \t")))
+	{
+		if (strcmp(*upstream, "|") == 0)
+		{
+			*upstream = NULL;
+			while ((*downstream++ = strtok(NULL, " \t")))
+				/* Empty body */;
+			return 1;
+		}
+		upstream++;
+	}
+
+	return 1;
 }
 int main(int ac, char **av, char **env)
 {
@@ -45,16 +56,17 @@ int main(int ac, char **av, char **env)
 	int fd = 1;
 	list->environ = env;
 	//
-	 char *upstream[20], *downstream[20];
+	char *upstream[20], *downstream[20];
 	// while (1)
 	// {
-		
-		    while (prompt_and_parse(upstream, downstream) > 0) {
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, handler);
 
+	while (prompt_and_parse(upstream, downstream) > 0)
+	{
 
-		// list->input = ft_read(list->input);
+		list->input = ft_read(list->input);
 		//
-		
 
 		ft_init(list);
 		list[0].cmd[0] = upstream[0];
@@ -86,39 +98,40 @@ int main(int ac, char **av, char **env)
 		// list[3].next = NULL;
 		// list->there_is_pipe = 1;
 		// list->cmd_nbr = 2;
-		if (downstream[0] == NULL) {
+		if (downstream[0] == NULL)
+		{
 			{
-	    
-		// if (list->there_is_pipe == 0)
-		// {
-			if (ft_is_built_in(list) == 0)
-			{
-				if (fork() == 0)
+
+				// if (list->there_is_pipe == 0)
+				// {
+				if (ft_is_built_in(list) == 0)
 				{
-					ft_bin_usr_sbin(list);
+					if (fork() == 0)
+					{
+						ft_bin_usr_sbin(list);
+					}
+					else
+					{
+						wait(NULL);
+						// if (WIFEXITED(g_status))
+						// {
+						// 	g_status = WEXITSTATUS(g_status);
+						// }
+					}
 				}
-				else
-				{
-					wait(NULL);
-					// if (WIFEXITED(g_status))
-					// {
-					// 	g_status = WEXITSTATUS(g_status);
-					// }
-				}
+				// else
+				// {
+				// 	g_status = 127;
+				// }
 			}
-			// else
+
+			// if (list->there_is_pipe > 0)
 			// {
-			// 	g_status = 127;
+
+			// 	ft_pipe(list);
 			// }
 		}
-
-		// if (list->there_is_pipe > 0)
-		// {
-
-		// 	ft_pipe(list);
-		// }
+		// free(input);
 	}
-	// free(input);
-}
-return 0;
+	return 0;
 }
