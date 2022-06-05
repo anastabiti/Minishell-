@@ -92,15 +92,15 @@ int main(int ac, char **av, char **env)
 		list[1].next = &list[2];
 
 		list[2].cmd[0] = downstream[1];
-		list[2].cmd[1] = downstream[2];
+		// list[2].cmd[1] = downstream[2];
 		list[2].next = &list[3];
 
-		// list[3].cmd[0] = "wc";
+		list[3].cmd[0] = downstream[2];
 
-		// list[3].cmd[1] = NULL;
-		// list[3].next = NULL;
-		list->there_is_pipe = 2;
-		list->cmd_nbr = 3;
+		// list[3].cmd[1] = downstream[4];
+		// list[3].cmd = downstream[4];
+		list->there_is_pipe = 3;
+		list->cmd_nbr = 4;
 		if (downstream[0] == NULL)
 		{
 
