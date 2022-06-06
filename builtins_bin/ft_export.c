@@ -11,22 +11,25 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
-int main(int ac, char **av, char **env)
-{
-	char *to_be_exported = av[1];
-	int len;
 
+int	main(int ac, char **av, char **env)
+{
+	char	*to_be_exported;
+	int		len;
+	int		i;
+
+	to_be_exported = av[1];
 	len = ft_strlen(to_be_exported);
-	int i = 0;
+	i = 0;
 	while (env[i])
-	{ 
+	{
 		if (ft_strnstr(env[i], to_be_exported, len))
 		{
-			return 0;
+			return (0);
 		}
 		i++;
 	}
 	env[i] = to_be_exported;
 	env[i + 1] = NULL;
-	return 0;
+	return (0);
 }

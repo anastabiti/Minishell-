@@ -12,13 +12,14 @@
 
 #include "../minishell.h"
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
 	int x = 0;
 	char *to_be_unset;
 
 	int i = 0;
-	// to_be_unset = "VAR=EXPORETED"; // mkrim must provide me with the string  to  unset
+	// to_be_unset = "VAR=EXPORETED";
+	// mkrim must provide me with the string  to  unset
 	to_be_unset = av[1];
 	// mkrim must provide me with the string  to  unset
 
@@ -27,7 +28,7 @@ int main(int ac, char **av, char **env)
 	{
 		x++;
 		if (env[x] == NULL)
-			return 0;
+			return (0);
 	}
 	while (env[i]) // N of env strings
 	{
@@ -39,6 +40,6 @@ int main(int ac, char **av, char **env)
 		x++;
 	}
 	env[i - 1] = NULL;
-	return 0;
-	return 0;
+	return (0);
+	return (0);
 }

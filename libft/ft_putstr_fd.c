@@ -12,10 +12,10 @@
 
 #include "../minishell.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	if (!s)
-		return;
+		return ;
 	while (*s != '\0')
 	{
 		ft_putchar_fd(*s, fd);
@@ -23,7 +23,7 @@ void ft_putstr_fd(char *s, int fd)
 	}
 }
 
-int ft_search(char *s, char *c, int lenght)
+int	ft_search(char *s, char *c, int lenght)
 {
 	int i = 1;
 
@@ -34,11 +34,11 @@ int ft_search(char *s, char *c, int lenght)
 			i++;
 			if (i == lenght)
 			{
-				return 1;
+				return (1);
 			}
 		}
 		else
-			return 0;
+			return (0);
 	}
-	return 0;
+	return (0);
 }

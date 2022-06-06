@@ -12,20 +12,21 @@
 
 #include "../minishell.h"
 
-
-int ft_pwd(int fd_out)
+int	ft_pwd(int fd_out)
 {
-	char pw[PATH_MAX];
-	char *pwd = getcwd(pw, PATH_MAX);
-	// ft_putendl_fd(pw, fd_out);
-	int len = ft_strlen(pwd);
+	char	pw[PATH_MAX];
+	char	*pwd;
+	int		len;
+
+	pwd = getcwd(pw, PATH_MAX);
+	len = ft_strlen(pwd);
 	write(fd_out, pwd, len);
 	write(fd_out, "\n", 1);
-
-	return 1;
+	return (1);
 }
-int main(int ac, char **av)
+
+int	main(int ac, char **av)
 {
 	ft_pwd(1);
-	return 0;
+	return (0);
 }

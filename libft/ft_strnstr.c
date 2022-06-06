@@ -12,9 +12,9 @@
 
 #include "../minishell.h"
 
-char *ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t needlelenght;
+	size_t	needlelenght;
 
 	needlelenght = ft_strlen(needle);
 	if (needlelenght == '\0')
@@ -29,16 +29,16 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int i = 0;
 	if (s == NULL)
 	{
-		return 0;
+		return (0);
 	}
 	while (s[i])
 	{
 		i++;
 	}
-	return i;
+	return (i);
 }

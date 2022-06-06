@@ -12,12 +12,12 @@
 
 #include "../minishell.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (chdir(av[1]) == -1)
 	{
-		// write(2, "Cd failed\n", 10);
+		write(2, "Cd failed\n", 10);
 		exit(112);
 	}
-	return 0;
+	return (0);
 }

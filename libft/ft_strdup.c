@@ -12,10 +12,10 @@
 
 #include "../minishell.h"
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-	size_t lenght;
-	char *copyptr;
+	size_t	lenght;
+	char	*copyptr;
 
 	lenght = ft_strlen(s1) + 1;
 	copyptr = malloc(lenght);

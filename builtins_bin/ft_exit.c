@@ -12,9 +12,8 @@
 
 #include "../minishell.h"
 
-int main()
+int	main(void)
 {
-
 	exit(1);
-	return 0;
+	return (0);
 }

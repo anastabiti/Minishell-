@@ -12,16 +12,15 @@
 
 #include "../minishell.h"
 
-
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
+	char	**var;
 
-	char **var = env;
+	var = env;
 	while (*var != NULL)
 	{
-		// printf("%s\n", *var);
 		ft_putendl_fd(*var, 1);
 		var++;
 	}
-	return 0;
+	return (0);
 }

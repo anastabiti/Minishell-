@@ -12,9 +12,9 @@
 
 #include "../minishell.h"
 
-static char *ccleaner(char **arr)
+static char	*ccleaner(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
@@ -25,9 +25,9 @@ static char *ccleaner(char **arr)
 	return (NULL);
 }
 
-static char *fsubstr(char const *s, unsigned int start, size_t len, char **arr)
+static char	*fsubstr(char const *s, unsigned int start, size_t len, char **arr)
 {
-	char *substr;
+	char	*substr;
 
 	if (!s)
 		return (NULL);
@@ -42,9 +42,9 @@ static char *fsubstr(char const *s, unsigned int start, size_t len, char **arr)
 	return (substr);
 }
 
-static size_t countblocks(char const *s1, char delimiter)
+static size_t	countblocks(char const *s1, char delimiter)
 {
-	size_t l;
+	size_t	l;
 
 	l = 0;
 	while (*s1 != '\0')
@@ -61,12 +61,12 @@ static size_t countblocks(char const *s1, char delimiter)
 	return (l);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	size_t index;
-	size_t i;
-	char **ptr;
-	const char *spl;
+	size_t		index;
+	size_t		i;
+	char		**ptr;
+	const char	*spl;
 
 	i = 0;
 	if (!s)
