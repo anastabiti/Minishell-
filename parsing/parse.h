@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/06 19:49:47 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/06 20:00:21 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,8 @@ typedef struct s_cmdl {
 	char			*flag;
 	struct s_cmdl	*next;
 }		t_cmdl;
+
+
+int		is_white_space(char c);
 
 #endif
