@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/07 09:14:58 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/07 09:29:45 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct s_cmdl {
 	int				pipe;
 	char			*c;
-	char			*flag;
+	char			*f;
 	struct s_cmdl	*next;
 }		t_cmdl;
 
