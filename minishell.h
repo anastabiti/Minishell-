@@ -13,11 +13,11 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include <fcntl.h>
-# include <limits.h>
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <signal.h>
 # include <stdio.h>
+# include <limits.h>
+
+# include <signal.h>
+
 # include <stdlib.h>
 # include <string.h>
 # include <sys/stat.h>
@@ -27,6 +27,8 @@
 # define KGRN "\x1B[32m"
 # include <dirent.h> // open dir
 # include <sys/wait.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 
 struct					s_builtins
 {

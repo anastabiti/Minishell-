@@ -7,14 +7,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
-make: *** No rule to make target `exec/builtins.o', needed by `minishell'.  Stop.
 
-
-# Make data base, printed on Sun Jun  5 08:40:09 2022
- 
+# Make data base, printed on Tue Jun  7 09:18:43 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -32,7 +30,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/atabiti/Desktop/MINILAST
+CURDIR := /Users/atabiti/Desktop/Minishell-
 # makefile
 SHELL = /bin/sh
 # environment
@@ -44,15 +42,15 @@ MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cc8c003323/T/vscode-ipc-98243542-e9c1-49e3-9235-821a1d0689b5.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cc8c003323/T/vscode-ipc-03b1ddf4-c7c3-4e3d-9f48-5bb8c258db4c.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.fe6R4a1IyV/Render
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+# makefile (from `Makefile', line 26)
+FALGS = -Wall -Werorr -Wextra 
 # environment
-PATH = /Users/atabiti/.brew/bin:/Users/atabiti/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands
-# environment
-LSCOLORS = Gxfxcxdxbxegedabagacad
+LaunchInstanceID = 468B8B33-E40E-48E5-A4AA-973280E6036A
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -60,15 +58,13 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.ja55nwTWP9/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.X3PBtoSeU4/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-HOMEBREW_TEMP = /tmp/atabiti/Homebrew/Temp
-# environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/atabiti/Desktop/MINILAST
+PWD = /Users/atabiti/Desktop/Minishell-
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -82,23 +78,17 @@ VSCODE_CODE_CACHE_PATH = /Users/atabiti/Library/Application Support/Code/CachedD
 # environment
 LOGNAME = atabiti
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-ZSH = /Users/atabiti/.oh-my-zsh
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 XPC_FLAGS = 0x0
-# makefile (from `Makefile', line 26)
-FALGS = -Wall -Werorr -Wextra 
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# environment
-HOMEBREW_CACHE = /tmp/atabiti/Homebrew/Caches
 # environment
 SHLVL = 1
 # default
@@ -109,8 +99,6 @@ USER = atabiti
 .DEFAULT_GOAL := all
 # makefile (from `Makefile', line 13)
 NAME = minishell
-# environment
-LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
@@ -130,7 +118,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000009.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -141,16 +129,13 @@ __CF_USER_TEXT_ENCODING = 0x18C43:0x0:0x0
 COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
-# environment
-HOMEBREW_NO_AUTO_UPDATE = 1
 # automatic
 <F = $(notdir $<)
 # environment
-PAGER = less
-# environment
 LC_ALL = C
+ 
 # environment
-SECURITYSESSIONID = 186a8
+SECURITYSESSIONID = 186ea
 # automatic
 ^F = $(notdir $^)
 # default
@@ -162,9 +147,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 34516
+VSCODE_PID = 14304
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=4/101=4%
+# Load=67/1024=7%, Rehash=0, Collisions=4/99=4%
 
 # Pattern-specific Variable Values
 
@@ -172,7 +157,7 @@ VSCODE_PID = 34516
 
 # Directories
 
-# . (device 16777227, inode 5538674): 12 files, no impossibilities.
+# . (device 16777222, inode 807060): 12 files, no impossibilities.
 
 # 12 files, no impossibilities in 1 directories.
 
@@ -184,35 +169,46 @@ VSCODE_PID = 34516
 
 # Not a target:
 libft/ft_putendl_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: minishell
 #  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+# Not a target:
+libft/ft_memcpy.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-libft/ft_memcpy.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 exec/ftpipe.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 exec/builtins.o:
 #  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -224,37 +220,65 @@ exec/builtins.o:
 
 # Not a target:
 libft/ft_split.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-exec/ft_env.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-05 08:39:32
+#  Last modified 2022-06-07 09:17:40
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
+exec/ft_env.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:02:56
+#  File has been updated.
+#  Successfully updated.
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 exec/redirections.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 minishell: exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o libft/ft_split.o libft/ft_strdup.o libft/ft_memcpy.o libft/ft_strlcpy.o libft/ft_memmove.o
 #  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := minishell
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o libft/ft_split.o libft/ft_strdup.o libft/ft_memcpy.o libft/ft_strlcpy.o libft/ft_memmove.o
+# automatic
+# | := 
+# automatic
+# < := exec/builtins.o
+# automatic
+# ^ := exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o libft/ft_split.o libft/ft_strdup.o libft/ft_memcpy.o libft/ft_strlcpy.o libft/ft_memmove.o
+# automatic
+# ? := exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o libft/ft_split.o libft/ft_strdup.o libft/ft_memcpy.o libft/ft_strlcpy.o libft/ft_memmove.o
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=8/32=25%, Rehash=0, Collisions=1/13=8%
 #  commands to execute (from `Makefile', line 30):
 	gcc -g $(FLAGS)  $(OBJ)  -o $(NAME) -lreadline  -L/Users/atabiti/.brew/Cellar/readline/8.1.2/lib -I/Users/atabiti/.brew/Cellar/readline/8.1.2/include 
 	gcc builtins_bin/ft_echo.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c ./exec/tools.c   ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftecho 
@@ -262,22 +286,28 @@ minishell: exec/builtins.o exec/ft_env.o exec/main.o exec/tools.o exec/redirecti
 	gcc builtins_bin/ft_pwd.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftpwd 
 	gcc builtins_bin/ft_unset.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftunset 
 	gcc builtins_bin/ft_env.c  ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c ./exec/tools.c ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftenv 
- 
 	gcc builtins_bin/ft_export.c ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftexport
 	gcc builtins_bin/ft_exit.c ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c ./exec/tools.c ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftexit
 	
 
 # Not a target:
 exec/ft_unset.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+ 
 
 # Not a target:
 exec/tools.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 fclean: clean
 #  Implicit rule search has not been done.
@@ -289,15 +319,21 @@ fclean: clean
 
 # Not a target:
 exec/ft_readline.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 exec/ft_init.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -307,9 +343,12 @@ exec/ft_init.o:
 
 # Not a target:
 exec/main.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 re: fclean all
 #  Implicit rule search has not been done.
@@ -331,56 +370,81 @@ clean:
 
 # Not a target:
 exec/ft_others.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_strlcpy.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_strdup.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_memmove.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_strnstr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_putstr_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_putchar_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 exec/ft_export.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 09:17:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=28/1024=3%, Rehash=0, Collisions=0/65=0%
+# Load=28/1024=3%, Rehash=0, Collisions=0/66=0%
 # VPATH Search Paths
 
+ 
 # No `vpath' search paths.
 
 # No general (`VPATH' variable) search path.
@@ -390,6 +454,6 @@ exec/ft_export.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Jun  5 08:40:09 2022
+# Finished Make data base on Tue Jun  7 09:18:43 2022
 
  

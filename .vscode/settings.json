@@ -7,6 +7,8 @@
 		}
 	],
 	"files.associations": {
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"stat.h": "c",
+		"stdlib.h": "c"
 	}
 }
