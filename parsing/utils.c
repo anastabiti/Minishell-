@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:55:04 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/06 19:59:27 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/07 08:58:16 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,11 @@ int		is_white_space(char c)
 	if (c == ' ' || (c >= '\t' && c <= '\r'))
 		return (1);
 	return (0);
+}
+
+int		ft_is_alpha(char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return  (0);
 }
