@@ -126,6 +126,7 @@ int main(int ac, char **av, char **env)
 		// list[3].cmd = downstream[4];
 		list->there_is_pipe = 1;
 		list->cmd_nbr = 2;
+		list->rd = 1;
 		if (downstream[0] == NULL)
 		{
 
@@ -153,7 +154,9 @@ int main(int ac, char **av, char **env)
 		{
 			// if (list->there_is_pipe > 0)
 			// {
-				int newfd = open("a.txt",  O_RDWR|O_CREAT|O_APPEND, 0600);
+				// list->rd_stdout  = open("a.txt",  O_RDWR|O_CREAT|O_APPEND, 0600);
+								list->rd_stdout  = open("a.txt",  O_RDWR|O_CREAT, 0600);
+
 
 			ft_pipe(list);
 		}

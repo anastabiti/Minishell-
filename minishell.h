@@ -55,6 +55,7 @@ struct					s_list
 	int					there_is_pipe;
 	int					cmd_iteration;
 	int rd_stdout;
+	int rd;
 
 };
 
