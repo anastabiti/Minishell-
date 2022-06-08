@@ -1,8 +1,7 @@
-/home/anas/Minishell-
-IME CMD
-  57579 pts/0    00:00:00 bash
-  58424 pts/0    00:00:00 minishell
-  58499 pts/0    00:00:00 ps
+    PID TTY          TIME CMD
+  63378 pts/0    00:00:00 bash
+  64581 pts/0    00:00:00 minishell
+  64601 pts/0    00:00:00 ps
 tmask 0xff000000 
 	inet6 ::1 prefixlen 128 
 	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 

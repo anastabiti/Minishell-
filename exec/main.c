@@ -183,7 +183,7 @@ int main(int ac, char **av, char **env)
 			// if (list->there_is_pipe > 0)
 			// {
 				// list->rd_stdout  = open("a.txt",  O_RDWR|O_CREAT|O_APPEND, 0600);
-								list->rd_stdout  = open("a.txt",  O_RDWR|O_CREAT, 0600);
+								// list->rd_stdout  = open("a.txt",  O_RDWR|O_CREAT, 0600);
 
 
 			ft_pipe(list);
@@ -239,5 +239,15 @@ int main(int ac, char **av, char **env)
 		}	
 	}
 	return (0);
+	...........................................................
+		if (!ft_strcmp(redir->type, "<"))
+			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
+		else if (!ft_strcmp(redir->type, ">"))
+			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+		else if (!ft_strcmp(redir->type, ">>"))
+			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, 0666);
+		if (fd_i == -1 || fd_o == -1)
+			return (EXIT_FAILURE);
 
 */
+
