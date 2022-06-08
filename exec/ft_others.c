@@ -84,5 +84,5 @@ int ft_bin_usr_sbin(struct s_list *list)
 
 	// write(2, "MINISHELL command not found\n", 28);
 
-	return 0;
+exit(1);
 }
