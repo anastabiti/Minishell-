@@ -98,7 +98,7 @@ void					ft_putendl_fd(char *s, int fd);
 // read input
 char					*ft_read(char *input);
 // pipes
-int						ft_pipe(struct s_list *list);
+void						ft_pipe(struct s_list *list);
 // signals
 void					handler(int sig);
 // init data

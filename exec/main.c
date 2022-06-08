@@ -153,12 +153,12 @@ int main(int ac, char **av, char **env)
 		{
 			// if (list->there_is_pipe > 0)
 			// {
+				int newfd = open("a.txt",  O_RDWR|O_CREAT|O_APPEND, 0600);
 
 			ft_pipe(list);
 		}
 		// }
 	}
 	free(input);
-
 	return 0;
 }

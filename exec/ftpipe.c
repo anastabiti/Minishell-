@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
-int ft_pipe(struct s_list *list)
+void ft_pipe(struct s_list *list)
 {
 
 	// if (list->there_is_pipe > 0)
@@ -149,5 +149,4 @@ int ft_pipe(struct s_list *list)
 	// 	i++;
 	// }
 
-	return 0;
 }
