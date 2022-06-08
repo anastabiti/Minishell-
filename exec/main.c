@@ -193,3 +193,51 @@ int main(int ac, char **av, char **env)
 	free(input);
 	return 0;
 }
+/*
+
+......
+	int	input;
+	int	output;
+	int	i;
+
+	i = 0;
+	if (redir != NULL)
+	{
+		input = dup(0);
+		output = dup(1);
+		i = check redirect  ();
+	}
+	if (i == 0)
+		exec builtin( );
+	if (redir != NULL)
+	{
+		ft_dup2(input, 1);
+		ft_dup2(output, 0);
+		close(input);
+		close(output);
+	}
+
+	........
+
+	how many cmds = ft_lstsize(linked list);
+	if (heredoc())
+		return (1);
+	if (how many cmds > 0)
+	{
+		pid = is_builtin(cmds->content);
+		if (how many cmds== 1 && pid != 0)
+			ft_builtin(cmds->content, envp, pid);
+		else
+		{
+			if (how many cmds > 1)
+				pfds = create_pipes(how many cmds - 1);
+			pid = create_childs(cmds, pfds, envp);
+			if (how many cmds> 1)
+				close_pfds(pfds, how many cmds - 1);
+			waitpid(pid, exit_status, 0);
+			set exit status(how many cmds);
+		}	
+	}
+	return (0);
+
+*/
