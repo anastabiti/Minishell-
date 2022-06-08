@@ -54,6 +54,8 @@ struct					s_list
 	int					cmd_nbr;
 	int					there_is_pipe;
 	int					cmd_iteration;
+	int rd_stdout;
+
 };
 
 void					handler(int sig);

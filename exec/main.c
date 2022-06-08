@@ -15,7 +15,33 @@
 int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine is from a course i use it to accelerate work
 {
 
-	downstream[0] = NULL;
+	// downstream[0] = NULL;
+	// // printf("> ");
+	// line = readline("[MINISHELl]$ ");
+	// if (line == NULL)
+	// {
+	// 	write(2, "exit\n", 5);
+	// 	rl_clear_history();
+
+	// 	free(line);
+	// 	exit(1);
+	// }
+	// add_history(line); // to save commandes history >> you can access it by up arrow ^.
+
+	// *upstream++ = strtok(line, " \t");
+	// while ((*upstream = strtok(NULL, " \t")))
+	// {
+	// 	if (strcmp(*upstream, "|") == 0)
+	// 	{
+	// 		*upstream = NULL;
+	// 		while ((*downstream++ = strtok(NULL, " |")))
+	// 			/* Empty body */;
+
+	// 		return 1;
+	// 	}
+	// 	upstream++;
+	// }
+downstream[0] = NULL;
 	// printf("> ");
 	line = readline("[MINISHELl]$ ");
 	if (line == NULL)
@@ -31,17 +57,16 @@ int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine
 	*upstream++ = strtok(line, " \t");
 	while ((*upstream = strtok(NULL, " \t")))
 	{
-		if (strcmp(*upstream, "|") == 0)
+		if (strcmp(*upstream, ">") == 0)
 		{
 			*upstream = NULL;
-			while ((*downstream++ = strtok(NULL, " |")))
+			while ((*downstream++ = strtok(NULL, " >")))
 				/* Empty body */;
 
 			return 1;
 		}
 		upstream++;
 	}
-
 	return 1;
 }
 // ps | pwd | wc
@@ -99,8 +124,8 @@ int main(int ac, char **av, char **env)
 
 		// list[3].cmd[1] = downstream[4];
 		// list[3].cmd = downstream[4];
-		list->there_is_pipe = 3;
-		list->cmd_nbr = 4;
+		list->there_is_pipe = 1;
+		list->cmd_nbr = 2;
 		if (downstream[0] == NULL)
 		{
 
