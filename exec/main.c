@@ -12,6 +12,28 @@
 
 #include "../minishell.h"
 // ping is /sbin/ping
+
+
+int	is_builtin(struct s_list *list, int i)
+{
+	if (list[i].cmd[i] == NULL)
+		return (0);
+	if (ft_strncmp(list[i].cmd[i] , "cd", 2) == 0)
+		return (1);
+	else if (ft_strncmp(list[i].cmd[i] , "pwd", 3) == 0)
+		return (2);
+	else if (ft_strncmp(list[i].cmd[i] , "echo", 4) == 0)
+		return (3);
+	else if (ft_strncmp(list[i].cmd[i] , "env", 3) == 0)
+		return (4);
+	else if (ft_strncmp(list[i].cmd[i] , "exit", 4) == 0)
+		return (5);
+	else if (ft_strncmp(list[i].cmd[i] , "unset", 5) == 0)
+		return (6);
+	else if (ft_strncmp(list[i].cmd[i] , "export", 6) == 0)
+		return (7);
+	return (0);
+}
 int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine is from a course i use it to accelerate work
 {
 
@@ -41,7 +63,7 @@ int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine
 	// 	}
 	// 	upstream++;
 	// }
-downstream[0] = NULL;
+// downstream[0] = NULL;
 	// printf("> ");
 	line = readline("[MINISHELl]$ ");
 	if (line == NULL)
@@ -83,12 +105,12 @@ int main(int ac, char **av, char **env)
 	list->environ = env;
 	//
 	char *upstream[20], *downstream[20];
-	// while (1)
-	// {
+	while (1)
+	{
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, handler);
 
-	while (prompt_and_parse(upstream, downstream, list->input) > 0)
+	if (prompt_and_parse(upstream, downstream, list->input) > 0)
 	{
 
 		// list->input = ft_read(list->input);
@@ -131,9 +153,15 @@ int main(int ac, char **av, char **env)
 		{
 
 			// if (list->there_is_pipe == 0)
-			// {
-			if (ft_is_built_in(list) == 0)
-			{
+			int i = 0 ;
+				int builtin = is_builtin(list, 0);
+				printf("%d\n", builtin);
+				if(builtin != 0)
+				{
+			ft_is_built_in(list);
+			}
+				else
+				{
 				if (fork() == 0)
 				{
 					ft_bin_usr_sbin(list);
@@ -160,7 +188,7 @@ int main(int ac, char **av, char **env)
 
 			ft_pipe(list);
 		}
-		// }
+		}
 	}
 	free(input);
 	return 0;

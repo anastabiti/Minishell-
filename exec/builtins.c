@@ -84,12 +84,6 @@ int ft_is_built_in(struct s_list *list)
 		free(list->input);
 		exit(0);
 	}
-	else
-	{
-			return 0;
-
-	}
-
 	return 0;
 }
 

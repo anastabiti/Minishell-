@@ -71,6 +71,7 @@ int						ft_echo(char *arg, int fd);
 int						ft_is_built_in(struct s_list *list);
 int						ft_unset(char **env);
 int						ft_export(char **env);
+int	is_builtin(struct s_list *list, int i);
 // Other
 int						ft_bin_usr_sbin(struct s_list *list);
 // LIBFT
