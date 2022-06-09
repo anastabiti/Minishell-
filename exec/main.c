@@ -37,33 +37,7 @@ int	is_builtin(struct s_list *list, int i)
 int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine is from a course i use it to accelerate work
 {
 
-	// downstream[0] = NULL;
-	// // printf("> ");
-	// line = readline("[MINISHELl]$ ");
-	// if (line == NULL)
-	// {
-	// 	write(2, "exit\n", 5);
-	// 	rl_clear_history();
-
-	// 	free(line);
-	// 	exit(1);
-	// }
-	// add_history(line); // to save commandes history >> you can access it by up arrow ^.
-
-	// *upstream++ = strtok(line, " \t");
-	// while ((*upstream = strtok(NULL, " \t")))
-	// {
-	// 	if (strcmp(*upstream, "|") == 0)
-	// 	{
-	// 		*upstream = NULL;
-	// 		while ((*downstream++ = strtok(NULL, " |")))
-	// 			/* Empty body */;
-
-	// 		return 1;
-	// 	}
-	// 	upstream++;
-	// }
-// downstream[0] = NULL;
+	downstream[0] = NULL;
 	// printf("> ");
 	line = readline("[MINISHELl]$ ");
 	if (line == NULL)
@@ -89,6 +63,8 @@ int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine
 		}
 		upstream++;
 	}
+downstream[0] = NULL;
+	
 	return 1;
 }
 // ps | pwd | wc
@@ -158,24 +134,23 @@ int main(int ac, char **av, char **env)
 		// close(	list->fd_out);
 		// 				// list->fd_out = 	list->rd_stdout ;
 		// 			}
-		if (downstream[0] != NULL)
-		{
-
+		if (downstream[0] == NULL)
+		{ 
 			// if (list->there_is_pipe == 0)
 			int i = 0 ;
 				// int builtin = is_builtin(list, 0);
 				// if(builtin == 0)
 				// {				
 					
-						if(list->rd == 1)
-					{
+					// 	if(list->rd == 1)
+					// {
 					
-							list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_TRUNC, 0600);
-						// dup2(list->fd_out, 1);
-						// close(list->fd_out);
-						// list->fd_out = 	list->rd_stdout ;
-					}
-			if(ft_is_built_in(list)  != 0)
+					// 		list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_TRUNC, 0600);
+					// 	// dup2(list->fd_out, 1);
+					// 	// close(list->fd_out);
+					// 	// list->fd_out = 	list->rd_stdout ;
+					// }
+			if(ft_is_built_in(list)  == 0)
 			{
 
 			// }
