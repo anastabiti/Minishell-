@@ -12,12 +12,13 @@
 
 #include "../minishell.h"
 
-void ft_env(char **env, struct s_list *list)
+void	ft_env(char **env, struct s_list *list)
 {
-	char **var = env;
+	char	**var;
+
+	var = env;
 	while (*var != NULL)
 	{
-		// printf("%s\n", *var);
 		ft_putendl_fd(*var, 1);
 		var++;
 	}

@@ -12,22 +12,24 @@
 
 #include "../minishell.h"
 
-int ft_export(char **env)
+int	ft_export(char **env)
 {
-	char *to_be_exported = "PATH=/Users/atabiti/.brew/bin:/Users/atabiti/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands";
-	int len;
+	char	*to_be_exported;
+	int		len;
+	int		i;
 
+	to_be_exported = "PATH=/Users/atabiti/.brew/bin:/Users/atabiti/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands";
 	len = ft_strlen(to_be_exported);
-	int i = 0;
+	i = 0;
 	while (env[i])
 	{
 		if (ft_strnstr(env[i], to_be_exported, len))
 		{
-			return 0;
+			return (0);
 		}
 		i++;
 	}
 	env[i] = to_be_exported;
 	env[i + 1] = NULL;
-	return 0;
+	return (0);
 }

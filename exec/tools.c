@@ -12,9 +12,9 @@
 
 #include "../minishell.h"
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t index;
+	size_t	index;
 
 	index = 0;
 	while ((s1[index] != 0 || s2[index] != 0) && index < n)
@@ -26,10 +26,10 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-int ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char *sone;
-	unsigned char *stwo;
+	unsigned char	*sone;
+	unsigned char	*stwo;
 
 	sone = (unsigned char *)s1;
 	stwo = (unsigned char *)s2;
@@ -43,9 +43,10 @@ int ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-char *ft_strchr(const char *s, int c)
+
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -59,11 +60,11 @@ char *ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t mer;
-	size_t lenght;
-	char *merge;
+	size_t	mer;
+	size_t	lenght;
+	char	*merge;
 
 	mer = 0;
 	if (s1 == NULL || s2 == NULL)

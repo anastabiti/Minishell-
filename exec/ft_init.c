@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-struct s_list *ft_init(struct s_list *list)
+struct s_list	*ft_init(struct s_list *list)
 {
 	list->blt->echo = "echo";
 	list->blt->cd = "cd";
@@ -22,5 +22,5 @@ struct s_list *ft_init(struct s_list *list)
 	list->blt->env = "env";
 	list->blt->exit = "exit";
 	list->blt->cd_path = "/biren/";
-	return list;
+	return (list);
 }
