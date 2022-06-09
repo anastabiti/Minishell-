@@ -45,19 +45,11 @@ void ft_pipe(struct s_list *list)
 		{
 
 			dup2(fd_in, 0);
-			if(list->rd == 0)
-			{
-
-			}
-			if (list->cmd_iteration < list->there_is_pipe && list->rd == 0)
+			if (list->cmd_iteration < list->there_is_pipe )
 
 				// close(1);
 				dup2(fd[1], 1);
-				else
-				{
-									dup2(list->rd_stdout, 1);
-
-				}
+		
 
 			close(fd[0]);
 			// if (i == 0)

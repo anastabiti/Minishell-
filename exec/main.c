@@ -79,10 +79,10 @@ int prompt_and_parse(char **upstream, char **downstream, char *line) // not mine
 	*upstream++ = strtok(line, " \t");
 	while ((*upstream = strtok(NULL, " \t")))
 	{
-		if (strcmp(*upstream, ">") == 0)
+		if (strcmp(*upstream, "|") == 0)
 		{
 			*upstream = NULL;
-			while ((*downstream++ = strtok(NULL, " >")))
+			while ((*downstream++ = strtok(NULL, " |")))
 				/* Empty body */;
 
 			return 1;
