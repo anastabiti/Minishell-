@@ -142,14 +142,14 @@ int main(int ac, char **av, char **env)
 				// if(builtin == 0)
 				// {				
 					
-					// 	if(list->rd == 1)
-					// {
+						if(list->rd == 1)
+					{
 					
-					// 		list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_TRUNC, 0600);
-					// 	// dup2(list->fd_out, 1);
-					// 	// close(list->fd_out);
-					// 	// list->fd_out = 	list->rd_stdout ;
-					// }
+							list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_TRUNC, 0600);
+						// dup2(list->fd_out, 1);
+						// close(list->fd_out);
+						// list->fd_out = 	list->rd_stdout ;
+					}
 			if(ft_is_built_in(list)  == 0)
 			{
 
@@ -157,6 +157,8 @@ int main(int ac, char **av, char **env)
 				
 				if (fork() == 0)
 				{
+											dup2(list->fd_out, 1);
+
 					ft_bin_usr_sbin(list);
 				}
 

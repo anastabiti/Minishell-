@@ -75,13 +75,6 @@ int ft_is_built_in(struct s_list *list)
 	{		return 1;
 
 	}
-	////////////////////////////////////////////////////////////////////////
-	// else if (ft_strncmp(list[0].cmd[0], list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
-	// {
-	// 	ft_unset(vr);
-	// 	return 1;
-	// }
-	////////////////////////////////////////////////////////////////////////
 	else if (ft_strncmp(list[0].cmd[0], list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
 	{
 		ft_env(list->environ, list);
