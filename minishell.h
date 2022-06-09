@@ -56,6 +56,7 @@ struct					s_list
 	int					cmd_iteration;
 	int rd_stdout;
 	int rd;
+	char *redir;
 
 };
 

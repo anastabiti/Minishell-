@@ -116,6 +116,7 @@ int main(int ac, char **av, char **env)
 		//
 
 		ft_init(list);
+		list->redir = ">";
 		list[0].cmd[0] = upstream[0];
 		// list[0].cmd[0] = "cdfgfd";
 
@@ -148,6 +149,12 @@ int main(int ac, char **av, char **env)
 		list->there_is_pipe = 0;
 		list->cmd_nbr = 2;
 		list->rd = 1;
+		if(list->rd == 1)
+					{
+							list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_APPEND, 0600);
+						dup2(	list->fd_out, 1);
+						// list->fd_out = 	list->rd_stdout ;
+					}
 		if (downstream[0] == NULL)
 		{
 
@@ -156,6 +163,7 @@ int main(int ac, char **av, char **env)
 				// int builtin = is_builtin(list, 0);
 				// if(builtin == 0)
 				// {
+					
 			if(ft_is_built_in(list)  != 0)
 			{
 
