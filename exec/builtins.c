@@ -28,6 +28,7 @@ int ft_is_built_in(struct s_list *list)
 {
 	char **vr = list->environ;
 	int i = 0;
+
 	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
 	{
 		ft_echo(list[0].cmd[1], list->fd_out);
@@ -95,6 +96,5 @@ int ft_pwd(int fd_out)
 	int len = ft_strlen(pwd);
 	write(fd_out, pwd, len);
 	write(fd_out, "\n", 1);
-
 	return 1;
 }

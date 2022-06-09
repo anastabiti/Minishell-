@@ -147,23 +147,34 @@ int main(int ac, char **av, char **env)
 		// list[3].cmd[1] = downstream[4];
 		// list[3].cmd = downstream[4];
 		list->there_is_pipe = 0;
-		list->cmd_nbr = 2;
+		list->cmd_nbr = 1;
 		list->rd = 1;
-		if(list->rd == 1)
-					{
-							list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_APPEND, 0600);
-						dup2(	list->fd_out, 1);
-						// list->fd_out = 	list->rd_stdout ;
-					}
-		if (downstream[0] == NULL)
+
+
+		// if(list->rd == 1)
+		// 			{
+		// 					list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_TRUNC, 0600);
+		// 				dup2(list->fd_out, 1);
+		// close(	list->fd_out);
+		// 				// list->fd_out = 	list->rd_stdout ;
+		// 			}
+		if (downstream[0] = NULL)
 		{
 
 			// if (list->there_is_pipe == 0)
 			int i = 0 ;
 				// int builtin = is_builtin(list, 0);
 				// if(builtin == 0)
-				// {
+				// {					
 					
+						if(list->rd == 1)
+					{
+						printf("dddd");
+							list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_TRUNC, 0600);
+						dup2(list->fd_out, 1);
+		close(	list->fd_out);
+						// list->fd_out = 	list->rd_stdout ;
+					}
 			if(ft_is_built_in(list)  != 0)
 			{
 
