@@ -150,14 +150,16 @@ int main(int ac, char **av, char **env)
 						// close(list->fd_out);
 						// list->fd_out = 	list->rd_stdout ;
 					}
+					
+					
 			if(ft_is_built_in(list)  == 0)
 			{
 
 			// }
 				
 				if (fork() == 0)
-				{
-					if(list->r_input == 1)
+				{list->fd_out  = 1;
+						if(list->r_input == 1)
 					{
 						list->fd_in = open("Makefile", O_RDONLY, 0);
 						dup2(list->fd_in, 0);
