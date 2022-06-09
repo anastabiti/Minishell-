@@ -23,13 +23,9 @@ int ft_echo(char *arg, int fd)
 
 	return 0;
 }
-
-int ft_is_built_in(struct s_list *list)
+int builtcheck(struct s_list *list)
 {
-	char **vr = list->environ;
-	int i = 0;
-
-	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
+if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
 	{
 		ft_echo(list[0].cmd[1], list->fd_out);
 		return 1;
@@ -46,7 +42,13 @@ int ft_is_built_in(struct s_list *list)
 		}
 		return 1;
 	}
-	else if (ft_strncmp(list[0].cmd[0], list->blt->export, 6) == 0)
+	return 0;
+}
+//.....
+int builtcheck_1(struct s_list *list)
+{
+	char **vr = list->environ;
+	 if (ft_strncmp(list[0].cmd[0], list->blt->export, 6) == 0)
 	{
 		ft_export(vr);
 		return 1;
@@ -55,6 +57,23 @@ int ft_is_built_in(struct s_list *list)
 	{
 		ft_unset(vr);
 		return 1;
+	}
+	return 0;
+}
+
+int ft_is_built_in(struct s_list *list)
+{
+	
+	int i = 0;
+
+	if(builtcheck(list) == 1 )
+	{		return 1;
+
+	}
+
+	else if(builtcheck_1(list) == 1 )
+	{		return 1;
+
 	}
 	////////////////////////////////////////////////////////////////////////
 	// else if (ft_strncmp(list[0].cmd[0], list->blt->env, 3) == 0) // prints out the names and values of the variables in the environment,
