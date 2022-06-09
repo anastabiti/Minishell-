@@ -124,8 +124,8 @@ int main(int ac, char **av, char **env)
 		// list[3].cmd = downstream[4];
 		list->there_is_pipe = 0;
 		list->cmd_nbr = 1;
-		list->rd = 1;
-
+		list->rd = 0;
+	list->r_input = 1;
 
 		// if(list->rd == 1)
 		// 			{
@@ -157,6 +157,12 @@ int main(int ac, char **av, char **env)
 				
 				if (fork() == 0)
 				{
+					if(list->r_input == 1)
+					{
+						list->fd_in = open("Makefile", O_RDONLY, 0);
+						dup2(list->fd_in, 0);
+					}	
+
 											dup2(list->fd_out, 1);
 
 					ft_bin_usr_sbin(list);

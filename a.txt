@@ -1,5 +1,4 @@
   PID TTY           TIME CMD
-70913 ttys000    0:00.11 /bin/zsh -l
-71287 ttys000    0:00.01 ./minishell
-68936 ttys002    0:00.49 /bin/zsh -l
-71399 ttys002    0:00.04 vim a.txt
+89257 ttys000    0:00.13 /bin/zsh -l
+89754 ttys001    0:00.31 /bin/zsh -l
+93340 ttys001    0:00.00 ./minishell

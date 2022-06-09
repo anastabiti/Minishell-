@@ -57,6 +57,8 @@ struct					s_list
 	int rd_stdout;
 	int rd;
 	char *redir;
+	int r_input;
+	int fd_in;
 
 };
 
