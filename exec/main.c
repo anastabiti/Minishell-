@@ -121,9 +121,9 @@ int main(int ac, char **av, char **env)
 
 		// list[3].cmd[1] = downstream[4];
 		// list[3].cmd = downstream[4];
-		list->there_is_pipe = 0;
-		list->cmd_nbr = 1;
-		list->rd = 0;
+		list->there_is_pipe = 1;
+		list->cmd_nbr = 2;
+		list->rd_out = 0;
 	list->r_input = 1;
 
 		// if(list->rd == 1)
@@ -142,7 +142,7 @@ int main(int ac, char **av, char **env)
 				// {				
 										list->fd_out  = 1;
 
-						if(list->rd == 1)
+						if(list->rd_out == 1)
 					{
 					
 							list->fd_out  = open("a.txt",  O_RDWR|O_CREAT|O_TRUNC, 0600);
@@ -155,10 +155,9 @@ int main(int ac, char **av, char **env)
 						list->fd_in = open("Makefile", O_RDONLY, 0);
 						dup2(list->fd_in, 0);
 					}	
-close(list->fd_in);
 											// dup2(list->fd_out, 1);
 
-					
+
 			if(ft_is_built_in(list)  == 0)
 			{
 

@@ -55,7 +55,7 @@ struct					s_list
 	int					there_is_pipe;
 	int					cmd_iteration;
 	int rd_stdout;
-	int rd;
+	int rd_out;
 	char *redir;
 	int r_input;
 	int fd_in;
