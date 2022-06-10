@@ -85,7 +85,9 @@ int	main(int ac, char **av, char **env)
 		//......... cmds with args and options
 		list[0].cmd[0] = "pwd";
 		list[0].REDIRECTION_OUT = TRUE;
+		list[0].REDIRECTION_IN = TRUE;
 		list[0].fileout = "FILEOUT";
+		list[0].filein = "a.txt";
 		list[0].cmd[1] = NULL;
 		// list[0].cmd[3] = "ls";
 		//......... cmds with args and options
@@ -99,21 +101,29 @@ int	main(int ac, char **av, char **env)
 			i = 0;
 			// list->fd_out = 1;
 			if (list->REDIRECTION_OUT == TRUE)
-			{									{						dup2(list->fd_out, 1);
+			{														dup2(list->fd_out, 1);
 
 				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
 						0600);
 
 			}
-			// else if (list->r_input == 1)
-			// {
-			// 	list->fd_in = open("Makefile", O_RDONLY, 0);
-			// 	dup2(list->fd_in, 0);
-			// }
+			else if (list->REDIRECTION_IN == TRUE)
+			{
+				dup2(list->fd_in, 0);
+				list->fd_in = open(list[0].filein, O_RDONLY, 0);
+
+			}
+			
 			ft_is_built_in(list);
 			if (list->REDIRECTION_OUT == TRUE)
+			{
 
 				close(list->fd_out);
+			}
+			else if (list->REDIRECTION_IN == TRUE)
+			{
+
+				close(list->fd_in);
 			}
 		}
 		else
