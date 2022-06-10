@@ -84,29 +84,37 @@ int	main(int ac, char **av, char **env)
 		ft_init(list);
 		//......... cmds with args and options
 		list[0].cmd[0] = "pwd";
-		// list[0].cmd[1] = NULL;
-		// list[0].cmd[2] = "ls";
+		list[0].REDIRECTION_OUT = TRUE;
+		list[0].fileout = "FILEOUT";
+		list[0].cmd[1] = NULL;
 		// list[0].cmd[3] = "ls";
 		//......... cmds with args and options
 		list->redir = ">";
 		list->there_is_pipe = 1;
-		list->cmd_nbr = 2;
+		list->cmd_nbr = 1;
 		list->rd_out = 0;
 		list->r_input = 1;
-		if (list->cmd_nbr == 1 && is_builtin(list,0) == 0)
+		if (list->cmd_nbr == 1 && is_builtin(list, 0) == 0)
 		{
 			i = 0;
 			// list->fd_out = 1;
-			// if (list->rd_out == 1)
-			// {
-			// 	list->fd_out = open("a.txt", O_RDWR | O_CREAT | O_TRUNC, 0600);
-			// }
+			if (list->REDIRECTION_OUT == TRUE)
+			{									{						dup2(list->fd_out, 1);
+
+				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
+						0600);
+
+			}
 			// else if (list->r_input == 1)
 			// {
 			// 	list->fd_in = open("Makefile", O_RDONLY, 0);
 			// 	dup2(list->fd_in, 0);
 			// }
 			ft_is_built_in(list);
+			if (list->REDIRECTION_OUT == TRUE)
+
+				close(list->fd_out);
+			}
 		}
 		else
 		{
@@ -121,8 +129,7 @@ int	main(int ac, char **av, char **env)
 	{
 		ft_pipe(list);
 	}
-
-free(input);
+	free(input);
 }
 /*
 

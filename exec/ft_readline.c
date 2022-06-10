@@ -16,7 +16,7 @@ char *ft_read(char *input)
 {
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, handler);
-	input = readline("[MINISHELl]$ "); // like getnextline : readline will read a line from the terminal and return it,
+	input = readline("MINISHELL-BETA $ "); // like getnextline : readline will read a line from the terminal and return it,
 	// size_t llenght = ft_strlen(input);
 	if (!input) // ctrl-D
 	{

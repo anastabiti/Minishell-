@@ -13,11 +13,9 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include <fcntl.h>
-# include <stdio.h>
 # include <limits.h>
-
 # include <signal.h>
-
+# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/stat.h>
@@ -26,10 +24,10 @@
 # define KRED "\x1B[31m"
 # define KGRN "\x1B[32m"
 # include <dirent.h> // open dir
-# include <sys/wait.h>
 # include <readline/history.h>
 # include <readline/readline.h>
-
+# include <sys/wait.h>
+# define TRUE 1
 struct					s_builtins
 {
 	char				*echo;
@@ -54,12 +52,14 @@ struct					s_list
 	int					cmd_nbr;
 	int					there_is_pipe;
 	int					cmd_iteration;
-	int rd_stdout;
-	int rd_out;
-	char *redir;
-	int r_input;
-	int fd_in;
-
+	int					rd_stdout;
+	int					rd_out;
+	char				*redir;
+	int					r_input;
+	int					fd_in;
+	int					REDIRECTION_OUT;
+	int					REDIRECTION_IN;
+	char				*fileout;
 };
 
 void					handler(int sig);
@@ -74,7 +74,7 @@ int						ft_echo(char *arg, int fd);
 int						ft_is_built_in(struct s_list *list);
 int						ft_unset(char **env);
 int						ft_export(char **env);
-int	is_builtin(struct s_list *list, int i);
+int						is_builtin(struct s_list *list, int i);
 // Other
 int						ft_bin_usr_sbin(struct s_list *list);
 // LIBFT
@@ -103,7 +103,7 @@ void					ft_putendl_fd(char *s, int fd);
 // read input
 char					*ft_read(char *input);
 // pipes
-void						ft_pipe(struct s_list *list);
+void					ft_pipe(struct s_list *list);
 // signals
 void					handler(int sig);
 // init data
