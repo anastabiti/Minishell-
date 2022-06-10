@@ -141,7 +141,8 @@ int main(int ac, char **av, char **env)
 				// int builtin = is_builtin(list, 0);
 				// if(builtin == 0)
 				// {				
-					
+										list->fd_out  = 1;
+
 						if(list->rd == 1)
 					{
 					
@@ -150,16 +151,7 @@ int main(int ac, char **av, char **env)
 						// close(list->fd_out);
 						// list->fd_out = 	list->rd_stdout ;
 					}
-					
-					
-			if(ft_is_built_in(list)  == 0)
-			{
-
-			// }
-				
-				if (fork() == 0)
-				{list->fd_out  = 1;
-						if(list->r_input == 1)
+						else if(list->r_input == 1)
 					{
 						list->fd_in = open("Makefile", O_RDONLY, 0);
 						dup2(list->fd_in, 0);
@@ -167,6 +159,14 @@ int main(int ac, char **av, char **env)
 
 											dup2(list->fd_out, 1);
 
+					
+			if(ft_is_built_in(list)  == 0)
+			{
+
+			// }
+				
+				if (fork() == 0)
+				{
 					ft_bin_usr_sbin(list);
 				}
 
