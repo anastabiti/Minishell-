@@ -35,7 +35,7 @@ void handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		write(1, "\n", 1);
+		printf("\n");
 		rl_on_new_line();				//  Tell the update functions that we have moved onto a new (empty) line
 		rl_replace_line("", 0); // needs to include the LIB and /include dir to work
 		rl_redisplay();					// Change what's displayed on the screen to reflect the current contents of rl_line_buffer.
