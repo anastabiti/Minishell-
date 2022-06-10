@@ -84,7 +84,6 @@ int main(int ac, char **av, char **env)
 	
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, handler);
-
 	while (prompt_and_parse(upstream, downstream, list->input) > 0)
 	{
 
@@ -151,13 +150,13 @@ int main(int ac, char **av, char **env)
 						// close(list->fd_out);
 						// list->fd_out = 	list->rd_stdout ;
 					}
-						else if(list->r_input == 1)
+			 			else if(list->r_input == 1)
 					{
 						list->fd_in = open("Makefile", O_RDONLY, 0);
 						dup2(list->fd_in, 0);
 					}	
-
-											dup2(list->fd_out, 1);
+close(list->fd_in);
+											// dup2(list->fd_out, 1);
 
 					
 			if(ft_is_built_in(list)  == 0)
