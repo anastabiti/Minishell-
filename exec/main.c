@@ -83,9 +83,9 @@ int main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "hostname";
+		list[0].cmd[0] = "pwd";
 		list[0].REDIRECTION_OUT = TRUE;
-		list[0].REDIRECTION_IN = TRUE;
+		list[0].REDIRECTION_IN = 0;
 		list[0].fileout = "FILEOUT";
 		list[0].filein = "a.txt";
 		list[0].cmd[1] = NULL;
@@ -102,7 +102,7 @@ int main(int ac, char **av, char **env)
 			// list->fd_out = 1;
 			if (list->REDIRECTION_OUT == TRUE)
 			{
-				dup2(list->fd_out, 1);
+				// dup2(list->fd_out, 1);
 				// i should use a while loop ; while there is an 
 				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
 									0600);
@@ -110,7 +110,7 @@ int main(int ac, char **av, char **env)
 			}
 			else if (list->REDIRECTION_IN == TRUE)
 			{
-				dup2(list->fd_in, 0);
+				// dup2(list->fd_in, 0);
 				list->fd_in = open(list[0].filein, O_RDONLY, 0);
 				if(list->fd_in == -1)
 				{
