@@ -83,7 +83,7 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "pwd";
+		list[0].cmd[0] = "hostname";
 		list[0].REDIRECTION_OUT = TRUE;
 		list[0].REDIRECTION_IN = TRUE;
 		list[0].fileout = "FILEOUT";
@@ -96,8 +96,10 @@ int	main(int ac, char **av, char **env)
 		list->cmd_nbr = 1;
 		list->rd_out = 0;
 		list->r_input = 1;
+		list->cmd_iteration = 0;
 		if (list->cmd_nbr == 1 && is_builtin(list, 0) == 0)
 		{
+			
 			i = 0;
 			// list->fd_out = 1;
 			if (list->REDIRECTION_OUT == TRUE)
@@ -128,17 +130,25 @@ int	main(int ac, char **av, char **env)
 		}
 		else
 		{
+				dup2(list->fd_out, 1);
+
+				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
+						0600);
+						
+			
 			if (fork() == 0)
 			{
 				ft_bin_usr_sbin(list);
 			}
 			wait(NULL);
+		
 		}
-	}
-	if (list->cmd_nbr > 1)
+		if (list->cmd_nbr > 1)
 	{
 		ft_pipe(list);
 	}
+	}
+	
 	free(input);
 }
 /*
