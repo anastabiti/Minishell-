@@ -60,8 +60,7 @@ struct					s_list
 	int					REDIRECTION_OUT;
 	int					REDIRECTION_IN;
 	char				*fileout;
-		char				*filein;
-
+	char				*filein;
 };
 
 void					handler(int sig);

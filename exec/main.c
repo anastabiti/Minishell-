@@ -83,12 +83,22 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "hostname";
+		list[0].cmd[0] = "pwd";
 		list[0].REDIRECTION_OUT = TRUE;
 		list[0].REDIRECTION_IN = TRUE;
 		list[0].fileout = "FILEOUT";
 		list[0].filein = "a.txt";
 		list[0].cmd[1] = NULL;
+		//....
+
+
+	// list[0].cmd[0] = "hostname";
+	// 	list[0].REDIRECTION_OUT = TRUE;
+	// 	list[0].REDIRECTION_IN = TRUE;
+	// 	list[0].fileout = "FILEOUT";
+	// 	list[0].filein = "a.txt";
+	// 	list[0].cmd[1] = NULL;
+		//......
 		// list[0].cmd[3] = "ls";
 		//......... cmds with args and options
 		list->redir = ">";
@@ -106,6 +116,10 @@ int	main(int ac, char **av, char **env)
 			{														dup2(list->fd_out, 1);
 
 				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
+						0600);
+						list->fd_out = open("a", O_RDWR | O_CREAT | O_TRUNC,
+						0600);
+	list->fd_out = open("b", O_RDWR | O_CREAT | O_TRUNC,
 						0600);
 
 			}
@@ -134,7 +148,7 @@ int	main(int ac, char **av, char **env)
 
 				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
 						0600);
-						
+
 			
 			if (fork() == 0)
 			{
