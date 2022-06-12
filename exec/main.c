@@ -83,7 +83,7 @@ int main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "pwd";
+		list[0].cmd[0] = "env";
 		list[0].REDIRECTION_OUT = TRUE;
 		list[0].REDIRECTION_IN = TRUE;
 		list[0].fileout = "FILEOUT";
@@ -106,10 +106,7 @@ int main(int ac, char **av, char **env)
 				// i should use a while loop ; while there is an 
 				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
 									0600);
-				list->fd_out = open("a", O_RDWR | O_CREAT | O_TRUNC,
-									0600);
-				list->fd_out = open("b", O_RDWR | O_CREAT | O_TRUNC,
-									0600);
+		
 			}
 			else if (list->REDIRECTION_IN == TRUE)
 			{
@@ -135,11 +132,7 @@ int main(int ac, char **av, char **env)
 		}
 		else
 		{
-			dup2(list->fd_out, 1);
-
-			list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
-								0600);
-
+			
 			if (fork() == 0)
 			{
 				ft_bin_usr_sbin(list);

@@ -19,7 +19,7 @@ void	ft_env(char **env, struct s_list *list)
 	var = env;
 	while (*var != NULL)
 	{
-		ft_putendl_fd(*var, 1);
+		ft_putendl_fd(*var, list->fd_out);
 		var++;
 	}
 }
