@@ -133,22 +133,23 @@ int main(int ac, char **av, char **env)
 		else
 		{
 			
-				dup2(list->fd_out, 1);
+				// dup2(list->fd_out, 1);
 				// i should use a while loop ; while there is an 
 				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
+									0600);
+									list->fd_out = open("a", O_RDWR | O_CREAT | O_TRUNC,
+									0600);
+									list->fd_out = open("dd", O_RDWR | O_CREAT | O_TRUNC,
 									0600);
 			
 			
 			if (fork() == 0)
-			{dup2(list->fd_out, 1);
-				// i should use a while loop ; while there is an 
-				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
-									0600);
+			{
+				dup2(list->fd_out, 1);
+				
 				ft_bin_usr_sbin(list);
 			}
 			wait(NULL);
-				close(list->fd_out);
-
 		}
 		if (list->cmd_nbr > 1)
 		{
