@@ -137,15 +137,19 @@ int	main(int ac, char **av, char **env)
 			redirections(list);
 
 	///.................................///
-	
-	if (list->REDIRECTION_OUT == 1)
+	int i = 0;
+	while(list[i].next != NULL)
+	{
+	if (list[i].REDIRECTION_OUT == 1)
 			{
 				dup2(list->fd_out, 1);
 			}	
-	if (list->REDIRECTION_IN == 1)
+	if (list[i].REDIRECTION_IN == 1)
 			{
 					dup2(list->fd_in, 0);
 			}
+			i++;
+	}
 ///.................................///
 				ft_bin_usr_sbin(list);
 					if (list->REDIRECTION_OUT == 1)
