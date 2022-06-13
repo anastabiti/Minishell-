@@ -84,9 +84,9 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "hostname";
-		list[0].REDIRECTION_OUT = 1;
-		list[0].REDIRECTION_IN = 0;
+		list[0].cmd[0] = "cat";
+		list[0].REDIRECTION_OUT = 0;
+		list[0].REDIRECTION_IN = 1;
 		list[0].fileout = "FILEOUT1";
 		list[0].filein = "simpleparser.c";
 		list[0].cmd[1] = NULL;
@@ -103,7 +103,6 @@ int	main(int ac, char **av, char **env)
 		list[1].fileout = "FILEOUT2";
 		list[1].filein = "1";
 		list[1].next = &list[2];
-		list[2].next = NULL;
 		//// next node
 		list[2].REDIRECTION_OUT = 1;
 		list[2].REDIRECTION_IN = 0;
@@ -132,10 +131,10 @@ int	main(int ac, char **av, char **env)
 		//...>>>>>>>>>>>>>>
 		else
 		{
-			redirections(list);
 	
 			if (fork() == 0)
 			{
+			redirections(list);
 
 	///.................................///
 	
@@ -149,11 +148,7 @@ int	main(int ac, char **av, char **env)
 			}
 ///.................................///
 				ft_bin_usr_sbin(list);
-			}
-			wait(NULL);
-		///.................................///
-
-				if (list->REDIRECTION_OUT == 1)
+					if (list->REDIRECTION_OUT == 1)
 			{
 				close(list->fd_out);
 			}
@@ -161,8 +156,8 @@ int	main(int ac, char **av, char **env)
 			{
 				close(list->fd_in);
 			}
-	///.................................///
-
+			}
+			wait(NULL);
 		}
 		if (list->cmd_nbr > 1)
 		{

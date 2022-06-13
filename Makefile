@@ -39,7 +39,7 @@ $(NAME) : $(OBJ)
 
 	
 clean :
-	rm FILEOUT1   FILEOUT3     FILEOUT2    
+	# rm FILEOUT1   FILEOUT3     FILEOUT2    
 		cd ./exec; \
 	rm *.o
 		cd ./libft; \
