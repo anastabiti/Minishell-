@@ -84,10 +84,10 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "ls";
+		list[0].cmd[0] = "pwd";
 		list[0].REDIRECTION_OUT = 1;
 		list[0].REDIRECTION_IN = 0;
-		list[0].fileout = "FILEOUT";
+		list[0].fileout = "FILEOUT1";
 		list[0].filein = "simpleparser.c";
 		list[0].cmd[1] = NULL;
 		list[0].next = &list[1];
@@ -100,14 +100,14 @@ int	main(int ac, char **av, char **env)
 		//// next node
 		list[1].REDIRECTION_OUT = 1;
 		list[1].REDIRECTION_IN = 0;
-		list[1].fileout = "2";
+		list[1].fileout = "FILEOUT2";
 		list[1].filein = "1";
 		list[1].next = &list[2];
 		list[2].next = NULL;
 		//// next node
 		list[2].REDIRECTION_OUT = 1;
 		list[2].REDIRECTION_IN = 0;
-		list[2].fileout = "new";
+		list[2].fileout = "FILEOUT3";
 		list[2].filein = "last";
 		list[2].next = &list[3];
 		list[3].next = NULL;
@@ -121,7 +121,7 @@ int	main(int ac, char **av, char **env)
 			{
 				close(list->fd_out);
 			}
-			else if (list->REDIRECTION_IN == 1)
+			if (list->REDIRECTION_IN == 1)
 			{
 				close(list->fd_in);
 			}
@@ -129,12 +129,29 @@ int	main(int ac, char **av, char **env)
 		else
 		{
 			redirections(list);
+
 			if (fork() == 0)
 			{
+						if (list->REDIRECTION_OUT == 1)
+			{
 				dup2(list->fd_out, 1);
+			}
+			if (list->REDIRECTION_IN == 1)
+			{
+								dup2(list->fd_in, 1);
+			}
+
 				ft_bin_usr_sbin(list);
 			}
 			wait(NULL);
+				if (list->REDIRECTION_OUT == 1)
+			{
+				close(list->fd_out);
+			}
+			if (list->REDIRECTION_IN == 1)
+			{
+				close(list->fd_in);
+			}
 		}
 		if (list->cmd_nbr > 1)
 		{

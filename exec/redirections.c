@@ -30,13 +30,13 @@ int redirections(struct s_list *list)
 			}
 			 if (list[i].REDIRECTION_IN == 1)
 			{
-				dup2(list->fd_in, 0);
+				// dup2(list->fd_in, 0);
 				list->fd_in = open(list[i].filein, O_RDONLY, 0);
 				if(list->fd_in == -1)
 				{
 					printf("bash: No such file or directory\n");
 				}
-                		close(list->fd_in);
+                		// close(list->fd_in);
 
 			}
             i++;
