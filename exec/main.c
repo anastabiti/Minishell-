@@ -83,8 +83,8 @@ int main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "finger";
-		list[0].REDIRECTION_OUT = 0;
+		list[0].cmd[0] = "pwd";
+		list[0].REDIRECTION_OUT = 1;
 		list[0].REDIRECTION_IN = 0;
 		list[0].fileout = "FILEOUT";
 		list[0].filein = "a.txt";
@@ -97,32 +97,40 @@ int main(int ac, char **av, char **env)
 		list->rd_out = 0;
 		list->r_input = 1;
 		list->cmd_iteration = 0;
-		list[1].next = NULL;
+		//// next node
+		list[1].REDIRECTION_OUT = 1;
+		list[1].REDIRECTION_IN = 0;
+		list[1].fileout = "2";
+		list[1].filein = "1";
+		list[1].next = &list[2];
+				list[2].next = NULL;
+
 		if (list->cmd_nbr == 1 && is_builtin(list, 0) == 0)
 		{
 
 			i = 0;
 			// list->fd_out = 1;
-			if (list->REDIRECTION_OUT == 1)
-			{
-				// dup2(list->fd_out, 1);
-				// i should use a while loop ; while there is an 
-				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
-									0600);
-		if(list->fd_out == -1)
-				{
-					printf("bash: No such file or directory\n");
-				}
-			}
-			else if (list->REDIRECTION_IN == 1)
-			{
-				// dup2(list->fd_in, 0);
-				list->fd_in = open(list[0].filein, O_RDONLY, 0);
-				if(list->fd_in == -1)
-				{
-					printf("bash: No such file or directory\n");
-				}
-			}
+		// 	if (list->REDIRECTION_OUT == 1)
+		// 	{
+		// 		// dup2(list->fd_out, 1);
+		// 		// i should use a while loop ; while there is an 
+		// 		list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
+		// 							0600);
+		// if(list->fd_out == -1)
+		// 		{
+		// 			printf("bash: No such file or directory\n");
+		// 		}
+		// 	}
+		// 	else if (list->REDIRECTION_IN == 1)
+		// 	{
+		// 		// dup2(list->fd_in, 0);
+		// 		list->fd_in = open(list[0].filein, O_RDONLY, 0);
+		// 		if(list->fd_in == -1)
+		// 		{
+		// 			printf("bash: No such file or directory\n");
+		// 		}
+		// 	}
+						redirections(list);
 
 			ft_is_built_in(list);
 			if (list->REDIRECTION_OUT == 1)
@@ -142,15 +150,6 @@ int main(int ac, char **av, char **env)
 
 				// dup2(list->fd_out, 1);
 				// i should use a while loop ; while there is an 
-				if (list->REDIRECTION_OUT == 1)
-				{
-				list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
-									0600);
-									list->fd_out = open("a", O_RDWR | O_CREAT | O_TRUNC,
-									0600);
-									list->fd_out = open("dd", O_RDWR | O_CREAT | O_TRUNC,
-									0600);
-				}
 			
 			if (fork() == 0)
 			{
