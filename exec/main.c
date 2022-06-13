@@ -13,7 +13,7 @@
 #include "../minishell.h"
 // ping is /sbin/ping
 
-int is_builtin(struct s_list *list, int i)
+int	is_builtin(struct s_list *list, int i)
 {
 	if (list[i].cmd[i] == NULL)
 		return (0);
@@ -35,7 +35,7 @@ int is_builtin(struct s_list *list, int i)
 }
 // not mine is from a course i use it to accelerate work
 
-int prompt_and_parse(char **upstream, char **downstream, char *line)
+int	prompt_and_parse(char **upstream, char **downstream, char *line)
 {
 	downstream[0] = NULL;
 	line = readline("MINISHELL BETA $ ");
@@ -62,13 +62,13 @@ int prompt_and_parse(char **upstream, char **downstream, char *line)
 	downstream[0] = NULL;
 	return (1);
 }
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	struct s_list *list;
-	char *input;
-	int fd;
-	char *upstream[20], *downstream[20];
-	int i;
+	struct s_list	*list;
+	char			*input;
+	int				fd;
+	char			*upstream[20], *downstream[20];
+	int				i;
 
 	(void)ac;
 	(void)av;
@@ -83,13 +83,12 @@ int main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "pwd";
+		list[0].cmd[0] = "ls";
 		list[0].REDIRECTION_OUT = 1;
 		list[0].REDIRECTION_IN = 0;
 		list[0].fileout = "FILEOUT";
-		list[0].filein = "a.txt";
+		list[0].filein = "simpleparser.c";
 		list[0].cmd[1] = NULL;
-
 		list[0].next = &list[1];
 		list->redir = ">";
 		list->there_is_pipe = 1;
@@ -103,58 +102,27 @@ int main(int ac, char **av, char **env)
 		list[1].fileout = "2";
 		list[1].filein = "1";
 		list[1].next = &list[2];
-				list[2].next = NULL;
-
+		list[2].next = NULL;
 		if (list->cmd_nbr == 1 && is_builtin(list, 0) == 0)
 		{
-
 			i = 0;
-			// list->fd_out = 1;
-		// 	if (list->REDIRECTION_OUT == 1)
-		// 	{
-		// 		// dup2(list->fd_out, 1);
-		// 		// i should use a while loop ; while there is an 
-		// 		list->fd_out = open(list[0].fileout, O_RDWR | O_CREAT | O_TRUNC,
-		// 							0600);
-		// if(list->fd_out == -1)
-		// 		{
-		// 			printf("bash: No such file or directory\n");
-		// 		}
-		// 	}
-		// 	else if (list->REDIRECTION_IN == 1)
-		// 	{
-		// 		// dup2(list->fd_in, 0);
-		// 		list->fd_in = open(list[0].filein, O_RDONLY, 0);
-		// 		if(list->fd_in == -1)
-		// 		{
-		// 			printf("bash: No such file or directory\n");
-		// 		}
-		// 	}
-						redirections(list);
-
+			redirections(list);
 			ft_is_built_in(list);
 			if (list->REDIRECTION_OUT == 1)
 			{
-
 				close(list->fd_out);
 			}
 			else if (list->REDIRECTION_IN == 1)
 			{
-
 				close(list->fd_in);
 			}
 		}
 		else
 		{
-						redirections(list);
-
-				// dup2(list->fd_out, 1);
-				// i should use a while loop ; while there is an 
-			
+			redirections(list);
 			if (fork() == 0)
 			{
 				dup2(list->fd_out, 1);
-				
 				ft_bin_usr_sbin(list);
 			}
 			wait(NULL);
@@ -164,7 +132,6 @@ int main(int ac, char **av, char **env)
 			ft_pipe(list);
 		}
 	}
-
 	free(input);
 }
 /*
