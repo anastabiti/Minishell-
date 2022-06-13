@@ -117,6 +117,7 @@ int	main(int ac, char **av, char **env)
 			i = 0;
 			redirections(list);
 			ft_is_built_in(list);
+	///.................................///
 			if (list->REDIRECTION_OUT == 1)
 			{
 				close(list->fd_out);
@@ -125,25 +126,40 @@ int	main(int ac, char **av, char **env)
 			{
 				close(list->fd_in);
 			}
+	///.................................///
+
 		}
+		//...>>>>>>>>>>>>>>
 		else
 		{
 			redirections(list);
-
-			if (fork() == 0)
-			{
-					
 	if (list->REDIRECTION_OUT == 1)
 			{
 				dup2(list->fd_out, 1);
-			}
-			if (list->REDIRECTION_IN == 1)
+			}	
+	if (list->REDIRECTION_IN == 1)
 			{
-								dup2(list->fd_in, 0);
+					dup2(list->fd_in, 0);
 			}
+			if (fork() == 0)
+			{
+
+	///.................................///
+	
+	if (list->REDIRECTION_OUT == 1)
+			{
+				dup2(list->fd_out, 1);
+			}	
+	if (list->REDIRECTION_IN == 1)
+			{
+					dup2(list->fd_in, 0);
+			}
+///.................................///
 				ft_bin_usr_sbin(list);
 			}
 			wait(NULL);
+		///.................................///
+
 				if (list->REDIRECTION_OUT == 1)
 			{
 				close(list->fd_out);
@@ -152,6 +168,8 @@ int	main(int ac, char **av, char **env)
 			{
 				close(list->fd_in);
 			}
+	///.................................///
+
 		}
 		if (list->cmd_nbr > 1)
 		{
