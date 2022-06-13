@@ -62,6 +62,7 @@ int	prompt_and_parse(char **upstream, char **downstream, char *line)
 	downstream[0] = NULL;
 	return (1);
 }
+
 int	main(int ac, char **av, char **env)
 {
 	struct s_list	*list;
@@ -103,6 +104,14 @@ int	main(int ac, char **av, char **env)
 		list[1].filein = "1";
 		list[1].next = &list[2];
 		list[2].next = NULL;
+		//// next node
+		list[2].REDIRECTION_OUT = 1;
+		list[2].REDIRECTION_IN = 0;
+		list[2].fileout = "new";
+		list[2].filein = "last";
+		list[2].next = &list[3];
+		list[3].next = NULL;
+		////.....
 		if (list->cmd_nbr == 1 && is_builtin(list, 0) == 0)
 		{
 			i = 0;
