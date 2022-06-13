@@ -12,3 +12,13 @@
 
 #include "../minishell.h"
 
+int redirections(struct s_list *list)
+{
+    int i = 0;
+    while(list[i].next != NULL)
+    {
+        i++;
+    }
+    printf("%d\n", i);
+    return 0;
+}

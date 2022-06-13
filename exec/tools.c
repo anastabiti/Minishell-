@@ -88,4 +88,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	merge[mer] = '\0';
 	return (merge);
 }
-
