@@ -84,9 +84,9 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "cat";
-		list[0].REDIRECTION_OUT = 0;
-		list[0].REDIRECTION_IN = 1;
+		list[0].cmd[0] = "ls";
+		list[0].REDIRECTION_OUT = 1;
+		list[0].REDIRECTION_IN = 0;
 		list[0].fileout = "FILEOUT1";
 		list[0].filein = "simpleparser.c";
 		list[0].cmd[1] = NULL;
@@ -133,14 +133,7 @@ int	main(int ac, char **av, char **env)
 		else
 		{
 			redirections(list);
-	if (list->REDIRECTION_OUT == 1)
-			{
-				dup2(list->fd_out, 1);
-			}	
-	if (list->REDIRECTION_IN == 1)
-			{
-					dup2(list->fd_in, 0);
-			}
+	
 			if (fork() == 0)
 			{
 
