@@ -38,7 +38,7 @@ int redirections(struct s_list *list)
 			{
 						// dup2(output, 0);
 
-				// dup2(list->fd_in, 0); // remove it in builtins
+				dup2(list->fd_in, 0); // remove it in builtins
 				list->fd_in = open(list[i].filein, O_RDONLY, 0);
 				if(list->fd_in == -1)
 				{
