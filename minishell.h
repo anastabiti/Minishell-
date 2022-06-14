@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:13:10 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:38:21 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ struct					s_list
 	int					fd_in;
 	int					redirection_out;
 	int					redirection_in;
+	int 				append_stdout;
 	char				*fileout;
 	char				*filein;
 	int					fd[2];

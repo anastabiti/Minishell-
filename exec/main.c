@@ -84,24 +84,27 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "cat";
+		list[0].cmd[0] = "pwd";
 		list[0].redirection_out = 0;
-		list[0].redirection_in = 1;
+		list[0].redirection_in = 0;
+		list[0].append_stdout = 1;
 		list[0].fileout = "FILEOUT1";
 		list[0].filein = "in";
 		list[0].cmd[1] = NULL;
 		list[0].next = &list[1];
 		list->redir = ">";
 		list->there_is_pipe = 1;
-		list->cmd_nbr = 2;
+		list->cmd_nbr = 1;
 		list->rd_out = 0;
 		list->r_input = 1;
 		list->cmd_iteration = 0;
 		//// next node
-		list[1].cmd[0] = "wc";
-		list[1].redirection_out = 1;
+		list[1].cmd[0] = "ls";
+		list[1].redirection_out = 0;
 		list[1].redirection_in = 0;
 		list[1].fileout = "FILEOUT2";
+		list[1].append_stdout = 0;
+
 		list[1].filein = "1";
 		list[1].next = &list[2];
 		//// next node

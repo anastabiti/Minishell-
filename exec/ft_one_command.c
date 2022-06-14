@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:13:10 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:44:29 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	one_cmd(struct s_list *list)
 		if (list->redirection_in == 1)
 		{
 			close(list->fd_in);
+		}
+			if (list->append_stdout == 1)
+		{
+			close(list->fd_out);
 		}
 		return (1);
 	}

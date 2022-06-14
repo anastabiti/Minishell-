@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:13:10 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:43:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int	redirections(struct s_list *list)
 			{
 				printf("bash: No such file or directory\n");
 			}
+		}
+		if(list[i].append_stdout  == 1)
+		{
+			list->fd_out = open(list[i].fileout, O_RDWR | O_CREAT | O_APPEND, 0600);	
 		}
 		i++;
 	}
