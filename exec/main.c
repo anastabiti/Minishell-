@@ -88,7 +88,7 @@ int	main(int ac, char **av, char **env)
 		list[0].redirection_out = 0;
 		list[0].redirection_in = 1;
 		list[0].fileout = "FILEOUT1";
-		list[0].filein = "simpleparser.c";
+		list[0].filein = "in";
 		list[0].cmd[1] = NULL;
 		list[0].next = &list[1];
 		list->redir = ">";
