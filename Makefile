@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/06/14 07:40:43 by atabiti          ###   ########.fr        #
+#    Updated: 2022/06/14 09:18:04 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ SRC =   ./exec/builtins.c  ./exec/ft_env.c \
  ./exec/main.c ./exec/tools.c  redirections.c   \
  ./libft/ft_strnstr.c   ./exec/ft_unset.c ./exec/ft_export.c \
   ./exec/ft_others.c   ./exec/ft_readline.c  ./exec/ft_init.c ./libft/ft_putchar_fd.c \
-./libft/ft_putstr_fd.c           ./libft/ft_putendl_fd.c  ./exec/ftpipe.c  ./exec/ft_one_command.c  ./libft/ft_split.c  ./libft/ft_strdup.c   ./libft/ft_memcpy.c ./libft/ft_strlcpy.c   ./libft/ft_memmove.c    \
+./libft/ft_putstr_fd.c           ./libft/ft_putendl_fd.c  ./exec/ftpipe.c  ./exec/ft_one_command.c  ./exec/ft_multi_cmds.c    ./libft/ft_split.c  ./libft/ft_strdup.c   ./libft/ft_memcpy.c ./libft/ft_strlcpy.c   ./libft/ft_memmove.c    \
 
 OBJ =  ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o  \
  ./exec/tools.o      ./exec/redirections.o  ./libft/ft_strnstr.o  \
  ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o \
   ./exec/ft_readline.o ./exec/ft_init.o  ./libft/ft_putchar_fd.o \
-./libft/ft_putstr_fd.o           ./libft/ft_putendl_fd.o  ./exec/ftpipe.o ./exec/ft_one_command.o  ./libft/ft_split.o ./libft/ft_strdup.o ./libft/ft_memcpy.o   ./libft/ft_strlcpy.o ./libft/ft_memmove.o\
+./libft/ft_putstr_fd.o           ./libft/ft_putendl_fd.o  ./exec/ftpipe.o ./exec/ft_one_command.o  ./exec/ft_multi_cmds.o ./libft/ft_split.o ./libft/ft_strdup.o ./libft/ft_memcpy.o   ./libft/ft_strlcpy.o ./libft/ft_memmove.o\
 	
 FALGS = -Wall -Werorr -Wextra 
 all : $(NAME)

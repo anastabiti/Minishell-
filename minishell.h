@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 07:42:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 09:41:03 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ struct					s_list
 	int					REDIRECTION_IN;
 	char				*fileout;
 	char				*filein;
+	int					fd[2];
 };
 
 void					handler(int sig);
@@ -77,9 +78,11 @@ int						ft_unset(char **env);
 int						ft_export(char **env);
 int						is_builtin(struct s_list *list, int i);
 //exece
-int one_cmd(struct s_list  *list);
+int						one_cmd(struct s_list *list);
+int						set_rd(struct s_list *list);
+int						run_builtin(struct s_list *list);
 /// redirections I/O
-int redirections(struct s_list *list);
+int						redirections(struct s_list *list);
 // Other
 int						ft_bin_usr_sbin(struct s_list *list);
 // LIBFT
