@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 09:25:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:13:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	redirections(struct s_list *list)
 	{
 		// input = dup(0);
 		// output = dup(1);
-		if (list[i].REDIRECTION_OUT == 1)
+		if (list[i].redirection_out == 1)
 		{
 			list->fd_out = open(list[i].fileout, O_RDWR | O_CREAT | O_TRUNC,
 					0600);
@@ -30,7 +30,7 @@ int	redirections(struct s_list *list)
 				printf("bash: No such file or directory\n");
 			}
 		}
-		if (list[i].REDIRECTION_IN == 1)
+		if (list[i].redirection_in == 1)
 		{
 			list->fd_in = open(list[i].filein, O_RDONLY, 0);
 			if (list->fd_in == -1)

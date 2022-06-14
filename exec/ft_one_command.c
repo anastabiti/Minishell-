@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 08:39:18 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:13:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ int	one_cmd_1(struct s_list *list)
 		redirections(list);
 		while (list[i].next != NULL)
 		{
-			if (list[i].REDIRECTION_OUT == 1)
+			if (list[i].redirection_out == 1)
 				dup2(list->fd_out, 1);
-			if (list[i].REDIRECTION_IN == 1)
+			if (list[i].redirection_in == 1)
 				dup2(list->fd_in, 0);
 			i++;
 		}
 		ft_bin_usr_sbin(list);
-		if (list->REDIRECTION_OUT == 1)
+		if (list->redirection_out == 1)
 			close(list->fd_out);
-		if (list->REDIRECTION_IN == 1)
+		if (list->redirection_in == 1)
 			close(list->fd_in);
 	}
 
@@ -44,11 +44,11 @@ int	one_cmd(struct s_list *list)
 	{
 		redirections(list);
 		ft_is_built_in(list);
-		if (list->REDIRECTION_OUT == 1)
+		if (list->redirection_out == 1)
 		{
 			close(list->fd_out);
 		}
-		if (list->REDIRECTION_IN == 1)
+		if (list->redirection_in == 1)
 		{
 			close(list->fd_in);
 		}

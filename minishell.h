@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 09:41:03 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:13:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <readline/readline.h>
 # include <sys/wait.h>
 # define TRUE 1
+
 struct					s_builtins
 {
 	char				*echo;
@@ -40,6 +41,7 @@ struct					s_builtins
 	char				*cd_path;
 	char				*cmd[100];
 };
+
 struct					s_list
 {
 	struct s_builtins	*blt;
@@ -57,8 +59,8 @@ struct					s_list
 	char				*redir;
 	int					r_input;
 	int					fd_in;
-	int					REDIRECTION_OUT;
-	int					REDIRECTION_IN;
+	int					redirection_out;
+	int					redirection_in;
 	char				*fileout;
 	char				*filein;
 	int					fd[2];

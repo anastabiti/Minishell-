@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 09:17:14 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 10:49:48 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 11:13:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int	run_builtin_1(struct s_list *list)
 
 int	set_rd(struct s_list *list)
 {
-	if (list[list->cmd_iteration].REDIRECTION_OUT == 1)
+	if (list[list->cmd_iteration].redirection_out == 1)
 		dup2(list->fd_out, 1);
-	if (list[list->cmd_iteration].REDIRECTION_IN == 1)
+	if (list[list->cmd_iteration].redirection_in == 1)
 		dup2(list->fd_in, 0);
-	if (list[list->cmd_iteration].REDIRECTION_OUT == 1)
+	if (list[list->cmd_iteration].redirection_out == 1)
 		close(list->fd_out);
-	if (list[list->cmd_iteration].REDIRECTION_IN == 1)
+	if (list[list->cmd_iteration].redirection_in == 1)
 		close(list->fd_in);
 	return (0);
 }
