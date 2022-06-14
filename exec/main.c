@@ -94,7 +94,7 @@ int	main(int ac, char **av, char **env)
 		list[0].next = &list[1];
 		list->redir = ">";
 		list->there_is_pipe = 1;
-		list->cmd_nbr = 1;
+		list->cmd_nbr = 2;
 		list->rd_out = 0;
 		list->r_input = 1;
 		list->cmd_iteration = 0;
@@ -103,7 +103,7 @@ int	main(int ac, char **av, char **env)
 		list[1].redirection_out = 0;
 		list[1].redirection_in = 0;
 		list[1].fileout = "FILEOUT2";
-		list[1].append_stdout = 0;
+		list[1].append_stdout = 1;
 
 		list[1].filein = "1";
 		list[1].next = &list[2];
