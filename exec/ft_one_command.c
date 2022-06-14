@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 07:52:48 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 08:39:18 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	one_cmd_1(struct s_list *list)
 		if (list->REDIRECTION_IN == 1)
 			close(list->fd_in);
 	}
+
 	return (0);
 }
 
@@ -59,5 +60,6 @@ int	one_cmd(struct s_list *list)
 		wait(NULL);
 		return (1);
 	}
+    
 	return (0);
 }
