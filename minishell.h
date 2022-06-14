@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/05 08:50:39 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 07:42:35 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int						ft_is_built_in(struct s_list *list);
 int						ft_unset(char **env);
 int						ft_export(char **env);
 int						is_builtin(struct s_list *list, int i);
+//exece
+int one_cmd(struct s_list  *list);
 /// redirections I/O
 int redirections(struct s_list *list);
 // Other

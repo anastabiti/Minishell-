@@ -23,10 +23,6 @@ int redirections(struct s_list *list)
 		output = dup(1);
         if (list[i].REDIRECTION_OUT == 1)
 			{
-				// dup2(list->fd_out, 1);
-						// dup2(input, 1);
-
-				// i should use a while loop ; while there is an 
 				list->fd_out = open(list[i].fileout, O_RDWR | O_CREAT | O_TRUNC,
 									0600);
 		if(list->fd_out == -1)
@@ -36,9 +32,8 @@ int redirections(struct s_list *list)
 			}
 			 if (list[i].REDIRECTION_IN == 1)
 			{
-						// dup2(output, 0);
 
-				dup2(list->fd_in, 0); // remove it in builtins
+				// dup2(list->fd_in, 0); // remove it in builtins
 				list->fd_in = open(list[i].filein, O_RDONLY, 0);
 				if(list->fd_in == -1)
 				{

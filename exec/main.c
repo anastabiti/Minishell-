@@ -84,9 +84,9 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "pwd";
-		list[0].REDIRECTION_OUT = 1;
-		list[0].REDIRECTION_IN = 0;
+		list[0].cmd[0] = "wc";
+		list[0].REDIRECTION_OUT = 0;
+		list[0].REDIRECTION_IN = 1;
 		list[0].fileout = "FILEOUT1";
 		list[0].filein = "simpleparser.c";
 		list[0].cmd[1] = NULL;
@@ -110,189 +110,13 @@ int	main(int ac, char **av, char **env)
 		list[2].filein = "last";
 		list[2].next = &list[3];
 		list[3].next = NULL;
-		////.....
-		if (list->cmd_nbr == 1 && is_builtin(list, 0) == 0)
+		if(one_cmd(list) == 0)
 		{
-			i = 0;
-			redirections(list);
-			ft_is_built_in(list);
-	///.................................///
-			if (list->REDIRECTION_OUT == 1)
-			{
-				close(list->fd_out);
-			}
-			if (list->REDIRECTION_IN == 1)
-			{
-				close(list->fd_in);
-			}
-	///.................................///
-
-		}
-		//...>>>>>>>>>>>>>>
-		else
-		{
-	
-			if (fork() == 0)
-			{
-			redirections(list);
-
-	///.................................///
-	int i = 0;
-	while(list[i].next != NULL)
-	{
-	if (list[i].REDIRECTION_OUT == 1)
-			{
-				dup2(list->fd_out, 1);
-			}	
-	if (list[i].REDIRECTION_IN == 1)
-			{
-					dup2(list->fd_in, 0);
-			}
-			i++;
-	}
-///.................................///
-				ft_bin_usr_sbin(list);
-					if (list->REDIRECTION_OUT == 1)
-			{
-				close(list->fd_out);
-			}
-			if (list->REDIRECTION_IN == 1)
-			{
-				close(list->fd_in);
-			}
-			}
-			wait(NULL);
-		}
 		if (list->cmd_nbr > 1)
 		{
 			ft_pipe(list);
 		}
+		}
 	}
 	free(input);
 }
-/*
-
-......
-	int	input;
-	int	output;
-	int	i;
-
-	i = 0;
-	if (redir != NULL)
-	{
-		input = dup(0);
-		output = dup(1);
-		i = check redirect  ();
-	}
-	if (i == 0)
-		exec builtin( );
-	if (redir != NULL)
-	{
-		ft_dup2(input, 1);
-		ft_dup2(output, 0);
-		close(input);
-		close(output);
-	}
-
-	........
-
-	how many cmds = ft_lstsize(linked list);
-	if (heredoc())
-		return (1);
-	if (how many cmds > 0)
-	{
-		pid = is_builtin(cmds->content);
-		if (how many cmds== 1 && pid != 0)
-			ft_builtin(cmds->content, envp, pid);
-		else
-		{
-			if (how many cmds > 1)
-				pfds = create_pipes(how many cmds - 1);
-			pid = create_childs(cmds, pfds, envp);
-			if (how many cmds> 1)
-				close_pfds(pfds, how many cmds - 1);
-			waitpid(pid, exit_status, 0);
-			set exit status(how many cmds);
-		}
-	}
-	return (0);
-	...........................................................
-		if (!ft_strcmp(redir->type, "<"))
-			fd_i = open_file(redir, fd_i, O_RDONLY, 0);
-		else if (!ft_strcmp(redir->type, ">"))
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-		else if (!ft_strcmp(redir->type, ">>"))
-			fd_o = open_file(redir, fd_o, O_WRONLY | O_CREAT | O_APPEND, 0666);
-		if (fd_i == -1 || fd_o == -1)
-			return (EXIT_FAILURE);
-
-*/
-
-// old
-/*
-// int builtin = is_builtin(list, 0);
-				// if(builtin == 0)
-				// {
-	// while (prompt_and_parse(upstream, downstream, list->input) > 0)
-			// if (list->there_is_pipe == 0)
-
- list[0].cmd[0] = "cdfgfd";
-
-		list[0].cmd[1] = upstream[1];
-		// printf("%s\n %s\n", upstream[0],
-																									upstream[1]);																					// list[0].cmd[2] = upstream[2];
-		// printf("%s\n %s %s %s\n", downstream[0], downstream[1],
-				downstream[2], downstream[3]); // list[0].cmd[2] = upstream[2];
-
-		// list[0].cmd[2] = upstream[2];
-
-		// // list[0].next = &list[1];
-		// // list[1].cmd[0] = "/usr/bin/wc";
-		// // list[1].cmd[1] = "-l";
-		list[0].next = &list[1];
-		list[1].cmd[0] = downstream[0];
-		// list[1].cmd[1] = "ff=ff";
-
-		// list[1].cmd[1] = downstream[1];
-
-		// ///
-		list[1].next = &list[2];
-
-		list[2].cmd[0] = downstream[1];
-		// list[2].cmd[1] = downstream[2];
-		list[2].next = &list[3];
-
-		list[3].cmd[0] = downstream[2];
-
-		// list[3].cmd[1] = downstream[4];
-		// list[3].cmd = downstream[4];
-		// if(list->rd == 1)
-		// 			{
-		// 					list->fd_out  = open("a.txt",
-										O_RDWR|O_CREAT|O_TRUNC, 0600);
-		// 				dup2(list->fd_out, 1);
-		// close(	list->fd_out);
-		// 				// list->fd_out = 	list->rd_stdout ;
-		// 			}
-
-// if (WIFEXITED(g_status))
-				// {
-				// 	g_status = WEXITSTATUS(g_status);
-				// }
-
-			// if (list->there_is_pipe > 0)
-			// {
-				// list->rd_stdout  = open("a.txt",  O_RDWR|O_CREAT|O_APPEND,
-						0600);
-								// list->rd_stdout  = open("a.txt",
-											O_RDWR|O_CREAT, 0600);
-								// else
-			// {
-			// 	g_status = 127;
-			// }
-			// dup2(list->fd_out, 1);
-						// close(list->fd_out);
-						// list->fd_out = 	list->rd_stdout ;
-						.....
-
-		*/
