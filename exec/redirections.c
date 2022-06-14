@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 08:42:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/14 08:56:09 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	redirections(struct s_list *list)
 	int output;
 	while (list[i].next != NULL)
 	{
-		input = dup(0);
-		output = dup(1);
+		// input = dup(0);
+		// output = dup(1);
 		if (list[i].REDIRECTION_OUT == 1)
 		{
 			list->fd_out = open(list[i].fileout, O_RDWR | O_CREAT | O_TRUNC,

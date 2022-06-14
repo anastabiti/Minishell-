@@ -84,20 +84,21 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
-		list[0].cmd[0] = "psee";
+		list[0].cmd[0] = "caet";
 		list[0].REDIRECTION_OUT = 0;
-		list[0].REDIRECTION_IN = 0;
+		list[0].REDIRECTION_IN = 1;
 		list[0].fileout = "FILEOUT1";
 		list[0].filein = "simpleparser.c";
 		list[0].cmd[1] = NULL;
 		list[0].next = &list[1];
 		list->redir = ">";
 		list->there_is_pipe = 1;
-		list->cmd_nbr = 1;
+		list->cmd_nbr = 2;
 		list->rd_out = 0;
 		list->r_input = 1;
 		list->cmd_iteration = 0;
 		//// next node
+		list[1].cmd[0] = "wc";
 		list[1].REDIRECTION_OUT = 0;
 		list[1].REDIRECTION_IN = 0;
 		list[1].fileout = "FILEOUT2";
