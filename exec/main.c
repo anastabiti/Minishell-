@@ -16,55 +16,6 @@
 testtin with bash-3.2$ 
 pwd >> f1 > f2 >  f3  write in f3 only
 */
-int	is_builtin(struct s_list *list, int i)
-{
-	if (list[i].cmd[i] == NULL)
-		return (0);
-	if (ft_strncmp(list[i].cmd[i], "cd", 2) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "pwd", 3) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "echo", 4) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "env", 3) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "exit", 4) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "unset", 5) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "export", 6) == 0)
-		return (0);
-	return (3);
-}
-// not mine is from a course i use it to accelerate work
-
-int	prompt_and_parse(char **upstream, char **downstream, char *line)
-{
-	downstream[0] = NULL;
-	line = readline("MINISHELL BETA $ ");
-	if (line == NULL)
-	{
-		write(2, "exit\n", 5);
-		rl_clear_history();
-		free(line);
-		exit(1);
-	}
-	add_history(line);
-	*upstream++ = strtok(line, " \t");
-	while ((*upstream = strtok(NULL, " \t")))
-	{
-		if (strcmp(*upstream, "|") == 0)
-		{
-			*upstream = NULL;
-			while ((*downstream++ = strtok(NULL, " |")))
-				;
-			return (1);
-		}
-		upstream++;
-	}
-	downstream[0] = NULL;
-	return (1);
-}
 
 int	main(int ac, char **av, char **env)
 {
@@ -76,9 +27,10 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
-	list = (struct s_list *)malloc(sizeof(struct s_list) * 4);
-	list->blt = (struct s_builtins *)malloc(sizeof(struct s_builtins) * 4);
-	list->rd = ( struct s_redirections *) malloc(sizeof(struct s_redirections) * 4);
+	list = (struct s_list *)malloc(sizeof(struct s_list) * 1);
+	list->blt = (struct s_builtins *)malloc(sizeof(struct s_builtins) * 42);
+	list->rd = (struct s_redirections *)malloc(sizeof(struct s_redirections)
+			* 42);
 	fd = 1;
 	list->environ = env;
 	while (1)
@@ -88,48 +40,46 @@ int	main(int ac, char **av, char **env)
 		list->input = ft_read(list->input);
 		ft_init(list);
 		//......... cmds with args and options
+		// cmd 1
 		list[0].cmd[0] = "pwd";
-		// list[0].redirection_out = 0;
+
 		list[0].rd[0].type = RDOUT;
 		list[0].rd[0].file = "ff";
 
 		list[0].rd[1].type = RDOUT;
 		list[0].rd[1].file = "f1";
- 
+
 		list[0].rd[2].type = RDOUT;
 		list[0].rd[2].file = "f2";
 
 		list[0].rd[3].type = RDOUT;
 		list[0].rd[3].file = "f3";
- 
-		list[0].rd[4].type = NULL;
-				// list[0].rd[2].file ="appendit";
-		// list[0].rd[3].type = NULL;
 
-		// list[0].fileout = "FILEOUT1";
-		// list[0].filein = "in";
-		// list[0].cmd[1] = NULL;
-		// list[0].next = &list[1];
-		// list->redir = ">";
-		// list->there_is_pipe = 1;
+		// list[0].rd[4].type = NULL;
+		list[0].next = &list[1];
+		/// command 2
+		list[1].cmd[0] = "pwd";
+
+		list[1].rd[6].type = RDOUT;
+		// list[1].rd[0].file = "g1";
+
+		// list[1].rd[1].type = RDOUT;
+		// list[1].rd[1].file = "g2";
+
+		// list[1].rd[2].type = RDOUT;
+		// list[1].rd[2].file = "g3";
+
+		// list[1].rd[3].type = RDOUT;
+		// list[1].rd[3].file = "g4";
+
+		// // list[1].rd[4].type = NULL;
+		// list[1].next = &list[2];
+		// // list[2].next = NULL;
+
+		///..................................
 		list->cmd_nbr = 1;
 		list->cmd_iteration = 0;
-		//// next node
-		// list[1].cmd[0] = "ls";
-		// list[1].redirection_out = 1;
-		// list[1].redirection_in = 0;
-		// list[1].fileout = "FILEOUT2";
-		// list[1].append_stdout = 1;
 
-		// list[1].filein = "1";
-		// list[1].next = &list[2];
-		// //// next node
-		// list[2].redirection_out = 1;
-		// list[2].redirection_in = 0;
-		// list[2].fileout = "FILEOUT3";
-		// list[2].filein = "last";
-		// list[2].next = &list[3];
-		// list[3].next = NULL;
 		if (one_cmd(list) == 0)
 		{
 			if (list->cmd_nbr > 1)

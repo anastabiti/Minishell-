@@ -43,17 +43,17 @@ int	run_builtin_1(struct s_list *list)
 
 int	set_rd(struct s_list *list)
 {
-	if (list[list->cmd_iteration].redirection_out == 1)
+	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDOUT, 7) == 0)
 		dup2(list->fd_out, 1);
-	if (list[list->cmd_iteration].redirection_in == 1)
+	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDIN, 6) == 0)
 		dup2(list->fd_in, 0);
-	if (list[list->cmd_iteration].append_stdout == 1)
+	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDAPPEND, 10) == 0)
 		dup2(list->fd_out, 1);
-	if (list[list->cmd_iteration].redirection_out == 1)
+	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDOUT, 7) == 0)
 		close(list->fd_out);
-	if (list[list->cmd_iteration].redirection_in == 1)
+	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDIN, 6) == 0)
 		close(list->fd_in);
-	if (list[list->cmd_iteration].append_stdout == 1)
+	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDAPPEND, 10) == 0)
 		close(list->fd_out);
 	return (0);
 }

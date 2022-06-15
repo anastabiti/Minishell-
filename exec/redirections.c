@@ -12,6 +12,7 @@
 
 #include "../minishell.h"
 
+
 int	redirections(struct s_list *list)
 {
 	int i = 0;
@@ -45,4 +46,53 @@ int	redirections(struct s_list *list)
 		i++;
 	}
 	return (0);
+}
+int	is_builtin(struct s_list *list, int i)
+{
+	if (list[i].cmd[i] == NULL)
+		return (0);
+	if (ft_strncmp(list[i].cmd[i], "cd", 2) == 0)
+		return (0);
+	else if (ft_strncmp(list[i].cmd[i], "pwd", 3) == 0)
+		return (0);
+	else if (ft_strncmp(list[i].cmd[i], "echo", 4) == 0)
+		return (0);
+	else if (ft_strncmp(list[i].cmd[i], "env", 3) == 0)
+		return (0);
+	else if (ft_strncmp(list[i].cmd[i], "exit", 4) == 0)
+		return (0);
+	else if (ft_strncmp(list[i].cmd[i], "unset", 5) == 0)
+		return (0);
+	else if (ft_strncmp(list[i].cmd[i], "export", 6) == 0)
+		return (0);
+	return (3);
+}
+// not mine is from a course i use it to accelerate work
+
+int	prompt_and_parse(char **upstream, char **downstream, char *line)
+{
+	downstream[0] = NULL;
+	line = readline("MINISHELL BETA $ ");
+	if (line == NULL)
+	{
+		write(2, "exit\n", 5);
+		rl_clear_history();
+		free(line);
+		exit(1);
+	}
+	add_history(line);
+	*upstream++ = strtok(line, " \t");
+	while ((*upstream = strtok(NULL, " \t")))
+	{
+		if (strcmp(*upstream, "|") == 0)
+		{
+			*upstream = NULL;
+			while ((*downstream++ = strtok(NULL, " |")))
+				;
+			return (1);
+		}
+		upstream++;
+	}
+	downstream[0] = NULL;
+	return (1);
 }
