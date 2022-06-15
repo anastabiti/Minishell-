@@ -17,30 +17,30 @@ int	redirections(struct s_list *list)
 	int i = 0;
 	int input;
 	int output;
-	while (list[i].next != NULL)
+	while (list[0].rd[i].type != NULL)
 	{
 		// input = dup(0);
 		// output = dup(1);
-		if (list[i].redirection_out == 1)
+		if (ft_strncmp(list[0].rd[i].type , RDOUT, 7) == 0)
 		{
-			list->fd_out = open(list[i].fileout, O_RDWR | O_CREAT | O_TRUNC,
+			list->fd_out = open(list[0].rd[i].file, O_RDWR | O_CREAT | O_TRUNC,
 					0600);
 			if (list->fd_out == -1)
 			{
 				printf("bash: No such file or directory\n");
 			}
 		}
-		if (list[i].redirection_in == 1)
-		{
-			list->fd_in = open(list[i].filein, O_RDONLY, 0);
+		if (ft_strncmp(list[0].rd[i].type , RDIN, 6) == 0)
+		{	
+			list->fd_in = open(list[0].rd[i].file, O_RDONLY, 0);
 			if (list->fd_in == -1)
 			{
 				printf("bash: No such file or directory\n");
 			}
 		}
-		if(list[i].append_stdout  == 1)
+		if (ft_strncmp(list[0].rd[i].type , RDAPPEND, 10) == 0)
 		{
-			list->fd_out = open(list[i].fileout, O_RDWR | O_CREAT | O_APPEND, 0600);	
+			list->fd_out = open(list[0].rd[0].file, O_RDWR | O_CREAT | O_APPEND, 0600);	
 		}
 		i++;
 	}

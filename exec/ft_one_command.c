@@ -20,19 +20,22 @@ int	one_cmd_1(struct s_list *list)
 	if (fork() == 0)
 	{
 		redirections(list);
-		while (list[i].next != NULL)
+		while(list[0].rd[i].type != NULL)
 		{
-			if (list[i].redirection_out == 1)
+
+		
+		if (ft_strncmp(list[0].rd[i].type , RDOUT, 7) == 0)
 				dup2(list->fd_out, 1);
-			if (list[i].redirection_in == 1)
+		if (ft_strncmp(list[0].rd[i].type , RDIN, 6) == 0)
 				dup2(list->fd_in, 0);
+				if (ft_strncmp(list[0].rd[i].type , RDOUT, 7) == 0)
+			close(list->fd_out);
+		if (ft_strncmp(list[0].rd[i].type , RDIN, 6) == 0)
+			close(list->fd_in);
 			i++;
 		}
 		ft_bin_usr_sbin(list);
-		if (list->redirection_out == 1)
-			close(list->fd_out);
-		if (list->redirection_in == 1)
-			close(list->fd_in);
+		
 	}
 
 	return (0);
@@ -41,21 +44,23 @@ int	one_cmd_1(struct s_list *list)
 int	one_cmd(struct s_list *list)
 {
 	if (list->cmd_nbr == 1 && is_builtin(list, 0) == 0)
-	{
+	{ int i = 0;
 		redirections(list);
 		ft_is_built_in(list);
-		if (list->redirection_out == 1)
+		
+		if (ft_strncmp(list[0].rd->type , RDOUT, 7) == 0)
 		{
 			close(list->fd_out);
 		}
-		if (list->redirection_in == 1)
+		if (ft_strncmp(list[0].rd->type , RDIN, 6) == 0)
 		{
 			close(list->fd_in);
 		}
-			if (list->append_stdout == 1)
+		if (ft_strncmp(list[0].rd->type , RDAPPEND, 10) == 0)
 		{
 			close(list->fd_out);
 		}
+		
 		return (1);
 	}
 	else if (list->cmd_nbr == 1 && is_builtin(list, 0) == 3)

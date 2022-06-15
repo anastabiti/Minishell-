@@ -28,6 +28,9 @@
 # include <readline/readline.h>
 # include <sys/wait.h>
 # define TRUE 1
+# define RDOUT  "rstdout"
+# define RDIN  "rstdin"
+# define RDAPPEND "rstdappend"
 
 struct					s_builtins
 {
@@ -65,6 +68,17 @@ struct					s_list
 	char				*fileout;
 	char				*filein;
 	int					fd[2];
+	struct s_redirections *rd;
+};
+struct s_redirections 
+{
+	int					redirection_out;
+	int					redirection_in;
+	int 				append_stdout;
+	int rd_ir;
+	char *type;
+	char *file;
+struct s_redirections		*next;
 };
 
 void					handler(int sig);
