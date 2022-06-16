@@ -20,26 +20,26 @@ int	redire_2(struct s_list *list)
 	{
 		// input = dup(0);
 		// output = dup(1);
-		if (ft_strncmp(list[i].rd[i].type , RDOUT, 7) == 0)
+		if (ft_strncmp(list[i].type[i] , RDOUT, 7) == 0)
 		{
-			list->fd_out = open(list[0].rd[i].file, O_RDWR | O_CREAT | O_TRUNC,
+			list->fd_out = open(list[0].file[i], O_RDWR | O_CREAT | O_TRUNC,
 					0600);
 			if (list->fd_out == -1)
 			{
 				printf("bash: No such file or directory\n");
 			}
 		}
-		if (ft_strncmp(list[i].rd[i].type , RDIN, 6) == 0)
+		if (ft_strncmp(list[i].type[i], RDIN, 6) == 0)
 		{	
-			list->fd_in = open(list[0].rd[i].file, O_RDONLY, 0);
+			list->fd_in = open(list[0].file[i], O_RDONLY, 0);
 			if (list->fd_in == -1)
 			{
 				printf("bash: No such file or directory\n");
 			}
 		}
-		if (ft_strncmp(list[i].rd[i].type , RDAPPEND, 10) == 0)
+		if (ft_strncmp(list[i].type[i] , RDAPPEND, 10) == 0)
 		{
-			list->fd_out = open(list[0].rd[0].file, O_RDWR | O_CREAT | O_APPEND, 0600);	
+			list->fd_out = open(list[0].file[i], O_RDWR | O_CREAT | O_APPEND, 0600);	
 		}
 		i++;
 	}

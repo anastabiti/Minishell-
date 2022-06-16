@@ -27,10 +27,10 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
-	list = (struct s_list *)malloc(sizeof(struct s_list) * 1);
-	list->blt = (struct s_builtins *)malloc(sizeof(struct s_builtins) * 42);
-	list->rd = (struct s_redirections *)malloc(sizeof(struct s_redirections)
-			* 42);
+	list = (struct s_list *)malloc(sizeof(struct s_list) * 2);
+	list->blt = (struct s_builtins *)malloc(sizeof(struct s_builtins) * 2);
+	// list->rd = (struct s_redirections *)malloc(sizeof(struct s_redirections)
+	// 		* 2);
 	fd = 1;
 	list->environ = env;
 	while (1)
@@ -43,41 +43,37 @@ int	main(int ac, char **av, char **env)
 		// cmd 1
 		list[0].cmd[0] = "pwd";
 
-		list[0].rd[0].type = RDOUT;
-		list[0].rd[0].file = "ff";
+		list[0].type[0] = RDOUT;
+		list[0].file[0] = "ff";
 
-		list[0].rd[1].type = RDOUT;
-		list[0].rd[1].file = "f1";
+		list[0].type[1] = RDOUT;
+		list[0].file[1] = "f1";
 
-		list[0].rd[2].type = RDOUT;
-		list[0].rd[2].file = "f2";
+		list[0].type[2] = RDOUT;
+		list[0].file[2] = "f2";
 
-		list[0].rd[3].type = RDOUT;
-		list[0].rd[3].file = "f3";
+		list[0].type[3] = RDOUT;
+		list[0].file[3] = "f3";
+		list[0].type[4] = NULL;
 
-		// list[0].rd[4].type = NULL;
-		list[0].next = &list[1];
-		/// command 2
-		list[1].cmd[0] = "pwd";
+		////
+			list[1].cmd[0] = "pwd";
 
-		list[1].rd[6].type = RDOUT;
-		// list[1].rd[0].file = "g1";
+		list[1].type[0] = RDOUT;
+		list[1].file[0] = "f1f";
 
-		// list[1].rd[1].type = RDOUT;
-		// list[1].rd[1].file = "g2";
+		list[1].type[1] = RDOUT;
+		list[1].file[1] = "f21";
 
-		// list[1].rd[2].type = RDOUT;
-		// list[1].rd[2].file = "g3";
+		list[1].type[2] = RDOUT;
+		list[1].file[2] = "f22";
 
-		// list[1].rd[3].type = RDOUT;
-		// list[1].rd[3].file = "g4";
-
-		// // list[1].rd[4].type = NULL;
-		// list[1].next = &list[2];
-		// // list[2].next = NULL;
+		list[1].type[3] = RDOUT;
+		list[1].file[3] = "f113";
+		list[1].type[4] = NULL;
 
 		///..................................
-		list->cmd_nbr = 1;
+		list->cmd_nbr = 2;
 		list->cmd_iteration = 0;
 
 		if (one_cmd(list) == 0)

@@ -20,17 +20,17 @@ int	one_cmd_1(struct s_list *list)
 	if (fork() == 0)
 	{
 		redirections(list);
-		while(list[0].rd[i].type != NULL)
+		while(list[0].type[i] != NULL)
 		{
 
 		
-		if (ft_strncmp(list[0].rd[i].type , RDOUT, 7) == 0)
+		if (ft_strncmp(list[0].type[i] , RDOUT, 7) == 0)
 				dup2(list->fd_out, 1);
-		if (ft_strncmp(list[0].rd[i].type , RDIN, 6) == 0)
+		if (ft_strncmp(list[0].type[i] , RDIN, 6) == 0)
 				dup2(list->fd_in, 0);
-				if (ft_strncmp(list[0].rd[i].type , RDOUT, 7) == 0)
+				if (ft_strncmp(list[0].type[i] , RDOUT, 7) == 0)
 			close(list->fd_out);
-		if (ft_strncmp(list[0].rd[i].type , RDIN, 6) == 0)
+		if (ft_strncmp(list[0].type[i] , RDIN, 6) == 0)
 			close(list->fd_in);
 			i++;
 		}
@@ -48,15 +48,15 @@ int	one_cmd(struct s_list *list)
 		redirections(list);
 		ft_is_built_in(list);
 		
-		if (ft_strncmp(list[0].rd->type , RDOUT, 7) == 0)
+		if (ft_strncmp(list[0].type[i] , RDOUT, 7) == 0)
 		{
 			close(list->fd_out);
 		}
-		if (ft_strncmp(list[0].rd->type , RDIN, 6) == 0)
+		if (ft_strncmp(list[0].type[i] , RDIN, 6) == 0)
 		{
 			close(list->fd_in);
 		}
-		if (ft_strncmp(list[0].rd->type , RDAPPEND, 10) == 0)
+		if (ft_strncmp(list[0].type[i] , RDAPPEND, 10) == 0)
 		{
 			close(list->fd_out);
 		}

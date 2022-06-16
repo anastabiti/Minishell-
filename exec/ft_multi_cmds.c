@@ -43,17 +43,18 @@ int	run_builtin_1(struct s_list *list)
 
 int	set_rd(struct s_list *list)
 {
-	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDOUT, 7) == 0)
+	
+	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDOUT, 7) == 0)
 		dup2(list->fd_out, 1);
-	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDIN, 6) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDIN, 6) == 0)
 		dup2(list->fd_in, 0);
-	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDAPPEND, 10) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDAPPEND, 10) == 0)
 		dup2(list->fd_out, 1);
-	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDOUT, 7) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDOUT, 7) == 0)
 		close(list->fd_out);
-	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDIN, 6) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDIN, 6) == 0)
 		close(list->fd_in);
-	if (ft_strncmp(list[list->cmd_iteration].rd->type, RDAPPEND, 10) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDAPPEND, 10) == 0)
 		close(list->fd_out);
 	return (0);
 }
