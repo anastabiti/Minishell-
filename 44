@@ -1,12 +1,57 @@
   PID TTY           TIME CMD
-40256 ttys000    0:00.82 /bin/zsh -l
-55283 ttys000    0:00.00 ./minishell
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.00 ./minishell
   PID TTY           TIME CMD
-40256 ttys000    0:00.82 /bin/zsh -l
-55283 ttys000    0:00.00 ./minishell
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.00 ./minishell
   PID TTY           TIME CMD
-40256 ttys000    0:00.82 /bin/zsh -l
-55283 ttys000    0:00.00 ./minishell
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.00 ./minishell
   PID TTY           TIME CMD
-40256 ttys000    0:00.82 /bin/zsh -l
-55283 ttys000    0:00.00 ./minishell
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.00 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.00 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+weew  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+61605 ttys000    0:00.53 /bin/zsh -l
+63956 ttys000    0:00.01 ./minishell

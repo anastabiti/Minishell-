@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/17 09:41:15 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/17 11:02:39 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ void	ft_pipe(struct s_list *list)
 		id = fork();
 		if (id == 0)
 		{
-			redire_2(list);
+			if(redire_2(list) == 0)
+							dup2(list->fd[1], 1);
+
 			set_rd(list);
 			dup2(list->fd_in, 0);
 			if (list->cmd_iteration < list->there_is_pipe)
