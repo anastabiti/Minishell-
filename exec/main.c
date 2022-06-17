@@ -16,7 +16,11 @@
 testtin with bash-3.2$ 
 pwd >> f1 > f2 >  f3  write in f3 only
 */
-
+/*
+///......
+wc test.txt | ps > s >>>>> problem here it prints in stdout 
+//////...
+*/
 int	main(int ac, char **av, char **env)
 {
 	struct s_list *list;
@@ -41,23 +45,23 @@ int	main(int ac, char **av, char **env)
 		ft_init(list);
 		//......... cmds with args and options
 		// cmd 1
-		list[0].cmd[0] = "cat";
+		list[0].cmd[0] = "wc";
 
 		list[0].type[0] = RDIN;
 		list[0].file[0] = "test.txt";
 
-		list[0].type[1] = RDOUT;
-		list[0].file[1] = "f1";
+		list[0].type[1] = NULL;
+		// list[0].file[1] = "f1";
 
-		list[0].type[2] = RDOUT;
-		list[0].file[2] = "f2";
+		// list[0].type[2] = RDOUT;
+		// list[0].file[2] = "f2";
 
-		list[0].type[3] = RDOUT;
-		list[0].file[3] = "f3";
-		list[0].type[4] = NULL;
+		// list[0].type[3] = RDAPPEND;
+		// list[0].file[3] = "f3";
+		// list[0].type[4] = NULL;
 
 		////
-			list[1].cmd[0] = "pwd";
+			list[1].cmd[0] = "ps";
 
 		list[1].type[0] = RDOUT;
 		list[1].file[0] = "11";
@@ -68,7 +72,7 @@ int	main(int ac, char **av, char **env)
 		list[1].type[2] = RDOUT;
 		list[1].file[2] = "33";
 
-		list[1].type[3] = RDOUT;
+		list[1].type[3] = RDAPPEND;
 		list[1].file[3] = "44";
 		list[1].type[4] = NULL;
 

@@ -1,1 +1,19 @@
-/Users/atabiti/Desktop/mini
+  PID TTY           TIME CMD
+40256 ttys000    0:00.16 /bin/zsh -l
+40911 ttys000    0:00.00 ./minishell
+  PID TTY           TIME CMD
+40256 ttys000    0:00.17 /bin/zsh -l
+40959 ttys000    0:00.01 bash
+41473 ttys000    0:00.00 ./minishell
+  PID TTY           TIME CMD
+40256 ttys000    0:00.17 /bin/zsh -l
+40959 ttys000    0:00.01 bash
+41473 ttys000    0:00.00 ./minishell
+  PID TTY           TIME CMD
+40256 ttys000    0:00.17 /bin/zsh -l
+40959 ttys000    0:00.01 bash
+41473 ttys000    0:00.00 ./minishell
+  PID TTY           TIME CMD
+40256 ttys000    0:00.17 /bin/zsh -l
+40959 ttys000    0:00.01 bash
+41473 ttys000    0:00.00 ./minishell
