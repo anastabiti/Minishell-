@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:25:15 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/17 09:03:43 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,30 @@ int	redire_2(struct s_list *list)
 	int i = 0;
 	int input;
 	int output;
-	while (list[i].next != NULL)
+	while (list[list->cmd_iteration].type[i] != NULL)
 	{
 		// input = dup(0);
 		// output = dup(1);
-		if (ft_strncmp(list[i].type[i] , RDOUT, 7) == 0)
+		if (ft_strncmp(list[list->cmd_iteration].type[i] , RDOUT, 7) == 0)
 		{
-			list->fd_out = open(list[0].file[i], O_RDWR | O_CREAT | O_TRUNC,
+			list->fd_out = open(list[list->cmd_iteration].file[i], O_RDWR | O_CREAT | O_TRUNC,
 					0600);
 			if (list->fd_out == -1)
 			{
 				printf("bash: No such file or directory\n");
 			}
 		}
-		if (ft_strncmp(list[i].type[i], RDIN, 6) == 0)
+		if (ft_strncmp(list[list->cmd_iteration].type[i], RDIN, 6) == 0)
 		{	
-			list->fd_in = open(list[0].file[i], O_RDONLY, 0);
+			list->fd_in = open(list[list->cmd_iteration].file[i], O_RDONLY, 0);
 			if (list->fd_in == -1)
 			{
 				printf("bash: No such file or directory\n");
 			}
 		}
-		if (ft_strncmp(list[i].type[i] , RDAPPEND, 10) == 0)
+		if (ft_strncmp(list[list->cmd_iteration].type[i] , RDAPPEND, 10) == 0)
 		{
-			list->fd_out = open(list[0].file[i], O_RDWR | O_CREAT | O_APPEND, 0600);	
+			list->fd_out = open(list[list->cmd_iteration].file[i], O_RDWR | O_CREAT | O_APPEND, 0600);	
 		}
 		i++;
 	}

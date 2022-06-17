@@ -41,10 +41,10 @@ int	main(int ac, char **av, char **env)
 		ft_init(list);
 		//......... cmds with args and options
 		// cmd 1
-		list[0].cmd[0] = "pwd";
+		list[0].cmd[0] = "cat";
 
-		list[0].type[0] = RDOUT;
-		list[0].file[0] = "ff";
+		list[0].type[0] = RDIN;
+		list[0].file[0] = "test.txt";
 
 		list[0].type[1] = RDOUT;
 		list[0].file[1] = "f1";
@@ -57,19 +57,19 @@ int	main(int ac, char **av, char **env)
 		list[0].type[4] = NULL;
 
 		////
-			list[1].cmd[0] = "pwd";
+			list[1].cmd[0] = "ls";
 
 		list[1].type[0] = RDOUT;
-		list[1].file[0] = "f1f";
+		list[1].file[0] = "11";
 
 		list[1].type[1] = RDOUT;
-		list[1].file[1] = "f21";
+		list[1].file[1] = "22";
 
 		list[1].type[2] = RDOUT;
-		list[1].file[2] = "f22";
+		list[1].file[2] = "33";
 
 		list[1].type[3] = RDOUT;
-		list[1].file[3] = "f113";
+		list[1].file[3] = "44";
 		list[1].type[4] = NULL;
 
 		///..................................
