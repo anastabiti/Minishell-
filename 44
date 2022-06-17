@@ -55,3 +55,8 @@ weew  PID TTY           TIME CMD
   PID TTY           TIME CMD
 61605 ttys000    0:00.53 /bin/zsh -l
 63956 ttys000    0:00.01 ./minishell
+  PID TTY           TIME CMD
+66395 ttys000    0:00.14 /bin/zsh -l
+69198 ttys000    0:00.00 ./minishell
+68879 ttys001    0:00.10 /bin/zsh -l
+70311 ttys001    0:00.00 ./minishell
