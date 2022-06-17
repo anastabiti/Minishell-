@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/17 13:05:04 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/17 14:31:50 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,18 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "../libft/libft.h"
+
+/* ----------- START STRUCT FOR SPLIT ----------- */
+
+typedef struct s_variables
+{
+	int		l;
+	int		i;
+	int		j;
+	int		cl;
+}			t_variables;
+
+/* ----------- END STRUCT FOR SPLIT ----------- */
 
 typedef struct s_cmdl {
 	int				pipe;
@@ -27,8 +38,9 @@ typedef struct s_cmdl {
 	struct s_cmdl	*next;
 }		t_cmdl;
 
-
+char	**ft_split(char const *s, char c);
 int		is_white_space(char c);
 int		ft_is_alpha(char c);
+char    *rm_spaces(char *s);
 
 #endif

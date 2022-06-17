@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/17 14:31:37 by mkarim           ###   ########.fr       */
+/*   Created: 2022/06/17 14:28:51 by mkarim            #+#    #+#             */
+/*   Updated: 2022/06/17 14:31:27 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parse.h"
+#include "parse.h"
 
-int main(int argc, char **argv)
+char    *rm_spaces(char *s)
 {
-	char	*line;
-	char	**split;
-	t_cmdl	*cmd;
-	int		i;
+    int     i;
 
-	if (argc == 1)
-	{
-		while (1)
-		{
-			line = readline("Minishell $ ");
-			printf("%s\n", line);
-			add_history(line);
-			split = ft_split(line, '|');
-			i = -1;
-			while (split[++i])
-				printf("cmd : %s\n", rm_spaces(split[i]));
-		}
-	}
+    i = 0;
+    while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
+        i++;
+    return (s + i);
 }
