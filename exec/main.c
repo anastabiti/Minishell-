@@ -19,6 +19,9 @@ pwd >> f1 > f2 >  f3  write in f3 only
 /*
 ///......
 wc test.txt | ps > s >>>>> problem here it prints in stdout 
+cat > fruits.txt << EOF  it create a file with the input from here doc
+
+cat << EOF > a Instead of displaying the output on the screen you can redirect it to a file using the >, >> operators.
 //////...
 */
 int	main(int ac, char **av, char **env)
