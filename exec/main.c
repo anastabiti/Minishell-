@@ -57,7 +57,7 @@ int	main(int ac, char **av, char **env)
 		list[0].type[4] = NULL;
 
 		////
-			list[1].cmd[0] = "ls";
+			list[1].cmd[0] = "pwd";
 
 		list[1].type[0] = RDOUT;
 		list[1].file[0] = "11";

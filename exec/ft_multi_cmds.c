@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 09:17:14 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:50:40 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/17 09:21:30 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,24 @@ int	run_builtin_1(struct s_list *list)
 
 int	set_rd(struct s_list *list)
 {
-	
-	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDOUT, 7) == 0)
+	int i = 0;
+	while (list[list->cmd_iteration].type[i] != NULL)
+	{
+		
+	if (ft_strncmp(list[list->cmd_iteration].type[i], RDOUT, 7) == 0)
 		dup2(list->fd_out, 1);
-	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDIN, 6) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[i], RDIN, 6) == 0)
 		dup2(list->fd_in, 0);
-	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDAPPEND, 10) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[i], RDAPPEND, 10) == 0)
 		dup2(list->fd_out, 1);
-	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDOUT, 7) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[i], RDOUT, 7) == 0)
 		close(list->fd_out);
-	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDIN, 6) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[i], RDIN, 6) == 0)
 		close(list->fd_in);
-	if (ft_strncmp(list[list->cmd_iteration].type[list->cmd_iteration], RDAPPEND, 10) == 0)
+	if (ft_strncmp(list[list->cmd_iteration].type[i], RDAPPEND, 10) == 0)
 		close(list->fd_out);
+		i++;
+	}
 	return (0);
 }
 
