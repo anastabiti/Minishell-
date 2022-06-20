@@ -50,7 +50,7 @@ int	main(int ac, char **av, char **env)
 		//......... cmds with args and options
 		// cmd 1
 		list[0].cmd[0] = "ls";
-		list[0].type[0] = RDOUT;
+		list[0].type[0] = NULL;
 		list[0].file[0] = "APPENDIT";
 		list[0].delimiter[0] = "EOF";
 		list[0].type[1] = NULL;
