@@ -60,27 +60,27 @@ int	main(int ac, char **av, char **env)
 		
 		///..................................
 		//test 2
+		//ls | wc | wc is not working
 		list[0].cmd[0] = "ls";
 		list[0].type[0] = RDOUT;
 		list[0].file[0] = "f1";
 		list[0].delimiter[0] = "EOF";
 		list[0].type[1] = NULL;
-		list[1].cmd[0] = "wc";
-		
-		list[1].type[0] = NULL;
+
 		
 
-		list[1].cmd[0] = "wc";
-		list[1].type[0] = RDIN;
+		list[1].cmd[0] = "pwd";
+		list[1].type[0] = RDOUT;
 		list[1].file[0] = "test.txt";
+
 		list[2].cmd[0] = "wc";
-		list[2].type[0] = RDIN;
+		list[2].type[0] = NULL;
 		list[2].file[0] = "test.txt";
 		//.....
 
-		list->cmd_nbr = 2;
+		list->cmd_nbr = 3;
 		list->cmd_iteration = 0;
-		list->there_is_pipe = 1;
+		list->there_is_pipe = 2;
 
 
 		// heredoc_without_cmd(list);

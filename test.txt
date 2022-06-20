@@ -1,1 +1,1 @@
-test rd i/o
+/Users/atabiti/Desktop/mini
