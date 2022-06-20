@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:38:21 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/20 07:25:34 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define RDOUT  "rstdout"
 # define RDIN  "rstdin"
 # define RDAPPEND "rstdappend"
+# define HEREDOC "HEREDOC"
 
 struct					s_builtins
 {
@@ -72,6 +73,7 @@ struct					s_list
 	int rd_ir;
 	char *type[50];
 	char *file[50];
+	char *delimiter[50];
 	struct s_redirections *rd;
 };
 // struct s_redirections 
@@ -104,6 +106,7 @@ int						set_rd(struct s_list *list);
 int						run_builtin(struct s_list *list);
 /// redirections I/O
 int						redirections(struct s_list *list);
+int here_doc(struct s_list *list);
 // Other
 int						ft_bin_usr_sbin(struct s_list *list);
 // LIBFT
