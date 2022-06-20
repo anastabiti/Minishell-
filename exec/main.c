@@ -49,7 +49,7 @@ int	main(int ac, char **av, char **env)
 		ft_init(list);
 		//......... cmds with args and options
 		// cmd 1
-		list[0].cmd[0] = "pwd";
+		list[0].cmd[0] = "wc";
 
 		list[0].type[0] = HEREDOC;
 		list[0].file[0] = NULL;
@@ -87,13 +87,13 @@ int	main(int ac, char **av, char **env)
 
 
 		here_doc(list);
-		if (one_cmd(list) == 0)
-		{
-			if (list->cmd_nbr > 1)
-			{
-				ft_pipe(list);
-			}
-		}
+		// if (one_cmd(list) == 0)
+		// {
+		// 	if (list->cmd_nbr > 1)
+		// 	{
+		// 		ft_pipe(list);
+		// 	}
+		// }
 	}
 	free(input);
 }
