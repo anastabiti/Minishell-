@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/20 10:48:57 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:28:46 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	redire_2(struct s_list *list)
 		{
 			list->fd_out = open(list[list->cmd_iteration].file[i], O_RDWR | O_CREAT | O_TRUNC,
 					0600);
+					
 			if (list->fd_out == -1)
 			{
 				printf("bash: No such file or directory\n");
@@ -64,20 +65,20 @@ void	ft_pipe(struct s_list *list)
 		id = fork();
 		if (id == 0)
 		{
+			// if(redire_2(list) == 1)
+			// 	dup2(list->fd[1], 1);
 			redire_2(list);
-			if(redire_2(list) == 1)
-				dup2(list->fd[1], 1);
 			set_rd(list);
 			dup2(list->fd_in, 0);
-			// if (list->cmd_iteration < list->there_is_pipe)
-			// 	dup2(list->fd[1], 1);
+			if (list->cmd_iteration < list->there_is_pipe && redire_2(list) == 0) // problem here
+				dup2(list->fd[1], 1);
 			close(list->fd[0]);
 			run_builtin(list);
 		}
 		else
 		{
 			wait(NULL);
-			list->fd_out = list->fd[1];
+			// list->fd_out = list->fd[1];
 			close(list->fd[1]);
 			list->fd_in = list->fd[0];
 			list->cmd_iteration++;
