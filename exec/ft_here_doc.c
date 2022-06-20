@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 07:14:58 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/20 09:23:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/20 09:58:43 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 		{
 			int fd;
 			char *line;
-			fd = open("HERE", O_RDWR | O_CREAT | O_TRUNC, 0777);
+			fd= open("HERE", O_RDWR | O_CREAT | O_TRUNC, 0777);
 			signal(SIGINT, handler);
 			signal(SIGQUIT, SIG_IGN);
 			while (1)
@@ -42,6 +42,10 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 			}
 			free(line);
 			close(fd);
+			exit(1);
+		}
+		else
+		{
 			exit(1);
 		}
 	}

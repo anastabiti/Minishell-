@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:43:40 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/20 09:43:29 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ int	redirections(struct s_list *list)
 		if (ft_strncmp(list[0].type[i] , RDAPPEND, 10) == 0)
 		{
 			list->fd_out = open(list[0].file[i], O_RDWR | O_CREAT | O_APPEND, 0600);	
+		}
+		if (ft_strncmp(list[0].type[i] , HEREDOC, 7) == 0)
+		{
+			list->fd_in = open("f1", O_RDWR | O_CREAT | O_TRUNC, 0600);	
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/17 11:02:39 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/20 10:19:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	redire_2(struct s_list *list)
 	int i = 0;
 	int input;
 	int output;
+	int ret  = 0;
 	while (list[list->cmd_iteration].type[i] != NULL)
 	{
 		// input = dup(0);
@@ -28,6 +29,8 @@ int	redire_2(struct s_list *list)
 			{
 				printf("bash: No such file or directory\n");
 			}
+				ret = 1;
+
 		}
 		if (ft_strncmp(list[list->cmd_iteration].type[i], RDIN, 6) == 0)
 		{	
@@ -36,14 +39,16 @@ int	redire_2(struct s_list *list)
 			{
 				printf("bash: No such file or directory\n");
 			}
+				ret = 1;
 		}
 		if (ft_strncmp(list[list->cmd_iteration].type[i] , RDAPPEND, 10) == 0)
 		{
 			list->fd_out = open(list[list->cmd_iteration].file[i], O_RDWR | O_CREAT | O_APPEND, 0600);	
+				ret = 1;
 		}
 		i++;
 	}
-	return (0);
+	return (ret);
 }
 void	ft_pipe(struct s_list *list)
 {
@@ -59,9 +64,8 @@ void	ft_pipe(struct s_list *list)
 		id = fork();
 		if (id == 0)
 		{
-			if(redire_2(list) == 0)
-							dup2(list->fd[1], 1);
-
+			if(redire_2(list) == 1)
+				dup2(list->fd[1], 1);
 			set_rd(list);
 			dup2(list->fd_in, 0);
 			if (list->cmd_iteration < list->there_is_pipe)

@@ -49,14 +49,14 @@ int	main(int ac, char **av, char **env)
 		ft_init(list);
 		//......... cmds with args and options
 		// cmd 1
-		list[0].cmd[0] = NULL;
-		list[0].type[0] = HEREDOC;
-		list[0].file[0] = NULL;
+		list[0].cmd[0] = "ls";
+		list[0].type[0] = RDOUT;
+		list[0].file[0] = "APPENDIT";
 		list[0].delimiter[0] = "EOF";
-		// list[0].type[1] = NULL;
+		list[0].type[1] = NULL;
 		// list[0].file[1] = "f1";
 
-		// list[0].type[2] = RDOUT;
+		// list[0].type[2] = NULL;
 		// list[0].file[2] = "f2";
 
 		// list[0].type[3] = RDAPPEND;
@@ -65,29 +65,32 @@ int	main(int ac, char **av, char **env)
 
 		//
 		list[1].cmd[0] = "wc";
-		list[1].type[0] = HEREDOC;
+		list[1].type[0] = NULL;
 		list[1].file[0] = "11";
-		list[1].type[1] = RDOUT;
-		list[1].file[1] = "22";
-		list[1].type[2] = RDOUT;
-		list[1].file[2] = "33";
-		list[1].type[3] = RDAPPEND;
-		list[1].file[3] = "44";
-		list[1].type[4] = NULL;
+		// list[1].type[1] = RDOUT;
+		// list[1].file[1] = "22";
+		// list[1].type[2] = RDOUT;
+		// list[1].file[2] = "33";
+		// list[1].type[3] = RDAPPEND;
+		// list[1].file[3] = "44";
+		// list[1].type[4] = NULL;
 		///..................................
-		list->cmd_nbr = 0;
+		list->cmd_nbr = 2;
 		list->cmd_iteration = 0;
-		list->there_is_pipe = 0;
+		list->there_is_pipe = 1;
 
 
-		heredoc_without_cmd(list);
-		// if (one_cmd(list) == 0)
-		// {
-		// 	if (list->cmd_nbr > 1)
-		// 	{
-		// 		ft_pipe(list);
-		// 	}
-		// }
+		// heredoc_without_cmd(list);
+		if (list->cmd_nbr == 1)
+		{
+			one_cmd(list);
+		}
+		
+			if (list->cmd_nbr > 1)
+			{
+				ft_pipe(list);
+			}
+		
 	}
 	free(input);
 }
