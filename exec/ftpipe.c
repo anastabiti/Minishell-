@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/20 10:30:21 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/20 10:48:57 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ void	ft_pipe(struct s_list *list)
 				dup2(list->fd[1], 1);
 			set_rd(list);
 			dup2(list->fd_in, 0);
-			if (list->cmd_iteration < list->there_is_pipe)
-				dup2(list->fd_out, 1);
+			// if (list->cmd_iteration < list->there_is_pipe)
+			// 	dup2(list->fd[1], 1);
 			close(list->fd[0]);
 			run_builtin(list);
 		}
 		else
 		{
 			wait(NULL);
-			// list->fd_out = list->fd[1];
+			list->fd_out = list->fd[1];
 			close(list->fd[1]);
 			list->fd_in = list->fd[0];
 			list->cmd_iteration++;
