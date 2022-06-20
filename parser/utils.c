@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:55:04 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/20 21:15:30 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/20 22:14:03 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,18 @@ int	ft_max(int a, int b)
 	return (b);
 }
 
-void	check_in_dir(char *s)
+int	check_err_pipe(char *s)
+{
+	if (s[ft_strlen(s) - 1] == '|')
+	{
+		ft_putstr(SNT_ERR);
+		ft_putstr("|'\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	check_in_dir(char *s)
 {
 	int		i;
 	int		dir;
@@ -117,14 +128,15 @@ void	check_in_dir(char *s)
 			i = -1;
 			while (++i < rep)
 				ft_putchar(s[0]);
-			ft_putstr("'\n");
+			return (ft_putstr("'\n"), 0);
 		}
 		else
-			ft_putstr("newline'\n");
+			return (ft_putstr("newline'\n"), 0);
 	}
+	return (1);
 }
 
-void	check_quotes(char *s)
+int	check_quotes(char *s)
 {
 	int	sngl_qt;
 	int	dbl_quot;
@@ -141,19 +153,33 @@ void	check_quotes(char *s)
 			dbl_quot++;
 	}
 	if (sngl_qt % 2 || dbl_quot % 2)
-		return (ft_putstr("Not closed quotes\n"));
+		return (ft_putstr("Not closed quotes\n"), 0);
+	return (1);
 }
 
-void	check_dir_with_file(char *s)
+int	check_dir_with_file(char *s)
 {
 	if (s[ft_strlen(s) - 1] == '<' || s[ft_strlen(s) - 1] == '>')
-	ft_putstr(SNT_ERR);
-	ft_putstr(">'\n");
+	{
+		ft_putstr(SNT_ERR);
+		ft_putstr(">'\n");
+		return (0);
+	}
+	return (1);
 }
 
-void	check_valid(char *s)
+int	check_valid(char *s)
 {
-	check_in_dir(s);
-	check_quotes(s);
-	check_dir_with_file(s);
+	if (!check_in_dir(s))
+		return (0);
+	if (!check_quotes(s))
+		return (0);
+	if (!check_dir_with_file(s))
+		return (0);
+	return (1);
+}
+
+void	ft_pass_cmd()
+{
+	
 }
