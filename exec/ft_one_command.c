@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/17 11:19:32 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/20 09:38:23 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ int	one_cmd_1(struct s_list *list)
 	if (fork() == 0)
 	{
 		redirections(list);
+				// heredoc_without_cmd(list);
+
 		while (list[0].type[i] != NULL)
 		{
+			if (ft_strncmp(list[0].type[i], HEREDOC, 7) == 0)
+				dup2(list->fd_in, 0);
 			if (ft_strncmp(list[0].type[i], RDOUT, 7) == 0)
 				dup2(list->fd_out, 1);
 			if (ft_strncmp(list[0].type[i], RDIN, 6) == 0)
@@ -29,6 +33,8 @@ int	one_cmd_1(struct s_list *list)
 			if (ft_strncmp(list[0].type[i], RDOUT, 7) == 0)
 				close(list->fd_out);
 			if (ft_strncmp(list[0].type[i], RDIN, 6) == 0)
+				close(list->fd_in);
+					if (ft_strncmp(list[0].type[i], HEREDOC, 7) == 0)
 				close(list->fd_in);
 			i++;
 		}
