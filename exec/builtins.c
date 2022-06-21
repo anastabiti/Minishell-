@@ -67,6 +67,14 @@ int	builtcheck(struct s_list *list)
 			}
 			env++;
 		}
+		if (findhome == NULL)
+		{
+			printf("Minishell: cd: HOME not set\n");
+		}
+		if (list->cmd[2] != NULL)
+		{
+			printf("Minishell: cd: too many arguments\n");
+		}
 		if (chdir(list[0].cmd[1]) == -1)
 		{
 			error = "Minishell: cd: No such file or directory\n";
