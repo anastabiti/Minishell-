@@ -24,13 +24,21 @@
 // prints out the names and values of the variables in the environment,
 // ft_putendl_fd(pw, fd_out);
 
-int	ft_echo(char *arg, int fd)
+int	ft_echo(struct s_list *list, char *arg, int fd)
 {
 	int	len;
 
-	len = ft_strlen(arg);
-	write(fd, arg, len);
-	write(fd, "\n", 1);
+	if (list->cmd[1] == NULL)
+	{
+		write(fd, "\n", 1);
+		return (0);
+	}
+	else
+	{
+		len = ft_strlen(arg);
+		write(fd, arg, len);
+		write(fd, "\n", 1);
+	}
 	return (0);
 }
 
@@ -41,7 +49,7 @@ int	builtcheck(struct s_list *list)
 
 	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
 	{
-		ft_echo(list[0].cmd[1], list->fd_out);
+		ft_echo(list, list[0].cmd[1], list->fd_out);
 		return (1);
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->cd, 2) == 0)
