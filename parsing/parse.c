@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/21 11:05:01 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/21 11:29:13 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	main(int argc, char **argv)
 			while (split[++i])
 			{
 				split[i] = rm_spaces(split[i]);
-				printf("%s\n", split[i]);
+				// printf("%s\n", split[i]);
 				// if (!check_valid(split[i]))
 				// 	ft_pass_cmd();
 			}
+			// printf("%d\n", i);
 		}
 	}
 }
