@@ -61,8 +61,8 @@ int	main(int ac, char **av, char **env)
 		///..................................
 		//test 2
 		//ls | wc | wc is not working
-		list[0].cmd[0] = "echo";
-		list[0].cmd[1] = NULL;
+		list[0].cmd[0] = "cd";
+		list[0].cmd[1] = "..";
 
 		list[0].type[0] = NULL;
 		list[0].file[0] = "test.txt";

@@ -46,6 +46,8 @@ int	builtcheck(struct s_list *list)
 {
 	char	*error;
 	int		len;
+	char	*findhome;
+	char	**env;
 
 	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
 	{
@@ -54,6 +56,17 @@ int	builtcheck(struct s_list *list)
 	}
 	else if (ft_strncmp(list[0].cmd[0], list->blt->cd, 2) == 0)
 	{
+		// findhome = ;
+		env = list->environ;
+		while (*env)
+		{
+			if (ft_strnstr(*env, "HOME=", 5))
+			{
+				findhome = *env;
+				printf("%s\n", findhome);
+			}
+			env++;
+		}
 		if (chdir(list[0].cmd[1]) == -1)
 		{
 			error = "Minishell: cd: No such file or directory\n";
