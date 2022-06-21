@@ -21,6 +21,10 @@ int	redire_2(struct s_list *list)
 	{
 		// input = dup(0);
 		// output = dup(1);
+		if (ft_strncmp(list[0].type[i] , HEREDOC, 7) == 0)
+		{
+			list->fd_in = open("f1", O_RDWR | O_CREAT | O_TRUNC, 0600);	
+		}
 		if (ft_strncmp(list[list->cmd_iteration].type[i] , RDOUT, 7) == 0)
 		{
 			list->fd_out = open(list[list->cmd_iteration].file[i], O_RDWR | O_CREAT | O_TRUNC,
@@ -75,7 +79,8 @@ void	ft_pipe(struct s_list *list)
 		}
 		else
 		{
-			wait(NULL);
+			wait(&g_exit_status);
+			 if (WIFEXITED(g_exit_status)) printf("<%d>", WEXITSTATUS(g_exit_status)); // from https://www.codegrepper.com/code-examples/shell/how+to+implement+exit+in+shell+c
 			close(list->fd[1]);
 			list->fd_in = list->fd[0];
 			list->cmd_iteration++;

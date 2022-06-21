@@ -76,6 +76,7 @@ struct					s_list
 	char *delimiter[50];
 	struct s_redirections *rd;
 };
+static int g_exit_status ;
 // struct s_redirections 
 // {
 // 	int					redirection_out;

@@ -47,6 +47,8 @@ int	redirections(struct s_list *list)
 		{
 			list->fd_in = open("f1", O_RDWR | O_CREAT | O_TRUNC, 0600);	
 		}
+	
+
 		i++;
 	}
 	return (0);

@@ -9,7 +9,6 @@
 /*   Updated: 2022/06/14 11:21:38 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../minishell.h"
 /*
 comments 
@@ -101,5 +100,5 @@ int	ft_bin_usr_sbin(struct s_list *list)
 		}
 	}
 	write(2, "MINISHELL command not found\n", 28);
-	exit(1);
+	exit(127);
 }

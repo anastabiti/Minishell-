@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../minishell.h"
 
 int	one_cmd_1(struct s_list *list)
@@ -72,7 +73,7 @@ int	one_cmd(struct s_list *list)
 	else if (list->cmd_nbr == 1 && is_builtin(list, 0) == 3)
 	{
 		one_cmd_1(list);
-		wait(NULL);
+		wait(&g_exit_status);
 		return (1);
 	}
 	return (0);

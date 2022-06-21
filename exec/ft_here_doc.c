@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../minishell.h"
 //<< EOF without command
 int	heredoc_without_cmd(struct s_list *list) //sigfault
@@ -51,7 +52,7 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 	}
 	else
 	{
-		wait(NULL);
+		wait(&g_exit_status);
 			
 	}
 	return (0);

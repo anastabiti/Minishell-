@@ -89,5 +89,5 @@ int	run_builtin(struct s_list *list)
 		else
 			ft_bin_usr_sbin(list);
 	}
-	return (0);
+	return (127);
 }
