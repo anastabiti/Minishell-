@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/20 22:14:20 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/21 11:00:33 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 		while (1)
 		{
 			line = readline(PROMPT);
-			// printf("%s\n", line);
 			add_history(line);
 			if (!check_err_pipe(line))
 				continue;
