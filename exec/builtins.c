@@ -78,6 +78,7 @@ int	builtcheck_1(struct s_list *list)
 int	ft_is_built_in(struct s_list *list)
 {
 	int	i;
+	int	exit_value;
 
 	i = 0;
 	if (builtcheck(list) == 1)
@@ -100,10 +101,30 @@ int	ft_is_built_in(struct s_list *list)
 	}
 	else if (ft_strncmp(list[0].cmd[0], "exit", 4) == 0)
 	{
-		printf("exit\n");
-		
-		free(list->input);
-		exit(0);
+		if (list->cmd[1] == NULL)
+		{
+			printf("exit\n");
+			exit(g_exit_status);
+		}
+		if (list->cmd[2] == NULL)
+		{
+			while (list[list->cmd_iteration].cmd[1][i])
+			{
+				if (ft_isdigit(list[list->cmd_iteration].cmd[1][i]) == 0)
+				{
+					printf("exit\n");
+					printf("Minishell: exit: %s: numeric argument required\n",
+							list[list->cmd_iteration].cmd[1]);
+					exit(2); // 				exit(255);
+				}
+				exit_value = ft_atoi(list[list->cmd_iteration].cmd[1]);
+				i++;
+				free(list->input);
+				exit(exit_value);
+			}
+		}
+		printf("exit\n Minishell : exit : too many arguments\n");
+		exit(1);
 	}
 	return (0);
 }
