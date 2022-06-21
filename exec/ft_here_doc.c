@@ -10,9 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../minishell.h"
 //<< EOF without command
+void	handler_in_heredoc(int sig)
+{
+	if (sig == SIGINT)
+		exit(1);
+}
 int	heredoc_without_cmd(struct s_list *list) //sigfault
 {
 	int i = 0;
@@ -20,13 +24,17 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 	{
 		if (ft_strncmp(HEREDOC, list[0].type[0], 7) == 0)
 		{
+			// signal(SIGINT, handler_in_heredoc);
+			// signal(SIGQUIT, SIG_IGN);
 			int fd;
 			char *line;
-			fd= open("HERE", O_RDWR | O_CREAT | O_TRUNC, 0777);
-			signal(SIGINT, handler);
-			signal(SIGQUIT, SIG_IGN);
+			fd = open("/tmp/tmpfiletowrite", O_RDWR | O_CREAT | O_TRUNC, 0777);
+
 			while (1)
 			{
+				signal(SIGQUIT, SIG_IGN);
+				signal(SIGQUIT, handler_in_heredoc);
+
 				line = readline(">");
 
 				if (ft_strncmp(line, "EOF", 3) == 0)
@@ -43,17 +51,16 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 			}
 			free(line);
 			close(fd);
-			exit(1);
+			exit(0);
 		}
 		else
 		{
-			exit(1);
+			exit(0);
 		}
 	}
 	else
 	{
 		wait(&g_exit_status);
-			
 	}
-	return (0);
+	return (g_exit_status);
 }

@@ -1,3 +1,0 @@
-ls < test.txt 
-wc test.txt | ps > s
-ls < test.txt  | wc not working 

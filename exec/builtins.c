@@ -101,6 +101,7 @@ int	ft_is_built_in(struct s_list *list)
 	else if (ft_strncmp(list[0].cmd[0], "exit", 4) == 0)
 	{
 		printf("exit\n");
+		
 		free(list->input);
 		exit(0);
 	}
