@@ -6,10 +6,12 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/14 11:21:38 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/22 09:10:37 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../minishell.h"
+
 /*
 comments 
 	while (!(ft_strnstr(list->environ[x], "PATH=", lenght))) // search for PATH=
@@ -44,6 +46,7 @@ char	*last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
 		// 	char *cmd[] = {list[list->cmd_iteration].cmd[0], NULL};
 		// 	if (execve(current, cmd, list->environ) == -1)
 		// 		write(2, "exeve failed\n", 14);
+		
 		// }
 */
 
