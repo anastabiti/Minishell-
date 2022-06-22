@@ -52,15 +52,15 @@ char	*last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
 
 int	ft_bin_usr_sbin(struct s_list *list)
 {
-	char	*bin;
-	char	*current;
-	int		i;
-	char	**new;
-	char	pw[PATH_MAX];
-	int		x;
-	int		lenght;
-	int		r;
-	char	*last;
+	char *bin;
+	char *current;
+	int i;
+	char **new;
+	char pw[PATH_MAX];
+	int x;
+	int lenght;
+	int r;
+	char *last;
 
 	x = 0;
 	current = getcwd(pw, PATH_MAX);
@@ -83,6 +83,7 @@ int	ft_bin_usr_sbin(struct s_list *list)
 		}
 	}
 	new[i] = NULL;
+
 	i = 0;
 	bin = ft_strjoin(new[i], "/");
 	while (new[i])
@@ -101,6 +102,19 @@ int	ft_bin_usr_sbin(struct s_list *list)
 			last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
 			i++;
 		}
+		///
+		 if (list[list->cmd_iteration].cmd[0][0] == '.' && list[list->cmd_iteration].cmd[0][1] == '/')
+		{
+			char *cmd[3] = {list[list->cmd_iteration].cmd[0], NULL};
+			execve(list[list->cmd_iteration].cmd[0], cmd, NULL);
+			printf("failed");
+		}
+		if (list[list->cmd_iteration].cmd[0][0] == '/')
+		{
+			char *cmd[3] = {list[list->cmd_iteration].cmd[0], NULL};
+			execve(list[list->cmd_iteration].cmd[0], cmd, NULL);
+		}
+		///
 	}
 	write(2, "MINISHELL command not found\n", 28);
 	exit(127);
