@@ -80,7 +80,8 @@ void	ft_pipe(struct s_list *list)
 		else
 		{
 			wait(&g_exit_status);
-			 if (WIFEXITED(g_exit_status)) printf("<%d>", WEXITSTATUS(g_exit_status)); // from https://www.codegrepper.com/code-examples/shell/how+to+implement+exit+in+shell+c
+			 if (WIFEXITED(g_exit_status));
+			 g_exit_status =  WEXITSTATUS(g_exit_status); // from https://www.codegrepper.com/code-examples/shell/how+to+implement+exit+in+shell+c
 			close(list->fd[1]);
 			list->fd_in = list->fd[0];
 			list->cmd_iteration++;
