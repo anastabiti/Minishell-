@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:09:28 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/22 09:39:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ void	ft_pipe(struct s_list *list)
 			redire_2(list);
 			set_rd(list);
 			dup2(list->fd_in, 0);
-			if (list->cmd_iteration < list->there_is_pipe
-				&& redire_2(list) == 0) // problem here
+			if (list->cmd_iteration < list->there_is_pipe ) 
+			// problem here && redire_2(list) == 0 i must check previous redirection is not rdout
+			//  &&  ft_strncmp( list[0].type[1], RDOUT, 7) != 0 not working
 				dup2(list->fd[1], 1);
 			close(list->fd[0]);
 			run_builtin(list);

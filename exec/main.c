@@ -24,7 +24,9 @@ cat > fruits.txt << EOF  it create a file with the input from here doc
 cat << EOF > a Instead of displaying the output on the screen you can redirect it to a file using the >,
 	>> operators.
 	cd ../../etc/ not working
-//////...
+	cat < Makefile | wc not working  ??? working  by removing && redire_2(list) == 0 
+	ps > test.txt | wc  is not working by removing && redire_2(list) == 0 
+//////... 
 */
 int	main(int ac, char **av, char **env)
 {
@@ -42,10 +44,8 @@ int	main(int ac, char **av, char **env)
 	// 		* 2);
 	fd = 1;
 	list->environ = env;
-	while (i < 1)
+	while(1)
 	{
-		if (i == 0)
-		{
 			signal(SIGQUIT, SIG_IGN);
 			signal(SIGINT, handler);
 			list->input = ft_read(list->input);
@@ -64,15 +64,15 @@ int	main(int ac, char **av, char **env)
 			///..................................
 			//test 2
 			//ls | wc | wc is not working
-			list[0].cmd[0] = "cd";
-			list[0].cmd[1] = ".dg./";
+			list[0].cmd[0] = "ps";
+			list[0].cmd[1] = NULL;
 
-			list[0].type[0] = NULL;
+			list[0].type[0] = RDOUT;
 			list[0].file[0] = "test.txt";
 			list[0].delimiter[0] = "EOF";
 			list[0].type[1] = NULL;
 
-			list[1].cmd[0] = "ps";
+			list[1].cmd[0] = "wc";
 			list[1].type[0] = NULL;
 			list[1].file[0] = "f2";
 
@@ -98,62 +98,8 @@ int	main(int ac, char **av, char **env)
 				ft_pipe(list);
 			}
 		}
-		else
-		{
-			signal(SIGQUIT, SIG_IGN);
-			signal(SIGINT, handler);
-			list->input = ft_read(list->input);
-			ft_init(list);
-			//......... cmds with args and options
-			// test 1
-			// list[0].cmd[0] = "ls";
-			// list[0].type[0] = RDOUT;
-			// list[0].file[0] = "APPENDIT";
-			// list[0].delimiter[0] = "EOF";
-			// list[0].type[1] = NULL;
-			// list[1].cmd[0] = "wc";
-			// list[1].type[0] = NULL;
-			// list[1].file[0] = "11";
 
-			///..................................
-			//test 2
-			//ls | wc | wc is not working
-			list[0].cmd[0] = "ps";
-			list[0].cmd[1] = NULL;
-
-			list[0].type[0] = NULL;
-			list[0].file[0] = "test.txt";
-			list[0].delimiter[0] = "EOF";
-			list[0].type[1] = NULL;
-
-			list[1].cmd[0] = "ps";
-			list[1].type[0] = RDOUT;
-			list[1].file[0] = "f2";
-
-			list[1].type[1] = NULL;
-
-			list[2].cmd[0] = "wc";
-			list[2].type[0] = NULL;
-			list[2].file[0] = "test.txt";
-			//.....
-
-			list->cmd_nbr = 2;
-			list->cmd_iteration = 0;
-			list->there_is_pipe = 1;
-
-			heredoc_without_cmd(list);
-			if (list->cmd_nbr == 1)
-			{
-				one_cmd(list);
-			}
-
-			if (list->cmd_nbr > 1)
-			{
-				ft_pipe(list);
-			}
-		}
-		i++;
-	}
+		
 
 	free(input);
 	return (0);
