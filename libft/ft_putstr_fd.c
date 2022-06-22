@@ -39,6 +39,7 @@ int	ft_atoi(const char *str)
 	}
 	return ((int)n * positive);
 }
+
 int	ft_isdigit(int c)
 {
 	if ((c >= '0') && (c <= '9'))
@@ -60,8 +61,9 @@ void	ft_putstr_fd(char *s, int fd)
 
 int	ft_search(char *s, char *c, int lenght)
 {
-	int i = 1;
+	int	i;
 
+	i = 1;
 	while (i < lenght)
 	{
 		if (s[i] == c[i])

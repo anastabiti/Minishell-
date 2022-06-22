@@ -35,10 +35,10 @@ int	ft_echo(struct s_list *list, char *arg, int fd)
 	}
 	else
 	{
-		if(ft_strncmp(list->cmd[1], "$?", 2)== 0)
+		if (ft_strncmp(list->cmd[1], "$?", 2) == 0)
 		{
-				printf("%d\n", g_exit_status);
-				return 0;
+			printf("%d\n", g_exit_status);
+			return (0);
 		}
 		len = ft_strlen(arg);
 		write(fd, arg, len);
@@ -74,12 +74,10 @@ int	builtcheck(struct s_list *list)
 		}
 		if (findhome == NULL)
 		{
-									g_exit_status = 1;
-
+			g_exit_status = 1;
 			error = "Minishell: cd: HOME not set\n";
 			len = ft_strlen(error);
 			write(2, error, len);
-
 		}
 		// if (list->cmd[2] != NULL)
 		// {
@@ -87,8 +85,7 @@ int	builtcheck(struct s_list *list)
 		// }
 		if (chdir(list[0].cmd[1]) == -1)
 		{
-						g_exit_status = 1;
-
+			g_exit_status = 1;
 			error = "Minishell: cd: No such file or directory\n";
 			len = ft_strlen(error);
 			write(2, error, len);
