@@ -6,11 +6,15 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 10:03:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:11:16 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+// problem here
+//&& redire_2(list) == 0 i must check previous redirection is not rdout
+//  &&  ft_strncmp( list[0].type[1], RDOUT, 7) != 0 not workings
+//check echo asd > f1 > f3 << f4
 int	redire_2(struct s_list *list)
 {
 	int	i;
@@ -22,8 +26,6 @@ int	redire_2(struct s_list *list)
 	ret = 0;
 	while (list[list->cmd_iteration].type[i] != NULL)
 	{
-		// input = dup(0);
-		// output = dup(1);
 		if (ft_strncmp(list[0].type[i], HEREDOC, 7) == 0)
 		{
 			list->fd_in = open("f1", O_RDWR | O_CREAT | O_TRUNC, 0600);
@@ -50,13 +52,15 @@ int	redire_2(struct s_list *list)
 		if (ft_strncmp(list[list->cmd_iteration].type[i], RDAPPEND, 10) == 0)
 		{
 			list->fd_out = open(list[list->cmd_iteration].file[i],
-					O_RDWR | O_CREAT | O_APPEND, 0600);
+								O_RDWR | O_CREAT | O_APPEND,
+								0600);
 			ret = 1;
 		}
 		i++;
 	}
 	return (ret);
 }
+
 void	ft_pipe(struct s_list *list)
 {
 	int	i;
@@ -75,9 +79,10 @@ void	ft_pipe(struct s_list *list)
 			redire_2(list);
 			set_rd(list);
 			dup2(list->fd_in, 0);
-			if ( (list->cmd_iteration < list->there_is_pipe && list[0].type[0] == NULL) || (list->cmd_iteration < list->there_is_pipe && ft_strncmp( list[0].type[0], RDOUT, 7) != 0)  )
-			// problem here && redire_2(list) == 0 i must check previous redirection is not rdout
-			//  &&  ft_strncmp( list[0].type[1], RDOUT, 7) != 0 not working
+			if ((list->cmd_iteration < list->there_is_pipe
+					&& list[0].type[0] == NULL)
+				|| (list->cmd_iteration < list->there_is_pipe
+					&& ft_strncmp(list[0].type[0], RDOUT, 7) != 0))
 				dup2(list->fd[1], 1);
 			close(list->fd[0]);
 			run_builtin(list);
@@ -87,7 +92,7 @@ void	ft_pipe(struct s_list *list)
 			wait(&g_exit_status);
 			if (WIFEXITED(g_exit_status))
 				g_exit_status = WEXITSTATUS(g_exit_status);
-					// from https://www.codegrepper.com/code-examples/shell/how+to+implement+exit+in+shell+c
+			// from https://www.codegrepper.com/code-examples/shell/how+to+implement+exit+in+shell+c
 			close(list->fd[1]);
 			list->fd_in = list->fd[0];
 			list->cmd_iteration++;

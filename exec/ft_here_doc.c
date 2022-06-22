@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 07:14:58 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:09:17 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:15:37 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 	int i = 0;
 	if (fork() == 0)
 	{
+		//i must loop here
 		if (ft_strncmp(HEREDOC, list[0].type[0], 7) == 0)
 		{
 			// signal(SIGINT, handler_in_heredoc);
