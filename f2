@@ -1,0 +1,5 @@
+  PID TTY           TIME CMD
+ 1164 ttys000    0:00.49 /bin/zsh -l
+14143 ttys000    0:00.02 bash
+55631 ttys001    0:00.07 -zsh
+ 7513 ttys002    0:00.67 /bin/zsh -l
