@@ -26,6 +26,8 @@ cat << EOF > a Instead of displaying the output on the screen you can redirect i
 	cd ../../etc/ not working
 	cat < Makefile | wc not working  ??? working  by removing && redire_2(list) == 0 
 	ps > test.txt | wc  is not working by removing && redire_2(list) == 0  but working by adding  && redire_2(list) == 0
+	ls | wc is not working after fixing the last bug
+
 //////...  
 */
 int	main(int ac, char **av, char **env)
