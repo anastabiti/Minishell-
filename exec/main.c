@@ -68,8 +68,8 @@ int	main(int ac, char **av, char **env)
 		///..................................
 		//test 2
 		//ls | wc | wc is not working
-		list[0].cmd[0] = "printf";
-		list[0].cmd[1] = "ANAS";
+		list[0].cmd[0] = "ls";
+		list[0].cmd[1] = NULL;
 
 		list[0].type[0] = RDOUT;
 		list[0].file[0] = "file1";

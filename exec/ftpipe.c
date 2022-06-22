@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:51:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 11:11:16 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:54:04 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //&& redire_2(list) == 0 i must check previous redirection is not rdout
 //  &&  ft_strncmp( list[0].type[1], RDOUT, 7) != 0 not workings
 //check echo asd > f1 > f3 << f4
+//ls > f1 > f2<< FF
 int	redire_2(struct s_list *list)
 {
 	int	i;

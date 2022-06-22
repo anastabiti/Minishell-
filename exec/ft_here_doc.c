@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 07:14:58 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 11:23:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/22 12:00:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 
 				line = readline(">");
 
-				if (ft_strncmp(line, "EOF", 3) == 0)
+				if (ft_strncmp(line, "EOF", 4) == 0)
 				{
 					break ;
 				}

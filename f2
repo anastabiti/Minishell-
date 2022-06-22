@@ -4,11 +4,7 @@ builtins_bin
 exec
 f1
 f2
-f3
-file1
-file3
 libft
-minishell
 minishell.h
 parsing
 test.txt
