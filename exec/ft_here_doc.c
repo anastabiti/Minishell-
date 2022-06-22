@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 07:14:58 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 11:15:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/22 11:23:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 	if (fork() == 0)
 	{
 		//i must loop here
-		if (ft_strncmp(HEREDOC, list[0].type[0], 7) == 0)
+		while(list[list->cmd_iteration].type[i] != NULL)
+		{
+		if (ft_strncmp(HEREDOC, list[list->cmd_iteration].type[i], 7) == 0)
 		{
 			// signal(SIGINT, handler_in_heredoc);
 			// signal(SIGQUIT, SIG_IGN);
 			int fd;
 			char *line;
-			fd = open("/tmp/tmpfiletowrite", O_RDWR | O_CREAT | O_TRUNC, 0777);
+			fd = open("f3", O_RDWR | O_CREAT | O_TRUNC, 0777);
 
 			while (1)
 			{
@@ -54,9 +56,11 @@ int	heredoc_without_cmd(struct s_list *list) //sigfault
 			close(fd);
 			exit(0);
 		}
-		else
-		{
-			exit(0);
+		// else
+		// {
+		// 	exit(0);
+		// }
+		i++;
 		}
 	}
 	else
