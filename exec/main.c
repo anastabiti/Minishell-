@@ -25,8 +25,8 @@ cat << EOF > a Instead of displaying the output on the screen you can redirect i
 	>> operators.
 	cd ../../etc/ not working
 	cat < Makefile | wc not working  ??? working  by removing && redire_2(list) == 0 
-	ps > test.txt | wc  is not working by removing && redire_2(list) == 0 
-//////... 
+	ps > test.txt | wc  is not working by removing && redire_2(list) == 0  but working by adding  && redire_2(list) == 0
+//////...  
 */
 int	main(int ac, char **av, char **env)
 {
@@ -64,10 +64,10 @@ int	main(int ac, char **av, char **env)
 			///..................................
 			//test 2
 			//ls | wc | wc is not working
-			list[0].cmd[0] = "ps";
+			list[0].cmd[0] = "cat";
 			list[0].cmd[1] = NULL;
 
-			list[0].type[0] = RDOUT;
+			list[0].type[0] = RDIN;
 			list[0].file[0] = "test.txt";
 			list[0].delimiter[0] = "EOF";
 			list[0].type[1] = NULL;
