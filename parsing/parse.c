@@ -34,8 +34,12 @@ int	main(int argc, char **argv)
 			{
 				split[i] = rm_spaces(split[i]);
 				// printf("%s\n", split[i]);
-				// if (!check_valid(split[i]))
-				// 	ft_pass_cmd();
+			}
+			cmd->pipe = i;
+			i = -1;
+			while (split[++i])
+			{
+				ft_split_cmd(split[i]);
 			}
 			// printf("%d\n", i);
 		}
