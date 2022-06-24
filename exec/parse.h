@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/24 14:50:03 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/24 20:07:00 by asus             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ typedef struct s_cmdl {
 	char	*args;
 	char	*in_red;
 	char	*out_red;
+	//mine
+	int cmd_iteration;
+	int cmd_nbr;
+	char					*type[50];
+	char					*file[50];
+		int						fd_out;
+			int						fd_in;
+				char					**environ;
+
+//....
 }		t_cmdl;
 
 int		is_white_space(char c);

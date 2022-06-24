@@ -6,7 +6,7 @@
 /*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/24 19:33:04 by asus             ###   ########.fr       */
+/*   Updated: 2022/06/24 20:34:14 by asus             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,18 +104,19 @@ int	main(int argc, char **argv,  char **env)
 			while (i < pipe)
 			{
 	
-				printf("%d -- %s -- %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args, cmd[i].in_red, cmd[i].out_red);
+				// printf("%d -- %s -- %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args, cmd[i].in_red, cmd[i].out_red);
 				i++;
 			}
-		// 	if(i == 0)
-		// 	{
-		// 		heredoc_without_cmd(cmd);
-		// if (list->cmd_nbr == 1)
-		// {
-		// 	one_cmd(cmd);
-		// }
-		// 	}
-			
+			 cmd->cmd_nbr = 0;
+			 cmd->environ = env;
+			if( cmd->cmd_nbr == 0)
+			{
+				// heredoc_without_cmd(cmd);
+	
+			one_cmd(cmd);
 		}
+			}
+			
 	}
+	return 0;
 }
