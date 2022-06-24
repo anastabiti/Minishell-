@@ -3,31 +3,73 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
+#    By: asus <asus@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/06/22 09:08:38 by atabiti          ###   ########.fr        #
+#    Updated: 2022/06/24 19:14:18 by asus             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-SRC =   ./exec/builtins.c  ./exec/ft_env.c \
- ./exec/main.c ./exec/tools.c  redirections.c   \
- ./libft/ft_strnstr.c   ./exec/ft_unset.c ./exec/ft_export.c \
-  ./exec/ft_others.c   ./exec/ft_readline.c  ./exec/ft_init.c ./libft/ft_putchar_fd.c \
-./libft/ft_putstr_fd.c           ./libft/ft_putendl_fd.c  ./exec/ftpipe.c  ./libft/libft.c      ./exec/ft_one_command.c  ./exec/ft_multi_cmds.c    ./libft/ft_split.c  ./libft/ft_strdup.c   ./libft/ft_memcpy.c ./libft/ft_strlcpy.c   ./libft/ft_memmove.c    ./exec/ft_here_doc.c        \
+SRC = ./exec/builtins.c \
+	./exec/ft_env.c \
+	./exec/tools.c \
+	./exec/redirections.c \
+	./libft/ft_strnstr.c \
+	./exec/ft_unset.c \
+	./exec/ft_export.c \
+	./exec/ft_others.c \
+	./exec/ft_readline.c \
+	./exec/ft_init.c  \
+	./libft/ft_putchar_fd.c \
+	./libft/ft_putstr_fd.c \
+	./libft/ft_putendl_fd.c \
+	./exec/ftpipe.c \
+	./libft/libft.c \
+	./exec/ft_one_command.c \
+	./exec/ft_multi_cmds.c   \
+	./libft/ft_split.c \
+	./libft/ft_strdup.c  \
+	./libft/ft_memcpy.c \
+	./libft/ft_strlcpy.c \
+	./libft/ft_memmove.c \
+	./exec/ft_here_doc.c \
+	./exec/ft_split.c \
+	./exec/parse.c \
+	./exec/utils.c \
+	
+OBJ = ./exec/builtins.o \
+	./exec/ft_env.o \
+	./exec/tools.o \
+	./exec/redirections.o \
+	./libft/ft_strnstr.o  \
+	./exec/ft_unset.o \
+	./exec/ft_export.o \
+	./exec/ft_others.o \
+	./exec/ft_readline.o \
+	./exec/ft_init.o \
+	./libft/ft_putchar_fd.o \
+	./libft/ft_putstr_fd.o \
+	./libft/ft_putendl_fd.o \
+	./exec/ftpipe.o \
+	./libft/libft.o \
+	./exec/ft_one_command.o \
+	./exec/ft_multi_cmds.o \
+	./libft/ft_split.o \
+	./libft/ft_strdup.o \
+	./libft/ft_memcpy.o \
+	./libft/ft_strlcpy.o \
+	./libft/ft_memmove.o \
+	./exec/ft_here_doc.o \
+	./exec/ft_split.o \
+	./exec/parse.o \
+	./exec/utils.o \
 
-OBJ =  ./exec/builtins.o  ./exec/ft_env.o    ./exec/main.o  \
- ./exec/tools.o      ./exec/redirections.o  ./libft/ft_strnstr.o  \
- ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o \
-  ./exec/ft_readline.o ./exec/ft_init.o  ./libft/ft_putchar_fd.o \
-./libft/ft_putstr_fd.o           ./libft/ft_putendl_fd.o  ./exec/ftpipe.o  ./libft/libft.o ./exec/ft_one_command.o  ./exec/ft_multi_cmds.o ./libft/ft_split.o ./libft/ft_strdup.o ./libft/ft_memcpy.o   ./libft/ft_strlcpy.o ./libft/ft_memmove.o ./exec/ft_here_doc.o\
 	
 FALGS = -Wall -Werorr -Wextra 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	# rm 11 22 33 44 f1 f2 f3
 	gcc -g $(FLAGS)  $(OBJ)  -o $(NAME) -lreadline -L /Users/$(USER)/goinfre/.brew/opt/readline/lib -I /Users/$(USER)/goinfre/.brew/opt/readline/include
 		gcc builtins_bin/ft_echo.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c ./exec/tools.c   ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftecho 
 		gcc builtins_bin/ft_cd.c  ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftcd 
@@ -36,11 +78,8 @@ $(NAME) : $(OBJ)
 		gcc builtins_bin/ft_env.c  ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c ./exec/tools.c ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftenv 
 		gcc builtins_bin/ft_export.c ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftexport
 			gcc builtins_bin/ft_exit.c ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c ./exec/tools.c ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftexit
-
-
 	
 clean :
-	# rm FILEOUT1   FILEOUT3     FILEOUT2    
 		cd ./exec; \
 	rm *.o
 		cd ./libft; \
@@ -51,7 +90,3 @@ clean :
 fclean : clean
 	rm $(NAME)
 re : fclean all
-
-
-
-
