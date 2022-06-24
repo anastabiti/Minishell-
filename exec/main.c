@@ -68,16 +68,16 @@ int	main(int ac, char **av, char **env)
 		///..................................
 		//test 2
 		//ls | wc | wc is not working
-		list[0].cmd[0] = "ls";
+		list[0].cmd[0] = "./a.out";
 		list[0].cmd[1] = NULL;
 
-		list[0].type[0] = RDOUT;
-		list[0].file[0] = "file1";
-		list[0].delimiter[0] = "EOF";
-		list[0].type[1] = RDOUT;
-		list[0].file[1] = "file3";
-		list[0].type[2] = HEREDOC;
-		list[0].type[3] = NULL;
+		list[0].type[0] = NULL;
+		// list[0].file[0] = "file1";
+		// list[0].delimiter[0] = "EOF";
+		// list[0].type[1] = RDOUT;
+		// list[0].file[1] = "file3";
+		// list[0].type[2] = HEREDOC;
+		// list[0].type[3] = NULL;
 
 		list[1].cmd[0] = "wc";
 		list[1].type[0] = NULL;
