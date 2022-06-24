@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:55:04 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/20 22:14:03 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/24 14:21:10 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,36 @@ int	check_valid(char *s)
 	return (1);
 }
 
-void	ft_pass_cmd()
+// int	ft_strlen(char *s)
+// {
+// 	int		i;
+
+// 	i = 0;
+// 	while (s[i])
+// 		i++;
+// 	return (i);
+// }
+
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
-	
+	size_t	i;
+	size_t	j;
+	size_t	len_s;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (len > len_s)
+		len = len_s;
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = -1;
+	j = 0;
+	while (s[++i])
+		if (i >= start && j < len)
+			str[j++] = s[i];
+	str[j] = '\0';
+	return (str);
 }
