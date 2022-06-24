@@ -6,7 +6,7 @@
 /*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/24 21:15:17 by asus             ###   ########.fr       */
+/*   Updated: 2022/06/24 21:23:06 by asus             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 		last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
 		if (access(last, F_OK) == 0)
 		{
-				char *args[] = {list[list->cmd_iteration].cmd, NULL};
+				char *args[] = {list[list->cmd_iteration].cmd, list[list->cmd_iteration].args,NULL};
 			if (execve(last, args, list->environ) ==
 				-1)
 				write(2, "exeve failed\n", 14);
@@ -106,13 +106,13 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 		///
 		 if (list[list->cmd_iteration].cmd[0] == '.' && list[list->cmd_iteration].cmd[1] == '/')
 		{
-			char *cmd[3] = {list[list->cmd_iteration].cmd, NULL};
+			char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args, NULL};
 			execve(list[list->cmd_iteration].cmd, cmd, NULL);
 			printf("failed");
 		}
 		if (list[list->cmd_iteration].cmd[0] == '/')
 		{
-			char *cmd[3] = {list[list->cmd_iteration].cmd, NULL};
+			char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args, NULL};
 			execve(list[list->cmd_iteration].cmd, cmd, NULL);
 		}
 		///
