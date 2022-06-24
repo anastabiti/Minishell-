@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/24 20:56:07 by asus             ###   ########.fr       */
+/*   Updated: 2022/06/24 22:20:24 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // 	printf("%d\n", g_status);
 // 	return (1);
 // }
+
 
 // if(you pass -n you must remove newline )
 // ft_putendl_fd(arg, fd);
