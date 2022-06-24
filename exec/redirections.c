@@ -6,7 +6,7 @@
 /*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/24 20:23:28 by asus             ###   ########.fr       */
+/*   Updated: 2022/06/24 20:50:59 by asus             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "parse.h"
 
 
-int	redirections(struct s_list *list)
+int	redirections(t_cmdl *list)
 {
 	int i = 0;
 	int input;

@@ -6,7 +6,7 @@
 /*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/24 20:27:32 by asus             ###   ########.fr       */
+/*   Updated: 2022/06/24 20:56:07 by asus             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	builtcheck(t_cmdl *cmd)
 			if (ft_strnstr(*env, "HOME=", 5))
 			{
 				findhome = *env;
-				printf("%s\n", findhome);
+				// printf("%s\n", findhome);
 			}
 			env++;
 		}
@@ -79,7 +79,7 @@ int	builtcheck(t_cmdl *cmd)
 			len = ft_strlen(error);
 			write(2, error, len);
 		}
-		// if (list->cmd[2] != NULL)
+		// if (cmd[0]->args[2] != NULL)
 		// {
 		// 	printf("Minishell: cd: too many arguments\n");
 		// }
@@ -161,7 +161,7 @@ int	ft_is_built_in(t_cmdl *cmd)
 		// 		exit(exit_value);
 		// 	}
 		// }
-		printf("exit\n Minishell : exit : too many arguments\n");
+		// printf("exit\n Minishell : exit : too many arguments\n");
 		exit(1);
 	}
 	return (0);

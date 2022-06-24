@@ -6,7 +6,7 @@
 /*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/24 20:34:14 by asus             ###   ########.fr       */
+/*   Updated: 2022/06/24 21:04:18 by asus             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ int	main(int argc, char **argv,  char **env)
 		signal(SIGINT, handler);
 			pipe = 1;
 			line = readline(PROMPT);
+			//mine
+				if (!line) // ctrl-D
+	{
+		write(2, "exit\n", 5);
+		rl_clear_history();
+
+		free(line);
+		exit(1);
+	}
+//
 			add_history(line);
 			// if (!check_err_pipe(line) || !check_valid(line))
 			// 	continue;
@@ -109,6 +119,7 @@ int	main(int argc, char **argv,  char **env)
 			}
 			 cmd->cmd_nbr = 0;
 			 cmd->environ = env;
+			 cmd->cmd_iteration = 0;
 			if( cmd->cmd_nbr == 0)
 			{
 				// heredoc_without_cmd(cmd);

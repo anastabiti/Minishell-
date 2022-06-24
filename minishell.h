@@ -6,7 +6,7 @@
 /*   By: asus <asus@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/24 20:28:43 by asus             ###   ########.fr       */
+/*   Updated: 2022/06/24 21:03:05 by asus             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,12 @@ int	one_cmd(t_cmdl *list);
 int							set_rd(struct s_list *list);
 int							run_builtin(struct s_list *list);
 /// redirections I/O
-int							redirections(struct s_list *list);
+// int							redirections(struct s_list *list);
+int	redirections(t_cmdl *list);
 int							heredoc_without_cmd(struct s_list *list);
 // Other
-int							ft_bin_usr_sbin(struct s_list *list);
+// int							ft_bin_usr_sbin(struct s_list *list);
+int	ft_bin_usr_sbin(t_cmdl *list);
 // LIBFT
 int							ft_isdigit(int c);
 int							ft_atoi(const char *str);
