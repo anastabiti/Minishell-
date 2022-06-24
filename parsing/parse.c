@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/24 15:13:17 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/24 15:31:40 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	{
 		while (1)
 		{
+			pipe = 1;
 			line = readline(PROMPT);
 			add_history(line);
 			// if (!check_err_pipe(line) || !check_valid(line))
@@ -38,14 +39,13 @@ int	main(int argc, char **argv)
 				return (0);
 			i = -1;
 			start = 0;
-			int c = 0;
 			int j = 0;
 			while (j < pipe)
 			{
-				cmd[i].cmd = NULL;
-				cmd[i].args = NULL;
-				cmd[i].in_red = NULL;
-				cmd[i].out_red = NULL;
+				cmd[j].cmd = NULL;
+				cmd[j].args = NULL;
+				cmd[j].in_red = NULL;
+				cmd[j].out_red = NULL;
 				while (line[++i])
 				{
 					if (line[i] != ' ' && (line[i] < 9 || line[i] > 13))
@@ -53,18 +53,18 @@ int	main(int argc, char **argv)
 				}
 				while (line[++i])
 				{
-					if (line[i] == ' ')
+					if (line[i] == ' ' || !line[i + 1])
 					{
-						cmd[j].cmd = ft_substr(line, start, i - start);
+						cmd[j].cmd = ft_substr(line, start, i - start + !line[i + 1]);
 						start = i + 1;
 						break;
 					}
 				}
 				while (line[++i])
 				{
-					if (line[i] == '|' || line[i] == '<' || line[i] == '>')
+					if (line[i] == '|' || line[i] == '<' || line[i] == '>' || !line[i + 1])
 					{
-						cmd[j].args = ft_substr(line, start, i - start);
+						cmd[j].args = ft_substr(line, start, i - start + !line[i + 1]);
 						start = i + 1;
 						break;
 					}
@@ -73,9 +73,9 @@ int	main(int argc, char **argv)
 				{
 					while (line[++i])
 					{
-						if (line[i] == '|')
+						if (line[i] == '|' || !line[i + 1])
 						{
-							cmd[j].out_red = ft_substr(line, start, i - start);
+							cmd[j].out_red = ft_substr(line, start, i - start + !line[i + 1]);
 							start = i + 1;
 							break;
 						}
@@ -85,9 +85,9 @@ int	main(int argc, char **argv)
 				{
 					while (line[++i])
 					{
-						if (line[i] == '|')
+						if (line[i] == '|' || !line[i + 1])
 						{
-							cmd[j].in_red = ft_substr(line, start, i - start);
+							cmd[j].in_red = ft_substr(line, start, i - start + !line[i + 1]);
 							start = i + 1;
 							break;
 						}
@@ -99,20 +99,9 @@ int	main(int argc, char **argv)
 			j = 0;
 			while (i < pipe)
 			{
-				printf("%d -- %s -- %s -- %s  %s\n", i , cmd[i].cmd, cmd[i].args, cmd[i].in_red, cmd[i].out_red);
+				printf("%d -- %s -- %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args, cmd[i].in_red, cmd[i].out_red);
 				i++;
 			}
-			// while (line[++i])
-			// {
-			// 	if (line[i] == '<' || line[i] == '>' || line[i] == ' ' || line[i] == '\t' || line[i] == '|' || !line[i + 1])
-			// 	{
-			// 		//ft_add_back(&cmd, ft_substr(line, start, i - start - 1));
-			// 		printf("%s", ft_substr(line, start, i - start + !line[i + 1]));
-			// 		start = i + 1;
-			// 		c++;
-			// 	}
-			// }
-			printf("%d\n", c);
 		}
 	}
 }
