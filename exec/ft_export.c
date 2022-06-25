@@ -27,12 +27,15 @@ int	ft_export_1(char **env, t_cmdl *cmd, char **var)
 			while (new[i])
 			{
 				ft_putstr_fd("declare -x ", 1);
-				if(new[i + 1] != NULL)
-				{
+				
 					ft_putstr_fd(new[i], 1);
-				}
+				
 				write(1, "=\"", 2);
+				while(new[i + 1] != NULL)
+				{
 				ft_putstr_fd(new[i + 1], 1);
+				i++;
+				}
 				write(1, "\"\n", 2);
 				i++;
 			}
