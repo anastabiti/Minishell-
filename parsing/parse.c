@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/25 10:07:04 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/25 10:42:21 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 			pipe = 1;
 			line = readline(PROMPT);
 			add_history(line);
-			if (!check_err_pipe(line) || !check_valid(line))
+			if (!ft_strlen(line) || !check_err_pipe(line) || !check_valid(line))
 				continue;
 			i = -1;
 			while (line[++i])
@@ -105,7 +105,7 @@ int	main(int argc, char **argv)
 			j = 0;
 			while (i < pipe)
 			{
-				printf("%d -- %s -- %s . %s . %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args[0], cmd[i].args[1], cmd[i].args[2], cmd[i].in_red, cmd[i].out_red);
+				printf("%d -- %s -- %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args[0], cmd[i].in_red, cmd[i].out_red);
 				i++;
 			}
 		}

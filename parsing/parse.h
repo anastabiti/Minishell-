@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/25 10:08:32 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/25 10:41:37 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		is_white_space(char c);
 int		ft_is_alpha(char c);
 char    *rm_spaces(char *s);
 int		check_valid(char *s);
+int		ft_strlen(char *s);
 char	**ft_split(char *s, char c);
 int	check_err_pipe(char *s);
 char	*ft_substr(char *s, unsigned int start, size_t len);
