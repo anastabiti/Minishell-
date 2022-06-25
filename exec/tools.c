@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:19:32 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:09:32 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/24 22:20:56 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include "parse.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

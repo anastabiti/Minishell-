@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_others.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:10:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/24 22:20:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
 		// }
 */
 
-int	ft_bin_usr_sbin(struct s_list *list)
+int	ft_bin_usr_sbin(t_cmdl *list)
 {
 	char *bin;
 	char *current;
@@ -88,10 +88,11 @@ int	ft_bin_usr_sbin(struct s_list *list)
 	bin = ft_strjoin(new[i], "/");
 	while (new[i])
 	{
-		last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
+		last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
 		if (access(last, F_OK) == 0)
 		{
-			if (execve(last, list[list->cmd_iteration].cmd, list->environ) ==
+				char *args[] = {list[list->cmd_iteration].cmd, list[list->cmd_iteration].args,NULL};
+			if (execve(last, args, list->environ) ==
 				-1)
 				write(2, "exeve failed\n", 14);
 			exit(1);
@@ -99,20 +100,20 @@ int	ft_bin_usr_sbin(struct s_list *list)
 		else
 		{
 			bin = ft_strjoin(new[i], "/");
-			last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
+			last = ft_strjoin(bin,  list[list->cmd_iteration].cmd);
 			i++;
 		}
 		///
-		 if (list[list->cmd_iteration].cmd[0][0] == '.' && list[list->cmd_iteration].cmd[0][1] == '/')
+		 if (list[list->cmd_iteration].cmd[0] == '.' && list[list->cmd_iteration].cmd[1] == '/')
 		{
-			char *cmd[3] = {list[list->cmd_iteration].cmd[0], NULL};
-			execve(list[list->cmd_iteration].cmd[0], cmd, NULL);
+			char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args, NULL};
+			execve(list[list->cmd_iteration].cmd, cmd, NULL);
 			printf("failed");
 		}
-		if (list[list->cmd_iteration].cmd[0][0] == '/')
+		if (list[list->cmd_iteration].cmd[0] == '/')
 		{
-			char *cmd[3] = {list[list->cmd_iteration].cmd[0], NULL};
-			execve(list[list->cmd_iteration].cmd[0], cmd, NULL);
+			char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args, NULL};
+			execve(list[list->cmd_iteration].cmd, cmd, NULL);
 		}
 		///
 	}

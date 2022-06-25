@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/20 09:22:04 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/24 22:21:07 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+#include "./exec/parse.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <signal.h>
@@ -95,21 +96,28 @@ void						rl_replace_line(const char *text, int clear_undo);
 void						rl_clear_history(void);
 // Builtin Commands
 int							ft_pwd(int fd_out);
-void						ft_env(char **env, struct s_list *list);
-int							ft_echo(struct s_list *list, char *arg, int fd);
-int							ft_is_built_in(struct s_list *list);
+// void						ft_env(char **env, struct s_list *list);
+void	ft_env(char **env, t_cmdl *list);
+// int							ft_echo(struct s_list *list, char *arg, int fd);
+int	ft_echo(t_cmdl *list, char *arg, int fd);
+// int							ft_is_built_in(struct s_list *list);
+int	ft_is_built_in(t_cmdl *list);
 int							ft_unset(char **env);
 int							ft_export(char **env);
-int							is_builtin(struct s_list *list, int i);
+// int							is_builtin(struct s_list *list, int i);
 //exece
-int							one_cmd(struct s_list *list);
+int	is_builtin(t_cmdl *list, int i);
+// int							one_cmd(struct s_list *list);
+int	one_cmd(t_cmdl *list);
 int							set_rd(struct s_list *list);
 int							run_builtin(struct s_list *list);
 /// redirections I/O
-int							redirections(struct s_list *list);
+// int							redirections(struct s_list *list);
+int	redirections(t_cmdl *list);
 int							heredoc_without_cmd(struct s_list *list);
 // Other
-int							ft_bin_usr_sbin(struct s_list *list);
+// int							ft_bin_usr_sbin(struct s_list *list);
+int	ft_bin_usr_sbin(t_cmdl *list);
 // LIBFT
 int							ft_isdigit(int c);
 int							ft_atoi(const char *str);

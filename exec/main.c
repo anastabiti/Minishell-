@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
 // ping is /sbin/ping
 /*
 testtin with bash-3.2$ 
@@ -90,9 +91,9 @@ int	main(int ac, char **av, char **env)
 		list[2].file[0] = "test.txt";
 		//.....
 
-		list->cmd_nbr = 1;
-		list->cmd_iteration = 0;
-		list->there_is_pipe = 0;
+		// list->cmd_nbr = 1;
+		// list->cmd_iteration = 0;
+		// list->there_is_pipe = 0;
 
 		heredoc_without_cmd(list);
 		if (list->cmd_nbr == 1)

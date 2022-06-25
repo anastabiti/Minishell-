@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:09:31 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/24 22:20:54 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include "parse.h"
 
 
-int	redirections(struct s_list *list)
+int	redirections(t_cmdl *list)
 {
 	int i = 0;
 	int input;
@@ -53,23 +54,23 @@ int	redirections(struct s_list *list)
 	}
 	return (0);
 }
-int	is_builtin(struct s_list *list, int i)
+int	is_builtin(t_cmdl *list, int i)
 {
-	if (list[i].cmd[i] == NULL)
+	if (list[i].cmd == NULL)
 		return (0);
-	if (ft_strncmp(list[i].cmd[i], "cd", 2) == 0)
+	if (ft_strncmp(list[i].cmd , "cd", 2) == 0)
 		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "pwd", 3) == 0)
+	else if (ft_strncmp(list[i].cmd , "pwd", 3) == 0)
 		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "echo", 4) == 0)
+	else if (ft_strncmp(list[i].cmd , "echo", 4) == 0)
 		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "env", 3) == 0)
+	else if (ft_strncmp(list[i].cmd , "env", 3) == 0)
 		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "exit", 4) == 0)
+	else if (ft_strncmp(list[i].cmd , "exit", 4) == 0)
 		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "unset", 5) == 0)
+	else if (ft_strncmp(list[i].cmd , "unset", 5) == 0)
 		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "export", 6) == 0)
+	else if (ft_strncmp(list[i].cmd , "export", 6) == 0)
 		return (0);
 	return (3);
 }
