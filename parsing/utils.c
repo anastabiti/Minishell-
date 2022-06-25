@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:55:04 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/24 14:21:10 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/25 10:04:07 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	ft_max(int a, int b)
 
 int	check_err_pipe(char *s)
 {
-	if (s[ft_strlen(s) - 1] == '|')
+	if (s[ft_strlen(s) - 1] == '|' || rm_spaces(s)[0] == '|')
 	{
 		ft_putstr(SNT_ERR);
 		ft_putstr("|'\n");
@@ -178,16 +178,6 @@ int	check_valid(char *s)
 		return (0);
 	return (1);
 }
-
-// int	ft_strlen(char *s)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
