@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/24 15:31:40 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/25 09:36:45 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,16 @@ int	main(int argc, char **argv)
 				cmd[j].args = NULL;
 				cmd[j].in_red = NULL;
 				cmd[j].out_red = NULL;
-				while (line[++i])
+				// if (j == 1)
+				// 	printf("%s\n", line + i);
+				i++;
+				while (line[i])
 				{
 					if (line[i] != ' ' && (line[i] < 9 || line[i] > 13))
 						break;
+					i++;
 				}
-				while (line[++i])
+				while (line[i])
 				{
 					if (line[i] == ' ' || !line[i + 1])
 					{
@@ -59,8 +63,9 @@ int	main(int argc, char **argv)
 						start = i + 1;
 						break;
 					}
+					i++;
 				}
-				while (line[++i])
+				while (line[i])
 				{
 					if (line[i] == '|' || line[i] == '<' || line[i] == '>' || !line[i + 1])
 					{
@@ -68,10 +73,11 @@ int	main(int argc, char **argv)
 						start = i + 1;
 						break;
 					}
+					i++;
 				}
 				if (line[i - 1] == '>' || line[i] == '>')
 				{
-					while (line[++i])
+					while (line[i])
 					{
 						if (line[i] == '|' || !line[i + 1])
 						{
@@ -79,11 +85,12 @@ int	main(int argc, char **argv)
 							start = i + 1;
 							break;
 						}
+						i++;
 					}
 				}
 				if (line[i - 1] == '<' || line[i] == '<')
 				{
-					while (line[++i])
+					while (line[i])
 					{
 						if (line[i] == '|' || !line[i + 1])
 						{
@@ -91,6 +98,7 @@ int	main(int argc, char **argv)
 							start = i + 1;
 							break;
 						}
+						i++;
 					}
 				}
 				j++;
