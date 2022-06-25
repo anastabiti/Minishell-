@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 08:54:05 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/25 10:38:47 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,24 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 	i = 0;
 	bin = ft_strjoin(new[i], "/");
 	while (new[i])
+	
 	{
+				char *args[212];
 		last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
+		int x = 0;
 		if (access(last, F_OK) == 0)
-		{
-				char *args[] = {list[list->cmd_iteration].cmd, list[list->cmd_iteration].args,NULL};
+		{	
+			while(list[list->cmd_iteration].args[x] != NULL)
+			{
+						args[0] = list[list->cmd_iteration].cmd  ;
+			args[x + 1] = list[list->cmd_iteration].args[x];
+			printf(" %s      \n" ,args[x]);
+			x++;
+			}
+			args[x] = NULL;
 			if (execve(last, args, list->environ) ==
 				-1)
-				write(2, "exeve failed\n", 14);
+				write(2, "exeve dfailed\n", 14);
 			exit(1);
 		}
 		else
@@ -106,14 +116,30 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 		///
 		 if (list[list->cmd_iteration].cmd[0] == '.' && list[list->cmd_iteration].cmd[1] == '/')
 		{
-			char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args, NULL};
-			execve(list[list->cmd_iteration].cmd, cmd, NULL);
+			// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0], NULL};
+			while(list[list->cmd_iteration].args[x] != NULL)
+			{
+						args[0] = list[list->cmd_iteration].cmd  ;
+			args[x + 1] = list[list->cmd_iteration].args[x];
+			printf(" %s\n" ,args[x]);
+			x++;
+			}
+			args[x] = NULL;
+			execve(list[list->cmd_iteration].cmd, args, NULL);
 			printf("failed");
 		}
 		if (list[list->cmd_iteration].cmd[0] == '/')
 		{
-			char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args, NULL};
-			execve(list[list->cmd_iteration].cmd, cmd, NULL);
+			// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0], NULL};
+			while(list[list->cmd_iteration].args[x] != NULL)
+			{
+						args[0] = list[list->cmd_iteration].cmd  ;
+			args[x + 1] = list[list->cmd_iteration].args[x];
+			printf(" %s\n" ,args[x]);
+			x++;
+			}
+			args[x] = NULL;
+			execve(list[list->cmd_iteration].cmd, args, NULL);
 		}
 		///
 	}

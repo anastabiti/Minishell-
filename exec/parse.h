@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/25 08:54:13 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/25 10:14:08 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_variables
 
 typedef struct s_cmdl {
 	char	*cmd;
-	char	*args;
+	char	**args;
 	char	*in_red;
 	char	*out_red;
 	//mine

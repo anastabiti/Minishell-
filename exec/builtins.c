@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 08:53:59 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/25 10:16:31 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	builtcheck(t_cmdl *cmd)
 
 	if (ft_strncmp(cmd[0].cmd ,"echo", 4) == 0)
 	{
-		ft_echo(cmd, cmd[0].args, cmd->fd_out);
+		ft_echo(cmd, cmd[0].args[0], cmd->fd_out);
 		return (1);
 	}
 	else if (ft_strncmp(cmd[0].cmd, "cd", 2) == 0)
@@ -84,7 +84,7 @@ int	builtcheck(t_cmdl *cmd)
 		// {
 		// 	printf("Minishell: cd: too many arguments\n");
 		// }
-		if (chdir(cmd[0].args) == -1)
+		if (chdir(cmd[0].args[0]) == -1)
 		{
 			g_exit_status = 1;
 			error = "Minishell: cd: No such file or directory\n";
