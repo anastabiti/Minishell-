@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/25 10:36:12 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/25 18:12:00 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int main(int argc, char **argv, char **env)
 			j = 0;
 			while (i < pipe)
 			{
-				printf("%d -- %s -- %s . %s . %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args[0], cmd[i].args[1], cmd[i].args[2], cmd[i].in_red, cmd[i].out_red);
+				// printf("%d -- %s -- %s . %s . %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args[0], cmd[i].args[1], cmd[i].args[2], cmd[i].in_red, cmd[i].out_red);
 				i++;
 			}
 			cmd->cmd_nbr = 0;
