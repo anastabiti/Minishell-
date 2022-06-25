@@ -27,14 +27,12 @@ int	ft_export_1(char **env, t_cmdl *cmd, char **var)
 			while (new[i])
 			{
 				ft_putstr_fd("declare -x ", 1);
-				
-					ft_putstr_fd(new[i], 1);
-				
+				ft_putstr_fd(new[i], 1);
 				write(1, "=\"", 2);
-				while(new[i + 1] != NULL)
+				while (new[i + 1] != NULL)
 				{
-				ft_putstr_fd(new[i + 1], 1);
-				i++;
+					ft_putstr_fd(new[i + 1], 1);
+					i++;
 				}
 				write(1, "\"\n", 2);
 				i++;
@@ -59,17 +57,24 @@ int	ft_export(char **env, t_cmdl *cmd)
 		return (0);
 	}
 	i = 0;
-	to_be_exported = cmd[cmd->cmd_iteration].args[i];
-	len = ft_strlen(to_be_exported);
-	while (env[i])
+	int x = 0;
+	while (cmd[cmd->cmd_iteration].args[i])
 	{
-		if (ft_strnstr(env[i], to_be_exported, len))
+		to_be_exported = cmd[0].args[i];
+		len = ft_strlen(to_be_exported);
+		while (env[x])
 		{
-			return (0);
+			if (ft_strnstr(env[x], to_be_exported, len))
+			{
+				break;
+			}
+			x++;
 		}
+		env[x] = to_be_exported;
+					env[x + 1] = NULL;
+
 		i++;
 	}
-	env[i] = to_be_exported;
-	env[i + 1] = NULL;
+
 	return (0);
 }
