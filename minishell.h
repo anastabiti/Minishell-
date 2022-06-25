@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 18:03:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/25 18:48:32 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ struct						s_list
 	char					*delimiter[50];
 	struct s_redirections	*rd;
 };
+typedef struct t_list
+{
+		char *content;
+	void *next;
+}t_list;
 static int					g_exit_status;
 // struct s_redirections
 // {
@@ -117,6 +122,7 @@ int	redirections(t_cmdl *list);
 int							heredoc_without_cmd(struct s_list *list);
 // Other
 // int							ft_bin_usr_sbin(struct s_list *list);
+t_list	*ft_lstnew(void *content);
 int	ft_bin_usr_sbin(t_cmdl *list);
 // LIBFT
 int							ft_isdigit(int c);
