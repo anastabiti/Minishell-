@@ -12,53 +12,12 @@
 
 #include "../minishell.h"
 
-/*
-comments
-
-	while (!(ft_strnstr(list->environ[x], "PATH=", lenght))) // search for PATH=
-	new = ft_split(list->environ[x], ':'); // split PATH= to seperate paths
-	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
-	// remove PATH= from start of the sring
-	// current = ft_strjoin(current, "/");
-	// current = ft_strjoin(current, list[list->cmd_iteration].cmd[0]);
-	// i = 0;
-	// while (new[i])
-	// {
-	// 	printf("%s\n", new[i]);
-	// 	i++;
-	// }
-		bin = ft_strjoin(new[i], "/"); // add
-			/ to path in order to execute binaries
-char	*last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
-		if (access(last, F_OK) == 0)
-		// check each PATH to find the right binaries to run them
-		{
-			// char *cmd[] = {list[list->cmd_iteration].cmd[0], NULL};
-			if (execve(last, list[list->cmd_iteration].cmd, list->environ) ==
-				-1)
-				write(2, "exeve failed\n", 14);
-			exit(1);
-		}
-
-		// else if (access(current, F_OK) == 0)
-			// check each PATH to find the right binaries to run them
-		// {
-
-		// 	char *cmd[] = {list[list->cmd_iteration].cmd[0], NULL};
-		// 	if (execve(current, cmd, list->environ) == -1)
-		// 		write(2, "exeve failed\n", 14);
-
-		// }
-					// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0],
-						NULL};
-								// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0],
-									NULL};
-*/
 int	ft_check_programs(t_cmdl *list)
 {
 	char	*args[212];
 	int		x;
 
+	x = 0;
 	if (list[list->cmd_iteration].cmd[0] == '.'
 		&& list[list->cmd_iteration].cmd[1] == '/')
 	{
@@ -66,12 +25,12 @@ int	ft_check_programs(t_cmdl *list)
 		{
 			args[0] = list[list->cmd_iteration].cmd;
 			args[x + 1] = list[list->cmd_iteration].args[x];
-			printf(" %s\n", args[x]);
 			x++;
 		}
 		args[x] = NULL;
 		execve(list[list->cmd_iteration].cmd, args, NULL);
-		printf("failed");
+		printf("Minishell : %s : No such file or directory\n", list[list->cmd_iteration].cmd);
+		exit(127);
 	}
 	x = 0;
 	if (list[list->cmd_iteration].cmd[0] == '/')
@@ -80,14 +39,16 @@ int	ft_check_programs(t_cmdl *list)
 		{
 			args[0] = list[list->cmd_iteration].cmd;
 			args[x + 1] = list[list->cmd_iteration].args[x];
-			printf(" %s\n", args[x]);
 			x++;
 		}
 		args[x] = NULL;
 		execve(list[list->cmd_iteration].cmd, args, NULL);
+		printf("Minishell : %s : No such file or directory\n", list[list->cmd_iteration].cmd);
+		exit(127);
 	}
 	return (0);
 }
+
 char	**ft_search_for_path(t_cmdl *list)
 {
 	int		x;
@@ -138,7 +99,6 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 	new = ft_search_for_path(list);
 	if (new == NULL)
 	{
-		// write(2, "MINISHELL :  No such file or directory\n" ,39 );
 		printf("MINISHELL : %s No such file or directory\n",
 				list[list->cmd_iteration].cmd);
 		return (0);
@@ -159,10 +119,8 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 				x++;
 			}
 			args[x] = NULL;
-			if (execve(last, args, list->environ) ==
-				-1)
-				write(2, "exeve dfailed\n", 14);
-			exit(1);
+			execve(last, args, list->environ);
+			exit(127);
 		}
 		else
 		{
@@ -173,6 +131,6 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 		ft_check_programs(list);
 		///
 	}
-	write(2, "MINISHELL command not found\n", 28);
+	// write(2, "MINISHELL command not found\n", 28);
 	exit(127);
 }

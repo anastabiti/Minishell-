@@ -41,6 +41,13 @@ int one_cmd_1(t_cmdl *list)
 		// }
 		ft_bin_usr_sbin(list);
 	}
+	else
+	{
+				wait(&g_exit_status);
+				if (WIFEXITED(g_exit_status))
+				g_exit_status = WEXITSTATUS(g_exit_status);
+
+	}
 	return (0);
 }
 
@@ -73,7 +80,6 @@ int one_cmd(t_cmdl *cmd)
 	else if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 3)
 	{
 		one_cmd_1(cmd);
-		wait(&g_exit_status);
 		return (1);
 	}
 	return (0);
