@@ -6,18 +6,47 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:37:52 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:55:23 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 12:11:22 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+int	check_home_inenv(t_cmdl *cmd, char *findhome, char *error)
+{
+	int	len;
 
+	len = 0;
+	if (findhome == NULL)
+	{
+		g_exit_status = 1;
+		error = "Minishell: cd: HOME not set\n";
+		len = ft_strlen(error);
+		write(2, error, len);
+		return (0);
+	}
+	return (1);
+}
+int	cd_last_check(t_cmdl *cmd, char *error)
+{
+	int	len;
+
+	len = 0;
+	if (chdir(cmd[0].args[0]) == -1)
+	{
+		g_exit_status = 1;
+		error = "Minishell: cd: No such file or directory\n";
+		len = ft_strlen(error);
+		write(2, error, len);
+	}
+	return (1);
+}
 int	ftcd(t_cmdl *cmd)
 {
 	char	**env;
 	char	*findhome;
 	char	*error;
 	int		len;
+	char	**split;
 
 	env = cmd->environ;
 	while (*env)
@@ -26,29 +55,22 @@ int	ftcd(t_cmdl *cmd)
 		{
 			findhome = *env;
 		}
+        if(env+ 1 == NULL)
+        {
+            exit(1);
+            printf("done");
+        }
 		env++;
 	}
-	if (findhome == NULL)
+    
+	check_home_inenv(cmd, findhome, error);
+	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
-		g_exit_status = 1;
-		error = "Minishell: cd: HOME not set\n";
-		len = ft_strlen(error);
-		write(2, error, len);
-        exit(1);
+		split = ft_split(findhome, '=');
+		chdir(split[1]);
+		printf("done\n");
+		return (0);
 	}
-    if(cmd[cmd->cmd_iteration].args[0]  == NULL)
-    {
-        char **split = ft_split(findhome, '=');
-        chdir(split[1]);
-        printf("done\n");
-        return (0);
-    }
-	if (chdir(cmd[0].args[0]) == -1)
-	{
-		g_exit_status = 1;
-		error = "Minishell: cd: No such file or directory\n";
-		len = ft_strlen(error);
-		write(2, error, len);
-	}
+	cd_last_check(cmd, error);
 	return (1);
 }
