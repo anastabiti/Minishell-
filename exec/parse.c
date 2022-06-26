@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/26 11:16:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:20:54 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int main(int argc, char **argv, char **env)
 	// {
 		while (1)
 		{
-			g_exit_status = 0;
 			signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, handler);
 			pipe = 1;

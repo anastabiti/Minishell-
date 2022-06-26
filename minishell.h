@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 10:43:11 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:31:28 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int							builtcheck(t_cmdl *cmd);
 // void						ft_env(char **env, struct s_list *list);
 void						ft_env(char **env, t_cmdl *list);
 // int							ft_echo(struct s_list *list, char *arg, int fd);
-int							ft_echo(t_cmdl *list, char *arg, int fd);
+int							ft_echo(t_cmdl *list, int fd);
 // int							ft_is_built_in(struct s_list *list);
 int							ft_is_built_in(t_cmdl *list);
 int							ft_unset(char **env);

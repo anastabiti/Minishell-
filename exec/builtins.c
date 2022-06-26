@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:15:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:32:53 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 // prints out the names and values of the variables in the environment,
 // ft_putendl_fd(pw, fd_out);
 
-int	ft_echo(t_cmdl *list, char *arg, int fd)
+int	ft_echo(t_cmdl *list, int fd)
 {
 	int	len;
 
-	if (list[0].args == NULL)
+	if (list[0].args[0] == NULL)
 	{
 		write(fd, "\n", 1);
 		return (0);
@@ -40,8 +40,8 @@ int	ft_echo(t_cmdl *list, char *arg, int fd)
 			printf("%d\n", g_exit_status);
 			return (0);
 		}
-		len = ft_strlen(arg);
-		write(fd, arg, len);
+		len = ft_strlen(list->args[0]);
+		write(fd, list->args[0], len);
 		write(fd, "\n", 1);
 	}
 	return (0);
@@ -56,7 +56,7 @@ int	builtcheck(t_cmdl *cmd)
 
 	if (ft_strncmp(cmd[0].cmd, "echo", 4) == 0)
 	{
-		ft_echo(cmd, cmd[0].args[0], cmd->fd_out);
+		ft_echo(cmd, cmd->fd_out);
 		return (1);
 	}
 	else if (ft_strncmp(cmd[0].cmd, "cd", 2) == 0)

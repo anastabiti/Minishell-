@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 10:41:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:07:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:19:59 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_exit_no_args(t_cmdl *cmd)
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
 		printf("exit\n");
-		exit(g_exit_status);
+		exit(0);
 	}
 	return (0);
 }

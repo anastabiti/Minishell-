@@ -2,6 +2,7 @@
     "files.associations": {
         "minishell.h": "c",
         "random": "c",
-        "parse.h": "c"
+        "parse.h": "c",
+        "complex": "c"
     }
 }
