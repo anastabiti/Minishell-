@@ -12,7 +12,9 @@
 
 #include "../minishell.h"
 
-/*comments
+/*
+comments
+
 	while (!(ft_strnstr(list->environ[x], "PATH=", lenght))) // search for PATH=
 	new = ft_split(list->environ[x], ':'); // split PATH= to seperate paths
 	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
@@ -66,7 +68,7 @@ char	**ft_search_for_path(t_cmdl *list)
 	{
 		x++;
 		if (list->environ[x] == NULL)
-			return (0);
+			return (NULL);
 	}
 	new = ft_split(list->environ[x], ':');
 	i = 0;
@@ -80,7 +82,7 @@ char	**ft_search_for_path(t_cmdl *list)
 		}
 	}
 	new[i] = NULL;
-	return new;
+	return (new);
 }
 
 int	ft_bin_usr_sbin(t_cmdl *list)
@@ -100,6 +102,12 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 	current = getcwd(pw, PATH_MAX);
 	//
 	new = ft_search_for_path(list);
+	if (new == NULL)
+	{
+		// write(2, "MINISHELL :  No such file or directory\n" ,39 );
+		printf("MINISHELL : %s No such file or directory\n", list[list->cmd_iteration].cmd);
+		return (0);
+	}
 	i = 0;
 	bin = ft_strjoin(new[i], "/");
 	while (new[i])
