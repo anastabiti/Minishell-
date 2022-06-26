@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 10:38:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:15:07 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	ft_echo(t_cmdl *list, char *arg, int fd)
 	}
 	else
 	{
-		// if (ft_strncmp(list->cmd[1], "$?", 2) == 0)
-		// {
-		// 	printf("%d\n", g_exit_status);
-		// 	return (0);
-		// }
+		if (ft_strncmp(list[list->cmd_iteration].args[0], "$?", 2) == 0)
+		{
+			printf("%d\n", g_exit_status);
+			return (0);
+		}
 		len = ft_strlen(arg);
 		write(fd, arg, len);
 		write(fd, "\n", 1);
@@ -61,14 +61,12 @@ int	builtcheck(t_cmdl *cmd)
 	}
 	else if (ft_strncmp(cmd[0].cmd, "cd", 2) == 0)
 	{
-		// findhome = ;
 		env = cmd->environ;
 		while (*env)
 		{
 			if (ft_strnstr(*env, "HOME=", 5))
 			{
 				findhome = *env;
-				// printf("%s\n", findhome);
 			}
 			env++;
 		}
@@ -79,10 +77,6 @@ int	builtcheck(t_cmdl *cmd)
 			len = ft_strlen(error);
 			write(2, error, len);
 		}
-		// if (cmd[0]->args[2] != NULL)
-		// {
-		// 	printf("Minishell: cd: too many arguments\n");
-		// }
 		if (chdir(cmd[0].args[0]) == -1)
 		{
 			g_exit_status = 1;
@@ -112,8 +106,6 @@ int	builtcheck_1(t_cmdl *cmd)
 	}
 	return (0);
 }
-
-
 
 int	ft_pwd(int fd_out)
 {

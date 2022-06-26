@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 10:20:21 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:15:59 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 	bin = ft_strjoin(list->new[i], "/");
 	looping_through_split_path(list, i, bin, last);
 	write(2, "MINISHELL command not found\n", 28);
+	g_exit_status = 127;
 	exit(127);
 }
