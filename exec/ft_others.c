@@ -11,39 +11,69 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
+/*
+// while (list[list->cmd_iteration].args[x] != NULL)
+			// {
+			// 	args[0] = list[list->cmd_iteration].cmd;
+			// 	args[x + 1] = list[list->cmd_iteration].args[x];
+			// 	printf(" %s      \n", args[x]);
+			// 	x++;
+			// }
+			// args[x] = NULL;
+*/
+
+int	cmd_args_len(t_cmdl *list)
+{
+	int	len;
+
+	while (list[list->cmd_iteration].args[len] != NULL)
+	{
+		len++;
+	}
+	return (len);
+}
+
+char	**create_argv_for_execve(t_cmdl *list)
+{
+	int		len;
+	int		i;
+	char	**argv;
+
+	len = cmd_args_len(list);
+	argv = malloc(sizeof(char **) * len);
+	i = 0;
+	while (i < len)
+	{
+		argv[0] = list[list->cmd_iteration].cmd;
+		argv[i + 1] = list[list->cmd_iteration].args[i];
+		i++;
+	}
+	argv[i] = NULL;
+	return (argv);
+}
 
 int	ft_check_programs(t_cmdl *list)
 {
-	char	*args[212];
+	char	**argv;
 	int		x;
 
 	x = 0;
 	if (list[list->cmd_iteration].cmd[0] == '.'
 		&& list[list->cmd_iteration].cmd[1] == '/')
 	{
-		while (list[list->cmd_iteration].args[x] != NULL)
-		{
-			args[0] = list[list->cmd_iteration].cmd;
-			args[x + 1] = list[list->cmd_iteration].args[x];
-			x++;
-		}
-		args[x] = NULL;
-		execve(list[list->cmd_iteration].cmd, args, NULL);
-		printf("Minishell : %s : No such file or directory\n", list[list->cmd_iteration].cmd);
+		argv = create_argv_for_execve(list);
+		execve(list[list->cmd_iteration].cmd, argv, NULL);
+		printf("Minishell : %s : No such file or directory\n",
+				list[list->cmd_iteration].cmd);
 		exit(127);
 	}
 	x = 0;
 	if (list[list->cmd_iteration].cmd[0] == '/')
 	{
-		while (list[list->cmd_iteration].args[x] != NULL)
-		{
-			args[0] = list[list->cmd_iteration].cmd;
-			args[x + 1] = list[list->cmd_iteration].args[x];
-			x++;
-		}
-		args[x] = NULL;
-		execve(list[list->cmd_iteration].cmd, args, NULL);
-		printf("Minishell : %s : No such file or directory\n", list[list->cmd_iteration].cmd);
+		argv = create_argv_for_execve(list);
+		execve(list[list->cmd_iteration].cmd, argv, NULL);
+		printf("Minishell : %s : No such file or directory\n",
+				list[list->cmd_iteration].cmd);
 		exit(127);
 	}
 	return (0);
@@ -87,13 +117,9 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 	int		i;
 	char	**new;
 	char	pw[PATH_MAX];
-	int		x;
-	int		lenght;
-	int		r;
 	char	*last;
-	char	*args[212];
+	char	**args;
 
-	x = 0;
 	current = getcwd(pw, PATH_MAX);
 	//
 	new = ft_search_for_path(list);
@@ -108,17 +134,9 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 	while (new[i])
 	{
 		last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
-		x = 0;
 		if (access(last, F_OK) == 0)
 		{
-			while (list[list->cmd_iteration].args[x] != NULL)
-			{
-				args[0] = list[list->cmd_iteration].cmd;
-				args[x + 1] = list[list->cmd_iteration].args[x];
-				printf(" %s      \n", args[x]);
-				x++;
-			}
-			args[x] = NULL;
+			args = create_argv_for_execve(list);
 			execve(last, args, list->environ);
 			exit(127);
 		}
@@ -129,7 +147,6 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 			i++;
 		}
 		ft_check_programs(list);
-		///
 	}
 	// write(2, "MINISHELL command not found\n", 28);
 	exit(127);
