@@ -54,6 +54,40 @@ char	*last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
 								// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0],
 									NULL};
 */
+int	ft_check_programs(t_cmdl *list)
+{
+	char	*args[212];
+	int		x;
+
+	if (list[list->cmd_iteration].cmd[0] == '.'
+		&& list[list->cmd_iteration].cmd[1] == '/')
+	{
+		while (list[list->cmd_iteration].args[x] != NULL)
+		{
+			args[0] = list[list->cmd_iteration].cmd;
+			args[x + 1] = list[list->cmd_iteration].args[x];
+			printf(" %s\n", args[x]);
+			x++;
+		}
+		args[x] = NULL;
+		execve(list[list->cmd_iteration].cmd, args, NULL);
+		printf("failed");
+	}
+	x = 0;
+	if (list[list->cmd_iteration].cmd[0] == '/')
+	{
+		while (list[list->cmd_iteration].args[x] != NULL)
+		{
+			args[0] = list[list->cmd_iteration].cmd;
+			args[x + 1] = list[list->cmd_iteration].args[x];
+			printf(" %s\n", args[x]);
+			x++;
+		}
+		args[x] = NULL;
+		execve(list[list->cmd_iteration].cmd, args, NULL);
+	}
+	return (0);
+}
 char	**ft_search_for_path(t_cmdl *list)
 {
 	int		x;
@@ -105,7 +139,8 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 	if (new == NULL)
 	{
 		// write(2, "MINISHELL :  No such file or directory\n" ,39 );
-		printf("MINISHELL : %s No such file or directory\n", list[list->cmd_iteration].cmd);
+		printf("MINISHELL : %s No such file or directory\n",
+				list[list->cmd_iteration].cmd);
 		return (0);
 	}
 	i = 0;
@@ -135,32 +170,7 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 			last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
 			i++;
 		}
-		if (list[list->cmd_iteration].cmd[0] == '.'
-			&& list[list->cmd_iteration].cmd[1] == '/')
-		{
-			while (list[list->cmd_iteration].args[x] != NULL)
-			{
-				args[0] = list[list->cmd_iteration].cmd;
-				args[x + 1] = list[list->cmd_iteration].args[x];
-				printf(" %s\n", args[x]);
-				x++;
-			}
-			args[x] = NULL;
-			execve(list[list->cmd_iteration].cmd, args, NULL);
-			printf("failed");
-		}
-		if (list[list->cmd_iteration].cmd[0] == '/')
-		{
-			while (list[list->cmd_iteration].args[x] != NULL)
-			{
-				args[0] = list[list->cmd_iteration].cmd;
-				args[x + 1] = list[list->cmd_iteration].args[x];
-				printf(" %s\n", args[x]);
-				x++;
-			}
-			args[x] = NULL;
-			execve(list[list->cmd_iteration].cmd, args, NULL);
-		}
+		ft_check_programs(list);
 		///
 	}
 	write(2, "MINISHELL command not found\n", 28);

@@ -25,6 +25,8 @@ int main(int argc, char **argv, char **env)
 	{
 		while (1)
 		{
+			signal(SIGQUIT, SIG_IGN);
+		signal(SIGINT, handler);
 			pipe = 1;
 			line = readline(PROMPT);
 			add_history(line);
