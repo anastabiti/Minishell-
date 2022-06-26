@@ -12,8 +12,7 @@
 
 #include "../minishell.h"
 
-/*
-comments 
+/*comments
 	while (!(ft_strnstr(list->environ[x], "PATH=", lenght))) // search for PATH=
 	new = ft_split(list->environ[x], ':'); // split PATH= to seperate paths
 	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
@@ -46,24 +45,22 @@ char	*last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
 		// 	char *cmd[] = {list[list->cmd_iteration].cmd[0], NULL};
 		// 	if (execve(current, cmd, list->environ) == -1)
 		// 		write(2, "exeve failed\n", 14);
-		
-		// }
-*/
 
-int	ft_bin_usr_sbin(t_cmdl *list)
+		// }
+					// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0],
+						NULL};
+								// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0],
+									NULL};
+*/
+char	**ft_search_for_path(t_cmdl *list)
 {
-	char *bin;
-	char *current;
-	int i;
-	char **new;
-	char pw[PATH_MAX];
-	int x;
-	int lenght;
-	int r;
-	char *last;
+	int		x;
+	int		lenght;
+	char	**new;
+	int		i;
+	int		r;
 
 	x = 0;
-	current = getcwd(pw, PATH_MAX);
 	lenght = ft_strlen("PATH=");
 	while (!(ft_strnstr(list->environ[x], "PATH=", lenght)))
 	{
@@ -83,23 +80,40 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 		}
 	}
 	new[i] = NULL;
+	return new;
+}
 
+int	ft_bin_usr_sbin(t_cmdl *list)
+{
+	char	*bin;
+	char	*current;
+	int		i;
+	char	**new;
+	char	pw[PATH_MAX];
+	int		x;
+	int		lenght;
+	int		r;
+	char	*last;
+	char	*args[212];
+
+	x = 0;
+	current = getcwd(pw, PATH_MAX);
+	//
+	new = ft_search_for_path(list);
 	i = 0;
 	bin = ft_strjoin(new[i], "/");
 	while (new[i])
-	
 	{
-				char *args[212];
 		last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
-		int x = 0;
+		x = 0;
 		if (access(last, F_OK) == 0)
-		{	
-			while(list[list->cmd_iteration].args[x] != NULL)
+		{
+			while (list[list->cmd_iteration].args[x] != NULL)
 			{
-						args[0] = list[list->cmd_iteration].cmd  ;
-			args[x + 1] = list[list->cmd_iteration].args[x];
-			printf(" %s      \n" ,args[x]);
-			x++;
+				args[0] = list[list->cmd_iteration].cmd;
+				args[x + 1] = list[list->cmd_iteration].args[x];
+				printf(" %s      \n", args[x]);
+				x++;
 			}
 			args[x] = NULL;
 			if (execve(last, args, list->environ) ==
@@ -110,19 +124,18 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 		else
 		{
 			bin = ft_strjoin(new[i], "/");
-			last = ft_strjoin(bin,  list[list->cmd_iteration].cmd);
+			last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
 			i++;
 		}
-		///
-		 if (list[list->cmd_iteration].cmd[0] == '.' && list[list->cmd_iteration].cmd[1] == '/')
+		if (list[list->cmd_iteration].cmd[0] == '.'
+			&& list[list->cmd_iteration].cmd[1] == '/')
 		{
-			// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0], NULL};
-			while(list[list->cmd_iteration].args[x] != NULL)
+			while (list[list->cmd_iteration].args[x] != NULL)
 			{
-						args[0] = list[list->cmd_iteration].cmd  ;
-			args[x + 1] = list[list->cmd_iteration].args[x];
-			printf(" %s\n" ,args[x]);
-			x++;
+				args[0] = list[list->cmd_iteration].cmd;
+				args[x + 1] = list[list->cmd_iteration].args[x];
+				printf(" %s\n", args[x]);
+				x++;
 			}
 			args[x] = NULL;
 			execve(list[list->cmd_iteration].cmd, args, NULL);
@@ -130,13 +143,12 @@ int	ft_bin_usr_sbin(t_cmdl *list)
 		}
 		if (list[list->cmd_iteration].cmd[0] == '/')
 		{
-			// char *cmd[3] = {list[list->cmd_iteration].cmd,list[list->cmd_iteration].args[0], NULL};
-			while(list[list->cmd_iteration].args[x] != NULL)
+			while (list[list->cmd_iteration].args[x] != NULL)
 			{
-						args[0] = list[list->cmd_iteration].cmd  ;
-			args[x + 1] = list[list->cmd_iteration].args[x];
-			printf(" %s\n" ,args[x]);
-			x++;
+				args[0] = list[list->cmd_iteration].cmd;
+				args[x + 1] = list[list->cmd_iteration].args[x];
+				printf(" %s\n", args[x]);
+				x++;
 			}
 			args[x] = NULL;
 			execve(list[list->cmd_iteration].cmd, args, NULL);

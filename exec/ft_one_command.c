@@ -10,20 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../minishell.h"
 #include "parse.h"
 
-
-int	one_cmd_1(t_cmdl *list)
+int one_cmd_1(t_cmdl *list)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (fork() == 0)
 	{
 		// redirections(list);
-				// heredoc_without_cmd(list);
+		// heredoc_without_cmd(list);
 
 		// while (list[0].type[i] != NULL)
 		// {
@@ -46,9 +44,9 @@ int	one_cmd_1(t_cmdl *list)
 	return (0);
 }
 
-int	one_cmd(t_cmdl *cmd)
+int one_cmd(t_cmdl *cmd)
 {
-	int	i;
+	int i;
 
 	if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 0)
 	{
