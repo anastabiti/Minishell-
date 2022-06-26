@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:31:28 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:41:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int							ft_pwd(int fd_out);
 int							builtcheck_1(t_cmdl *cmd);
 int							ftexit(t_cmdl *cmd);
 int							builtcheck(t_cmdl *cmd);
+int							ftcd(t_cmdl *cmd);
 // void						ft_env(char **env, struct s_list *list);
 void						ft_env(char **env, t_cmdl *list);
 // int							ft_echo(struct s_list *list, char *arg, int fd);

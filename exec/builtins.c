@@ -6,23 +6,11 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:32:53 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 11:49:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-// else if (ft_strncmp(list->input, "$?", 2) == 0)
-// {
-// 	printf("%d\n", g_status);
-// 	return (1);
-// }
-
-// if(you pass -n you must remove newline )
-// ft_putendl_fd(arg, fd);
-// printf("Minishell: cd: %s: No such file or directory\n", list->blt->cd_path);
-// // mkrim will provide me with FULL path to CD
-// prints out the names and values of the variables in the environment,
-// ft_putendl_fd(pw, fd_out);
 
 int	ft_echo(t_cmdl *list, int fd)
 {
@@ -49,11 +37,6 @@ int	ft_echo(t_cmdl *list, int fd)
 
 int	builtcheck(t_cmdl *cmd)
 {
-	char	*error;
-	int		len;
-	char	*findhome;
-	char	**env;
-
 	if (ft_strncmp(cmd[0].cmd, "echo", 4) == 0)
 	{
 		ft_echo(cmd, cmd->fd_out);
@@ -61,29 +44,7 @@ int	builtcheck(t_cmdl *cmd)
 	}
 	else if (ft_strncmp(cmd[0].cmd, "cd", 2) == 0)
 	{
-		env = cmd->environ;
-		while (*env)
-		{
-			if (ft_strnstr(*env, "HOME=", 5))
-			{
-				findhome = *env;
-			}
-			env++;
-		}
-		if (findhome == NULL)
-		{
-			g_exit_status = 1;
-			error = "Minishell: cd: HOME not set\n";
-			len = ft_strlen(error);
-			write(2, error, len);
-		}
-		if (chdir(cmd[0].args[0]) == -1)
-		{
-			g_exit_status = 1;
-			error = "Minishell: cd: No such file or directory\n";
-			len = ft_strlen(error);
-			write(2, error, len);
-		}
+		ftcd(cmd);
 		return (1);
 	}
 	return (0);
