@@ -120,6 +120,7 @@ int main(int argc, char **argv, char **env)
 				one_cmd(cmd);
 			}
 		}
+		free(line);
 	}
 	return 0;
 }
