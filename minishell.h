@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 18:48:32 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:02:16 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-#include "./exec/parse.h"
+# include "./exec/parse.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <signal.h>
@@ -79,20 +79,10 @@ struct						s_list
 };
 typedef struct t_list
 {
-		char *content;
-	void *next;
-}t_list;
+	char					*content;
+	void					*next;
+}							t_list;
 static int					g_exit_status;
-// struct s_redirections
-// {
-// 	int					redirection_out;
-// 	int					redirection_in;
-// 	int 				append_stdout;
-// 	int rd_ir;
-// 	char *type;
-// 	char *file;
-// struct s_redirections		*next;
-// };
 
 void						handler(int sig);
 int							prompt_and_parse(char **upstream, char **downstream,
@@ -102,28 +92,34 @@ void						rl_clear_history(void);
 // Builtin Commands
 int							ft_pwd(int fd_out);
 // void						ft_env(char **env, struct s_list *list);
-void	ft_env(char **env, t_cmdl *list);
+void						ft_env(char **env, t_cmdl *list);
 // int							ft_echo(struct s_list *list, char *arg, int fd);
-int	ft_echo(t_cmdl *list, char *arg, int fd);
+int							ft_echo(t_cmdl *list, char *arg, int fd);
 // int							ft_is_built_in(struct s_list *list);
-int	ft_is_built_in(t_cmdl *list);
+int							ft_is_built_in(t_cmdl *list);
 int							ft_unset(char **env);
 int							ft_export(char **env, t_cmdl *cmd);
 // int							is_builtin(struct s_list *list, int i);
 //exece
-int	is_builtin(t_cmdl *list, int i);
+int							is_builtin(t_cmdl *list, int i);
 // int							one_cmd(struct s_list *list);
-int	one_cmd(t_cmdl *list);
+int							one_cmd(t_cmdl *list);
 int							set_rd(struct s_list *list);
 int							run_builtin(struct s_list *list);
 /// redirections I/O
 // int							redirections(struct s_list *list);
-int	redirections(t_cmdl *list);
+int							redirections(t_cmdl *list);
 int							heredoc_without_cmd(struct s_list *list);
 // Other
 // int							ft_bin_usr_sbin(struct s_list *list);
-t_list	*ft_lstnew(void *content);
-int	ft_bin_usr_sbin(t_cmdl *list);
+t_list						*ft_lstnew(void *content);
+int							ft_bin_usr_sbin(t_cmdl *list);
+char						**ft_search_for_path(t_cmdl *list);
+void						ftcheck_nopath(t_cmdl *list);
+void						looping_through_split_path(t_cmdl *list, int i,
+								char *bin, char *last);
+char						**create_argv_for_execve(t_cmdl *list);
+int							ft_check_programs(t_cmdl *list);
 // LIBFT
 int							ft_isdigit(int c);
 int							ft_atoi(const char *str);

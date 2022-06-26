@@ -48,7 +48,8 @@ typedef struct s_cmdl {
 		int						fd_out;
 			int						fd_in;
 				char					**environ;
-
+				char **args_execve;
+char **new;			
 //....
 }		t_cmdl;
 
