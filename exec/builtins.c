@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 18:10:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:38:33 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // 	printf("%d\n", g_status);
 // 	return (1);
 // }
-
 
 // if(you pass -n you must remove newline )
 // ft_putendl_fd(arg, fd);
@@ -55,7 +54,7 @@ int	builtcheck(t_cmdl *cmd)
 	char	*findhome;
 	char	**env;
 
-	if (ft_strncmp(cmd[0].cmd ,"echo", 4) == 0)
+	if (ft_strncmp(cmd[0].cmd, "echo", 4) == 0)
 	{
 		ft_echo(cmd, cmd[0].args[0], cmd->fd_out);
 		return (1);
@@ -101,7 +100,7 @@ int	builtcheck_1(t_cmdl *cmd)
 	char	**vr;
 
 	vr = cmd->environ;
-	if (ft_strncmp(cmd[0].cmd,"export", 6) == 0)
+	if (ft_strncmp(cmd[0].cmd, "export", 6) == 0)
 	{
 		ft_export(vr, cmd);
 		return (1);
@@ -114,59 +113,7 @@ int	builtcheck_1(t_cmdl *cmd)
 	return (0);
 }
 
-int	ft_is_built_in(t_cmdl *cmd)
-{
-	int	i;
-	int	exit_value;
 
-	i = 0;
-	if (builtcheck(cmd) == 1)
-	{
-		return (1);
-	}
-	else if (builtcheck_1(cmd) == 1)
-	{
-		return (1);
-	}
-	else if (ft_strncmp(cmd[0].cmd, "env", 3) == 0)
-	{
-		ft_env(cmd->environ, cmd);
-		return (1);
-	}
-	else if (ft_strncmp(cmd[0].cmd, "pwd", 3) == 0)
-	{
-		ft_pwd(cmd->fd_out);
-		return (1);
-	}
-	else if (ft_strncmp(cmd[0].cmd, "exit", 4) == 0)
-	{
-		if (cmd[0].args == NULL)
-		{
-			printf("exit\n");
-			exit(g_exit_status);
-		}
-		// if (cmd->args[1] == NULL)
-		// {
-		// 	while (cmd[cmd->cmd_iteration].cmd[1][i])
-		// 	{
-		// 		if (ft_isdigit(cmd[cmd->cmd_iteration].cmd[1][i]) == 0)
-		// 		{
-		// 			printf("exit\n");
-		// 			printf("Minishell: exit: %s: numeric argument required\n",
-		// 					cmd[cmd->cmd_iteration].cmd[1]);
-		// 			exit(2); // 				exit(255);
-		// 		}
-		// 		exit_value = ft_atoi(cmd[cmd->cmd_iteration].cmd[1]);
-		// 		i++;
-		// 		free(cmd->input);
-		// 		exit(exit_value);
-		// 	}
-		// }
-		// printf("exit\n Minishell : exit : too many arguments\n");
-		exit(1);
-	}
-	return (0);
-}
 
 int	ft_pwd(int fd_out)
 {

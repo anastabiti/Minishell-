@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 10:13:54 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:20:21 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_check_programs(t_cmdl *list)
 		argv = create_argv_for_execve(list);
 		execve(list[list->cmd_iteration].cmd, argv, list->environ);
 		printf("Minishell : %s : No such file or directory\n",
-				list[list->cmd_iteration].cmd);
+			list[list->cmd_iteration].cmd);
 		exit(127);
 	}
 	if (list[list->cmd_iteration].cmd[0] == '/')
@@ -61,7 +61,7 @@ int	ft_check_programs(t_cmdl *list)
 		argv = create_argv_for_execve(list);
 		execve(list[list->cmd_iteration].cmd, argv, list->environ);
 		printf("Minishell : %s : No such file or directory\n",
-				list[list->cmd_iteration].cmd);
+			list[list->cmd_iteration].cmd);
 		exit(127);
 	}
 	return (0);

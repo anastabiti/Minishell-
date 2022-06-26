@@ -6,23 +6,22 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 08:54:05 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:25:05 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include "parse.h"
 
-int one_cmd_1(t_cmdl *list)
+int	one_cmd_1(t_cmdl *list)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (fork() == 0)
 	{
 		// redirections(list);
 		// heredoc_without_cmd(list);
-
 		// while (list[0].type[i] != NULL)
 		// {
 		// 	if (ft_strncmp(list[0].type[i], HEREDOC, 7) == 0)
@@ -43,17 +42,22 @@ int one_cmd_1(t_cmdl *list)
 	}
 	else
 	{
-				wait(&g_exit_status);
-				if (WIFEXITED(g_exit_status))
-				g_exit_status = WEXITSTATUS(g_exit_status);
-
+		wait(&g_exit_status);
+		if (WIFEXITED(g_exit_status))
+			g_exit_status = WEXITSTATUS(g_exit_status);
+		i = 0;
+		while (list->args_execve)
+		{
+			free(list->args_execve[i]);
+			i++;
+		}
 	}
 	return (0);
 }
 
-int one_cmd(t_cmdl *cmd)
+int	one_cmd(t_cmdl *cmd)
 {
-	int i;
+	int	i;
 
 	if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 0)
 	{

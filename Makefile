@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/06/26 09:58:40 by atabiti          ###   ########.fr        #
+#    Updated: 2022/06/26 10:41:46 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRC = ./exec/builtins.c \
 	./exec/parse.c \
 	./exec/utils.c \
 	./exec/ft_search_path.c \
+	./exec/is_builtin.c \
+	./exec/ft_exit.c \
 	
 OBJ = ./exec/builtins.o \
 	./exec/ft_env.o \
@@ -66,7 +68,8 @@ OBJ = ./exec/builtins.o \
 	./exec/parse.o \
 	./exec/utils.o \
 	./exec/ft_search_path.o \
-
+	./exec/is_builtin.o \
+	./exec/ft_exit.o \
 	
 FALGS = -Wall -Werorr -Wextra 
 all : $(NAME)

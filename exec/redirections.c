@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 08:54:14 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:36:22 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,7 @@ int	redirections(t_cmdl *list)
 	}
 	return (0);
 }
-int	is_builtin(t_cmdl *list, int i)
-{
-	if (list[i].cmd == NULL)
-		return (0);
-	if (ft_strncmp(list[i].cmd , "cd", 2) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd , "pwd", 3) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd , "echo", 4) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd , "env", 3) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd , "exit", 4) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd , "unset", 5) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd , "export", 6) == 0)
-		return (0);
-	return (3);
-}
+
 // not mine is from a course i use it to accelerate work
 
 int	prompt_and_parse(char **upstream, char **downstream, char *line)
