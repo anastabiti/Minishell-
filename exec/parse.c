@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/25 18:12:00 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:11:21 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int main(int argc, char **argv, char **env)
 	int i;
 	int pipe = 1;
 
-	if (argc == 1)
-	{
+	// if (argc == 1)
+	// {
 		while (1)
 		{
 			signal(SIGQUIT, SIG_IGN);
@@ -119,7 +119,7 @@ int main(int argc, char **argv, char **env)
 
 				one_cmd(cmd);
 			}
-		}
+		// }
 		free(line);
 	}
 	return 0;

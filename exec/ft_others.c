@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 10:02:43 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:09:20 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	cmd_args_len(t_cmdl *list)
 {
 	int	len;
 
+	len = 0;
 	while (list[list->cmd_iteration].args[len] != NULL)
 	{
 		len++;
@@ -28,6 +29,7 @@ char	**create_argv_for_execve(t_cmdl *list)
 	int	len;
 	int	i;
 
+	len = 0;
 	len = cmd_args_len(list);
 	list->args_execve = malloc(sizeof(char **) * len);
 	i = 0;
@@ -44,7 +46,6 @@ char	**create_argv_for_execve(t_cmdl *list)
 int	ft_check_programs(t_cmdl *list)
 {
 	char	**argv;
-	int		x;
 
 	if (list[list->cmd_iteration].cmd[0] == '.'
 		&& list[list->cmd_iteration].cmd[1] == '/')
@@ -52,7 +53,7 @@ int	ft_check_programs(t_cmdl *list)
 		argv = create_argv_for_execve(list);
 		execve(list[list->cmd_iteration].cmd, argv, NULL);
 		printf("Minishell : %s : No such file or directory\n",
-			list[list->cmd_iteration].cmd);
+				list[list->cmd_iteration].cmd);
 		exit(127);
 	}
 	if (list[list->cmd_iteration].cmd[0] == '/')
@@ -60,7 +61,7 @@ int	ft_check_programs(t_cmdl *list)
 		argv = create_argv_for_execve(list);
 		execve(list[list->cmd_iteration].cmd, argv, NULL);
 		printf("Minishell : %s : No such file or directory\n",
-			list[list->cmd_iteration].cmd);
+				list[list->cmd_iteration].cmd);
 		exit(127);
 	}
 	return (0);
