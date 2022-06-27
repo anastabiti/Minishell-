@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 08:02:30 by mkarim            #+#    #+#             */
-/*   Updated: 2021/11/06 16:31:23 by mkarim           ###   ########.fr       */
+/*   Created: 2021/11/01 12:20:58 by mkarim            #+#    #+#             */
+/*   Updated: 2021/11/12 11:07:13 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s, const char *sub, size_t len)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	unsigned char	*mem;
+	size_t			i;
 
+	mem = (unsigned char *)s;
 	i = 0;
-	if (sub[0] == '\0')
-		return ((char *)s);
-	while (s[i] && i < len)
+	while (i < n)
 	{
-		j = 0;
-		while (s[i + j] == sub[j] && i + j < len)
-		{
-			if (sub[j + 1] == '\0')
-				return ((char *)(s + i));
-			j++;
-		}
+		mem[i] = c;
 		i++;
 	}
-	return (0);
+	return (mem);
 }

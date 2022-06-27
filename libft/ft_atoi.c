@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 08:02:30 by mkarim            #+#    #+#             */
-/*   Updated: 2021/11/06 16:31:23 by mkarim           ###   ########.fr       */
+/*   Created: 2021/11/01 14:27:15 by mkarim            #+#    #+#             */
+/*   Updated: 2021/11/12 10:54:17 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s, const char *sub, size_t len)
+int	ft_atoi(const char *s)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		signe;
+	int		res;
 
 	i = 0;
-	if (sub[0] == '\0')
-		return ((char *)s);
-	while (s[i] && i < len)
+	signe = 1;
+	res = 0;
+	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\r' || s[i] == '\v'
+		|| s[i] == '\n' || s[i] == '\f')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		j = 0;
-		while (s[i + j] == sub[j] && i + j < len)
-		{
-			if (sub[j + 1] == '\0')
-				return ((char *)(s + i));
-			j++;
-		}
+		if (s[i] == '-')
+			signe *= -1;
 		i++;
 	}
-	return (0);
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		res = res * 10 + (s[i] - 48);
+		i++;
+	}
+	return (res * signe);
 }
