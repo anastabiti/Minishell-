@@ -6,11 +6,9 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:37:52 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 08:27:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 08:33:32 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../minishell.h"
 
 #include "../minishell.h"
 int	check_home_inenv(t_cmdl *cmd, char *findhome, char *error)
@@ -59,12 +57,15 @@ int	ftcd(t_cmdl *cmd)
 		if (env[x] == NULL)
 		{
 			// printf("Minishell: cd: HOME not set\n");
-		break;		}
+			break ;
+		}
 	}
 	findhome = env[x];
-	if(check_home_inenv(cmd, findhome, error) == 0)
-	
-	return 0;
+	if (cmd[cmd->cmd_iteration].args[0] == NULL)
+	{
+		if (check_home_inenv(cmd, findhome, error) == 0)
+			return (0);
+	}
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
 		split = ft_split(findhome, '=');
@@ -72,6 +73,9 @@ int	ftcd(t_cmdl *cmd)
 		printf("done\n");
 		return (0);
 	}
-	cd_last_check(cmd, error);
+	if (cmd[cmd->cmd_iteration].args[1] == NULL)
+	{
+		cd_last_check(cmd, error);
+	}
 	return (1);
 }
