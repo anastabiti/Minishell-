@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-int	ft_export_1(struct						s_envp * envp, t_cmdl *cmd)
+int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 {
 	int		i;
 	char	**new;
@@ -44,7 +44,7 @@ int	ft_export_1(struct						s_envp * envp, t_cmdl *cmd)
 	return (1);
 }
 
-int	ft_export(struct						s_envp * envp, t_cmdl *cmd)
+int	ft_export(struct s_envp *envp, t_cmdl *cmd)
 {
 	char	*to_be_exported;
 	int		len;
@@ -53,7 +53,7 @@ int	ft_export(struct						s_envp * envp, t_cmdl *cmd)
 	int		x;
 	int		t;
 	char	**new;
-printf("   %d    items n enpv\n", envp->envpitems);
+
 	if (ft_export_1(envp, cmd) == 0)
 	{
 		return (0);
@@ -64,7 +64,6 @@ printf("   %d    items n enpv\n", envp->envpitems);
 		to_be_exported = cmd[0].args[i];
 		len = ft_strlen(to_be_exported);
 		x = 0;
-
 		while (x < envp->envpitems)
 		{
 			if (ft_strnstr(envp->environment[x], to_be_exported, len))
@@ -73,32 +72,26 @@ printf("   %d    items n enpv\n", envp->envpitems);
 			}
 			x++;
 		}
-		// 	increment++;
-		// 	cmd->envlen = increment;
-		new = malloc(sizeof(char **) * ( envp->envpitems + 1));
+		new = malloc(sizeof(char **) * (envp->envpitems + 1));
 		t = 0;
-		printf("%d LEN\n\n\n", x);
-		while (t <  envp->envpitems)
+		while (t < envp->envpitems)
 		{
 			new[t] = envp->environment[t];
-						// printf("%s old \n", new[t]);
-
 			t++;
 		}
 		x = x + 1;
 		new[t] = to_be_exported;
 		// new[t + 1] = NULL;
 		t = 0;
-		while (t < 	 envp->envpitems)
+		while (t < envp->envpitems)
 		{
 			printf("%s new\n", new[t]);
 			t++;
 		}
-		// free(envp->environment);
-				 envp->envpitems++;
-
- envp->environment =	new;
+		printf("%d LEN\n\n\n", envp->envpitems);
+		envp->envpitems++;
+		envp->environment = new;
 		i++;
 	}
-	return 0;
+	return (0);
 }

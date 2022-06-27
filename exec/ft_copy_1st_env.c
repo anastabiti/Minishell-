@@ -3,7 +3,7 @@
 #include "../minishell.h"
 #include "parse.h"
 
-void ft_copy_1st_env(struct						s_envp * envp, char **env)
+void	ft_copy_1st_env(struct s_envp *envp, char **env)
 {
 	char **new;
 
@@ -13,24 +13,17 @@ void ft_copy_1st_env(struct						s_envp * envp, char **env)
 	len = 0;
 	while (env[len])
 	{
-        	// printf("%s\n", env[len]);
-
 		len++;
-		
 	}
 	envp->envpitems = len;
-    // printf("%d  len\n", len);
-    	new = malloc(sizeof(char **) * (len + 1));
-  
-   
-   
-        while(x < len)
-        {
+	new = malloc(sizeof(char **) * (len + 1));
 
-                    new[x] = env[x];
+	while (x < len)
+	{
+		new[x] = env[x];
 
-            x++;
-        }
-        new[x] = NULL;
+		x++;
+	}
+	new[x] = NULL;
 	envp->environment = new;
 }
