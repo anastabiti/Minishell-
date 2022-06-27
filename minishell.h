@@ -100,17 +100,18 @@ void						rl_replace_line(const char *text, int clear_undo);
 void						rl_clear_history(void);
 // Builtin Commands
 int							ft_pwd(int fd_out);
-int							builtcheck_1(t_cmdl *cmd, struct s_envp *envp);
+int							builtcheck_1(t_cmdl *cmd, struct s_envp *envp, t_cmdl *list);
 int							ftexit(t_cmdl *cmd);
 int							builtcheck(t_cmdl *cmd);
 int							ftcd(t_cmdl *cmd);
+int	ft_export_1(struct s_envp *envp, t_cmdl *cmd);
 // void						ft_env(char **env, struct s_list *list);
 void						ft_env(struct s_envp *envp, t_cmdl *list);
 // int							ft_echo(struct s_list *list, char *arg, int fd);
 int							ft_echo(t_cmdl *list, int fd);
 // int							ft_is_built_in(struct s_list *list);
 int							ft_is_built_in(t_cmdl *list, struct s_envp *envp);
-int							ft_unset(struct s_envp *envp);
+int							ft_unset(struct s_envp *envp, t_cmdl *list);
 int							ft_export(struct s_envp *envp, t_cmdl *cmd);
 // int							is_builtin(struct s_list *list, int i);
 //exece

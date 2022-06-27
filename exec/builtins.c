@@ -50,16 +50,28 @@ int	builtcheck(t_cmdl *cmd)
 	return (0);
 }
 
-int	builtcheck_1(t_cmdl *cmd, struct						s_envp * envp)
+int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp, t_cmdl *list)
 {
+	int	i;
+
 	if (ft_strncmp(cmd[0].cmd, "export", 6) == 0)
 	{
-		ft_export(	envp, cmd);
+		i = 0;
+		if (cmd->args[0] == NULL)
+	{
+		if(ft_export_1(envp, cmd) == 0)
+		return 0;
+	}
+		while (list[cmd->cmd_iteration].args[i])
+		{
+			ft_export(envp, cmd);
+			i++;
+		}
 		return (1);
 	}
 	else if (ft_strncmp(cmd[0].cmd, "unset", 5) == 0)
 	{
-		ft_unset(envp);
+		ft_unset(envp, list);
 		return (1);
 	}
 	return (0);

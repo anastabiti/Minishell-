@@ -16,13 +16,15 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 {
 	int		i;
 	char	**new;
+	int		x;
 
+	x = 0;
 	if (cmd->args[0] == NULL)
 	{
 		i = 0;
-		while (*envp->environment != NULL)
+		while (x < envp->envpitems)
 		{
-			new = ft_split(*envp->environment, '=');
+			new = ft_split(envp->environment[x], '=');
 			while (new[i])
 			{
 				ft_putstr_fd("declare -x ", 1);
@@ -36,7 +38,7 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 				write(1, "\"\n", 2);
 				i++;
 			}
-			envp->environment++;
+			x++;
 			i = 0;
 		}
 		return (0);
@@ -53,25 +55,26 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd)
 	int		x;
 	int		t;
 	char	**new;
+	char **split;
 
-	if (ft_export_1(envp, cmd) == 0)
-	{
-		return (0);
-	}
 	i = 0;
-	while (cmd[cmd->cmd_iteration].args[i])
-	{
-		to_be_exported = cmd[0].args[i];
-		len = ft_strlen(to_be_exported);
+
+		split = ft_split(cmd[0].args[i], '=');
+				to_be_exported = split[0];
+
+		// printf("to_be_exported is %s  \n", split[0]);
+		len = ft_strlen(split[0]);
 		x = 0;
 		while (x < envp->envpitems)
 		{
 			if (ft_strnstr(envp->environment[x], to_be_exported, len))
 			{
-				return (0);
+				envp->environment[x] = cmd[0].args[i];
+				return 0;		
 			}
 			x++;
 		}
+		// printf("DO NOT \n\n\n");
 		new = malloc(sizeof(char **) * (envp->envpitems + 1));
 		t = 0;
 		while (t < envp->envpitems)
@@ -80,18 +83,17 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd)
 			t++;
 		}
 		x = x + 1;
-		new[t] = to_be_exported;
+		new[t] = cmd[0].args[i];
 		// new[t + 1] = NULL;
 		t = 0;
-		while (t < envp->envpitems)
-		{
-			printf("%s new\n", new[t]);
-			t++;
-		}
-		printf("%d LEN\n\n\n", envp->envpitems);
+		// while (t < envp->envpitems)
+		// {
+		// 	printf("%s new\n", new[t]);
+		// 	t++;
+		// }
+		// printf("%d LEN\n\n\n", envp->envpitems);
 		envp->envpitems++;
 		envp->environment = new;
-		i++;
-	}
+	
 	return (0);
 }
