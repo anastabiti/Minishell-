@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 11:49:42 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 12:08:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	ft_export(char **env, t_cmdl *cmd)
 	int		x;
 	int		t;
 	char	**new;
-
+	static int increment;
+	increment = cmd->envlen;
 	if (ft_export_1(cmd->myenvp, cmd, NULL) == 0)
 	{
 		return (0);
@@ -73,28 +74,26 @@ int	ft_export(char **env, t_cmdl *cmd)
 			}
 			x++;
 		}
-		cmd->envlen++;
+		increment++;
+		cmd->envlen = increment;
 		new = malloc(sizeof(char **) * cmd->envlen + 1);
 		t = 0;
+			printf("%d LEN\n", cmd->envlen);
 		while (t < cmd->envlen)
 		{
-			printf("%s\n", cmd->myenvp[t]);
 			new[t] = cmd->myenvp[t];
+						printf("%s new\n", cmd->myenvp[t]);
+
 			t++;
 		}
-		new[0] = cmd->myenvp[31];
-		printf("%s new\n", new[0]);
+	
+		new[t] = to_be_exported;
 		new[t + 1] = NULL;
-		// while (cmd->myenvp[t])
-		// {
-		// 	new[t] = cmd->myenvp[t];
-		// 	t++;
-		// }
-		// new[t] = to_be_exported;
-		// new[t + 1] = NULL;
+			free(cmd->myenvp);
+
+		cmd->myenvp = new;
+
 		i++;
 	}
-	// free(cmd->myenvp);
-	// cmd->myenvp = new;
 	return (0);
 }
