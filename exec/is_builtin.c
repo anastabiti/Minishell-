@@ -38,7 +38,7 @@ int	ft_is_built_in(t_cmdl *list, struct						s_envp * envp)
 	int	i;
 
 	i = 0;
-	if (builtcheck(list) == 1)
+	if (builtcheck(list, envp) == 1)
 		return (1);
 	else if (builtcheck_1(list, envp ,list) == 1)
 		return (1);

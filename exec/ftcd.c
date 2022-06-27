@@ -43,18 +43,18 @@ int	cd_last_check(t_cmdl *cmd, char *error)
 	return (1);
 }
 
-int	ftcd(t_cmdl *cmd)
+int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 {
 	int	x;
 
 	x = 0;
-	while (!(ft_strnstr(cmd->environ[x], "HOME=", 5)))
+	while (!(ft_strnstr(envp->environment[x], "HOME=", 5)))
 	{
 		x++;
-		if (cmd->environ[x] == NULL)
+		if (x == envp->envpitems)
 			break ;
 	}
-	cmd->findhome = cmd->environ[x];
+	cmd->findhome = envp->environment[x];
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
 		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 0)

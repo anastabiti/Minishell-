@@ -35,7 +35,7 @@ int	ft_echo(t_cmdl *list, int fd)
 	return (0);
 }
 
-int	builtcheck(t_cmdl *cmd)
+int	builtcheck(t_cmdl *cmd, struct s_envp *envp)
 {
 	if (ft_strncmp(cmd[0].cmd, "echo", 4) == 0)
 	{
@@ -44,7 +44,7 @@ int	builtcheck(t_cmdl *cmd)
 	}
 	else if (ft_strncmp(cmd[0].cmd, "cd", 2) == 0)
 	{
-		ftcd(cmd);
+		ftcd(cmd, envp);
 		return (1);
 	}
 	return (0);

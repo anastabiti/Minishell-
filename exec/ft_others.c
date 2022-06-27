@@ -49,7 +49,7 @@ char	**create_argv_for_execve(t_cmdl *list)
 		list->args_execve[i + 1] = list[list->cmd_iteration].args[i];
 		i++;
 	}
-	list->args_execve[i] = NULL;
+	list->args_execve[i + 1] = NULL;
 	return (list->args_execve);
 }
 
