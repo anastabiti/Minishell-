@@ -13,7 +13,7 @@
 #include "../minishell.h"
 #include "parse.h"
 
-int	one_cmd_1(t_cmdl *list)
+int	one_cmd_1(t_cmdl *list, struct s_envp *envp)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int	one_cmd_1(t_cmdl *list)
 		// 		close(list->fd_in);
 		// 	i++;
 		// }
-		ft_bin_usr_sbin(list);
+		ft_bin_usr_sbin(list, envp);
 	}
 	else
 	{
@@ -85,7 +85,7 @@ int	one_cmd(t_cmdl *cmd, struct						s_envp * envp)
 	}
 	else if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 3)
 	{
-		one_cmd_1(cmd);
+		one_cmd_1(cmd,envp);
 		return (1);
 	}
 	return (0);

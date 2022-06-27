@@ -127,13 +127,13 @@ int							heredoc_without_cmd(struct s_list *list);
 // Other
 // int							ft_bin_usr_sbin(struct s_list *list);
 t_list						*ft_lstnew(void *content);
-int							ft_bin_usr_sbin(t_cmdl *list);
-char						**ft_search_for_path(t_cmdl *list);
-void						ftcheck_nopath(t_cmdl *list);
+int							ft_bin_usr_sbin(t_cmdl *list, struct s_envp *envp);
+char						**ft_search_for_path(t_cmdl *list,  struct s_envp *envp);
+void						ftcheck_nopath(t_cmdl *list,  struct s_envp *envp);
 void						looping_through_split_path(t_cmdl *list, int i,
-								char *bin, char *last);
+								char *bin, char *last, struct s_envp *envp);
 char						**create_argv_for_execve(t_cmdl *list);
-int							ft_check_programs(t_cmdl *list);
+int							ft_check_programs(t_cmdl *list, struct s_envp *envp);
 //env
 void						ft_copy_1st_env(struct s_envp *envp, char **env);
 // LIBFT
