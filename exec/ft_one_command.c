@@ -55,7 +55,7 @@ int	one_cmd_1(t_cmdl *list)
 	return (0);
 }
 
-int	one_cmd(t_cmdl *cmd)
+int	one_cmd(t_cmdl *cmd, struct						s_envp * envp)
 {
 	int	i;
 	int	x;
@@ -65,7 +65,7 @@ int	one_cmd(t_cmdl *cmd)
 	{
 		i = 0;
 		// redirections(cmd);
-		ft_is_built_in(cmd);
+		ft_is_built_in(cmd, envp);
 		// if (cmd[0].type[i] != NULL)
 		// {
 		// 	if (ft_strncmp(cmd[0].type[i], RDOUT, 7) == 0)

@@ -50,19 +50,16 @@ int	builtcheck(t_cmdl *cmd)
 	return (0);
 }
 
-int	builtcheck_1(t_cmdl *cmd)
+int	builtcheck_1(t_cmdl *cmd, struct						s_envp * envp)
 {
-	char	**vr;
-
-	vr = cmd->environ;
 	if (ft_strncmp(cmd[0].cmd, "export", 6) == 0)
 	{
-		ft_export(	cmd->myenvp, cmd);
+		ft_export(	envp, cmd);
 		return (1);
 	}
 	else if (ft_strncmp(cmd[0].cmd, "unset", 5) == 0)
 	{
-		ft_unset(vr);
+		ft_unset(envp);
 		return (1);
 	}
 	return (0);

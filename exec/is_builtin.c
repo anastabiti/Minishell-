@@ -33,18 +33,18 @@ int	is_builtin(t_cmdl *list, int i)
 	return (3);
 }
 
-int	ft_is_built_in(t_cmdl *list)
+int	ft_is_built_in(t_cmdl *list, struct						s_envp * envp)
 {
 	int	i;
 
 	i = 0;
 	if (builtcheck(list) == 1)
 		return (1);
-	else if (builtcheck_1(list) == 1)
+	else if (builtcheck_1(list, envp) == 1)
 		return (1);
 	else if (ft_strncmp(list[0].cmd, "env", 3) == 0)
 	{
-		ft_env(list->environ, list);
+		ft_env(envp, list);
 		return (1);
 	}
 	else if (ft_strncmp(list[0].cmd, "pwd", 3) == 0)

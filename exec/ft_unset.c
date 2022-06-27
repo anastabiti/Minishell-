@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-int ft_unset(char **env)
+int ft_unset(struct						s_envp * envp)
 {
 	int x = 0;
 	char *to_be_unset;
@@ -22,21 +22,21 @@ int ft_unset(char **env)
 	to_be_unset = "HOME="; // mkrim must provide me with the string  to  unset
 
 	int lenght = ft_strlen(to_be_unset);
-	while (!(ft_strnstr(env[x], to_be_unset, lenght)))
+	while (!(ft_strnstr(envp->environment[x], to_be_unset, lenght)))
 	{
 		x++;
-		if (env[x] == NULL)
+		if (envp->environment[x] == NULL)
 			return 0;
 	}
-	while (env[i]) // N of env strings
+	while (envp->environment[i]) // N of env strings
 	{
 		i++;
 	}
 	while (x < i) // copy back backward when one is unset
 	{
-		env[x] = env[x + 1];
+		envp->environment[x] = envp->environment[x + 1];
 		x++;
 	}
-	env[i - 1] = NULL;
+	envp->environment[i - 1] = NULL;
 	return 0;
 }

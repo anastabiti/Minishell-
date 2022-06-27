@@ -76,7 +76,15 @@ struct						s_list
 	char					*file[50];
 	char					*delimiter[50];
 	struct s_redirections	*rd;
+	struct						s_envp * envp;
+
 	// cd
+};
+
+struct						s_envp
+{
+	char					**environment;
+	int envpitems;
 };
 typedef struct t_list
 {
@@ -92,23 +100,23 @@ void						rl_replace_line(const char *text, int clear_undo);
 void						rl_clear_history(void);
 // Builtin Commands
 int							ft_pwd(int fd_out);
-int							builtcheck_1(t_cmdl *cmd);
+int							builtcheck_1(t_cmdl *cmd, struct						s_envp * envp);
 int							ftexit(t_cmdl *cmd);
 int							builtcheck(t_cmdl *cmd);
 int							ftcd(t_cmdl *cmd);
 // void						ft_env(char **env, struct s_list *list);
-void						ft_env(char **env, t_cmdl *list);
+void						ft_env(struct						s_envp * envp, t_cmdl *list);
 // int							ft_echo(struct s_list *list, char *arg, int fd);
 int							ft_echo(t_cmdl *list, int fd);
 // int							ft_is_built_in(struct s_list *list);
-int							ft_is_built_in(t_cmdl *list);
-int							ft_unset(char **env);
-int							ft_export(char **env, t_cmdl *cmd);
+int							ft_is_built_in(t_cmdl *list,struct						s_envp * envp);
+int							ft_unset(struct						s_envp * envp);
+int						ft_export(struct						s_envp * envp, t_cmdl *cmd);
 // int							is_builtin(struct s_list *list, int i);
 //exece
 int							is_builtin(t_cmdl *list, int i);
 // int							one_cmd(struct s_list *list);
-int							one_cmd(t_cmdl *list);
+int							one_cmd(t_cmdl *list, struct						s_envp * envp);
 int							set_rd(struct s_list *list);
 int							run_builtin(struct s_list *list);
 /// redirections I/O
@@ -126,7 +134,7 @@ void						looping_through_split_path(t_cmdl *list, int i,
 char						**create_argv_for_execve(t_cmdl *list);
 int							ft_check_programs(t_cmdl *list);
 //env
-char **ft_copy_1st_env(char **env);
+void ft_copy_1st_env(struct						s_envp * envp, char **env);
 // LIBFT
 int							ft_isdigit(int c);
 int							ft_atoi(const char *str);

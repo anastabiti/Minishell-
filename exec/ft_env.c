@@ -23,18 +23,17 @@ t_list	*ft_lstnew(void *content)
 	return (new);
 }
 
-void	ft_env(char **env, t_cmdl *list)
+void	ft_env(struct						s_envp * envp, t_cmdl *list)
 {
 	t_list	*new = malloc(sizeof(t_list	*));
-		new =  ft_lstnew(env);
-	char **	var = env;
+		new =  ft_lstnew(envp->environment);
 	int  i = 0;
-	while (*var != NULL)
+	while (*envp->environment != NULL)
 	{
-		new->content = *var;
+		new->content = *envp->environment;
 
 		ft_putendl_fd(new->content, list->fd_out);
-		var++;
+		envp->environment++;
 		i++;
 	}
 	// var = env;

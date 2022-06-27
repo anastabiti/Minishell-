@@ -21,25 +21,11 @@ int main(int argc, char **argv, char **env)
 	int start;
 	int i;
 	int pipe = 1;
-	char **envp = ft_copy_1st_env(env);
-	// while(*envp)
-	// {
-	// 	printf("%s\n",*envp);
-	// 	*envp++;
-	// }
-	// if (argc == 1)
-	// {
+	struct						s_envp * envp;
+	envp = malloc(sizeof(	struct						s_envp * ) * 1);
+	
+ 	ft_copy_1st_env(envp, env);
 		
-	// envinit->envlen = len;
-	// envinit->myenvp = malloc(sizeof(char **) * envinit->envlen);
-	// while (x < len)
-	// {
-	// 	envinit->myenvp[x] = envinit->environ[x];
-	// 	printf("%s OLD\n", envinit->myenvp[x]);
-	// 	x++;
-	// }
-	// envinit->myenvp[x + 1] = NULL;
-	///
 		while (1)
 		{
 			signal(SIGQUIT, SIG_IGN);
@@ -129,13 +115,12 @@ int main(int argc, char **argv, char **env)
 			}
 			
 			cmd->cmd_nbr = 0;
-			cmd->myenvp = envp;
 			cmd->cmd_iteration = 0;
 			if (cmd->cmd_nbr == 0)
 			{
 				// heredoc_without_cmd(cmd);
 
-				one_cmd(cmd);
+				one_cmd(cmd, envp);
 			}
 		// }
 		free(line);

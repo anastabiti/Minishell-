@@ -12,18 +12,17 @@
 
 #include "../minishell.h"
 
-int	ft_export_1(char **env, t_cmdl *cmd, char **var)
+int	ft_export_1(struct						s_envp * envp, t_cmdl *cmd)
 {
 	int		i;
 	char	**new;
 
 	if (cmd->args[0] == NULL)
 	{
-		var = env;
 		i = 0;
-		while (*var != NULL)
+		while (*envp->environment != NULL)
 		{
-			new = ft_split(*var, '=');
+			new = ft_split(*envp->environment, '=');
 			while (new[i])
 			{
 				ft_putstr_fd("declare -x ", 1);
@@ -37,7 +36,7 @@ int	ft_export_1(char **env, t_cmdl *cmd, char **var)
 				write(1, "\"\n", 2);
 				i++;
 			}
-			var++;
+			envp->environment++;
 			i = 0;
 		}
 		return (0);
@@ -45,7 +44,7 @@ int	ft_export_1(char **env, t_cmdl *cmd, char **var)
 	return (1);
 }
 
-int	ft_export(char **env, t_cmdl *cmd)
+int	ft_export(struct						s_envp * envp, t_cmdl *cmd)
 {
 	char	*to_be_exported;
 	int		len;
@@ -54,8 +53,8 @@ int	ft_export(char **env, t_cmdl *cmd)
 	int		x;
 	int		t;
 	char	**new;
-
-	if (ft_export_1(cmd->myenvp, cmd, NULL) == 0)
+printf("   %d    items n enpv\n", envp->envpitems);
+	if (ft_export_1(envp, cmd) == 0)
 	{
 		return (0);
 	}
@@ -65,9 +64,10 @@ int	ft_export(char **env, t_cmdl *cmd)
 		to_be_exported = cmd[0].args[i];
 		len = ft_strlen(to_be_exported);
 		x = 0;
-		while (cmd->myenvp[x])
+
+		while (x < envp->envpitems)
 		{
-			if (ft_strnstr(cmd->myenvp[x], to_be_exported, len))
+			if (ft_strnstr(envp->environment[x], to_be_exported, len))
 			{
 				return (0);
 			}
@@ -75,27 +75,30 @@ int	ft_export(char **env, t_cmdl *cmd)
 		}
 		// 	increment++;
 		// 	cmd->envlen = increment;
-		new = malloc(sizeof(char **) * (x + 1));
+		new = malloc(sizeof(char **) * ( envp->envpitems + 1));
 		t = 0;
-		printf("%d LEN\n", x);
-		while (t < x)
+		printf("%d LEN\n\n\n", x);
+		while (t <  envp->envpitems)
 		{
-			new[t] = cmd->myenvp[t];
-			printf("%s new\n", new[t]);
+			new[t] = envp->environment[t];
+						// printf("%s old \n", new[t]);
+
 			t++;
 		}
 		x = x + 1;
 		new[t] = to_be_exported;
-		new[t + 1] = NULL;
+		// new[t + 1] = NULL;
 		t = 0;
-		while (t < x)
+		while (t < 	 envp->envpitems)
 		{
 			printf("%s new\n", new[t]);
 			t++;
 		}
-		free(cmd->myenvp);
-		cmd->myenvp = new;
+		// free(envp->environment);
+				 envp->envpitems++;
+
+ envp->environment =	new;
 		i++;
 	}
-	return (0);
+	return 0;
 }
