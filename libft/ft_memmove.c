@@ -3,33 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 10:54:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 08:54:19 by atabiti          ###   ########.fr       */
+/*   Created: 2021/11/01 14:14:44 by mkarim            #+#    #+#             */
+/*   Updated: 2021/11/11 02:57:01 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *s1, void *s2, size_t n)
 {
-	char	*s;
-	char	*d;
+	unsigned char	*d;
+	unsigned char	*s;
+	unsigned char	*temp;
+	size_t			len;
 
-	s = (char *)src;
-	d = (char *)dst;
-	if (s == NULL && d == NULL)
-		return (NULL);
-	if (d < s && (*d != '\0' || *s != '\0'))
-		return (ft_memcpy(dst, src, len));
-	if (s < d)
+	d = (unsigned char *)s1;
+	s = (unsigned char *)s2;
+	temp = s;
+	len = n;
+	if (d == s)
+		return (d);
+	else
 	{
-		while (len > 0)
+		while (d != s && len > 0)
 		{
-			d[len - 1] = s[len - 1];
-			len--;
+			s++;
+			len --;
 		}
+		if (d == s)
+			while (n-- > 0)
+				d[n] = temp[n];
+		else
+			ft_memcpy(d, temp, n);
 	}
-	return (dst);
+	return (d);
 }

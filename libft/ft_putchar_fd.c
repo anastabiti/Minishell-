@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 09:04:22 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 08:54:19 by atabiti          ###   ########.fr       */
+/*   Created: 2021/11/01 16:46:28 by mkarim            #+#    #+#             */
+/*   Updated: 2021/11/06 14:42:42 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

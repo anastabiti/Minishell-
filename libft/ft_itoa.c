@@ -1,31 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 09:15:19 by mkarim            #+#    #+#             */
-/*   Updated: 2021/11/06 18:46:04 by mkarim           ###   ########.fr       */
+/*   Created: 2021/11/02 09:48:33 by mkarim            #+#    #+#             */
+/*   Updated: 2021/11/07 14:05:14 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+static int	nb_digits(int n)
 {
 	int		i;
-	char	*p;
 
 	i = 0;
-	p = (char *)malloc(ft_strlen((char *)s) + 1);
-	if (!p)
-		return (p);
-	while (s[i])
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		i = 1;
+	while (n != 0)
 	{
-		p[i] = s[i];
+		n /= 10;
 		i++;
 	}
-	p[i] = '\0';
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int		size;
+	int		len;
+	long	nb;
+	char	*p;
+
+	size = 0;
+	if (n < 0)
+		size = 1;
+	len = nb_digits(n);
+	p = (char *)malloc((len + 1) * sizeof(char));
+	if (!p)
+		return (p);
+	nb = n;
+	if (nb < 0)
+		p[0] = '-';
+	if (nb < 0)
+		nb *= -1;
+	p[len] = '\0';
+	while (--len >= size)
+	{
+		p[len] = (nb % 10) + 48;
+		nb /= 10;
+	}
 	return (p);
 }
