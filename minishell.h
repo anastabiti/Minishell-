@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:41:40 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 08:36:13 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ struct						s_list
 	char					*file[50];
 	char					*delimiter[50];
 	struct s_redirections	*rd;
+	// cd
 };
 typedef struct t_list
 {
