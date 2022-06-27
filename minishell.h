@@ -118,6 +118,8 @@ int							ft_export(struct s_envp *envp, t_cmdl *cmd, int i);
 int							is_builtin(t_cmdl *list, int i);
 // int							one_cmd(struct s_list *list);
 int							one_cmd(t_cmdl *list, struct s_envp *envp);
+char	*ft_itoa(int n);
+
 int							set_rd(struct s_list *list);
 int							run_builtin(struct s_list *list);
 /// redirections I/O
