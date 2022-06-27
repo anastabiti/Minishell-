@@ -54,8 +54,7 @@ int	ft_export(char **env, t_cmdl *cmd)
 	int		x;
 	int		t;
 	char	**new;
-	static int increment;
-	increment = cmd->envlen;
+
 	if (ft_export_1(cmd->myenvp, cmd, NULL) == 0)
 	{
 		return (0);
@@ -74,25 +73,28 @@ int	ft_export(char **env, t_cmdl *cmd)
 			}
 			x++;
 		}
-		increment++;
-		cmd->envlen = increment;
-		new = malloc(sizeof(char **) * cmd->envlen + 1);
+		// 	increment++;
+		// 	cmd->envlen = increment;
+		new = malloc(sizeof(char **) * (x + 1));
 		t = 0;
-			printf("%d LEN\n", cmd->envlen);
-		while (t < cmd->envlen)
+		printf("%d LEN\n", x);
+		while (t < x)
 		{
 			new[t] = cmd->myenvp[t];
-						printf("%s new\n", cmd->myenvp[t]);
-
+			printf("%s new\n", new[t]);
 			t++;
 		}
-	
+		x = x + 1;
 		new[t] = to_be_exported;
 		new[t + 1] = NULL;
-			free(cmd->myenvp);
-
+		t = 0;
+		while (t < x)
+		{
+			printf("%s new\n", new[t]);
+			t++;
+		}
+		free(cmd->myenvp);
 		cmd->myenvp = new;
-
 		i++;
 	}
 	return (0);

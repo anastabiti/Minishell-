@@ -13,12 +13,12 @@ char	**ft_copy_1st_env(char **env)
 	len = 0;
 	while (env[len])
 	{
-        	printf("%s\n", env[len]);
+        	// printf("%s\n", env[len]);
 
 		len++;
 		
 	}
-    printf("%d  len\n", len);
+    // printf("%d  len\n", len);
     	new = malloc(sizeof(char **) * (len + 1));
   
    
@@ -30,6 +30,6 @@ char	**ft_copy_1st_env(char **env)
 
             x++;
         }
-        new[x] = NULL;
+        // new[x] = NULL;
         return new;
 }
