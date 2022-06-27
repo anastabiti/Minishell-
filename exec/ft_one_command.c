@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 10:49:05 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 11:48:12 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ int	one_cmd(t_cmdl *cmd)
 	// printf("%s\n", cmd->myenvp[x]);
 		x++;
 	}
-	
-	
+// cmd->myenvp[x + 1] = NULL;	
 	//
 	if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 0)
 	{
