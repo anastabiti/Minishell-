@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/26 11:20:54 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 10:42:47 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@ int main(int argc, char **argv, char **env)
 {
 	char *line;
 	t_cmdl *cmd;
+
 	int start;
 	int i;
 	int pipe = 1;
-
-	// if (argc == 1)
-	// {
+	struct						s_envp * envp;
+	envp = malloc(sizeof(	struct						s_envp * ) * 1);
+	
+ 	ft_copy_1st_env(envp, env);
+		
 		while (1)
 		{
 			signal(SIGQUIT, SIG_IGN);
-		signal(SIGINT, handler);
+			signal(SIGINT, handler);
 			pipe = 1;
 			line = readline(PROMPT);
 			add_history(line);
@@ -110,14 +113,14 @@ int main(int argc, char **argv, char **env)
 				// printf("%d -- %s -- %s . %s . %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args[0], cmd[i].args[1], cmd[i].args[2], cmd[i].in_red, cmd[i].out_red);
 				i++;
 			}
+			
 			cmd->cmd_nbr = 0;
-			cmd->environ = env;
 			cmd->cmd_iteration = 0;
 			if (cmd->cmd_nbr == 0)
 			{
 				// heredoc_without_cmd(cmd);
 
-				one_cmd(cmd);
+				one_cmd(cmd, envp);
 			}
 		// }
 		free(line);

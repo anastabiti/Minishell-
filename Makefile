@@ -41,7 +41,8 @@ SRC = ./exec/builtins.c \
 	./exec/is_builtin.c \
 	./exec/ft_exit.c \
 	./exec/ftcd.c \
-	
+	./exec/ft_copy_1st_env.c \
+
 OBJ = ./exec/builtins.o \
 	./exec/ft_env.o \
 	./exec/tools.o \
@@ -72,7 +73,8 @@ OBJ = ./exec/builtins.o \
 	./exec/is_builtin.o \
 	./exec/ft_exit.o \
 	./exec/ftcd.o \
-	
+	./exec/ft_copy_1st_env.o \
+
 FALGS = -Wall -Werorr -Wextra 
 all : $(NAME)
 

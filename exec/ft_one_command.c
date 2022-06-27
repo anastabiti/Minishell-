@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:19:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 12:09:26 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,17 @@ int	one_cmd_1(t_cmdl *list)
 	return (0);
 }
 
-int	one_cmd(t_cmdl *cmd)
+int	one_cmd(t_cmdl *cmd, struct						s_envp * envp)
 {
 	int	i;
+	int	x;
 
+	//
 	if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 0)
 	{
 		i = 0;
 		// redirections(cmd);
-		ft_is_built_in(cmd);
+		ft_is_built_in(cmd, envp);
 		// if (cmd[0].type[i] != NULL)
 		// {
 		// 	if (ft_strncmp(cmd[0].type[i], RDOUT, 7) == 0)

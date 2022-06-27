@@ -6,11 +6,12 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:37:52 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 12:11:22 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 08:45:04 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
 int	check_home_inenv(t_cmdl *cmd, char *findhome, char *error)
 {
 	int	len;
@@ -26,6 +27,7 @@ int	check_home_inenv(t_cmdl *cmd, char *findhome, char *error)
 	}
 	return (1);
 }
+
 int	cd_last_check(t_cmdl *cmd, char *error)
 {
 	int	len;
@@ -40,37 +42,31 @@ int	cd_last_check(t_cmdl *cmd, char *error)
 	}
 	return (1);
 }
+
 int	ftcd(t_cmdl *cmd)
 {
-	char	**env;
-	char	*findhome;
-	char	*error;
-	int		len;
-	char	**split;
+	int	x;
 
-	env = cmd->environ;
-	while (*env)
+	x = 0;
+	while (!(ft_strnstr(cmd->environ[x], "HOME=", 5)))
 	{
-		if (ft_strnstr(*env, "HOME=", 5))
-		{
-			findhome = *env;
-		}
-        if(env+ 1 == NULL)
-        {
-            exit(1);
-            printf("done");
-        }
-		env++;
+		x++;
+		if (cmd->environ[x] == NULL)
+			break ;
 	}
-    
-	check_home_inenv(cmd, findhome, error);
+	cmd->findhome = cmd->environ[x];
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
-		split = ft_split(findhome, '=');
-		chdir(split[1]);
-		printf("done\n");
+		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 0)
+			return (0);
+	}
+	if (cmd[cmd->cmd_iteration].args[0] == NULL)
+	{
+		cmd->split = ft_split(cmd->findhome, '=');
+		chdir(cmd->split[1]);
 		return (0);
 	}
-	cd_last_check(cmd, error);
+	if (cmd[cmd->cmd_iteration].args[1] == NULL)
+		cd_last_check(cmd, cmd->error);
 	return (1);
 }
