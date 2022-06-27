@@ -46,18 +46,16 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 	return (1);
 }
 
-int	ft_export(struct s_envp *envp, t_cmdl *cmd)
+int	ft_export(struct s_envp *envp, t_cmdl *cmd, int  i)
 {
 	char	*to_be_exported;
 	int		len;
-	int		i;
 	char	**var;
 	int		x;
 	int		t;
 	char	**new;
 	char **split;
 
-	i = 0;
 
 		split = ft_split(cmd[0].args[i], '=');
 				to_be_exported = split[0];
@@ -85,7 +83,7 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd)
 		x = x + 1;
 		new[t] = cmd[0].args[i];
 		// new[t + 1] = NULL;
-		t = 0;
+		// t = 0;
 		// while (t < envp->envpitems)
 		// {
 		// 	printf("%s new\n", new[t]);
@@ -93,6 +91,7 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd)
 		// }
 		// printf("%d LEN\n\n\n", envp->envpitems);
 		envp->envpitems++;
+		// free(envp->environment);
 		envp->environment = new;
 	
 	return (0);

@@ -48,13 +48,17 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 	int	x;
 
 	x = 0;
-	while (!(ft_strnstr(envp->environment[x], "HOME=", 5)))
+	while (x < envp->envpitems)
 	{
+		cmd->findhome = NULL;
+		if (ft_strnstr(envp->environment[x], "HOME=", 5))
+		{
+			cmd->findhome = envp->environment[x];
+			
+			// 	return (0);
+		}
 		x++;
-		if (x == envp->envpitems)
-			break ;
 	}
-	cmd->findhome = envp->environment[x];
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
 		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 0)

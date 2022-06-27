@@ -50,28 +50,31 @@ int	builtcheck(t_cmdl *cmd, struct s_envp *envp)
 	return (0);
 }
 
-int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp, t_cmdl *list)
+int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 {
 	int	i;
-
+	i = 0;
 	if (ft_strncmp(cmd[0].cmd, "export", 6) == 0)
 	{
-		i = 0;
 		if (cmd->args[0] == NULL)
 	{
 		if(ft_export_1(envp, cmd) == 0)
 		return 0;
 	}
-		while (list[cmd->cmd_iteration].args[i])
+		while (cmd[cmd->cmd_iteration].args[i])
 		{
-			ft_export(envp, cmd);
+			ft_export(envp, cmd, i);
 			i++;
 		}
 		return (1);
 	}
 	else if (ft_strncmp(cmd[0].cmd, "unset", 5) == 0)
 	{
-		ft_unset(envp, list);
+		if(cmd[cmd->cmd_iteration].args[i] == NULL)
+		{
+			return 0;
+		}
+		ft_unset(envp, cmd);
 		return (1);
 	}
 	return (0);
@@ -82,7 +85,8 @@ int	ft_pwd(int fd_out)
 	char	pw[PATH_MAX];
 	char	*pwd;
 	int		len;
-
+	fd_out = 1;
+	len  = 0;
 	pwd = getcwd(pw, PATH_MAX);
 	len = ft_strlen(pwd);
 	write(fd_out, pwd, len);

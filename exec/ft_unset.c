@@ -23,27 +23,35 @@ int ft_unset(struct						s_envp * envp, t_cmdl *list)
 	to_be_unset =list[list->cmd_iteration].args[0]; // mkrim must provide me with the string  to  unset
 
 	int lenght = ft_strlen(to_be_unset);
-			new = malloc(sizeof(char **) * envp->envpitems);
-
-	while (!(ft_strnstr(envp->environment[x], to_be_unset, lenght)))
+while(x < envp->envpitems)
+{
+	if (ft_strnstr(envp->environment[x], to_be_unset, lenght))
 	{
-		x++;
-		new[x] = envp->environment[x]; // must free 
-		printf("%s \n", new[x]);
-
-		if (envp->environment[x] == NULL)
-			return 0;
+		break;	
 	}
-	printf("   %d \n", x);
+		if (x == envp->envpitems)
+			return 0;
+	x++;
+
+}
+			new = malloc(sizeof(char **) * envp->envpitems - 1);
+			x = 0;
+while(x < envp->envpitems)
+{
+	new[x] = envp->environment[x]; // must free 
+
+	x++;
+
+}
+
 	// while (envp->environment[i]) // N of env strings
 	// {
 	// 	i++;
 	// }
-	envp->envpitems--;
+	envp->envpitems-- ;
 	while (x < envp->envpitems) // copy back backward when one is unset
 	{
 		new[x] = envp->environment[x + 1];
-		printf("%s \n", new[x]);
 		x++;
 	}
 	// envp->environment[i - 1] = NULL;
