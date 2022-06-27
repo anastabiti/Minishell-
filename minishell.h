@@ -125,6 +125,8 @@ void						looping_through_split_path(t_cmdl *list, int i,
 								char *bin, char *last);
 char						**create_argv_for_execve(t_cmdl *list);
 int							ft_check_programs(t_cmdl *list);
+//env
+char **ft_copy_1st_env(char **env);
 // LIBFT
 int							ft_isdigit(int c);
 int							ft_atoi(const char *str);

@@ -1,34 +1,24 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/mnt/s/Minishell-'
-cc    -c -o exec/builtins.o exec/builtins.c
-cc    -c -o exec/ft_env.o exec/ft_env.c
-cc    -c -o exec/tools.o exec/tools.c
-cc    -c -o exec/redirections.o exec/redirections.c
-cc    -c -o libft/ft_strnstr.o libft/ft_strnstr.c
-cc    -c -o exec/ft_unset.o exec/ft_unset.c
-cc    -c -o exec/ft_export.o exec/ft_export.c
-cc    -c -o exec/ft_others.o exec/ft_others.c
-cc    -c -o exec/ft_readline.o exec/ft_readline.c
-cc    -c -o exec/ft_init.o exec/ft_init.c
- 
-cc    -c -o libft/ft_putchar_fd.o libft/ft_putchar_fd.c
-cc    -c -o libft/ft_putstr_fd.o libft/ft_putstr_fd.c
-cc    -c -o libft/ft_putendl_fd.o libft/ft_putendl_fd.c
-cc    -c -o exec/ftpipe.o exec/ftpipe.c
-cc    -c -o libft/libft.o libft/libft.c
-cc    -c -o exec/ft_one_command.o exec/ft_one_command.c
-cc    -c -o exec/ft_multi_cmds.o exec/ft_multi_cmds.c
-cc    -c -o libft/ft_split.o libft/ft_split.c
-cc    -c -o libft/ft_strdup.o libft/ft_strdup.c
-cc    -c -o libft/ft_memcpy.o libft/ft_memcpy.c
-cc    -c -o libft/ft_strlcpy.o libft/ft_strlcpy.c
 cc    -c -o libft/ft_memmove.o libft/ft_memmove.c
+ 
 cc    -c -o exec/ft_here_doc.o exec/ft_here_doc.c
+ 
 cc    -c -o exec/ft_split.o exec/ft_split.c
+ 
 cc    -c -o exec/parse.o exec/parse.c
  
 cc    -c -o exec/utils.o exec/utils.c
-gcc -g   ./exec/builtins.o ./exec/ft_env.o ./exec/tools.o ./exec/redirections.o ./libft/ft_strnstr.o ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o ./exec/ft_readline.o ./exec/ft_init.o ./libft/ft_putchar_fd.o ./libft/ft_putstr_fd.o ./libft/ft_putendl_fd.o ./exec/ftpipe.o ./libft/libft.o ./exec/ft_one_command.o ./exec/ft_multi_cmds.o ./libft/ft_split.o ./libft/ft_strdup.o ./libft/ft_memcpy.o ./libft/ft_strlcpy.o ./libft/ft_memmove.o ./exec/ft_here_doc.o ./exec/ft_split.o ./exec/parse.o ./exec/utils.o   -o minishell -lreadline -L /Users/asus/goinfre/.brew/opt/readline/lib -I /Users/asus/goinfre/.brew/opt/readline/include
+ 
+cc    -c -o exec/ft_search_path.o exec/ft_search_path.c
+ 
+cc    -c -o exec/is_builtin.o exec/is_builtin.c
+cc    -c -o exec/ft_exit.o exec/ft_exit.c
+ 
+cc    -c -o exec/ftcd.o exec/ftcd.c
+ 
+cc    -c -o exec/ft_copy_1st_env.o exec/ft_copy_1st_env.c
+gcc -g   ./exec/builtins.o ./exec/ft_env.o ./exec/tools.o ./exec/redirections.o ./libft/ft_strnstr.o ./exec/ft_unset.o ./exec/ft_export.o ./exec/ft_others.o ./exec/ft_readline.o ./exec/ft_init.o ./libft/ft_putchar_fd.o ./libft/ft_putstr_fd.o ./libft/ft_putendl_fd.o ./exec/ftpipe.o ./libft/libft.o ./exec/ft_one_command.o ./exec/ft_multi_cmds.o ./libft/ft_split.o ./libft/ft_strdup.o ./libft/ft_memcpy.o ./libft/ft_strlcpy.o ./libft/ft_memmove.o ./exec/ft_here_doc.o ./exec/ft_split.o ./exec/parse.o ./exec/utils.o ./exec/ft_search_path.o ./exec/is_builtin.o ./exec/ft_exit.o ./exec/ftcd.o ./exec/ft_copy_1st_env.o   -o minishell -lreadline -L /Users/asus/goinfre/.brew/opt/readline/lib -I /Users/asus/goinfre/.brew/opt/readline/include
 gcc builtins_bin/ft_echo.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c ./exec/tools.c   ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftecho 
 gcc builtins_bin/ft_cd.c  ./libft/ft_putchar_fd.c ./libft/ft_putendl_fd.c  ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftcd 
 gcc builtins_bin/ft_pwd.c ./libft/ft_putchar_fd.c  ./libft/ft_putendl_fd.c ./exec/tools.c  ./libft/ft_memcpy.c ./libft/ft_strnstr.c -o builtins_bin/ftpwd 

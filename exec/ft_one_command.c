@@ -59,24 +59,7 @@ int	one_cmd(t_cmdl *cmd)
 {
 	int	i;
 	int	x;
-	int	len;
 
-	x = 0;
-	len = 0;
-	while (cmd->environ[len])
-	{
-		len++;
-	}
-	printf("%d\n", len);
-	cmd->envlen = len;
-	cmd->myenvp = malloc(sizeof(char **) * cmd->envlen);
-	while (x < len)
-	{
-		cmd->myenvp[x] = cmd->environ[x];
-		printf("%s OLD\n", cmd->myenvp[x]);
-		x++;
-	}
-	cmd->myenvp[x + 1] = NULL;
 	//
 	if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 0)
 	{
