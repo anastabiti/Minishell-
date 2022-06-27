@@ -72,3 +72,24 @@ void	looping_through_split_path(t_cmdl *list, int i, char *bin, char *last, stru
 		}
 	}
 }
+
+int	ft_search(char *s, char *c, int lenght)
+{
+	int	i;
+
+	i = 1;
+	while (i < lenght)
+	{
+		if (s[i] == c[i])
+		{
+			i++;
+			if (i == lenght)
+			{
+				return (1);
+			}
+		}
+		else
+			return (0);
+	}
+	return (0);
+}

@@ -154,10 +154,10 @@ static char					*fsubstr(char const *s, unsigned int start,
 static size_t				countblocks(char const *s1, char delimiter);
 char						**ft_split(char const *s, char c);
 char						*ft_strdup(const char *s1);
-void						*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memmove(void *s1, void *s2, size_t n);
 size_t						ft_strlcpy(char *dst, const char *src,
 								size_t dstsize);
-void						*ft_memmove(void *dst, const void *src, size_t len);
+// void						*ft_memmove(void *dst, const void *src, size_t len);
 size_t						ft_strlen(const char *s);
 int							ft_search(char *s, char *c, int lenght);
 // output libft

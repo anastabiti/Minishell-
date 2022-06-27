@@ -12,7 +12,24 @@
 
 #include "../minishell.h"
 #include "parse.h"
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (!d && !s)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (d);
+}
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	index;
@@ -88,4 +105,45 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	merge[mer] = '\0';
 	return (merge);
+}
+
+
+void	*ft_memmove(void *s1, void *s2, size_t n)
+{
+	unsigned char	*d;
+	unsigned char	*s;
+	unsigned char	*temp;
+	size_t			len;
+
+	d = (unsigned char *)s1;
+	s = (unsigned char *)s2;
+	temp = s;
+	len = n;
+	if (d == s)
+		return (d);
+	else
+	{
+		while (d != s && len > 0)
+		{
+			s++;
+			len --;
+		}
+		if (d == s)
+			while (n-- > 0)
+				d[n] = temp[n];
+		else
+			ft_memcpy(d, temp, n);
+	}
+	return (d);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	int		i;
+	if(s == NULL)
+	return 0;
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

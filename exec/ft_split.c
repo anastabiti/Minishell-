@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "parse.h"
+#include "../minishell.h"
 
 static	int	nbofl(char *s, char c)
 {
