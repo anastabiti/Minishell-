@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:19:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 10:49:05 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,25 @@ int	one_cmd_1(t_cmdl *list)
 int	one_cmd(t_cmdl *cmd)
 {
 	int	i;
-
+	int x = 0;
+	int len = 0 ;
+	while(cmd->environ[len])
+	{
+		len++;
+		
+	}
+	printf("%d\n", len);
+	cmd->envlen  = len;
+	cmd->myenvp =  malloc(sizeof(char ** ) * cmd->envlen);
+	while (x < len)
+	{
+		cmd->myenvp[x] = cmd->environ[x];
+	// printf("%s\n", cmd->myenvp[x]);
+		x++;
+	}
+	
+	
+	//
 	if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 0)
 	{
 		i = 0;

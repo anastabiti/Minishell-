@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/27 08:43:56 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 10:09:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_cmdl
 	char	**args;
 	char	*in_red;
 	char	*out_red;
-	//mine
 	int		cmd_iteration;
 	int		cmd_nbr;
 	char	*type[50];
@@ -50,13 +49,13 @@ typedef struct s_cmdl
 	int		fd_in;
 	char	**environ;
 	char	**args_execve;
-	//cd
 	char	*findhome;
 	char	**split;
 	char	*error;
 	int		len;
 	char	**new;
-	//....
+	char	**myenvp;
+	int		envlen;
 }			t_cmdl;
 
 int			is_white_space(char c);

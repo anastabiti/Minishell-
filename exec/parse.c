@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/26 11:20:54 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 10:42:47 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char **argv, char **env)
 		while (1)
 		{
 			signal(SIGQUIT, SIG_IGN);
-		signal(SIGINT, handler);
+			signal(SIGINT, handler);
 			pipe = 1;
 			line = readline(PROMPT);
 			add_history(line);

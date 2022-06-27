@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:37:52 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 08:44:01 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 08:45:04 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	ftcd(t_cmdl *cmd)
 	{
 		cmd->split = ft_split(cmd->findhome, '=');
 		chdir(cmd->split[1]);
-		printf("done\n");
 		return (0);
 	}
 	if (cmd[cmd->cmd_iteration].args[1] == NULL)

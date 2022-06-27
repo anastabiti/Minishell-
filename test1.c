@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <unistd.h>
 int main()
 {
-    printf("Hi dear \n");
+    char *a;
+    printf(" %lu \n", sysconf(_SC_ARG_MAX));
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 11:49:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/27 10:36:34 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	builtcheck_1(t_cmdl *cmd)
 	vr = cmd->environ;
 	if (ft_strncmp(cmd[0].cmd, "export", 6) == 0)
 	{
-		ft_export(vr, cmd);
+		ft_export(	cmd->myenvp, cmd);
 		return (1);
 	}
 	else if (ft_strncmp(cmd[0].cmd, "unset", 5) == 0)
