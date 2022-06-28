@@ -58,6 +58,8 @@ typedef struct s_cmdl
 	int		envlen;
 	int		there_is_pipe;
 	int		fd[2];
+	char **envsplited;
+	char **envvariables; 
 }			t_cmdl;
 
 int			is_white_space(char c);

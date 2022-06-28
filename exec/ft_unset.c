@@ -22,26 +22,40 @@ int	ft_unset(struct s_envp *envp, t_cmdl *list, int arg)
 	to_be_unset = list[list->cmd_iteration].args[arg];
 	int lenght = ft_strlen(to_be_unset);
 	new = malloc(sizeof(char **) * envp->envpitems - 1);
-
+	// char **split = ft_split(to_be_unset,);
 	while (x < envp->envpitems)
 	{
-		if (ft_strnstr(envp->environment[x], to_be_unset, lenght))
-		{
-			envp->envpitems--;
-			while (x < envp->envpitems)
-			{
-				new[x] = envp->environment[x + 1];
-				x++;
-			}
-			envp->environment = new;
-			return (0);
-		}
-		else
-			new[x] = envp->environment[x];
+		list->envsplited = ft_split(envp->environment[x], '=');
+		// while (list->envsplited[i])
+		// {	
+				printf(" splited %s \n", list->envsplited[i]);
 
-		if (x == envp->envpitems)
-			return (0);
+		// }
+		// i = 0;
 		x++;
 	}
+	// x = 0;
+	// 	int next = 0;
+	// 	while (x < envp->envpitems)
+	// 	{
+	// 		if (ft_strncmp(list->envsplited[next],	to_be_unset, lenght))
+	// 		{
+	// 			envp->envpitems--;
+	// 			while (x < envp->envpitems)
+	// 			{
+	// 				new[x] = envp->environment[x + 1];
+	// 				x++;
+	// 			}
+	// 			envp->environment = new;
+	// 			return (0);
+	// 		}
+	// 		else
+	// 			new[x] = envp->environment[x];
+
+	// 		if (x == envp->envpitems)
+	// 			return (0);
+	// 		x++;
+	// 		next += 2;
+	// 	}
 	return (0);
 }
