@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "minishell.h": "c",
-        "random": "c",
-        "parse.h": "c",
-        "complex": "c",
-        "__locale": "c"
-    }
-}

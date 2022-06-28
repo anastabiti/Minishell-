@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 10:44:52 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 12:10:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	ft_copy_1st_env(struct s_envp *envp, char **env)
 		
 		x++;
 	}
-	new[x] = NULL;
+	new[x] = "SHLVL=1";
+	new[x + 1] = NULL;
 	envp->environment = new;
-	free(nbb);
+	// free(nbb);
 }
