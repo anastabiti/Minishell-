@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:50:22 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 18:52:18 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 10:17:55 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,24 @@ t_list	*ft_lstnew(void *content)
 	return (new);
 }
 
-void	ft_env(struct						s_envp * envp, t_cmdl *list)
+int	ft_env(struct s_envp *envp, t_cmdl *list)
 {
+	int	i;
+
 	// t_list	*new = malloc(sizeof(t_list	*));
 	// 	new =  ft_lstnew(envp->environment);
-	int  i = 0;
+	i = 0;
 	// while (i < envp->envpitems)
 	// {
 	// 	new->content = *envp->environment;
-
 	// 	ft_putendl_fd(new->content, list->fd_out);
 	// 	envp->environment++;
 	// 	i++;
 	// }
 	while (i < envp->envpitems)
 	{
-		ft_putendl_fd(envp->environment[i], list->fd_out);
+		ft_putendl_fd(envp->environment[i], 1);
 		i++;
 	}
+	return (0);
 }

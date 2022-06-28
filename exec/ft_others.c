@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 07:31:02 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 09:14:51 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_check_programs(t_cmdl *list, struct s_envp *envp)
 	{
 		argv = create_argv_for_execve(list);
 		execve(list[list->cmd_iteration].cmd, argv, envp->environment);
-		printf("Minishell : %s : No such file or directory\n",
+		printf("Minishell : %s : No such  file or directory\n",
 			list[list->cmd_iteration].cmd);
 		exit(127);
 	}

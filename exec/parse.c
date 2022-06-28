@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/28 09:01:19 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 09:16:35 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int main(int argc, char **argv, char **env)
 			else if(cmd->cmd_nbr > 1)
 			{
 				//problem wc  | ls ? in bash ls is printing first and problem in  wc | ls when unset the PATH it must shot 2 errors not one
+				// grep 1337 exec/*.c problem
 				ft_pipe(cmd, envp);
 			}
 		// }
