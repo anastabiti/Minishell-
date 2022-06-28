@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 12:09:26 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 06:57:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int	one_cmd_1(t_cmdl *list, struct s_envp *envp)
 		if (WIFEXITED(g_exit_status))
 			g_exit_status = WEXITSTATUS(g_exit_status);
 		i = 0;
-		while (list->args_execve)
-		{
-			free(list->args_execve[i]);
-			i++;
-		}
+		// while (list->args_execve)
+		// {
+		// 	free(list->args_execve[i]);
+		// 	i++;
+		// }
 	}
 	return (0);
 }

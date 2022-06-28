@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 09:58:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/26 10:03:12 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 07:12:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	**ft_search_for_path(t_cmdl *list,  struct s_envp *envp)
 	int		r;
 
 	x = 0;
+	
 	while (!(ft_strnstr(envp->environment[x], "PATH=", ft_strlen("PATH="))))
 	{
 		x++;

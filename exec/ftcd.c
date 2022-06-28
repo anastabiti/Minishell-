@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:37:52 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 08:45:04 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 06:47:21 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 		if (ft_strnstr(envp->environment[x], "HOME=", 5))
 		{
 			cmd->findhome = envp->environment[x];
-			
+			break;
 			// 	return (0);
 		}
 		x++;

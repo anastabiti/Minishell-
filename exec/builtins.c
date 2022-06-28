@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 10:36:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 07:22:21 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,15 @@ int	builtcheck(t_cmdl *cmd, struct s_envp *envp)
 int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 {
 	int	i;
+
 	i = 0;
 	if (ft_strncmp(cmd[0].cmd, "export", 6) == 0)
 	{
 		if (cmd->args[0] == NULL)
-	{
-		if(ft_export_1(envp, cmd) == 0)
-		return 0;
-	}
+		{
+			if (ft_export_1(envp, cmd) == 0)
+				return (0);
+		}
 		while (cmd[cmd->cmd_iteration].args[i])
 		{
 			ft_export(envp, cmd, i);
@@ -70,11 +71,16 @@ int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 	}
 	else if (ft_strncmp(cmd[0].cmd, "unset", 5) == 0)
 	{
-		if(cmd[cmd->cmd_iteration].args[i] == NULL)
+		i = 0;
+		if (cmd[cmd->cmd_iteration].args[i] == NULL)
 		{
-			return 0;
+			return (0);
 		}
-		ft_unset(envp, cmd);
+		while (cmd[cmd->cmd_iteration].args[i])
+		{
+			ft_unset(envp, cmd, i);
+			i++;
+		}
 		return (1);
 	}
 	return (0);
@@ -85,8 +91,9 @@ int	ft_pwd(int fd_out)
 	char	pw[PATH_MAX];
 	char	*pwd;
 	int		len;
+
 	fd_out = 1;
-	len  = 0;
+	len = 0;
 	pwd = getcwd(pw, PATH_MAX);
 	len = ft_strlen(pwd);
 	write(fd_out, pwd, len);
