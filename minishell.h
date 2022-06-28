@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 07:22:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 08:45:48 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,24 +104,25 @@ int							builtcheck_1(t_cmdl *cmd, struct s_envp *envp);
 int							ftexit(t_cmdl *cmd);
 int							builtcheck(t_cmdl *cmd, struct s_envp *envp);
 int							ftcd(t_cmdl *cmd, struct s_envp *envp);
-int	ft_export_1(struct s_envp *envp, t_cmdl *cmd);
+int							ft_export_1(struct s_envp *envp, t_cmdl *cmd);
 // void						ft_env(char **env, struct s_list *list);
 void						ft_env(struct s_envp *envp, t_cmdl *list);
 // int							ft_echo(struct s_list *list, char *arg, int fd);
 int							ft_echo(t_cmdl *list, int fd);
 // int							ft_is_built_in(struct s_list *list);
 int							ft_is_built_in(t_cmdl *list, struct s_envp *envp);
-int							ft_unset(struct s_envp *envp, t_cmdl *list, int arg);
+int							ft_unset(struct s_envp *envp, t_cmdl *list,
+								int arg);
 int							ft_export(struct s_envp *envp, t_cmdl *cmd, int i);
 // int							is_builtin(struct s_list *list, int i);
 //exece
 int							is_builtin(t_cmdl *list, int i);
 // int							one_cmd(struct s_list *list);
 int							one_cmd(t_cmdl *list, struct s_envp *envp);
-char	*ft_itoa(int n);
+char						*ft_itoa(int n);
 
 int							set_rd(struct s_list *list);
-int							run_builtin(struct s_list *list);
+int							run_builtin(t_cmdl *list, struct s_envp *envp);
 /// redirections I/O
 // int							redirections(struct s_list *list);
 int							redirections(t_cmdl *list);
@@ -130,12 +131,14 @@ int							heredoc_without_cmd(struct s_list *list);
 // int							ft_bin_usr_sbin(struct s_list *list);
 t_list						*ft_lstnew(void *content);
 int							ft_bin_usr_sbin(t_cmdl *list, struct s_envp *envp);
-char						**ft_search_for_path(t_cmdl *list,  struct s_envp *envp);
-void						ftcheck_nopath(t_cmdl *list,  struct s_envp *envp);
+char						**ft_search_for_path(t_cmdl *list,
+								struct s_envp *envp);
+void						ftcheck_nopath(t_cmdl *list, struct s_envp *envp);
 void						looping_through_split_path(t_cmdl *list, int i,
 								char *bin, char *last, struct s_envp *envp);
 char						**create_argv_for_execve(t_cmdl *list);
-int							ft_check_programs(t_cmdl *list, struct s_envp *envp);
+int							ft_check_programs(t_cmdl *list,
+								struct s_envp *envp);
 //env
 void						ft_copy_1st_env(struct s_envp *envp, char **env);
 // LIBFT
@@ -156,7 +159,7 @@ static char					*fsubstr(char const *s, unsigned int start,
 static size_t				countblocks(char const *s1, char delimiter);
 char						**ft_split(char const *s, char c);
 char						*ft_strdup(const char *s1);
-void	*ft_memmove(void *s1, void *s2, size_t n);
+void						*ft_memmove(void *s1, void *s2, size_t n);
 size_t						ft_strlcpy(char *dst, const char *src,
 								size_t dstsize);
 // void						*ft_memmove(void *dst, const void *src, size_t len);
@@ -169,7 +172,7 @@ void						ft_putendl_fd(char *s, int fd);
 // read input
 char						*ft_read(char *input);
 // pipes
-void						ft_pipe(struct s_list *list);
+void						ft_pipe(t_cmdl *list, struct						s_envp * envp);
 // signals
 void						handler(int sig);
 // init data

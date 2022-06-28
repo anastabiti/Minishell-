@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/27 10:09:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 08:35:59 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_cmdl
 	char	**new;
 	char	**myenvp;
 	int		envlen;
+	int		there_is_pipe;
+	int		fd[2];
 }			t_cmdl;
 
 int			is_white_space(char c);

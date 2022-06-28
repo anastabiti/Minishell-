@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/27 10:42:47 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 08:55:47 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,21 +106,43 @@ int main(int argc, char **argv, char **env)
 				}
 				j++;
 			}
+						cmd->cmd_nbr = pipe;
+							cmd->there_is_pipe = pipe - 1;
 			i = 0;
 			j = 0;
-			while (i < pipe)
-			{
-				// printf("%d -- %s -- %s . %s . %s -- %s -- %s\n", i , cmd[i].cmd, cmd[i].args[0], cmd[i].args[1], cmd[i].args[2], cmd[i].in_red, cmd[i].out_red);
-				i++;
-			}
 			
-			cmd->cmd_nbr = 0;
+			// while(cmd[i].cmd)
+			// {
+			// 	printf("pipe is %d \n", pipe - 1);
+			// 					printf("cmd nbr is %d \n", cmd->cmd_nbr );
+
+			// 	if(cmd[i].args[j] == NULL)
+			// 	{
+			// 								printf("%d cmd %s\n", i , cmd[i].cmd);
+
+			// 	}
+			// 		while(cmd[i].args[j])
+			// 		{
+			// 			printf("%d cmd %s args = %s\n", i , cmd[i].cmd, cmd[i].args[j]);
+			// 			j++;
+			// 		}
+			// 		if(cmd[i].in_red)
+			// 		{
+			// 				printf("%d rdin %s\n", i , cmd[i].in_red);
+			// 		}
+			// i++;
+			// }
+		
 			cmd->cmd_iteration = 0;
-			if (cmd->cmd_nbr == 0)
+			if (cmd->cmd_nbr == 1)
 			{
 				// heredoc_without_cmd(cmd);
 
 				one_cmd(cmd, envp);
+			}
+			else if(cmd->cmd_nbr > 1)
+			{
+				ft_pipe(cmd, envp);
 			}
 		// }
 		free(line);
