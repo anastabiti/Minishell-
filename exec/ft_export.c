@@ -46,7 +46,7 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 	return (1);
 }
 
-int	ft_export(struct s_envp *envp, t_cmdl *cmd, int  i)
+int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 {
 	char	*to_be_exported;
 	int		len;
@@ -54,45 +54,50 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int  i)
 	int		x;
 	int		t;
 	char	**new;
-	char **split;
+	char	**split;
 
-
-		split = ft_split(cmd[0].args[i], '=');
-				to_be_exported = split[0];
-
-		// printf("to_be_exported is %s  \n", split[0]);
-		len = ft_strlen(split[0]);
-		x = 0;
-		while (x < envp->envpitems)
-		{
-			if (ft_strnstr(envp->environment[x], to_be_exported, len))
-			{
-				envp->environment[x] = cmd[0].args[i];
-				return 0;		
-			}
-			x++;
-		}
-		// printf("DO NOT \n\n\n");
-		new = malloc(sizeof(char **) * (envp->envpitems + 1));
-		t = 0;
-		while (t < envp->envpitems)
-		{
-			new[t] = envp->environment[t];
-			t++;
-		}
-		x = x + 1;
-		new[t] = cmd[0].args[i];
-		// new[t + 1] = NULL;
-		// t = 0;
-		// while (t < envp->envpitems)
-		// {
-		// 	printf("%s new\n", new[t]);
-		// 	t++;
-		// }
-		// printf("%d LEN\n\n\n", envp->envpitems);
-		envp->envpitems++;
-		// free(envp->environment);
-		envp->environment = new;
+	split = ft_split(cmd[0].args[i], '=');
+	to_be_exported = split[0];
 	
+		if (ft_is_alpha(split[0][0]) == 0)
+		{
+			printf("Minishell: export: `%s': not a valid identifier\n",cmd[0].args[i]);
+			return (1);
+		}
+	
+	x = 0;
+	// printf("to_be_exported is %s  \n", split[0]);
+	len = ft_strlen(split[0]);
+	x = 0;
+	while (x < envp->envpitems)
+	{
+		if (ft_strnstr(envp->environment[x], to_be_exported, len))
+		{
+			envp->environment[x] = cmd[0].args[i];
+			return (0);
+		}
+		x++;
+	}
+	// printf("DO NOT \n\n\n");
+	new = malloc(sizeof(char **) * (envp->envpitems + 1));
+	t = 0;
+	while (t < envp->envpitems)
+	{
+		new[t] = envp->environment[t];
+		t++;
+	}
+	x = x + 1;
+	new[t] = cmd[0].args[i];
+	// new[t + 1] = NULL;
+	// t = 0;
+	// while (t < envp->envpitems)
+	// {
+	// 	printf("%s new\n", new[t]);
+	// 	t++;
+	// }
+	// printf("%d LEN\n\n\n", envp->envpitems);
+	envp->envpitems++;
+	// free(envp->environment);
+	envp->environment = new;
 	return (0);
 }

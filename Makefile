@@ -79,8 +79,6 @@ clean :
 	rm *.o
 		cd ./libft; \
 			rm *.o
-		cd ./builtins_bin; \
-	rm ftecho  ftcd  ftpwd ftunset  ftenv ftexport ftexit       
 	
 fclean : clean
 	rm $(NAME)
