@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 09:17:14 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 10:14:22 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 10:59:00 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ int	run_builtin_1(t_cmdl *list, struct s_envp *envp)
 {
 	char	**argv;
 
-	if (ft_strncmp("echo", list[list->cmd_iteration].cmd, 4) == 0)
+	if (ft_strncmp("echo", list[list->cmd_iteration].cmd, 5) == 0)
 	{
 		argv = create_argv_for_execve(list);
 		execve("builtins_bin/ftecho", argv, envp->environment);
 		exit(127);
 	}
-	else if (ft_strncmp("cd", list[list->cmd_iteration].cmd, 2) == 0)
+	else if (ft_strncmp("cd", list[list->cmd_iteration].cmd, 3) == 0)
 	{
 		argv = create_argv_for_execve(list);
 		execve("builtins_bin/ftcd", argv, envp->environment);
 		exit(31);
 	}
-	else if (ft_strncmp("exit", list[list->cmd_iteration].cmd, 4) == 0)
+	else if (ft_strncmp("exit", list[list->cmd_iteration].cmd, 5) == 0)
 	{
 		argv = create_argv_for_execve(list);
 		execve("builtins_bin/ftexit", argv, envp->environment);
 		exit(127);
 	}
-	else if (ft_strncmp("pwd", list[list->cmd_iteration].cmd, 3) == 0)
+	else if (ft_strncmp("pwd", list[list->cmd_iteration].cmd, 4) == 0)
 	{
 		argv = create_argv_for_execve(list);
 		execve("builtins_bin/ftpwd", argv, envp->environment);
@@ -74,14 +74,14 @@ int	run_builtin(t_cmdl *list, struct s_envp *envp)
 
 	if (run_builtin_1(list, envp) == 0)
 	{
-		if (ft_strncmp("env", list[list->cmd_iteration].cmd, 3) == 0)
+		if (ft_strncmp("env", list[list->cmd_iteration].cmd, 4) == 0)
 		{
 			// argv = create_argv_for_execve(list);
 			// execve("builtins_bin/ftenv", argv, envp->environment);
 			ft_env(envp, list);
 			exit(127);
 		}
-		else if (ft_strncmp("unset", list[list->cmd_iteration].cmd, 5) == 0)
+		else if (ft_strncmp("unset", list[list->cmd_iteration].cmd, 6) == 0)
 		{
 			// argv = create_argv_for_execve(list);
 			// execve("builtins_bin/ftunset", argv, envp->environment);
@@ -94,7 +94,7 @@ int	run_builtin(t_cmdl *list, struct s_envp *envp)
 			}
 			exit(127);
 		}
-		else if (ft_strncmp("export", list[list->cmd_iteration].cmd, 6) == 0)
+		else if (ft_strncmp("export", list[list->cmd_iteration].cmd, 7) == 0)
 		{
 			// argv = create_argv_for_execve(list);
 			// execve("builtins_bin/ftexport", argv, envp->environment);

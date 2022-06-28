@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 08:32:15 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/25 08:55:58 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 10:39:01 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char *ft_read(char *input)
 	{
 		write(2, "exit\n", 5);
 		rl_clear_history();
-
+			
 		free(input);
 		exit(1);
 	}

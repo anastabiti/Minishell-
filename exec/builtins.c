@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 07:22:21 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 10:58:20 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_echo(t_cmdl *list, int fd)
 {
 	int	len;
-
+	len  = 0;
 	if (list[0].args[0] == NULL)
 	{
 		write(fd, "\n", 1);
@@ -23,7 +23,7 @@ int	ft_echo(t_cmdl *list, int fd)
 	}
 	else
 	{
-		if (ft_strncmp(list[list->cmd_iteration].args[0], "$?", 2) == 0)
+		if (ft_strncmp(list[list->cmd_iteration].args[0], "$?", 3) == 0)
 		{
 			printf("%d\n", g_exit_status);
 			return (0);
@@ -37,12 +37,12 @@ int	ft_echo(t_cmdl *list, int fd)
 
 int	builtcheck(t_cmdl *cmd, struct s_envp *envp)
 {
-	if (ft_strncmp(cmd[0].cmd, "echo", 4) == 0)
+	if (ft_strncmp(cmd[0].cmd, "echo", 5) == 0)
 	{
 		ft_echo(cmd, cmd->fd_out);
 		return (1);
 	}
-	else if (ft_strncmp(cmd[0].cmd, "cd", 2) == 0)
+	else if (ft_strncmp(cmd[0].cmd, "cd", 3) == 0)
 	{
 		ftcd(cmd, envp);
 		return (1);
@@ -55,7 +55,7 @@ int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 	int	i;
 
 	i = 0;
-	if (ft_strncmp(cmd[0].cmd, "export", 6) == 0)
+	if (ft_strncmp(cmd[0].cmd, "export", 7) == 0)
 	{
 		if (cmd->args[0] == NULL)
 		{
@@ -69,7 +69,7 @@ int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 		}
 		return (1);
 	}
-	else if (ft_strncmp(cmd[0].cmd, "unset", 5) == 0)
+	else if (ft_strncmp(cmd[0].cmd, "unset", 6) == 0)
 	{
 		i = 0;
 		if (cmd[cmd->cmd_iteration].args[i] == NULL)

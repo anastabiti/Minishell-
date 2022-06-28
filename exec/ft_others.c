@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 09:14:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 10:27:32 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**create_argv_for_execve(t_cmdl *list)
 	len = cmd_args_len(list);
 	if(len == 0)
 	{
-			list->args_execve = malloc(sizeof(char **) * 1);
+			list->args_execve = malloc(sizeof(char **) * 2);
 
 				list->args_execve[0] = list[list->cmd_iteration].cmd;
 
