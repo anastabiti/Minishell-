@@ -88,7 +88,9 @@ void	ft_pipe(t_cmdl *list, struct						s_envp * envp)
 					&& ft_strncmp(list[0].type[0], RDOUT, 7) != 0))
 				dup2(list->fd[1], 1);
 			close(list->fd[0]);
-			run_builtin(list, envp);
+			ft_is_built_in(list, envp);
+			ft_bin_usr_sbin(list, envp);
+			// run_builtin(list, envp);
 		}
 		else
 		{

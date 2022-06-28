@@ -44,12 +44,12 @@ int	ft_is_built_in(t_cmdl *list, struct						s_envp * envp)
 		return (1);
 	else if (ft_strncmp(list[0].cmd, "env", 4) == 0)
 	{
-		ft_env(envp, list);
+				g_exit_status = ft_env(envp, list);
 		return (1);
 	}
 	else if (ft_strncmp(list[0].cmd, "pwd", 4) == 0)
 	{
-		ft_pwd(list->fd_out);
+		g_exit_status =  ft_pwd(list->fd_out);
 		return (1);
 	}
 	else if (ft_strncmp(list[0].cmd, "exit", 5) == 0)

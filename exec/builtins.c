@@ -39,12 +39,12 @@ int	builtcheck(t_cmdl *cmd, struct s_envp *envp)
 {
 	if (ft_strncmp(cmd[0].cmd, "echo", 5) == 0)
 	{
-		ft_echo(cmd, cmd->fd_out);
+			g_exit_status= 	ft_echo(cmd, cmd->fd_out);
 		return (1);
 	}
 	else if (ft_strncmp(cmd[0].cmd, "cd", 3) == 0)
 	{
-		ftcd(cmd, envp);
+				g_exit_status = ftcd(cmd, envp);
 		return (1);
 	}
 	return (0);
@@ -64,7 +64,7 @@ int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 		}
 		while (cmd[cmd->cmd_iteration].args[i])
 		{
-			ft_export(envp, cmd, i);
+					g_exit_status = ft_export(envp, cmd, i);
 			i++;
 		}
 		return (1);
@@ -78,7 +78,7 @@ int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 		}
 		while (cmd[cmd->cmd_iteration].args[i])
 		{
-			ft_unset(envp, cmd, i);
+				g_exit_status =	ft_unset(envp, cmd, i);
 			i++;
 		}
 		return (1);
@@ -98,5 +98,5 @@ int	ft_pwd(int fd_out)
 	len = ft_strlen(pwd);
 	write(fd_out, pwd, len);
 	write(fd_out, "\n", 1);
-	return (1);
+	return (0);
 }

@@ -23,9 +23,9 @@ int	check_home_inenv(t_cmdl *cmd, char *findhome, char *error)
 		error = "Minishell: cd: HOME not set\n";
 		len = ft_strlen(error);
 		write(2, error, len);
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	cd_last_check(t_cmdl *cmd, char *error)
@@ -39,8 +39,9 @@ int	cd_last_check(t_cmdl *cmd, char *error)
 		error = "Minishell: cd: No such file or directory\n";
 		len = ft_strlen(error);
 		write(2, error, len);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	ftcd(t_cmdl *cmd, struct s_envp *envp)
@@ -54,15 +55,15 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 		if (ft_strnstr(envp->environment[x], "HOME=", 5))
 		{
 			cmd->findhome = envp->environment[x];
-			break;
+			break ;
 			// 	return (0);
 		}
 		x++;
 	}
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
-		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 0)
-			return (0);
+		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 1)
+			return (1);
 	}
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
@@ -71,6 +72,11 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 		return (0);
 	}
 	if (cmd[cmd->cmd_iteration].args[1] == NULL)
-		cd_last_check(cmd, cmd->error);
-	return (1);
+	{
+
+	
+		if(	cd_last_check(cmd, cmd->error) == 1)
+		return 1;
+	}
+	return (0);
 }
