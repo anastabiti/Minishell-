@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/29 12:06:10 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 12:13:44 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,24 @@
 
 /* ---------- END MACROS NEEDED IN PARSING ---------- */
 
-/* ---------- START TOKEN'S UTILS (MACROS STRUCT ENUM FUNCTIONS) ---------- */
+// /* ---------- START TOKEN'S UTILS (MACROS STRUCT ENUM FUNCTIONS) ---------- */
 
-typedef enum e_token {
-	S_QUOTE,
-	D_QUOTE,
-	IN_RED,
-	IN_D_RED,
-	OUT_RED,
-	OUT_D_RED,
-	PIPE,
-	WORD
-}			t_e_token;
+// typedef enum e_token {
+// 	S_QUOTE,
+// 	D_QUOTE,
+// 	IN_RED,
+// 	IN_D_RED,
+// 	OUT_RED,
+// 	OUT_D_RED,
+// 	PIPE,
+// 	WORD
+// }			t_e_token;
 
-typedef	struct s_token
-{
-	char	*val;
-	int		type;
-}			t_token;
+// typedef	struct s_token
+// {
+// 	char	*val;
+// 	int		type;
+// }			t_token;
 
 void    ft_token(char *s);
 
@@ -114,13 +114,13 @@ struct						s_list
 
 /* ------ START STRUCT FOR SPLIT ------ */
 
-typedef struct s_variables
-{
-	int		l;
-	int		i;
-	int		j;
-	int		cl;
-}			t_variables;
+// typedef struct s_variables
+// {
+// 	int		l;
+// 	int		i;
+// 	int		j;
+// 	int		cl;
+// }			t_variables;
 
 /* ------ END STRUCT FOR SPLIT ------ */
 
@@ -197,11 +197,12 @@ char	*ft_strnstr(const char *haystack,
 					size_t len);
 int							ft_strncmp(const char *s1, const char *s2,
 								size_t n);
-int							ft_memcmp(void *s1, void *s2, size_t n);
+// int							ft_memcmp(void *s1, void *s2, size_t n);
+int     ft_memcmp(const void *s1, const void *s2, size_t n);
 char						*ft_strchr(const char *s, int c);
 static char					*ccleaner(char **arr);
-char						*ft_substr(char const *s, unsigned int start, size_t len);
-//static char					*ft_substr(char const *s, unsigned int start, size_t len, char **arr);
+// char						*ft_substr(char const *s, unsigned int start, size_t len);
+char    *ft_substr(char *s, unsigned int start, size_t len);//static char					*ft_substr(char const *s, unsigned int start, size_t len, char **arr);
 static size_t				countblocks(char const *s1, char delimiter);
 char						**ft_split(char const *s, char c);
 char						*ft_strdup(const char *s1);
