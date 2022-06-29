@@ -26,3 +26,4 @@ int	main(int ac, char **av)
 	else
 		wait(NULL);
 }
+///Users/atabiti/Desktop/Minishell-/

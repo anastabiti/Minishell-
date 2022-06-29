@@ -5,93 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 15:33:31 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/25 08:56:00 by atabiti          ###   ########.fr       */
+/*   Created: 2021/11/17 16:05:14 by atabiti           #+#    #+#             */
+/*   Updated: 2022/06/29 09:21:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../minishell.h"
 #include "parse.h"
-
-static	int	nbofl(char *s, char c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int		l;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	l = 0;
-	while (s[i])
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < dstsize - 1)
 	{
-		if ((s[i] != c && s[i + 1] == c) || (s[i] != c && s[i + 1] == '\0'))
-			l++;
+		dst[i] = src[i];
 		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
+}
+
+
+static char	*ccleaner(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i++]);
+	}
+	free(arr);
+	return (NULL);
+}
+
+static char	*fsubstr(char const *s, unsigned int start, size_t len, char **arr)
+{
+	char	*substr;
+
+	if (!s)
+		return (NULL);
+	if (start >= (size_t)ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s + start))
+			len = ft_strlen(s + start);
+	substr = (char *) malloc (len + 1);
+	if (!substr)
+		return (ccleaner(arr));
+	ft_strlcpy(substr, s + start, len + 1);
+	return (substr);
+}
+
+static size_t	countblocks(char const *s1, char delimiter)
+{
+	size_t	l;
+
+	l = 0;
+	while (*s1 != '\0')
+	{
+		if (*s1 != delimiter)
+		{		
+			l++;
+			while (*s1 != '\0' && *s1 != delimiter)
+				s1++;
+		}
+		else
+			s1++;
 	}
 	return (l);
 }
 
-static	char	**remplissage(char **p, char *s, char c, int l)
-{
-	int		i;
-	int		j;
-	int		cl;
-
-	i = 0;
-	j = 0;
-	cl = 0;
-	while (i < l)
-	{
-		cl = 0;
-		while (s[j] && s[j] == c)
-			j++;
-		while (s[j] && s[j] != c)
-		{
-			p[i][cl] = s[j];
-			j++;
-			cl++;
-		}
-		p[i][cl] = '\0';
-		i++;
-	}
-	p[i] = 0;
-	return (p);
-}
-
-static	char	**ft_free(char **p, int n)
-{
-	int		i;
-
-	i = 0;
-	while (i < n)
-	{
-		free(p[i]);
-		i++;
-	}
-	free(p);
-	return (NULL);
-}
-
 char	**ft_split(char const *s, char c)
 {
-	char		**p;
-	t_variables	vb;
+	size_t		index;
+	size_t		i;
+	char		**ptr;
+	const char	*spl;
 
+	i = 0;
 	if (!s)
 		return (NULL);
-	vb.l = nbofl((char *)s, c);
-	p = (char **)malloc((vb.l + 1) * sizeof(char *));
-	if (!p)
+	ptr = (char **) malloc (sizeof(char *) * (countblocks(s, c) + 1));
+	if (!ptr)
 		return (NULL);
-	vb.i = -1;
-	vb.j = 0;
-	while (++(vb.i) < vb.l)
+	while (*s != '\0')
 	{
-		vb.cl = 0;
-		while (s[vb.j] == c && s[vb.j])
-			(vb.j)++;
-		while (s[vb.j] && s[(vb.j)++] != c)
-			(vb.cl)++;
-		p[vb.i] = (char *)malloc((vb.cl + 1) * sizeof(char));
-		if (!p[vb.i])
-			return (ft_free(p, vb.i));
+		while (*s != '\0' && *s == c)
+			s++;
+		spl = s;
+		index = 0;
+		while (s[index] && s[index] != c)
+			index++;
+		s = s + index;
+		if (*(s - 1) != c)
+			ptr[i++] = fsubstr(spl, 0, index, ptr);
 	}
-	return (remplissage(p, (char *)s, c, vb.l));
+	ptr[i] = NULL;
+	return (ptr);
 }

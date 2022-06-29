@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:37:52 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 08:45:04 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 09:14:55 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	check_home_inenv(t_cmdl *cmd, char *findhome, char *error)
 		error = "Minishell: cd: HOME not set\n";
 		len = ft_strlen(error);
 		write(2, error, len);
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	cd_last_check(t_cmdl *cmd, char *error)
@@ -39,26 +39,31 @@ int	cd_last_check(t_cmdl *cmd, char *error)
 		error = "Minishell: cd: No such file or directory\n";
 		len = ft_strlen(error);
 		write(2, error, len);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
-int	ftcd(t_cmdl *cmd)
+int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 {
 	int	x;
 
 	x = 0;
-	while (!(ft_strnstr(cmd->environ[x], "HOME=", 5)))
+	while (x < envp->envpitems)
 	{
-		x++;
-		if (cmd->environ[x] == NULL)
+		cmd->findhome = NULL;
+		if (ft_strnstr(envp->environment[x], "HOME=", 5))
+		{
+			cmd->findhome = envp->environment[x];
 			break ;
+			// 	return (0);
+		}
+		x++;
 	}
-	cmd->findhome = cmd->environ[x];
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
-		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 0)
-			return (0);
+		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 1)
+			return (1);
 	}
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
@@ -67,6 +72,11 @@ int	ftcd(t_cmdl *cmd)
 		return (0);
 	}
 	if (cmd[cmd->cmd_iteration].args[1] == NULL)
-		cd_last_check(cmd, cmd->error);
-	return (1);
+	{
+
+	
+		if(	cd_last_check(cmd, cmd->error) == 1)
+		return 1;
+	}
+	return (0);
 }

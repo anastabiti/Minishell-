@@ -6,14 +6,14 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 07:40:08 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 12:09:26 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 08:29:53 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include "parse.h"
 
-int	one_cmd_1(t_cmdl *list)
+int	one_cmd_1(t_cmdl *list, struct s_envp *envp)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int	one_cmd_1(t_cmdl *list)
 		// 		close(list->fd_in);
 		// 	i++;
 		// }
-		ft_bin_usr_sbin(list);
+		ft_bin_usr_sbin(list, envp);
 	}
 	else
 	{
@@ -46,11 +46,11 @@ int	one_cmd_1(t_cmdl *list)
 		if (WIFEXITED(g_exit_status))
 			g_exit_status = WEXITSTATUS(g_exit_status);
 		i = 0;
-		while (list->args_execve)
-		{
-			free(list->args_execve[i]);
-			i++;
-		}
+		// while (list->args_execve)
+		// {
+		// 	free(list->args_execve[i]);
+		// 	i++;
+		// }
 	}
 	return (0);
 }
@@ -61,7 +61,7 @@ int	one_cmd(t_cmdl *cmd, struct						s_envp * envp)
 	int	x;
 
 	//
-	if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 0)
+	if (cmd->cmd_nbr == 1 && is_builtin(cmd, 0) == 0)
 	{
 		i = 0;
 		// redirections(cmd);
@@ -83,9 +83,9 @@ int	one_cmd(t_cmdl *cmd, struct						s_envp * envp)
 		// }
 		return (1);
 	}
-	else if (cmd->cmd_nbr == 0 && is_builtin(cmd, 0) == 3)
+	else if (cmd->cmd_nbr == 1 && is_builtin(cmd, 0) == 3)
 	{
-		one_cmd_1(cmd);
+		one_cmd_1(cmd,envp);
 		return (1);
 	}
 	return (0);
