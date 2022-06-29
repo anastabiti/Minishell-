@@ -6,12 +6,39 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 12:10:27 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 10:09:42 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include "parse.h"
+//name=value
+int	ft_split_env(struct s_envp *envp, char **env)
+{
+	int		i;
+	int		x;
+	char	**split;
+	char	*join;
+	char **name =  malloc(sizeof(char **) * envp->envpitems);
+	char **value =  malloc(sizeof(char **) * envp->envpitems);
+
+	i = 0;
+	x = 0;
+	// while (i < envp->envpitems)
+	// {
+	split = ft_split(env[i], '=');
+	while (split[x])
+	{
+		name[x] = split[x];
+		value[x] = split[x + 1];
+		printf("name  %s 	\n", name[x]);
+		printf("value  %s 	\n", value[x] );
+		x += 2;
+	}
+	// 	i++;
+	// }
+	return (0);
+}
 
 void	ft_copy_1st_env(struct s_envp *envp, char **env)
 {
@@ -26,25 +53,25 @@ void	ft_copy_1st_env(struct s_envp *envp, char **env)
 		len++;
 	}
 	envp->envpitems = len;
-	new = malloc(sizeof(char **) * (len + 1));
+	ft_split_env(envp, env);
+	// new = malloc(sizeof(char **) * (len + 1));
 
-	while (x < len)
-	{
-		if(ft_strnstr(env[x], "SHLVL", 5))
-		{
-			char **split = ft_split(env[x], '=');
-			int nb = ft_atoi(split[1]);
-			nbb = ft_itoa(nb + 1);
-			char *joined = ft_strjoin("SHLVL=",  nbb );
-			new[x] = joined;
-			x++;
-		}
-		new[x] = env[x];
-		
-		x++;
-	}
-	new[x] = "SHLVL=1";
-	new[x + 1] = NULL;
-	envp->environment = new;
+	// while (x < len)
+	// {
+	// 	if(ft_strncmp(env[x], "SHLVL", 5) == 0)
+	// 	{
+	// 		char **split = ft_split(env[x], '=');
+	// 		int nb = ft_atoi(split[1]);
+	// 		nbb = ft_itoa(nb + 1);
+	// 		char *joined = ft_strjoin("SHLVL=",  nbb );
+	// 		new[x] = joined;
+	// 		x++;
+	// 	}
+	// 	new[x] = env[x];
+
+	// 	x++;
+	// }
+	// 	// new[x + 1] = "SHLVL=1";
+	// envp->environment = new;
 	// free(nbb);
 }

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 09:52:22 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 08:40:19 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ struct						s_envp
 {
 	char					**environment;
 	int						envpitems;
+	char **name;
+	char **value;
 };
 typedef struct t_list
 {
