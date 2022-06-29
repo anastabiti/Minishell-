@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:56:03 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/28 08:35:59 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 06:30:00 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_cmdl
 	int		fd[2];
 	char **envsplited;
 	char **envvariables; 
+	int envvarpos;
 }			t_cmdl;
 
 int			is_white_space(char c);
