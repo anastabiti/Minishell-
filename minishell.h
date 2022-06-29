@@ -6,11 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/06/29 11:18:39 by mkarim           ###   ########.fr       */
-=======
-/*   Updated: 2022/06/29 08:40:19 by atabiti          ###   ########.fr       */
->>>>>>> 9dd3c40bcd18bb15c621f8096e17369c001e5891
+/*   Updated: 2022/06/29 12:03:28 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,13 +208,8 @@ char						*ft_strdup(const char *s1);
 void						*ft_memmove(void *s1, void *s2, size_t n);
 size_t						ft_strlcpy(char *dst, const char *src,
 								size_t dstsize);
-<<<<<<< HEAD
 void						*ft_memmove(void *s1, void *s2, size_t len);
 size_t						ft_strlen(char const *s);
-=======
-// void						*ft_memmove(void *dst, const void *src, size_t len);
-size_t						ft_strlen(const char *s);
->>>>>>> 9dd3c40bcd18bb15c621f8096e17369c001e5891
 int							ft_search(char *s, char *c, int lenght);
 // output libft
 void						ft_putstr_fd(char *s, int fd);
