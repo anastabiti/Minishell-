@@ -24,22 +24,24 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 		i = 0;
 		while (x < envp->envpitems)
 		{
-			new = ft_split(envp->environment[x], '=');
-			while (new[i])
-			{
-				ft_putstr_fd("declare -x ", 1);
-				ft_putstr_fd(new[i], 1);
-				write(1, "=\"", 2);
-				while (new[i + 1] != NULL)
-				{
-					ft_putstr_fd(new[i + 1], 1);
-					i++;
-				}
-				write(1, "\"\n", 2);
-				i++;
-			}
+
+		// 	new = ft_split(envp->environment[x], '=');
+		// 	while (new[i])
+		// 	{
+				// ft_putstr_fd("declare -x ", 1);
+			printf("declare -x %s=\"%s\"\n", envp->name[x], envp->value[x]);
+		// 		ft_putstr_fd(new[i], 1);
+		// 		write(1, "=\"", 2);
+		// 		while (new[i + 1] != NULL)
+		// 		{
+		// 			ft_putstr_fd(new[i + 1], 1);
+		// 			i++;
+		// 		}
+		// 		write(1, "\"\n", 2);
+		// 		i++;
+		// 	}
 			x++;
-			i = 0;
+			// i = 0;
 		}
 		return (0);
 	}
@@ -99,5 +101,6 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 	envp->envpitems++;
 	// free(envp->environment);
 	envp->environment = new;
+	ft_split_env(envp,  envp->environment);
 	return (0);
 }

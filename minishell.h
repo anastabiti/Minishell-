@@ -165,7 +165,7 @@ int							is_builtin(t_cmdl *list, int i);
 // int							one_cmd(struct s_list *list);
 int							one_cmd(t_cmdl *list, struct s_envp *envp);
 char						*ft_itoa(int n);
-
+int	ft_split_env(struct s_envp *envp, char **env);
 int							set_rd(struct s_list *list);
 int							run_builtin(t_cmdl *list, struct s_envp *envp);
 /// redirections I/O
