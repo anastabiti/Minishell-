@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/29 10:09:42 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 10:15:35 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,32 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	int		x;
 	char	**split;
 	char	*join;
-	char **name =  malloc(sizeof(char **) * envp->envpitems);
-	char **value =  malloc(sizeof(char **) * envp->envpitems);
+	char	**name;
+	char	**value;
 
+	name = malloc(sizeof(char **) * envp->envpitems);
+	value = malloc(sizeof(char **) * envp->envpitems);
 	i = 0;
 	x = 0;
-	// while (i < envp->envpitems)
-	// {
-	split = ft_split(env[i], '=');
-	while (split[x])
+	while (i < envp->envpitems)
 	{
-		name[x] = split[x];
-		value[x] = split[x + 1];
-		printf("name  %s 	\n", name[x]);
-		printf("value  %s 	\n", value[x] );
-		x += 2;
+		split = ft_split(env[i], '=');
+		while (split[x])
+		{
+			name[i] = split[x];
+			while(split[x + 1]  != NULL)
+			{
+							value[i] = split[x + 1];
+					x++;
+			}
+		
+			x ++;
+		}
+			printf("name  %s 	\n", name[i]);
+			printf("value  %s 	\n", value[i]);
+		x = 0;
+		i++;
 	}
-	// 	i++;
-	// }
 	return (0);
 }
 
