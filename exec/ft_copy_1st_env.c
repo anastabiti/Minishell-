@@ -6,13 +6,13 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/29 10:15:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 11:00:28 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include "parse.h"
-//name=value
+
 int	ft_split_env(struct s_envp *envp, char **env)
 {
 	int		i;
@@ -21,33 +21,30 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	char	*join;
 	char	**name;
 	char	**value;
+	int		len;
 
 	name = malloc(sizeof(char **) * envp->envpitems);
 	value = malloc(sizeof(char **) * envp->envpitems);
 	i = 0;
 	x = 0;
+	len = 0;
 	while (i < envp->envpitems)
 	{
-		split = ft_split(env[i], '=');
-		while (split[x])
+		while (env[i][x] != '=')
 		{
-			name[i] = split[x];
-			while(split[x + 1]  != NULL)
-			{
-							value[i] = split[x + 1];
-					x++;
-			}
-		
-			x ++;
+			x++;
 		}
-			printf("name  %s 	\n", name[i]);
-			printf("value  %s 	\n", value[i]);
-		x = 0;
+		name[i] = ft_substr(env[i], len, x);
+		value[i] = ft_substr(env[i], x, ft_strlen(env[i]) - x);
+		x = 0 ;
+		// printf(" name %s  \n", name[i]);
+		// printf(" value %s  \n", value[i]);
 		i++;
 	}
+	envp->value = value;
+	envp->name = name;
 	return (0);
 }
-
 void	ft_copy_1st_env(struct s_envp *envp, char **env)
 {
 	char **new;
@@ -62,6 +59,12 @@ void	ft_copy_1st_env(struct s_envp *envp, char **env)
 	}
 	envp->envpitems = len;
 	ft_split_env(envp, env);
+	while(x < envp->envpitems)
+	{
+		printf(" name %s  \n", envp->name[x]);
+		printf(" value %s  \n", envp->value[x]);
+		x++;
+	}
 	// new = malloc(sizeof(char **) * (len + 1));
 
 	// while (x < len)
