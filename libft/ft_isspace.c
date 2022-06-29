@@ -1,29 +1,21 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_is_white_space.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 12:22:54 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/27 20:03:17 by mkarim           ###   ########.fr       */
+/*   Created: 2022/06/27 21:16:08 by mkarim            #+#    #+#             */
+/*   Updated: 2022/06/27 21:17:22 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_isspace(int c)
 {
-	int		i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char )c)
-			return ((char *)(s + i));
-		i++;
-	}
-	if (s[i] == c)
-		return ((char *)(s + i));
-	return (NULL);
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
 }

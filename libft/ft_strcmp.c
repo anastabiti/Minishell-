@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 12:22:54 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/27 20:03:17 by mkarim           ###   ########.fr       */
+/*   Created: 2021/11/01 12:23:09 by mkarim            #+#    #+#             */
+/*   Updated: 2022/06/28 13:19:01 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char )c)
-			return ((char *)(s + i));
+	while (s1[i] && s1[i] == s2[i])
 		i++;
-	}
-	if (s[i] == c)
-		return ((char *)(s + i));
-	return (NULL);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

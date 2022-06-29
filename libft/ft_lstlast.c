@@ -6,11 +6,11 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 14:04:59 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/27 19:54:17 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/27 20:02:35 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {
