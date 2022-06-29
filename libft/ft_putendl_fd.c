@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 10:46:00 by mkarim            #+#    #+#             */
-/*   Updated: 2021/11/06 15:37:09 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/27 20:03:03 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 14:40:37 by mkarim            #+#    #+#             */
-/*   Updated: 2021/11/11 02:58:36 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/27 20:38:37 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

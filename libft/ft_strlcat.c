@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 07:16:50 by mkarim            #+#    #+#             */
-/*   Updated: 2021/11/07 15:39:03 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/27 20:03:30 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {

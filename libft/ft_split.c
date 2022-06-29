@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarim <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 15:33:31 by mkarim            #+#    #+#             */
-/*   Updated: 2022/01/13 21:19:25 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/27 20:48:01 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-static	int	nbofl(char *s, char c)
+static	int	nbofl(char const *s, char c)
 {
 	int		l;
 	int		i;
