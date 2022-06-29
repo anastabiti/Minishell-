@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/29 11:13:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 12:04:08 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	ft_split_env(struct s_envp *envp, char **env)
 			x++;
 		}
 		name[i] = ft_substr(env[i], len, x);
-		value[i] = ft_substr(env[i], x, ft_strlen(env[i]) - x);
+		value[i] = ft_substr(env[i], x + 1, ft_strlen(env[i]) - x);
 		x = 0 ;
 		i++;
 	}
-	// envp->value = value;
-	// envp->name = name;
+	envp->value = value;
+	envp->name = name;
 	return (0);
 }
 void	ft_copy_1st_env(struct s_envp *envp, char **env)
@@ -56,32 +56,40 @@ void	ft_copy_1st_env(struct s_envp *envp, char **env)
 		len++;
 	}
 	envp->envpitems = len;
+
+	// while(x < envp->envpitems)
+	// {
+	// // 	printf(" name %s  \n", envp->name[x]);
+	// // 	printf(" value %s  \n", envp->value[x]);
+	// 	x++;
+	// }
+		ft_split_env(envp, env);
 		new = malloc(sizeof(char **) * (len + 1));
 
-	ft_split_env(envp, env);
-	while(x < envp->envpitems)
-	{
-	// 	printf(" name %s  \n", envp->name[x]);
-	// 	printf(" value %s  \n", envp->value[x]);
-		x++;
-	}
-x  = 0 ;
+		x  = 0 ;
 	while (x < len)
-	{
-		// if(ft_strncmp(envp->name[x], "SHLVL", 5) == 0)
-		// {
-		// 	// char **split = ft_split(envp->name[x], '=');
-		// 	int nb = ft_atoi(envp->value[x]);
-		// 	nbb = ft_itoa(nb + 1);
-		// 	char *joined = ft_strjoin("SHLVL=",  nbb );
-		// 	new[x] = joined;
-		// 	x++;
-		// }
+	{  int nb = 0;
+		if(ft_strncmp(envp->name[x], "SHLVL", 5) == 0)
+		{
+								printf("%s" , envp->value[x]);
+
+			// // char **split = ft_split(envp->name[x], '=');
+			// printf("%s" , envp->value[x]);
+			// nb = ft_atoi(envp->value[x]);
+			// printf( "nb is  %d \n\n\n\n\n\n", nb);
+			// nbb = ft_itoa(nb + 1);
+			// char *joined = ft_strjoin("SHLVL=",  nbb );
+			// new[x] = joined;
+			// x++;
+		}
+
 		new[x] = env[x];
 	
 		x++;
 	}
 		// new[x + 1] = "SHLVL=1";
 	envp->environment = new;
+
+	// return envp;
 	// free(nbb);
 }
