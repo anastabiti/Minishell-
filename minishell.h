@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/27 08:36:13 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 11:18:39 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,37 @@
 # define RDIN "rstdin"
 # define RDAPPEND "rstdappend"
 # define HEREDOC "HEREDOC"
+
+/* ---------- START MACROS NEEDED IN PARSING ---------- */
+
+# define PROMPT "minishell $ "
+# define PRE_ERR "minishell: "
+# define SNT_ERR "minishell: syntax error near unexpected token `"
+
+/* ---------- END MACROS NEEDED IN PARSING ---------- */
+
+/* ---------- START TOKEN'S UTILS (MACROS STRUCT ENUM FUNCTIONS) ---------- */
+
+typedef enum e_token {
+	S_QUOTE,
+	D_QUOTE,
+	IN_RED,
+	IN_D_RED,
+	OUT_RED,
+	OUT_D_RED,
+	PIPE,
+	WORD
+}			t_e_token;
+
+typedef	struct s_token
+{
+	char	*val;
+	int		type;
+}			t_token;
+
+void    ft_token(char *s);
+
+/* ---------- END TOKEN'S UTILS (MACROS STRUCT ENUM FUNCTIONS) ---------- */
 
 struct						s_builtins
 {
@@ -80,6 +111,18 @@ struct						s_list
 
 	// cd
 };
+
+/* ------ START STRUCT FOR SPLIT ------ */
+
+typedef struct s_variables
+{
+	int		l;
+	int		i;
+	int		j;
+	int		cl;
+}			t_variables;
+
+/* ------ END STRUCT FOR SPLIT ------ */
 
 struct						s_envp
 {
@@ -137,6 +180,8 @@ int							ft_check_programs(t_cmdl *list);
 //env
 void						ft_copy_1st_env(struct s_envp *envp, char **env);
 // LIBFT
+int							ft_isalpha(int c);
+int							ft_isalnum(int c);
 int							ft_isdigit(int c);
 int							ft_atoi(const char *str);
 char						*ft_strjoin(char const *s1, char const *s2);
@@ -145,20 +190,19 @@ char	*ft_strnstr(const char *haystack,
 					size_t len);
 int							ft_strncmp(const char *s1, const char *s2,
 								size_t n);
-size_t						ft_strlen(const char *s);
-int							ft_memcmp(const void *s1, const void *s2, size_t n);
+int							ft_memcmp(void *s1, void *s2, size_t n);
 char						*ft_strchr(const char *s, int c);
 static char					*ccleaner(char **arr);
-static char					*fsubstr(char const *s, unsigned int start,
-								size_t len, char **arr);
+char						*ft_substr(char const *s, unsigned int start, size_t len);
+//static char					*ft_substr(char const *s, unsigned int start, size_t len, char **arr);
 static size_t				countblocks(char const *s1, char delimiter);
 char						**ft_split(char const *s, char c);
 char						*ft_strdup(const char *s1);
 void						*ft_memcpy(void *dst, const void *src, size_t n);
 size_t						ft_strlcpy(char *dst, const char *src,
 								size_t dstsize);
-void						*ft_memmove(void *dst, const void *src, size_t len);
-size_t						ft_strlen(const char *s);
+void						*ft_memmove(void *s1, void *s2, size_t len);
+size_t						ft_strlen(char const *s);
 int							ft_search(char *s, char *c, int lenght);
 // output libft
 void						ft_putstr_fd(char *s, int fd);
@@ -173,4 +217,25 @@ void						handler(int sig);
 // init data
 struct s_list				*ft_init(struct s_list *blt);
 
+
+/* ---------- START LIBFT FUNCTIONS ---------- */
+
+char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_isspace(int c);
+int		ft_strcmp(const char *s1, const char *s2);
+
+/* ---------- END LIBFT FUNCTIONS ---------- */
+
+/* ---------- START LINKED LIST FUNCTIONS ---------- */
+
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+int		ft_lstsize(t_list *lst);
+
+/* ---------- END LINKED LIST FUNCTIONS ---------- */
 #endif
