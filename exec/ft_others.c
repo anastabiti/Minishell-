@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 10:27:32 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 11:40:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ int	ft_bin_usr_sbin(t_cmdl *list, struct s_envp *envp)
 	char	*bin;
 	int		i;
 	char	*last;
-
+	i = 0;
 	ft_check_programs(list, envp);
 	ftcheck_nopath(list, envp);
-	i = 0;
+
 	bin = ft_strjoin(list->new[i], "/");
 	looping_through_split_path(list, i, bin, last, envp);
 	write(2, "MINISHELL command not found\n", 28);

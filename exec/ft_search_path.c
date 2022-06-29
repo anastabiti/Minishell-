@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 09:58:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 07:12:36 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 11:41:03 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ftcheck_nopath(t_cmdl *list,  struct s_envp *envp)
 
 void	looping_through_split_path(t_cmdl *list, int i, char *bin, char *last, struct s_envp *envp)
 {
+	i = 0;
 	while (list->new[i])
 	{
 		last = ft_strjoin(bin, list[list->cmd_iteration].cmd);
