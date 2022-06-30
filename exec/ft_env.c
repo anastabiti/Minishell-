@@ -39,7 +39,7 @@ int	ft_env(struct s_envp *envp, t_cmdl *list)
 	// }
 	while (i < envp->envpitems)
 	{
-		ft_putendl_fd(envp->environment[i], 1);
+		ft_putendl_fd(envp->environment[i], list->fd_out);
 		i++;
 	}
 	return (0);

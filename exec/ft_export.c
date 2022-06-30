@@ -16,44 +16,49 @@ int	ft_sort_env(struct s_envp *envp, t_cmdl *cmd)
 	int		i;
 	int		j;
 	int		count;
-	char	*tmp ;
-	char *tmp1;
+	char	*tmp;
+	char	*tmp1;
 	char	**joined;
+
 	joined = malloc(sizeof(char **) * 101);
 	i = 0;
 	j = 0;
 	while (i < envp->envpitems)
 	{
-		tmp1 = ft_strjoin( envp->name[i], "=\"");
+		tmp1 = ft_strjoin(envp->name[i], "=\"");
 		joined[i] = ft_strjoin(tmp1, envp->value[i]);
-					printf(" %s \n\n", joined[i]);
-
 		i++;
 	}
-	// i = 0;
-	// while (i < envp->envpitems)
-	// {
-	// 	j = i + 1;
-	// 	while (j < envp->envpitems)
-	// 	{
-	// 		tmp = malloc(sizeof(char *) * ft_strlen(joined[i]));
-	// 		if (strcmp(joined[i],joined[j]) > 0)
-	// 		{
-	// 			memmove (tmp,joined[i], ft_strlen(joined[i]) + 1);
-	// 			memmove (joined[i], joined[j], ft_strlen(joined[j]) + 1);
-	// 			memmove (joined[j], tmp, ft_strlen(tmp) + 1);
-
-	// 		}
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
-	// i = 0;
-	// while (i < envp->envpitems)
-	// {
-	// 		printf("declare -x %s=\"\n", joined[i]);
-	// 		i++;
-	// }
+	i = 0;
+	while (i < envp->envpitems)
+	{
+		j = i + 1;
+		while (j < envp->envpitems)
+		{
+			// tmp = malloc(sizeof(char *) * ft_strlen(joined[i]));
+			if (strcmp(envp->name[i], envp->name[j]) > 0)
+			{
+				tmp = joined[i];
+				joined[i] = joined[j];
+				joined[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < envp->envpitems)
+	{
+		printf("declare -x %s\"\n", joined[i]);
+		i++;
+	}
+	i = 0;
+	while (i < envp->envpitems)
+	{
+		free(joined[i]);
+		i++;
+	}
+	free(joined);
 	return (0);
 }
 int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
@@ -68,26 +73,6 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 	{
 		i = 0;
 		ft_sort_env(envp, cmd);
-		// while (x < envp->envpitems)
-		// {
-		// // 	// 	new = ft_split(envp->environment[x], '=');
-		// // 	// 	while (new[i])
-		// // 	// 	{
-		// // 	// ft_putstr_fd("declare -x ", 1);
-		// 	// printf("declare -x %s=\"%s\"\n", envp->name[x], envp->value[x]);
-		// // 	// 		ft_putstr_fd(new[i], 1);
-		// // 	// 		write(1, "=\"", 2);
-		// // 	// 		while (new[i + 1] != NULL)
-		// // 	// 		{
-		// // 	// 			ft_putstr_fd(new[i + 1], 1);
-		// // 	// 			i++;
-		// // 	// 		}
-		// // 	// 		write(1, "\"\n", 2);
-		// // 	// 		i++;
-		// // 	// 	}
-		// 	x++;
-		// 	// i = 0;
-		// }
 		return (0);
 	}
 	return (1);
@@ -112,12 +97,12 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 		return (1);
 	}
 	x = 0;
-	// printf("to_be_exported is %s  \n", split[0]);
+	printf("to_be_exported is %s  \n", split[0]);
 	len = ft_strlen(split[0]);
 	x = 0;
 	while (x < envp->envpitems)
 	{
-		if (ft_strncmp(envp->name[x], to_be_exported, len))
+		if (ft_strncmp(envp->name[x], to_be_exported, len) == 0)
 		{
 			if (split[1])
 				envp->environment[x] = cmd[0].args[i];
