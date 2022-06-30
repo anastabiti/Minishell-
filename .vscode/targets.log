@@ -1,14 +1,13 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'exec/builtins.o', needed by 'minishell'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Thu Jun 30 15:59:31 2022
+# Make data base, printed on Thu Jun 30 18:19:19 2022
 
 # Variables
 
@@ -153,7 +152,7 @@ _ = /home/asus/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-a1ff2ea9-4b3e-4c72-b2c9-347746d13a53.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-4e4af558-996c-478f-afc5-6b43c2dfaaef.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -179,9 +178,9 @@ WSL_DISTRO_NAME = kali-linux
 
 # Directories
 
-# . (device 66, inode 1125899906842677): 15 files, no impossibilities.
+# . (device 66, inode 1125899906842677): 16 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -192,58 +191,67 @@ WSL_DISTRO_NAME = kali-linux
 # Not a target:
 exec/builtins.o:
 #  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
+#  Last modified 2022-06-30 16:32:41.2203747
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_readline.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.055574
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/is_builtin.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.6083937
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_split.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.1932127
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_export_tools.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:44.0031135
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/redirections.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:41.5423987
+#  File has been updated.
+#  Successfully updated.
 
 minishell: exec/builtins.o exec/ft_env.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o exec//libft.o exec/ft_one_command.o exec/ft_multi_cmds.o libft/ft_strdup.o exec/ft_here_doc.o exec/ft_split.o exec/parse.o exec/utils.o exec/ft_search_path.o exec/is_builtin.o exec/ft_exit.o exec/ftcd.o exec/ft_copy_1st_env.o exec/ft_export_tools.o
 #  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
+#  Last modified 2022-06-30 16:32:44.7510601
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 76):
 	gcc   $(CFLAGS)  $(OBJ)  -o $(NAME)   -lreadline -L /Users/$(USER)/goinfre/.brew/opt/readline/lib -I /Users/$(USER)/goinfre/.brew/opt/readline/include
 	
 
 # Not a target:
 exec/utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.4101665
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_init.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.1473792
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 Makefile:
@@ -254,27 +262,32 @@ Makefile:
 
 # Not a target:
 libft/ft_putstr_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.3431853
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_exit.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.7019944
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 libft/ft_putchar_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.242791
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec//libft.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+ 
+#  Last modified 2022-06-30 16:32:42.6724346
+#  File has been updated.
+#  Successfully updated.
 
 clean:
 #  Implicit rule search has not been done.
@@ -287,18 +300,19 @@ clean:
 			rm *.o
 	
 
- 
 # Not a target:
 exec/ft_unset.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:41.7405116
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_one_command.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.7762651
+#  File has been updated.
+#  Successfully updated.
 
 re: fclean all
 #  Implicit rule search has not been done.
@@ -307,21 +321,24 @@ re: fclean all
 
 # Not a target:
 exec/ft_search_path.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.5056937
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_copy_1st_env.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.9041039
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_here_doc.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.0887978
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -333,7 +350,8 @@ all: minishell
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Successfully updated.
 
 fclean: clean
 #  Implicit rule search has not been done.
@@ -344,69 +362,80 @@ fclean: clean
 
 # Not a target:
 exec/ft_others.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:41.9313844
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_multi_cmds.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.8913999
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 libft/ft_putendl_fd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.4628042
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/tools.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:41.4388268
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ftcd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.8008118
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ftpipe.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.5758017
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 libft/ft_strdup.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:42.9966687
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_export.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:41.8327555
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/parse.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:43.2953264
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 exec/ft_env.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:41.3250542
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 libft/ft_strnstr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-30 16:32:41.6392144
+#  File has been updated.
+#  Successfully updated.
 
 # files hash-table stats:
 # Load=36/1024=4%, Rehash=0, Collisions=4/80=5%
@@ -419,9 +448,9 @@ libft/ft_strnstr.o:
 # strcache buffers: 1 (0) / strings = 52 / storage = 689 B / avg = 13 B
 # current buf: size = 8162 B / used = 689 B / count = 52 / avg = 13 B
 
-# strcache performance: lookups = 66 / hit rate = 21%
+# strcache performance: lookups = 67 / hit rate = 22%
 # hash-table stats:
-# Load=52/8192=1%, Rehash=0, Collisions=1/66=2%
-# Finished Make data base on Thu Jun 30 15:59:31 2022
+# Load=52/8192=1%, Rehash=0, Collisions=1/67=1%
+# Finished Make data base on Thu Jun 30 18:19:19 2022
 
  

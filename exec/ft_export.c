@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/30 14:26:50 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/30 20:51:51 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,26 @@
 int	modify_name(struct s_envp *envp, t_cmdl *cmd, char **split, int i)
 {
 	int	x;
+	int	t;
 
+	x = 0;
+	t = 0;
 	x = 0;
 	while (x < envp->envpitems)
 	{
 		if (ft_strncmp(envp->name[x], split[0], ft_strlen(split[0]) + 1) == 0)
 		{
-			if (split[1])
-				envp->environment[x] = cmd[0].args[i];
+			// if (split[1])
+			while (cmd[cmd->cmd_iteration].args[i][t])
+			{
+				if (cmd[cmd->cmd_iteration].args[i][t] == '=')
+				{
+					envp->environment[x] = cmd[cmd->cmd_iteration].args[i];
+					return (0);
+				}
+				t++;
+			}
+			t = 0;
 			return (0);
 		}
 		x++;

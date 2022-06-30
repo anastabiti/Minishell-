@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 10:41:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/30 16:15:27 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/30 18:39:50 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_exit_no_args(t_cmdl *cmd, struct s_envp *envp)
 		rl_clear_history();
 		free2d(envp->name);
 		free2d(envp->value);
-		exit(0);
+		exit(g_exit_status);
 	}
 	return (0);
 }
