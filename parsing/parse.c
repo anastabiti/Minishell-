@@ -70,8 +70,6 @@ int	main(int argc, char **argv)
 			data.cmd_line = readline(PROMPT);
 			if (!data.cmd_line)
 			{
-				// ft_putendl_fd("exit");
-				// exit(0);
 			}
 			if (ft_strlen(data.cmd_line))
 			{
