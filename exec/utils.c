@@ -13,18 +13,7 @@
 #include "parse.h"
 #include "../minishell.h"
 
-// int	ft_strlen(char *s)
-// {
-// 	int		i;
 
-// 	i = 0;
-// 	if (s)
-// 	{
-// 		while (s[i])
-// 			i++;
-// 	}
-// 	return (i);
-// }
 
 void	ft_putchar(char c)
 {
@@ -38,9 +27,9 @@ int	is_white_space(char c)
 	return (0);
 }
 
-int	ft_is_alpha(char c)
+int	ft_is_alpha_mod(char c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == 95)
 		return (1);
 	return (0);
 }
@@ -55,21 +44,6 @@ char	*rm_spaces(char *s)
 	return (s + i);
 }
 
-// char	*ft_strchr(const char *s, int c)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] == (char )c)
-// 			return ((char *)(s + i));
-// 		i++;
-// 	}
-// 	if (s[i] == c)
-// 		return ((char *)(s + i));
-// 	return (NULL);
-// }
 
 void	ft_putstr(char *s)
 {

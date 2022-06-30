@@ -64,7 +64,7 @@ typedef struct s_cmdl
 }			t_cmdl;
 
 int			is_white_space(char c);
-int			ft_is_alpha(char c);
+int			ft_is_alpha_mod(char c);
 char		*rm_spaces(char *s);
 int			check_valid(char *s);
 void		ft_pass_cmd(void);

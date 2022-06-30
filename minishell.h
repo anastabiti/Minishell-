@@ -224,7 +224,12 @@ void						ft_pipe(t_cmdl *list, struct						s_envp * envp);
 void						handler(int sig);
 // init data
 struct s_list				*ft_init(struct s_list *blt);
-
+//export tools
+char	**join_name_and_value(struct s_envp *envp, t_cmdl *cmd);
+char	**ft_sort_env(struct s_envp *envp, t_cmdl *cmd);
+int	ft_export_1(struct s_envp *envp, t_cmdl *cmd);
+int	check_name_is_valid(char **split, int i, t_cmdl *cmd);
+int	modify_name(struct s_envp *envp, t_cmdl *cmd, char **split, int i);
 
 /* ---------- START LIBFT FUNCTIONS ---------- */
 

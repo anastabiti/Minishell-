@@ -40,7 +40,8 @@ SRC = ./exec/builtins.c \
 	./exec/ft_exit.c \
 	./exec/ftcd.c \
 	./exec/ft_copy_1st_env.c \
-
+	./exec/ft_export_tools.c \
+	
 OBJ = $(SRC:.c=.o)
 # ./exec/builtins.o \
 # 	./exec/ft_env.o \

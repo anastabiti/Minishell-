@@ -27,16 +27,7 @@ int	ft_env(struct s_envp *envp, t_cmdl *list)
 {
 	int	i;
 
-	// t_list	*new = malloc(sizeof(t_list	*));
-	// 	new =  ft_lstnew(envp->environment);
 	i = 0;
-	// while (i < envp->envpitems)
-	// {
-	// 	new->content = *envp->environment;
-	// 	ft_putendl_fd(new->content, list->fd_out);
-	// 	envp->environment++;
-	// 	i++;
-	// }
 	while (i < envp->envpitems)
 	{
 		ft_putendl_fd(envp->environment[i], list->fd_out);
