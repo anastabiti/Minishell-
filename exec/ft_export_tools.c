@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_export_tools.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/30 14:26:32 by atabiti           #+#    #+#             */
+/*   Updated: 2022/06/30 14:26:46 by atabiti          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+
 
 
 #include "../minishell.h"
@@ -9,7 +23,7 @@ char	**join_name_and_value(struct s_envp *envp, t_cmdl *cmd)
 	char	*tmp1;
 
 	i = 0;
-	joined = malloc(sizeof(char **) * 101);
+	joined = malloc(sizeof(char **) * envp->envpitems);
 	i = 0;
 	while (i < envp->envpitems)
 	{

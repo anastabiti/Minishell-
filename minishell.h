@@ -22,8 +22,6 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <unistd.h>
-# define KRED "\x1B[31m"
-# define KGRN "\x1B[32m"
 # include <dirent.h> // open dir
 # include <readline/history.h>
 # include <readline/readline.h>
@@ -65,27 +63,12 @@ void    ft_token(char *s);
 
 /* ---------- END TOKEN'S UTILS (MACROS STRUCT ENUM FUNCTIONS) ---------- */
 
-struct						s_builtins
-{
-	char					*echo;
-	char					*cd;
-	char					*pwd;
-	char					*export;
-	char					*unset;
-	char					*env;
-	char					*exit;
-	char					*cd_path;
-	char					*cmd[100];
-};
-
 struct						s_list
 {
-	struct s_builtins		*blt;
 	char					*cmd[50];
 	struct s_list			*next;
 	int						fd_out;
 	char					*input;
-	char					**environ;
 	int						i;
 	int						cmd_nbr;
 	int						there_is_pipe;
@@ -109,7 +92,6 @@ struct						s_list
 	struct s_redirections	*rd;
 	struct s_envp			*envp;
 
-	// cd
 };
 
 /* ------ START STRUCT FOR SPLIT ------ */
@@ -150,30 +132,23 @@ int							ftexit(t_cmdl *cmd);
 int							builtcheck(t_cmdl *cmd, struct s_envp *envp);
 int							ftcd(t_cmdl *cmd, struct s_envp *envp);
 int							ft_export_1(struct s_envp *envp, t_cmdl *cmd);
-// void						ft_env(char **env, struct s_list *list);
 int						ft_env(struct s_envp *envp, t_cmdl *list);
-// int							ft_echo(struct s_list *list, char *arg, int fd);
 int							ft_echo(t_cmdl *list, int fd);
-// int							ft_is_built_in(struct s_list *list);
 int							ft_is_built_in(t_cmdl *list, struct s_envp *envp);
 int							ft_unset(struct s_envp *envp, t_cmdl *list,
 								int arg);
 int							ft_export(struct s_envp *envp, t_cmdl *cmd, int i);
-// int							is_builtin(struct s_list *list, int i);
 //exece
 int							is_builtin(t_cmdl *list, int i);
-// int							one_cmd(struct s_list *list);
 int							one_cmd(t_cmdl *list, struct s_envp *envp);
 char						*ft_itoa(int n);
 int	ft_split_env(struct s_envp *envp, char **env);
 int							set_rd(struct s_list *list);
 int							run_builtin(t_cmdl *list, struct s_envp *envp);
 /// redirections I/O
-// int							redirections(struct s_list *list);
 int							redirections(t_cmdl *list);
 int							heredoc_without_cmd(struct s_list *list);
 // Other
-// int							ft_bin_usr_sbin(struct s_list *list);
 t_list						*ft_lstnew(void *content);
 int							ft_bin_usr_sbin(t_cmdl *list, struct s_envp *envp);
 char						**ft_search_for_path(t_cmdl *list,
@@ -197,12 +172,10 @@ char	*ft_strnstr(const char *haystack,
 					size_t len);
 int							ft_strncmp(const char *s1, const char *s2,
 								size_t n);
-// int							ft_memcmp(void *s1, void *s2, size_t n);
 int     ft_memcmp(const void *s1, const void *s2, size_t n);
 char						*ft_strchr(const char *s, int c);
 static char					*ccleaner(char **arr);
-// char						*ft_substr(char const *s, unsigned int start, size_t len);
-char    *ft_substr(char *s, unsigned int start, size_t len);//static char					*ft_substr(char const *s, unsigned int start, size_t len, char **arr);
+char    *ft_substr(char *s, unsigned int start, size_t len);
 static size_t				countblocks(char const *s1, char delimiter);
 char						**ft_split(char const *s, char c);
 char						*ft_strdup(const char *s1);
