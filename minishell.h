@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/29 12:13:44 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/30 16:05:56 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void						rl_clear_history(void);
 // Builtin Commands
 int							ft_pwd(int fd_out);
 int							builtcheck_1(t_cmdl *cmd, struct s_envp *envp);
-int							ftexit(t_cmdl *cmd);
+int							ftexit(t_cmdl *cmd, struct s_envp *envp);
 int							builtcheck(t_cmdl *cmd, struct s_envp *envp);
 int							ftcd(t_cmdl *cmd, struct s_envp *envp);
 int							ft_export_1(struct s_envp *envp, t_cmdl *cmd);
@@ -203,7 +203,8 @@ char	**ft_sort_env(struct s_envp *envp, t_cmdl *cmd);
 int	ft_export_1(struct s_envp *envp, t_cmdl *cmd);
 int	check_name_is_valid(char **split, int i, t_cmdl *cmd);
 int	modify_name(struct s_envp *envp, t_cmdl *cmd, char **split, int i);
-
+//free
+int free2d(char **s);
 /* ---------- START LIBFT FUNCTIONS ---------- */
 
 char	*ft_strtrim(char const *s1, char const *set);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 10:36:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/28 11:03:55 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/30 16:16:18 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_is_built_in(t_cmdl *list, struct						s_envp * envp)
 	}
 	else if (ft_strncmp(list[0].cmd, "exit", 5) == 0)
 	{
-		ftexit(list);
+		g_exit_status=  ftexit(list, envp);
 	}
 	return (0);
 }

@@ -3,27 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 10:41:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/29 11:38:15 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/30 16:15:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	check_exit_no_args(t_cmdl *cmd)
+int	free2d(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
+	return (0);
+}
+int	check_exit_no_args(t_cmdl *cmd, struct s_envp *envp)
 {
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
 		printf("exit\n");
-				rl_clear_history();
+		rl_clear_history();
+		free2d(envp->name);
+		free2d(envp->value);
 		exit(0);
 	}
 	return (0);
 }
 
-int	check_exit_with_args(t_cmdl *cmd)
+int	check_exit_with_args(t_cmdl *cmd, struct s_envp *envp)
 {
 	int	i;
 	int	exit_value;
@@ -40,22 +55,29 @@ int	check_exit_with_args(t_cmdl *cmd)
 				{
 					printf("exit\n");
 					printf("Minishell: exit: %s: numeric argument required\n",
-						cmd[cmd->cmd_iteration].cmd);
+							cmd[cmd->cmd_iteration].cmd);
+					free2d(envp->name);
+					free2d(envp->value);
 					exit(255);
 				}
 				i++;
 			}
 			exit_value = ft_atoi(cmd[cmd->cmd_iteration].args[0]);
+			free2d(envp->name);
+			free2d(envp->value);
 			exit(exit_value);
 		}
 	}
 	return (0);
 }
 
-int	ftexit(t_cmdl *cmd)
+int	ftexit(t_cmdl *cmd, struct s_envp *envp)
 {
-	check_exit_no_args(cmd);
-	check_exit_with_args(cmd);
+	check_exit_no_args(cmd, envp);
+	check_exit_with_args(cmd, envp);
 	printf("exit\n Minishell : exit : too many arguments\n");
-	return (0);
+	free2d(envp->name);
+	free2d(envp->value);
+	// g_exit_status =2 ;
+	exit(2);
 }

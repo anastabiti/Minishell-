@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_copy_1st_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/29 12:04:08 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/30 16:11:13 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	ft_copy_1st_env(struct s_envp *envp, char **env)
 			nbb = ft_itoa(nb + 1);
 			char *joined = ft_strjoin("SHLVL=", nbb);
 			new[x] = joined;
+			free(nbb);
+			free(joined);
 			x++;
 		}
 		if (x == envp->envpitems)
