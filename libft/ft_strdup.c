@@ -3,24 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 15:06:34 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/01 13:03:33 by atabiti          ###   ########.fr       */
+/*   Created: 2021/11/02 09:15:19 by mkarim            #+#    #+#             */
+/*   Updated: 2022/06/27 20:03:21 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	size_t	lenght;
-	char	*copyptr;
+	int		i;
+	char	*p;
 
-	lenght = ft_strlen(s1) + 1;
-	copyptr = malloc(lenght);
-	if (copyptr == NULL)
-		return (NULL);
-	ft_memcpy(copyptr, s1, lenght);
-	return (copyptr);
+	i = 0;
+	p = (char *)malloc(ft_strlen((char *)s) + 1);
+	if (!p)
+		return (p);
+	while (s[i])
+	{
+		p[i] = s[i];
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
 }

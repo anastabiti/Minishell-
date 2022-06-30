@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:55:04 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/20 22:14:03 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/25 10:04:07 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,51 @@ void	ft_putstr(char *s)
 
 void	ft_putendl(char *s)
 {
+<<<<<<< HEAD
+=======
+	if (s[ft_strlen(s) - 1] == '|' || rm_spaces(s)[0] == '|')
+	{
+		ft_putstr(SNT_ERR);
+		ft_putstr("|'\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	check_in_dir(char *s)
+{
+	int		i;
+	int		dir;
+	int		rep;
+
+	i = -1;
+	rep = 0;
+	dir = 0;
+	while (s[++i])
+		if (s[i] == '<' || s[i] == '>')
+			dir++;
+	if (dir == ft_strlen(s))
+	{
+		ft_putstr(SNT_ERR);
+		if (dir > 3)
+		{
+			rep = ft_min(3, dir - 3);
+			i = -1;
+			while (++i < rep)
+				ft_putchar(s[0]);
+			return (ft_putstr("'\n"), 0);
+		}
+		else
+			return (ft_putstr("newline'\n"), 0);
+	}
+	return (1);
+}
+
+int	check_quotes(char *s)
+{
+	int	sngl_qt;
+	int	dbl_quot;
+>>>>>>> 90e01a3e62b027b21d9ad617cc8256713f7e072a
 	int	i;
 
 	i = -1;
@@ -95,6 +140,7 @@ void	ft_putendl(char *s)
 	}
 }
 
+<<<<<<< HEAD
 // int	ft_min(int a, int b)
 // {
 // 	if (a < b)
@@ -196,3 +242,39 @@ void	ft_putendl(char *s)
 // {
 	
 // }
+=======
+int	check_valid(char *s)
+{
+	if (!check_in_dir(s))
+		return (0);
+	if (!check_quotes(s))
+		return (0);
+	if (!check_dir_with_file(s))
+		return (0);
+	return (1);
+}
+
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len_s;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (len > len_s)
+		len = len_s;
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = -1;
+	j = 0;
+	while (s[++i])
+		if (i >= start && j < len)
+			str[j++] = s[i];
+	str[j] = '\0';
+	return (str);
+}
+>>>>>>> 90e01a3e62b027b21d9ad617cc8256713f7e072a

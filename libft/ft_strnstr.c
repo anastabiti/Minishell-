@@ -3,42 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 15:46:57 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/20 08:39:10 by atabiti          ###   ########.fr       */
+/*   Created: 2021/11/02 08:02:30 by mkarim            #+#    #+#             */
+/*   Updated: 2022/06/27 20:03:45 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *s, const char *sub, size_t len)
 {
-	size_t	needlelenght;
+	size_t	i;
+	size_t	j;
 
-	needlelenght = ft_strlen(needle);
-	if (needlelenght == '\0')
-		return ((char *)haystack);
-	while (*haystack != '\0' && len >= needlelenght)
+	i = 0;
+	if (sub[0] == '\0')
+		return ((char *)s);
+	while (s[i] && i < len)
 	{
-		if (!ft_memcmp(haystack, needle, needlelenght))
-			return ((char *)haystack);
-		haystack++;
-		len--;
-	}
-	return (NULL);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int i = 0;
-	if (s == NULL)
-	{
-		return (0);
-	}
-	while (s[i])
-	{
+		j = 0;
+		while (s[i + j] == sub[j] && i + j < len)
+		{
+			if (sub[j + 1] == '\0')
+				return ((char *)(s + i));
+			j++;
+		}
 		i++;
 	}
-	return (i);
+	return (0);
 }

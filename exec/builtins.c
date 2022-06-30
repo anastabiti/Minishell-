@@ -6,163 +6,82 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:09:09 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 10:58:20 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-// else if (ft_strncmp(list->input, "$?", 2) == 0)
-// {
-// 	printf("%d\n", g_status);
-// 	return (1);
-// }
 
-// if(you pass -n you must remove newline )
-// ft_putendl_fd(arg, fd);
-// printf("Minishell: cd: %s: No such file or directory\n", list->blt->cd_path);
-// // mkrim will provide me with FULL path to CD
-// prints out the names and values of the variables in the environment,
-// ft_putendl_fd(pw, fd_out);
-
-int	ft_echo(struct s_list *list, char *arg, int fd)
+int	ft_echo(t_cmdl *list, int fd)
 {
 	int	len;
-
-	if (list->cmd[1] == NULL)
+	len  = 0;
+	if (list[0].args[0] == NULL)
 	{
 		write(fd, "\n", 1);
 		return (0);
 	}
 	else
 	{
-		if (ft_strncmp(list->cmd[1], "$?", 2) == 0)
+		if (ft_strncmp(list[list->cmd_iteration].args[0], "$?", 3) == 0)
 		{
 			printf("%d\n", g_exit_status);
 			return (0);
 		}
-		len = ft_strlen(arg);
-		write(fd, arg, len);
+		len = ft_strlen(list->args[0]);
+		write(fd, list->args[0], len);
 		write(fd, "\n", 1);
 	}
 	return (0);
 }
 
-int	builtcheck(struct s_list *list)
+int	builtcheck(t_cmdl *cmd, struct s_envp *envp)
 {
-	char	*error;
-	int		len;
-	char	*findhome;
-	char	**env;
-
-	if (ft_strncmp(list[0].cmd[0], list->blt->echo, 4) == 0)
+	if (ft_strncmp(cmd[0].cmd, "echo", 5) == 0)
 	{
-		ft_echo(list, list[0].cmd[1], list->fd_out);
+			g_exit_status= 	ft_echo(cmd, cmd->fd_out);
 		return (1);
 	}
-	else if (ft_strncmp(list[0].cmd[0], list->blt->cd, 2) == 0)
+	else if (ft_strncmp(cmd[0].cmd, "cd", 3) == 0)
 	{
-		// findhome = ;
-		env = list->environ;
-		while (*env)
-		{
-			if (ft_strnstr(*env, "HOME=", 5))
-			{
-				findhome = *env;
-				printf("%s\n", findhome);
-			}
-			env++;
-		}
-		if (findhome == NULL)
-		{
-			g_exit_status = 1;
-			error = "Minishell: cd: HOME not set\n";
-			len = ft_strlen(error);
-			write(2, error, len);
-		}
-		// if (list->cmd[2] != NULL)
-		// {
-		// 	printf("Minishell: cd: too many arguments\n");
-		// }
-		if (chdir(list[0].cmd[1]) == -1)
-		{
-			g_exit_status = 1;
-			error = "Minishell: cd: No such file or directory\n";
-			len = ft_strlen(error);
-			write(2, error, len);
-		}
+				g_exit_status = ftcd(cmd, envp);
 		return (1);
 	}
 	return (0);
 }
 
-int	builtcheck_1(struct s_list *list)
-{
-	char	**vr;
-
-	vr = list->environ;
-	if (ft_strncmp(list[0].cmd[0], list->blt->export, 6) == 0)
-	{
-		ft_export(vr);
-		return (1);
-	}
-	else if (ft_strncmp(list[0].cmd[0], list->blt->unset, 5) == 0)
-	{
-		ft_unset(vr);
-		return (1);
-	}
-	return (0);
-}
-
-int	ft_is_built_in(struct s_list *list)
+int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 {
 	int	i;
-	int	exit_value;
 
 	i = 0;
-	if (builtcheck(list) == 1)
+	if (ft_strncmp(cmd[0].cmd, "export", 7) == 0)
 	{
-		return (1);
-	}
-	else if (builtcheck_1(list) == 1)
-	{
-		return (1);
-	}
-	else if (ft_strncmp(list[0].cmd[0], list->blt->env, 3) == 0)
-	{
-		ft_env(list->environ, list);
-		return (1);
-	}
-	else if (ft_strncmp(list[0].cmd[0], list->blt->pwd, 3) == 0)
-	{
-		ft_pwd(list->fd_out);
-		return (1);
-	}
-	else if (ft_strncmp(list[0].cmd[0], "exit", 4) == 0)
-	{
-		if (list->cmd[1] == NULL)
+		if (cmd->args[0] == NULL)
 		{
-			printf("exit\n");
-			exit(g_exit_status);
+			if (ft_export_1(envp, cmd) == 0)
+				return (0);
 		}
-		if (list->cmd[2] == NULL)
+		while (cmd[cmd->cmd_iteration].args[i])
 		{
-			while (list[list->cmd_iteration].cmd[1][i])
-			{
-				if (ft_isdigit(list[list->cmd_iteration].cmd[1][i]) == 0)
-				{
-					printf("exit\n");
-					printf("Minishell: exit: %s: numeric argument required\n",
-							list[list->cmd_iteration].cmd[1]);
-					exit(2); // 				exit(255);
-				}
-				exit_value = ft_atoi(list[list->cmd_iteration].cmd[1]);
-				i++;
-				free(list->input);
-				exit(exit_value);
-			}
+					g_exit_status = ft_export(envp, cmd, i);
+			i++;
 		}
-		printf("exit\n Minishell : exit : too many arguments\n");
-		exit(1);
+		return (1);
+	}
+	else if (ft_strncmp(cmd[0].cmd, "unset", 6) == 0)
+	{
+		i = 0;
+		if (cmd[cmd->cmd_iteration].args[i] == NULL)
+		{
+			return (0);
+		}
+		while (cmd[cmd->cmd_iteration].args[i])
+		{
+				g_exit_status =	ft_unset(envp, cmd, i);
+			i++;
+		}
+		return (1);
 	}
 	return (0);
 }
@@ -173,9 +92,11 @@ int	ft_pwd(int fd_out)
 	char	*pwd;
 	int		len;
 
+	fd_out = 1;
+	len = 0;
 	pwd = getcwd(pw, PATH_MAX);
 	len = ft_strlen(pwd);
 	write(fd_out, pwd, len);
 	write(fd_out, "\n", 1);
-	return (1);
+	return (0);
 }

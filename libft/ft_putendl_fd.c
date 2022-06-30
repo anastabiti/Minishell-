@@ -3,24 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 10:25:53 by atabiti           #+#    #+#             */
-/*   Updated: 2022/05/29 09:47:05 by atabiti          ###   ########.fr       */
+/*   Created: 2021/11/02 10:46:00 by mkarim            #+#    #+#             */
+/*   Updated: 2022/06/27 20:03:03 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 void	ft_putendl_fd(char *s, int fd)
-
 {
-	if (!s)
-		return ;
-	while (*s != '\0')
+	int		i;
+
+	i = 0;
+	if (s)
 	{
-		ft_putchar_fd(*s, fd);
-		s++;
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+		write(fd, "\n", 1);
 	}
-	ft_putchar_fd('\n', fd);
 }

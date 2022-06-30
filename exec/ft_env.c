@@ -6,20 +6,41 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 10:50:22 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:09:13 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/28 10:17:55 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	ft_env(char **env, struct s_list *list)
+t_list	*ft_lstnew(void *content)
 {
-	char	**var;
+	t_list	*new;
 
-	var = env;
-	while (*var != NULL)
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (new);
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}
+
+int	ft_env(struct s_envp *envp, t_cmdl *list)
+{
+	int	i;
+
+	// t_list	*new = malloc(sizeof(t_list	*));
+	// 	new =  ft_lstnew(envp->environment);
+	i = 0;
+	// while (i < envp->envpitems)
+	// {
+	// 	new->content = *envp->environment;
+	// 	ft_putendl_fd(new->content, list->fd_out);
+	// 	envp->environment++;
+	// 	i++;
+	// }
+	while (i < envp->envpitems)
 	{
-		ft_putendl_fd(*var, list->fd_out);
-		var++;
+		ft_putendl_fd(envp->environment[i], 1);
+		i++;
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 15:33:31 by mkarim            #+#    #+#             */
-/*   Updated: 2022/06/17 14:22:00 by mkarim           ###   ########.fr       */
+/*   Updated: 2022/06/25 10:08:12 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static	char	**ft_free(char **p, int n)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char		**p;
 	t_variables	vb;

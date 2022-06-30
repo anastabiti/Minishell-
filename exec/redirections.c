@@ -6,14 +6,15 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:09:31 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/26 10:36:22 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include "parse.h"
 
 
-int	redirections(struct s_list *list)
+int	redirections(t_cmdl *list)
 {
 	int i = 0;
 	int input;
@@ -53,26 +54,7 @@ int	redirections(struct s_list *list)
 	}
 	return (0);
 }
-int	is_builtin(struct s_list *list, int i)
-{
-	if (list[i].cmd[i] == NULL)
-		return (0);
-	if (ft_strncmp(list[i].cmd[i], "cd", 2) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "pwd", 3) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "echo", 4) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "env", 3) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "exit", 4) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "unset", 5) == 0)
-		return (0);
-	else if (ft_strncmp(list[i].cmd[i], "export", 6) == 0)
-		return (0);
-	return (3);
-}
+
 // not mine is from a course i use it to accelerate work
 
 int	prompt_and_parse(char **upstream, char **downstream, char *line)

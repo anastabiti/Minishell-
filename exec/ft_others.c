@@ -6,102 +6,89 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:24:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:10:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/06/29 11:40:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-comments 
-	while (!(ft_strnstr(list->environ[x], "PATH=", lenght))) // search for PATH=
-	new = ft_split(list->environ[x], ':'); // split PATH= to seperate paths
-	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
-	// remove PATH= from start of the sring
-	// current = ft_strjoin(current, "/");
-	// current = ft_strjoin(current, list[list->cmd_iteration].cmd[0]);
-	// i = 0;
-	// while (new[i])
-	// {
-	// 	printf("%s\n", new[i]);
-	// 	i++;
-	// }
-		bin = ft_strjoin(new[i], "/"); // add
-			/ to path in order to execute binaries
-char	*last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
-		if (access(last, F_OK) == 0)
-		// check each PATH to find the right binaries to run them
-		{
-			// char *cmd[] = {list[list->cmd_iteration].cmd[0], NULL};
-			if (execve(last, list[list->cmd_iteration].cmd, list->environ) ==
-				-1)
-				write(2, "exeve failed\n", 14);
-			exit(1);
-		}
+int	cmd_args_len(t_cmdl *list)
+{
+	int	len;
 
-		// else if (access(current, F_OK) == 0)
-			// check each PATH to find the right binaries to run them
-		// {
+	len = 0;
+	while (list[list->cmd_iteration].args[len] != NULL)
+	{
+		len++;
+	}
+	return (len);
+}
 
-		// 	char *cmd[] = {list[list->cmd_iteration].cmd[0], NULL};
-		// 	if (execve(current, cmd, list->environ) == -1)
-		// 		write(2, "exeve failed\n", 14);
-		
-		// }
-*/
+char	**create_argv_for_execve(t_cmdl *list)
+{
+	int	len;
+	int	i;
 
-int	ft_bin_usr_sbin(struct s_list *list)
+	len = 0;
+		i = 0;
+
+	len = cmd_args_len(list);
+	if(len == 0)
+	{
+			list->args_execve = malloc(sizeof(char **) * 2);
+
+				list->args_execve[0] = list[list->cmd_iteration].cmd;
+
+		list->args_execve[1] = NULL;
+	return (list->args_execve);
+	}
+	list->args_execve = malloc(sizeof(char **) * len + 1);
+	while (i < len)
+	{
+		list->args_execve[0] = list[list->cmd_iteration].cmd;
+		list->args_execve[i + 1] = list[list->cmd_iteration].args[i];
+		i++;
+	}
+	list->args_execve[i + 1] = NULL;
+	return (list->args_execve);
+}
+
+int	ft_check_programs(t_cmdl *list, struct s_envp *envp)
+{
+	char	**argv;
+
+	if (list[list->cmd_iteration].cmd[0] == '.'
+		&& list[list->cmd_iteration].cmd[1] == '/')
+	{
+		argv = create_argv_for_execve(list);
+		execve(list[list->cmd_iteration].cmd, argv, envp->environment);
+		printf("Minishell : %s : No such file or directory\n",
+			list[list->cmd_iteration].cmd);
+		exit(127);
+	}
+	if (list[list->cmd_iteration].cmd[0] == '/')
+	{
+		argv = create_argv_for_execve(list);
+		execve(list[list->cmd_iteration].cmd, argv, envp->environment);
+		printf("Minishell : %s : No such  file or directory\n",
+			list[list->cmd_iteration].cmd);
+		exit(127);
+	}
+	return (0);
+}
+
+int	ft_bin_usr_sbin(t_cmdl *list, struct s_envp *envp)
 {
 	char	*bin;
-	char	*current;
 	int		i;
-	char	**new;
-	char	pw[PATH_MAX];
-	int		x;
-	int		lenght;
-	int		r;
 	char	*last;
+	i = 0;
+	ft_check_programs(list, envp);
+	ftcheck_nopath(list, envp);
 
-	x = 0;
-	current = getcwd(pw, PATH_MAX);
-	lenght = ft_strlen("PATH=");
-	while (!(ft_strnstr(list->environ[x], "PATH=", lenght)))
-	{
-		x++;
-		if (list->environ[x] == NULL)
-			return (0);
-	}
-	new = ft_split(list->environ[x], ':');
-	i = 0;
-	r = ft_strlen(new[0]);
-	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
-	{
-		while (i < r)
-		{
-			new[0][i] = new[0][i + 5];
-			i++;
-		}
-	}
-	new[i] = NULL;
-	i = 0;
-	bin = ft_strjoin(new[i], "/");
-	while (new[i])
-	{
-		last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
-		if (access(last, F_OK) == 0)
-		{
-			if (execve(last, list[list->cmd_iteration].cmd, list->environ) ==
-				-1)
-				write(2, "exeve failed\n", 14);
-			exit(1);
-		}
-		else
-		{
-			bin = ft_strjoin(new[i], "/");
-			last = ft_strjoin(bin, list[list->cmd_iteration].cmd[0]);
-			i++;
-		}
-	}
+	bin = ft_strjoin(list->new[i], "/");
+	looping_through_split_path(list, i, bin, last, envp);
 	write(2, "MINISHELL command not found\n", 28);
+	// g_exit_status = 127;
 	exit(127);
 }

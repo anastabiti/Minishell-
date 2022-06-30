@@ -3,44 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkarim <mkarim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 10:05:13 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/22 09:07:53 by atabiti          ###   ########.fr       */
+/*   Created: 2021/11/02 11:42:53 by mkarim            #+#    #+#             */
+/*   Updated: 2022/06/27 20:03:11 by mkarim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
-		return ;
-	while (*s != '\0')
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
-}
+	int		i;
 
-int	ft_search(char *s, char *c, int lenght)
-{
-	int	i;
-
-	i = 1;
-	while (i < lenght)
+	i = 0;
+	if (s)
 	{
-		if (s[i] == c[i])
+		while (s[i])
 		{
+			write(fd, &s[i], 1);
 			i++;
-			if (i == lenght)
-			{
-				return (1);
-			}
 		}
-		else
-			return (0);
 	}
-	return (0);
 }
