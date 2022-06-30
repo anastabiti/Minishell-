@@ -35,19 +35,20 @@ typedef struct s_variables
 
 /* ----------- END STRUCT FOR SPLIT ----------- */
 
-typedef struct s_cmdl {
-	int				pipe;
-	char			*c;
-	char			*f;
-	struct s_cmdl	*next;
-}		t_cmdl;
+typedef struct s_data {
+	char	*cmd_line;
+	int		num_cmd;
+}		t_data;
 
+size_t	ft_strlen(char *s);
+void	ft_putstr(char *s);
+void	ft_putendl(char *s);
 char	**ft_split(char const *s, char c);
 int		is_white_space(char c);
 int		ft_is_alpha(char c);
 char    *rm_spaces(char *s);
 int		check_valid(char *s);
 void	ft_pass_cmd();
-int	check_err_pipe(char *s);
+int		check_err_pipe(char *s);
 
 #endif
