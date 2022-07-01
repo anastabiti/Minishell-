@@ -23,8 +23,8 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	char	**value;
 	int		len;
 
-	name = malloc(sizeof(char **) * envp->envpitems);
-	value = malloc(sizeof(char **) * envp->envpitems);
+	name = malloc(sizeof(char **) * envp->envpitems + 1);
+	value = malloc(sizeof(char **) * envp->envpitems + 1);
 	i = 0;
 	x = 0;
 	len = 0;
@@ -43,50 +43,42 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	envp->name = name;
 	return (0);
 }
-void	ft_copy_1st_env(struct s_envp *envp, char **env)
-{
-	char **new;
-	char *nbb;
-	int len;
 
-	int x = 0;
+int	ft_copy_1st_env(struct s_envp *envp, char **env)
+{
+	char	**new;
+	char	*nbb;
+	int		len;
+	char	*joined;
+	int		x;
+	int		nb;
+
+	x = 0;
 	len = 0;
 	while (env[len])
 	{
 		len++;
 	}
 	envp->envpitems = len;
-
 	ft_split_env(envp, env);
 	new = malloc(sizeof(char **) * (len + 1));
 	x = 0;
 	while (x < envp->envpitems)
 	{
-		int nb = 0;
+		nb = 0;
 		if (ft_strncmp(envp->name[x], "SHLVL", 6) == 0)
 		{
 			nb = ft_atoi(envp->value[x]);
 			nbb = ft_itoa(nb + 1);
-			char *joined = ft_strjoin("SHLVL=", nbb);
-
+			joined = ft_strjoin("SHLVL=", nbb);
 			new[x] = joined;
-									printf(" in pos  = %d nb = %d  and itoa = %s joined = %s \n new value is %s  ", x, nb, nbb, joined,	new[x] );
-
-			// free(nbb);
-			// free(joined);
+			free(nbb);
 			x++;
 		}
-		// if (x == envp->envpitems)
-		// {
-		// 	new[x] = "SHLVL=1";
-		// }
 		new[x] = env[x];
-
 		x++;
 	}
-
 	envp->environment = new;
-
-	// return (envp);
-	// free(nbb);
+		ft_split_env(envp, envp->environment);
+	return (0);
 }

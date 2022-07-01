@@ -160,7 +160,7 @@ char						**create_argv_for_execve(t_cmdl *list);
 int							ft_check_programs(t_cmdl *list,
 								struct s_envp *envp);
 //env
-void						ft_copy_1st_env(struct s_envp *envp, char **env);
+int						ft_copy_1st_env(struct s_envp *envp, char **env);
 // LIBFT
 int							ft_isalpha(int c);
 int							ft_isalnum(int c);
