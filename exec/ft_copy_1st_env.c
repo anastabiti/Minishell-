@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_copy_1st_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/30 16:11:13 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:25:56 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	ft_split_env(struct s_envp *envp, char **env)
 {
 	int		i;
 	int		x;
-	char	**split;
-	char	*join;
 	char	**name;
 	char	**value;
 	int		len;
@@ -44,24 +42,28 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	return (0);
 }
 
-int	ft_copy_1st_env(struct s_envp *envp, char **env)
+int	ft_strlenenv(struct s_envp *envp, char **env)
 {
-	char	**new;
-	char	*nbb;
-	int		len;
-	char	*joined;
-	int		x;
-	int		nb;
+	int	len;
 
-	x = 0;
 	len = 0;
 	while (env[len])
 	{
 		len++;
 	}
 	envp->envpitems = len;
+	printf("   %d  item \n\n", envp->envpitems);
 	ft_split_env(envp, env);
-	new = malloc(sizeof(char **) * (len + 1));
+	return (0);
+}
+
+int	ft_copy_env(struct s_envp *envp, char **env, char **new)
+{
+	char	*joined;
+	char	*nbb;
+	int		x;
+	int		nb;
+
 	x = 0;
 	while (x < envp->envpitems)
 	{
@@ -79,6 +81,16 @@ int	ft_copy_1st_env(struct s_envp *envp, char **env)
 		x++;
 	}
 	envp->environment = new;
-		ft_split_env(envp, envp->environment);
+	return (0);
+}
+
+int	ft_copy_1st_env(struct s_envp *envp, char **env)
+{
+	char	**new;
+
+	ft_strlenenv(envp, env);
+	new = malloc(sizeof(char **) * (envp->envpitems + 1));
+	ft_copy_env(envp, env, new);
+	ft_split_env(envp, envp->environment);
 	return (0);
 }

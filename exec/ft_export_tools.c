@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:26:32 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/30 16:32:39 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:32:25 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ char	**join_name_and_value(struct s_envp *envp, t_cmdl *cmd)
 	char	*tmp1;
 
 	i = 0;
-	joined = malloc(sizeof(char **) * envp->envpitems);
+	joined = malloc(sizeof(char **) * envp->envpitems );
 	i = 0;
 	while (i < envp->envpitems)
 	{
 		tmp1 = ft_strjoin(envp->name[i], "=\"");
 		joined[i] = ft_strjoin(tmp1, envp->value[i]);
-		free(tmp1);
+		// free(tmp1);
 		i++;
 	}
 	return (joined);
@@ -51,7 +51,7 @@ char	**ft_sort_env(struct s_envp *envp, t_cmdl *cmd)
 				tmp = joined[i];
 				joined[i] = joined[j];
 				joined[j] = tmp;
-				free(tmp);
+				// free(tmp);
 			}
 			j++;
 		}
@@ -78,7 +78,7 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 		i++;
 	}
 	
-	free2d(joined);
+	// free2d(joined);
 	return (0);
 }
 

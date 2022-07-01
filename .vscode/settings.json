@@ -18,6 +18,7 @@
         "system_error": "c",
         "tuple": "c",
         "type_traits": "c",
-        "vector": "c"
+        "vector": "c",
+        "minishell.h": "c"
     }
 }

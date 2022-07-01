@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/06/30 20:51:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:43:16 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	modify_name(struct s_envp *envp, t_cmdl *cmd, char **split, int i)
 	{
 		if (ft_strncmp(envp->name[x], split[0], ft_strlen(split[0]) + 1) == 0)
 		{
-			// if (split[1])
 			while (cmd[cmd->cmd_iteration].args[i][t])
 			{
 				if (cmd[cmd->cmd_iteration].args[i][t] == '=')
@@ -62,10 +61,9 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 		new[t] = envp->environment[t];
 		t++;
 	}
-	x = x + 1;
-	new[t] = cmd[0].args[i];
+	new[t] = cmd[cmd->cmd_iteration].args[i];
 	envp->envpitems++;
 	envp->environment = new;
-	ft_split_env(envp, envp->environment);
+	// ft_split_env(envp, envp->environment);
 	return (0);
 }
