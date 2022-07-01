@@ -63,22 +63,23 @@ void	ft_copy_1st_env(struct s_envp *envp, char **env)
 	while (x < envp->envpitems)
 	{
 		int nb = 0;
-		if (ft_strncmp(envp->name[x], "SHLVL", 5) == 0)
+		if (ft_strncmp(envp->name[x], "SHLVL", 6) == 0)
 		{
-			printf("%s\n", envp->value[x]);
-
 			nb = ft_atoi(envp->value[x]);
 			nbb = ft_itoa(nb + 1);
 			char *joined = ft_strjoin("SHLVL=", nbb);
+
 			new[x] = joined;
-			free(nbb);
-			free(joined);
+									printf(" in pos  = %d nb = %d  and itoa = %s joined = %s \n new value is %s  ", x, nb, nbb, joined,	new[x] );
+
+			// free(nbb);
+			// free(joined);
 			x++;
 		}
-		if (x == envp->envpitems)
-		{
-			new[x] = "SHLVL=1";
-		}
+		// if (x == envp->envpitems)
+		// {
+		// 	new[x] = "SHLVL=1";
+		// }
 		new[x] = env[x];
 
 		x++;
