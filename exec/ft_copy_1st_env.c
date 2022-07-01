@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 10:30:00 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 11:30:41 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_split_env(struct s_envp *envp, char **env)
 		{
 			x++;
 		}
-		name[i] = ft_substr(env[i], len, x);
+		name[i] = ft_substr(env[i], 0, x);
 		value[i] = ft_substr(env[i], x + 1, ft_strlen(env[i]) - x);
 		x = 0;
 		i++;

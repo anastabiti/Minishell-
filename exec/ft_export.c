@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 11:03:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 11:37:51 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,21 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 	int		t;
 	char	**new;
 	char	**split;
-
-	int	len;
+	int		len;
 
 	len = 0;
-	while ( envp->environment[len])
-	{
-		len++;
-	}
-	envp->envpitems = len;
-	
+	// while (envp->environment[len] != NULL)
+	// {
+	// 	len++;
+	// }
+	// envp->envpitems = len;
+	if(cmd[0].args[i][0] == '=')
+		{
+				printf("Minishell: export: `%s': not a valid identifier\n",
+				cmd[cmd->cmd_iteration].args[i]);
+			return 1;
+		}
 	new = malloc(sizeof(char **) * (envp->envpitems + 2));
-
 	split = ft_split(cmd[0].args[i], '=');
 	if (check_name_is_valid(split, i, cmd) == 1)
 		return (1);

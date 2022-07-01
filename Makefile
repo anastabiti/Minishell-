@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/07/01 09:06:48 by atabiti          ###   ########.fr        #
+#    Updated: 2022/07/01 11:15:25 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	gcc   $(CFLAGS)  $(OBJ)  -o $(NAME)   -lreadline -L /Users/$(USER)/goinfre/.brew/opt/readline/lib -I /Users/$(USER)/goinfre/.brew/opt/readline/include
+	gcc   -g $(CFLAGS)  $(OBJ)  -o $(NAME)   -lreadline -L /Users/$(USER)/goinfre/.brew/opt/readline/lib -I /Users/$(USER)/goinfre/.brew/opt/readline/include
 	
 clean :
 		cd ./exec; \
