@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:06:47 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 11:02:07 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ char	**ft_sort_env(struct s_envp *envp, t_cmdl *cmd);
 int	ft_export_1(struct s_envp *envp, t_cmdl *cmd);
 int	check_name_is_valid(char **split, int i, t_cmdl *cmd);
 int	modify_name(struct s_envp *envp, t_cmdl *cmd, char **split, int i);
+int	ft_equal_sign(struct s_envp *envp, t_cmdl *list, int arg);
 //free
 int free2d(char **s);
 /* ---------- START LIBFT FUNCTIONS ---------- */

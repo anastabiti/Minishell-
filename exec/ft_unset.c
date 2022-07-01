@@ -6,11 +6,29 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:15:57 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:06:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 11:05:20 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	ft_equal_sign(struct s_envp *envp, t_cmdl *list, int arg)
+{
+	int	i;
+
+	i = 0;
+	while (list[list->cmd_iteration].args[arg][i])
+	{
+		if (list[list->cmd_iteration].args[arg][i] == '=')
+		{
+			printf("Minishell: unset: `%s': not a valid identifier\n",
+					list[list->cmd_iteration].args[arg]);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
 int	ft_search_for_variable_in_env(struct s_envp *envp, t_cmdl *list, int arg)
 {
 	int	lenght;
