@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:25:56 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:55:25 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	char	**value;
 	int		len;
 
-	name = malloc(sizeof(char **) * envp->envpitems + 1);
+	name = malloc(sizeof(char **) * envp->envpitems  + 1);
 	value = malloc(sizeof(char **) * envp->envpitems + 1);
 	i = 0;
 	x = 0;
@@ -52,7 +52,6 @@ int	ft_strlenenv(struct s_envp *envp, char **env)
 		len++;
 	}
 	envp->envpitems = len;
-	printf("   %d  item \n\n", envp->envpitems);
 	ft_split_env(envp, env);
 	return (0);
 }
@@ -89,8 +88,7 @@ int	ft_copy_1st_env(struct s_envp *envp, char **env)
 	char	**new;
 
 	ft_strlenenv(envp, env);
-	new = malloc(sizeof(char **) * (envp->envpitems + 1));
+	new = malloc(sizeof(char **) * (envp->envpitems ));
 	ft_copy_env(envp, env, new);
-	ft_split_env(envp, envp->environment);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:43:16 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:52:26 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 	new[t] = cmd[cmd->cmd_iteration].args[i];
 	envp->envpitems++;
 	envp->environment = new;
-	// ft_split_env(envp, envp->environment);
+	ft_split_env(envp, envp->environment);
 	return (0);
 }

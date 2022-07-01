@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:26:32 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:32:25 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:55:07 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**join_name_and_value(struct s_envp *envp, t_cmdl *cmd)
 	char	*tmp1;
 
 	i = 0;
-	joined = malloc(sizeof(char **) * envp->envpitems );
+	joined = malloc(sizeof(char **) * envp->envpitems + 1);
 	i = 0;
 	while (i < envp->envpitems)
 	{

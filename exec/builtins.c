@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:11:00 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 09:51:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	builtcheck_1(t_cmdl *cmd, struct s_envp *envp)
 			if (ft_export_1(envp, cmd) == 0)
 				return (0);
 		}
-		while (cmd[cmd->cmd_iteration].args[i])
+		while (cmd[cmd->cmd_iteration].args[i] != NULL)
 		{
 			g_exit_status = ft_export(envp, cmd, i);
 			i++;
