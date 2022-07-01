@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 11:04:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 18:47:33 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	ft_echo(t_cmdl *list, int fd)
 {
 	int	len;
+	int	i;
 
+	i = 0;
 	len = 0;
 	if (list[0].args[0] == NULL)
 	{
@@ -24,13 +26,17 @@ int	ft_echo(t_cmdl *list, int fd)
 	}
 	else
 	{
-		if (ft_strncmp(list[list->cmd_iteration].args[0], "$?", 3) == 0)
+		while (list[list->cmd_iteration].args[i] != NULL)
 		{
-			printf("%d\n", g_exit_status);
-			return (0);
+			if (ft_strncmp(list[list->cmd_iteration].args[i], "$?", 2) == 0)
+			{
+				printf(" %d \n", g_exit_status);
+			}
+			len = ft_strlen(list->args[i]);
+			write(fd, " ", 1);
+			write(fd, list->args[i], len);
+			i++;
 		}
-		len = ft_strlen(list->args[0]);
-		write(fd, list->args[0], len);
 		write(fd, "\n", 1);
 	}
 	return (0);

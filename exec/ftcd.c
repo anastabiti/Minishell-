@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ftcd.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:37:52 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:06:39 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 19:11:57 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	check_home_inenv(t_cmdl *cmd, char *findhome, char *error)
 	len = 0;
 	if (findhome == NULL)
 	{
+		
 		g_exit_status = 1;
 		error = "Minishell: cd: HOME not set\n";
 		len = ft_strlen(error);
@@ -33,7 +34,7 @@ int	cd_last_check(t_cmdl *cmd, char *error)
 	int	len;
 
 	len = 0;
-	if (chdir(cmd[0].args[0]) == -1)
+	if (chdir(cmd[cmd->cmd_iteration].args[0]) == -1)
 	{
 		g_exit_status = 1;
 		error = "Minishell: cd: No such file or directory\n";
@@ -49,12 +50,13 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 	int	x;
 
 	x = 0;
+			cmd->findhome = NULL;
+
 	while (x < envp->envpitems)
 	{
-		cmd->findhome = NULL;
-		if (ft_strnstr(envp->environment[x], "HOME=", 5))
+		if (ft_strncmp(envp->value[x], "HOME", 5))
 		{
-			cmd->findhome = envp->environment[x];
+			cmd->findhome = envp->value[x];
 			break ;
 			// 	return (0);
 		}
@@ -65,6 +67,7 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 		if (check_home_inenv(cmd, cmd->findhome, cmd->error) == 1)
 			return (1);
 	}
+	
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
 		cmd->split = ft_split(cmd->findhome, '=');

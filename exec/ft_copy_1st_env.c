@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_copy_1st_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 11:30:41 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 19:13:34 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	ft_copy_1st_env(struct s_envp *envp, char **env)
 	{
 		len++;
 	}
+	printf("%d len \n", len);
 	envp->envpitems = len;
 	ft_strlenenv(envp, env);
 	ft_copy_env(envp, env);

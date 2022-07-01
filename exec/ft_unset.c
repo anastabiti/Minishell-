@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:15:57 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 11:05:20 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/01 19:00:43 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	ft_unset(struct s_envp *envp, t_cmdl *list, int arg)
 			x++;
 		}
 		envp->environment = new;
+		ft_split_env(envp, envp->environment);
 		return (0);
 	}
 	else
