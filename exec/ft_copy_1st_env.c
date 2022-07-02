@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_copy_1st_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 19:13:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 10:12:39 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	char	**value;
 	int		len;
 
-	name = malloc(sizeof(char **) * envp->envpitems + 1);
-	value = malloc(sizeof(char **) * envp->envpitems + 1);
+	envp->name = malloc(sizeof(char **) * envp->envpitems + 1);
+	envp->value = malloc(sizeof(char **) * envp->envpitems + 1);
 	i = 0;
 	x = 0;
 	len = 0;
@@ -32,19 +32,31 @@ int	ft_split_env(struct s_envp *envp, char **env)
 		{
 			x++;
 		}
-		name[i] = ft_substr(env[i], 0, x);
-		value[i] = ft_substr(env[i], x + 1, ft_strlen(env[i]) - x);
+		envp->name[i] = ft_substr(env[i], 0, x);
+		envp->value[i] = ft_substr(env[i], x + 1, ft_strlen(env[i]) - x);
+
+
 		x = 0;
 		i++;
 	}
-	envp->value = value;
-	envp->name = name;
+	// envp->value = value;
+	// envp->name = name;
+						printf("name %s \n value %s\n" , envp->name[i], envp->value[i]);
+
 	return (0);
 }
 
 int	ft_strlenenv(struct s_envp *envp, char **env)
 {
-	
+	int	len;
+
+	len = 0;
+	while (env[len])
+	{
+		len++;
+	}
+	printf("%d len \n", len);
+	envp->envpitems = len;
 	ft_split_env(envp, env);
 	return (0);
 }
@@ -80,16 +92,8 @@ int	ft_copy_env(struct s_envp *envp, char **env)
 
 int	ft_copy_1st_env(struct s_envp *envp, char **env)
 {
-	int	len;
-
-	len = 0;
-	while (env[len])
-	{
-		len++;
-	}
-	printf("%d len \n", len);
-	envp->envpitems = len;
+	
 	ft_strlenenv(envp, env);
-	ft_copy_env(envp, env);
+	// ft_copy_env(envp, env);
 	return (0);
 }

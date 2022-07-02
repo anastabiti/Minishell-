@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/02 09:47:00 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 09:55:22 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 		return (1);
 	}
 	x = 0;
-	new = malloc(sizeof(char **) * (envp->envpitems + 1));
+	new = malloc(sizeof(char **) * (envp->envpitems + 2));
 	while (cmd[cmd->cmd_iteration].args[i][x])
 	{
 		if (cmd[cmd->cmd_iteration].args[i][x] == '=')
@@ -100,7 +100,7 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 		new[t] = envp->environment[t];
 		t++;
 	}
-	new[t] = cmd[cmd->cmd_iteration].args[i];
+	new[t] =split[0];
 	envp->envpitems++;
 	envp->environment = new;
 	ft_split_env(envp, envp->environment);
