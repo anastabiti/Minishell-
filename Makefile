@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/07/02 08:51:23 by atabiti          ###   ########.fr        #
+#    Updated: 2022/07/02 11:22:00 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	gcc   -g $(CFLAGS)  $(OBJ)  -o $(NAME)   -lreadline -L /Users/$(USER)/.brew/Cellar/readline/8.1.2/lib -I /Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+	gcc   $(CFLAGS)  $(OBJ)  -o $(NAME)   -lreadline -L /Users/$(USER)/.brew/Cellar/readline/8.1.2/lib -I /Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 clean :
 		cd ./exec; \

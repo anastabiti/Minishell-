@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/02 08:49:18 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 11:39:33 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ struct						s_envp
 	int						envpitems;
 	char **name;
 	char **value;
+	char **copy;
 };
 typedef struct t_list
 {

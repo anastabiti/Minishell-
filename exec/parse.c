@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/07/02 10:04:02 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 11:38:24 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main(int argc, char **argv, char **env)
 	int i;
 	int pipe = 1;
 	struct						s_envp * envp;
-	envp = malloc(sizeof(	struct						s_envp * ) * 1);
-	envp->envpitems= 0 ;
+	envp = malloc(sizeof(	struct	s_envp * ) * 1);
+	// envp->envpitems= 0 ;
  ft_copy_1st_env(envp, env);
 		
 		while (1)
@@ -133,19 +133,19 @@ int main(int argc, char **argv, char **env)
 			// i++;
 			// }
 		
-			// cmd->cmd_iteration = 0;
-			// if (cmd->cmd_nbr == 1)
-			// {
-			// 	// heredoc_without_cmd(cmd);
+			cmd->cmd_iteration = 0;
+			if (cmd->cmd_nbr == 1)
+			{
+				// heredoc_without_cmd(cmd);
 
-			// 	one_cmd(cmd, envp);
-			// }
-			// else if(cmd->cmd_nbr > 1)
-			// {
-			// 	//problem wc  | ls ? in bash ls is printing first and problem in  wc | ls when unset the PATH it must shot 2 errors not one
-			// 	// grep 1337 exec/*.c problem
-			// 	ft_pipe(cmd, envp);
-			// }
+				one_cmd(cmd, envp);
+			}
+			else if(cmd->cmd_nbr > 1)
+			{
+				//problem wc  | ls ? in bash ls is printing first and problem in  wc | ls when unset the PATH it must shot 2 errors not one
+				// grep 1337 exec/*.c problem
+				ft_pipe(cmd, envp);
+			}
 		// }
 		free(line);
 	}
