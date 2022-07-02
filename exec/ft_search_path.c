@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_search_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 09:58:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:06:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 17:57:55 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_search_for_path(t_cmdl *list,  struct s_envp *envp)
 
 	x = 0;
 	
-	while (!(ft_strnstr(envp->environment[x], "PATH=", ft_strlen("PATH="))))
+	while (!(ft_strncmp(envp->name[x], "PATH", ft_strlen("PATH") + 1)))
 	{
 		x++;
 		// if (envp->environment[x] == NULL)
@@ -73,6 +73,7 @@ void	looping_through_split_path(t_cmdl *list, int i, char *bin, char *last, stru
 			i++;
 		}
 	}
+	
 }
 
 int	ft_search(char *s, char *c, int lenght)

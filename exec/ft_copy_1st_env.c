@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_copy_1st_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/02 12:00:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 18:02:13 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	ft_split_env(struct s_envp *envp, char **env)
 		x = 0;
 		i++;
 	}
-	name[i] = NULL;
-	value[i] = NULL;
+	// name[i] = NULL;
+	// value[i] = NULL;
 	envp->value = value;
 	envp->name = name;
 	return (0);

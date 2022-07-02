@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:06:50 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 18:47:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 18:08:58 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ int	ft_echo(t_cmdl *list, int fd)
 				printf(" %d \n", g_exit_status);
 			}
 			len = ft_strlen(list->args[i]);
-			write(fd, " ", 1);
-			write(fd, list->args[i], len);
+			write(1, " ", 1);
+			write(1, list->args[i], len);
 			i++;
 		}
-		write(fd, "\n", 1);
+		write(1, "\n", 1);
+				return (0);
+
 	}
 	return (0);
 }
