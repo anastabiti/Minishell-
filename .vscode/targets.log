@@ -1,176 +1,150 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.3
- 
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2020 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
 
-# Make data base, printed on Fri Jul  1 21:00:16 2022
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Sat Jul  2 08:51:36 2022
 
 # Variables
 
-# makefile (from 'Makefile', line 45)
-OBJ = $(SRC:.c=.o)
-# environment
-LC_ALL = C
-# makefile (from 'Makefile', line 16)
-SRC = ./exec/builtins.c ./exec/ft_env.c ./exec/tools.c ./exec/redirections.c ./libft/ft_strnstr.c ./exec/ft_unset.c ./exec/ft_export.c ./exec/ft_others.c ./exec/ft_readline.c ./exec/ft_init.c ./libft/ft_putchar_fd.c ./libft/ft_putstr_fd.c ./libft/ft_putendl_fd.c ./exec/ftpipe.c ./exec//libft.c ./exec/ft_one_command.c ./exec/ft_multi_cmds.c ./libft/ft_strdup.c ./exec/ft_here_doc.c ./exec/ft_split.c ./exec/parse.c ./exec/utils.c ./exec/ft_search_path.c ./exec/is_builtin.c ./exec/ft_exit.c ./exec/ftcd.c ./exec/ft_copy_1st_env.c ./exec/ft_export_tools.c 
-# environment
-PULSE_SERVER = /mnt/wslg/PulseServer
-# makefile (from 'Makefile', line 14)
-CFALGS = -Wall -Werorr -Wextra 
-# environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
-# environment
-VSCODE_CWD = /mnt/c/Users/asus/AppData/Local/Programs/Microsoft VS Code
-# environment
-LESS_TERMCAP_me = [0m
-# default
-MAKE_COMMAND := make
-# environment
-VSCODE_HANDLES_SIGPIPE = true
-# automatic
-@D = $(patsubst %/,%,$(dir $@))
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# default
-.VARIABLES := 
-# environment
-PWD = /mnt/s/01.07
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-VSCODE_LOG_STACK = false
-# automatic
-%F = $(notdir $%)
-# environment
-LANG = C
-# environment
-XAUTHORITY = /home/asus/.Xauthority
-# default
-.LOADED := 
-# environment
-LESS_TERMCAP_md = [1;36m
-# default
-.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
-# makefile
-MAKEFLAGS = pqrR
-# environment
-LESS_TERMCAP_so = [01;33m
-# makefile
-CURDIR := /mnt/s/01.07
-# environment
-VSCODE_PIPE_LOGGING = true
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# environment
-LESS_TERMCAP_ue = [0m
-# environment
-MFLAGS = -pqrR
-# default
-.SHELLFLAGS := -c
-# environment
-WAYLAND_DISPLAY = wayland-0
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST := Makefile
-# automatic
-@F = $(notdir $@)
-# environment
-VSCODE_VERBOSE_LOGGING = true
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
-# automatic
-*F = $(notdir $*)
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
-# environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
-# makefile
-SHELL = /bin/sh
-# environment
-LESS_TERMCAP_us = [1;32m
-# default
-MAKECMDGOALS := all
-# environment
-SHLVL = 0
-# environment
-MAKELEVEL := 0
-# default
-MAKE = $(MAKE_COMMAND)
-# environment
-PATH = /home/asus/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/home/asus/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Users/asus/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/asus/AppData/Local/Programs/Microsoft VS Code/bin
-# environment
-LESS_TERMCAP_se = [0m
-# default
-MAKEFILES := 
 # automatic
-^F = $(notdir $^)
-# environment
-LESS_TERMCAP_mb = [1;31m
+ 
+?F = $(notdir $?)
+# makefile (from `Makefile', line 45)
+OBJ = $(SRC:.c=.o)
+# makefile (from `Makefile', line 16)
+SRC = ./exec/builtins.c ./exec/ft_env.c ./exec/tools.c ./exec/redirections.c ./libft/ft_strnstr.c ./exec/ft_unset.c ./exec/ft_export.c ./exec/ft_others.c ./exec/ft_readline.c ./exec/ft_init.c ./libft/ft_putchar_fd.c ./libft/ft_putstr_fd.c ./libft/ft_putendl_fd.c ./exec/ftpipe.c ./exec//libft.c ./exec/ft_one_command.c ./exec/ft_multi_cmds.c ./libft/ft_strdup.c ./exec/ft_here_doc.c ./exec/ft_split.c ./exec/parse.c ./exec/utils.c ./exec/ft_search_path.c ./exec/is_builtin.c ./exec/ft_exit.c ./exec/ftcd.c ./exec/ft_copy_1st_env.c ./exec/ft_export_tools.c 
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
-?F = $(notdir $?)
-# makefile (from 'Makefile', line 13)
-NAME = minishell
-# environment
-HOSTTYPE = x86_64
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36::ow=30;44:
+?D = $(patsubst %/,%,$(dir $?))
 # automatic
-+F = $(notdir $+)
-# environment
-WSL_INTEROP = /run/WSL/11_interop
-# 'override' directive
-GNUMAKEFLAGS := 
-# environment
-LOGNAME = asus
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/asus/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
 # makefile
-.DEFAULT_GOAL := all
+CURDIR := /Users/atabiti/Desktop/Minishell-
+# makefile
+SHELL = /bin/sh
 # environment
-DISPLAY = :0
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-USER = asus
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cc8c003323/T/vscode-ipc-a23ccd24-9d5b-4812-8e1f-e36bec4ab274.sock
+# environment
+VSCODE_CWD = /
+# environment
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.GzCIMZ3S1D/Render
+# environment
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
 # default
-MAKE_VERSION := 4.3
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.vhG0LuK257/Listeners
+# automatic
+%F = $(notdir $%)
 # environment
-_ = /home/asus/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
+VSCODE_PIPE_LOGGING = true
 # environment
-XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
+PWD = /Users/atabiti/Desktop/Minishell-
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-3828fc58-6493-4fac-b7c6-1b47aff93596.sock
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# makefile (from `Makefile', line 14)
+CFALGS = -Wall -Werorr -Wextra 
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/asus
-# environment
-TERM = xterm-256color
+HOME = /Users/atabiti
 # default
-.RECIPEPREFIX := 
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/atabiti/Library/Application Support/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
+# environment
+LOGNAME = atabiti
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = atabiti
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 13)
+NAME = minishell
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cc8c003323/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/atabiti/Library/Application Support/Code/1.67.0-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = com.microsoft.VSCode.2440
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x18C43:0:0
+# default
+MAKEFILES := 
 # automatic
 <F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
 # default
 SUFFIXES := 
-# environment
-WSL_DISTRO_NAME = kali-linux
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 40231
 # variable set hash-table stats:
-# Load=79/1024=8%, Rehash=0, Collisions=10/114=9%
+# Load=65/1024=6%, Rehash=0, Collisions=3/93=3%
 
 # Pattern-specific Variable Values
 
@@ -178,7 +152,7 @@ WSL_DISTRO_NAME = kali-linux
 
 # Directories
 
-# . (device 66, inode 48132221017525886): 16 files, no impossibilities.
+# . (device 16777223, inode 12888987408): 16 files, no impossibilities.
 
 # 16 files, no impossibilities in 1 directories.
 
@@ -189,156 +163,192 @@ WSL_DISTRO_NAME = kali-linux
 # Files
 
 # Not a target:
-exec/builtins.o:
+exec/parse.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.2653083
+#  Last modified 2022-07-02 08:51:29
 #  File has been updated.
 #  Successfully updated.
-
-# Not a target:
-exec/ft_readline.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.9512189
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/is_builtin.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:21.2629607
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/ft_split.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.8964882
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/ft_export_tools.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:41.2069359
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/redirections.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.5264323
-#  File has been updated.
-#  Successfully updated.
-
-minishell: exec/builtins.o exec/ft_env.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o exec//libft.o exec/ft_one_command.o exec/ft_multi_cmds.o libft/ft_strdup.o exec/ft_here_doc.o exec/ft_split.o exec/parse.o exec/utils.o exec/ft_search_path.o exec/is_builtin.o exec/ft_exit.o exec/ftcd.o exec/ft_copy_1st_env.o exec/ft_export_tools.o
-#  Implicit rule search has not been done.
-#  Last modified 2022-07-01 19:13:41.731133
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 76):
-	gcc   -g $(CFLAGS)  $(OBJ)  -o $(NAME)   -lreadline -L /Users/$(USER)/goinfre/.brew/opt/readline/lib -I /Users/$(USER)/goinfre/.brew/opt/readline/include
-	
-
-# Not a target:
-exec/utils.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:21.0847592
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/ft_init.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.0343368
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-Makefile:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 15:56:39.1655783
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-libft/ft_putstr_fd.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.2051028
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/ft_exit.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:21.3402676
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-libft/ft_putchar_fd.o:
-#  Implicit rule search has been done.
- 
-#  Last modified 2022-07-01 19:13:20.1214802
-#  File has been updated.
-#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 exec//libft.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.4554724
+#  Last modified 2022-07-02 08:51:29
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-clean:
+# Not a target:
+exec/utils.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+libft/ft_putendl_fd.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: minishell
+#  Command-line target.
+#  Implicit rule search has been done.
+ 
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ftpipe.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/builtins.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 79):
-		cd ./exec; \
-	rm *.o
-		cd ./libft; \
-			rm *.o
+
+# Not a target:
+exec/ft_env.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:23
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ft_exit.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ft_export_tools.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/redirections.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+minishell: exec/builtins.o exec/ft_env.o exec/tools.o exec/redirections.o libft/ft_strnstr.o exec/ft_unset.o exec/ft_export.o exec/ft_others.o exec/ft_readline.o exec/ft_init.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o exec/ftpipe.o exec//libft.o exec/ft_one_command.o exec/ft_multi_cmds.o libft/ft_strdup.o exec/ft_here_doc.o exec/ft_split.o exec/parse.o exec/utils.o exec/ft_search_path.o exec/is_builtin.o exec/ft_exit.o exec/ftcd.o exec/ft_copy_1st_env.o exec/ft_export_tools.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 76):
+	gcc   -g $(CFLAGS)  $(OBJ)  -o $(NAME)   -lreadline -L /Users/$(USER)/.brew/Cellar/readline/8.1.2/lib -I /Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 exec/ft_unset.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.695965
+#  Last modified 2022-07-02 08:51:28
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-exec/ft_one_command.o:
+exec/tools.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.5392114
+#  Last modified 2022-07-02 08:51:28
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-re: fclean all
+fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-exec/ft_search_path.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:21.1714757
-#  File has been updated.
-#  Successfully updated.
+#  commands to execute (from `Makefile', line 85):
+	rm $(NAME)
+	
 
 # Not a target:
 exec/ft_copy_1st_env.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:41.1254667
+#  Last modified 2022-07-02 08:51:29
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-exec/ft_here_doc.o:
+exec/ft_readline.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.8118964
+#  Last modified 2022-07-02 08:51:28
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ft_one_command.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ft_init.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -346,111 +356,144 @@ exec/ft_here_doc.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-all: minishell
-#  Command line target.
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Successfully updated.
-
-fclean: clean
+re: fclean all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 85):
-	rm $(NAME)
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 79):
+	cd ./exec; \
+	rm *.o
+	cd ./libft; \
+	rm *.o
+	
 
 # Not a target:
 exec/ft_others.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.8653423
+#  Last modified 2022-07-02 08:51:28
 #  File has been updated.
 #  Successfully updated.
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ft_here_doc.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 exec/ft_multi_cmds.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.6370448
+#  Last modified 2022-07-02 08:51:29
 #  File has been updated.
 #  Successfully updated.
-
-# Not a target:
-libft/ft_putendl_fd.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.2881429
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/tools.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.4399252
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/ftcd.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:21.4375533
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-exec/ftpipe.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.3724997
-#  File has been updated.
-#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_strdup.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.7285972
+#  Last modified 2022-07-02 08:51:29
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-exec/ft_export.o:
+exec/ft_search_path.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.7716766
+#  Last modified 2022-07-02 08:51:29
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-exec/parse.o:
+exec/is_builtin.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:20.9905655
+#  Last modified 2022-07-02 08:51:29
 #  File has been updated.
 #  Successfully updated.
-
-# Not a target:
-exec/ft_env.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.3492698
-#  File has been updated.
-#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 libft/ft_strnstr.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 19:13:19.613646
+#  Last modified 2022-07-02 08:51:28
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+libft/ft_putstr_fd.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ftcd.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ft_split.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+libft/ft_putchar_fd.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:29
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+exec/ft_export.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-02 08:51:28
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=36/1024=4%, Rehash=0, Collisions=4/80=5%
+# Load=36/1024=4%, Rehash=0, Collisions=0/81=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 52 / storage = 689 B / avg = 13 B
-# current buf: size = 8162 B / used = 689 B / count = 52 / avg = 13 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# strcache performance: lookups = 67 / hit rate = 22%
-# hash-table stats:
-# Load=52/8192=1%, Rehash=0, Collisions=1/67=1%
-# Finished Make data base on Fri Jul  1 21:00:16 2022
+# Finished Make data base on Sat Jul  2 08:51:36 2022
 
  

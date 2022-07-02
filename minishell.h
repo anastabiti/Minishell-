@@ -6,25 +6,25 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 11:02:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 08:49:18 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+  #include <stdio.h>
+       #include <readline/readline.h>
+       #include <readline/history.h>
 # include "./exec/parse.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <signal.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <unistd.h>
 # include <dirent.h> // open dir
-# include <readline/history.h>
-# include <readline/readline.h>
 # include <sys/wait.h>
 # define TRUE 1
 # define RDOUT "rstdout"

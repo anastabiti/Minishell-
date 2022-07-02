@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 09:50:59 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:06:44 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 08:48:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	prompt_and_parse(char **upstream, char **downstream, char *line)
 	if (line == NULL)
 	{
 		write(2, "exit\n", 5);
-		rl_clear_history();
+		// rl_clear_history();
 		free(line);
 		exit(1);
 	}

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:26:24 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 11:37:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 09:47:00 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	modify_name(struct s_envp *envp, t_cmdl *cmd, char **split, int i)
 				t++;
 			}
 			t = 0;
-			return (0);
 		}
 		x++;
 	}
@@ -48,25 +47,53 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 	char	**new;
 	char	**split;
 	int		len;
+	int		x;
 
 	len = 0;
-	// while (envp->environment[len] != NULL)
-	// {
-	// 	len++;
-	// }
-	// envp->envpitems = len;
-	if(cmd[0].args[i][0] == '=')
-		{
-				printf("Minishell: export: `%s': not a valid identifier\n",
+	if (cmd[0].args[i][0] == '=')
+	{
+		printf("Minishell: export: `%s': not a valid identifier\n",
 				cmd[cmd->cmd_iteration].args[i]);
-			return 1;
-		}
-	new = malloc(sizeof(char **) * (envp->envpitems + 2));
-	split = ft_split(cmd[0].args[i], '=');
-	if (check_name_is_valid(split, i, cmd) == 1)
 		return (1);
-	if (modify_name(envp, cmd, split, i) == 0)
-		return (0);
+	}
+	x = 0;
+	new = malloc(sizeof(char **) * (envp->envpitems + 1));
+	while (cmd[cmd->cmd_iteration].args[i][x])
+	{
+		if (cmd[cmd->cmd_iteration].args[i][x] == '=')
+		{
+			split = ft_split(cmd[cmd->cmd_iteration].args[i], '=');
+			if (check_name_is_valid(split, i, cmd) == 1)
+				return (1);
+			if (modify_name(envp, cmd, split, i) == 0)
+				return (0);
+			t = 0;
+			while (t < envp->envpitems)
+			{
+				new[t] = envp->environment[t];
+				t++;
+			}
+			new[t] = cmd[cmd->cmd_iteration].args[i];
+			envp->envpitems++;
+			envp->environment = new;
+			ft_split_env(envp, envp->environment);
+			return (0);
+		}
+		x++;
+	}
+	x = 0;
+	split = ft_split(cmd[cmd->cmd_iteration].args[i], ' ');
+	printf("export %s \n", split[0]);
+	if (check_name_is_valid(cmd[cmd->cmd_iteration].args, i, cmd) == 1)
+		return (1);
+	while (x < envp->envpitems)
+	{
+		if (ft_strncmp(envp->name[x], split[0], ft_strlen(split[0]) + 1) == 0)
+		{
+			return (0);
+		}
+		x++;
+	}
 	t = 0;
 	while (t < envp->envpitems)
 	{
