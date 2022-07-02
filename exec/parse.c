@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:58:39 by mkarim            #+#    #+#             */
-/*   Updated: 2022/07/02 11:38:24 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 11:52:03 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv, char **env)
 	int pipe = 1;
 	struct						s_envp * envp;
 	envp = malloc(sizeof(	struct	s_envp * ) * 1);
-	// envp->envpitems= 0 ;
+	envp->envpitems= 0 ;
  ft_copy_1st_env(envp, env);
 		
 		while (1)

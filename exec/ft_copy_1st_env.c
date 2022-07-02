@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 10:44:48 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/02 11:48:27 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/02 12:00:35 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	ft_split_env(struct s_envp *envp, char **env)
 		}
 		name[i] = ft_substr(env[i], 0, x);
 		value[i] = ft_substr(env[i], x + 1, ft_strlen(env[i]) - x);
-
-
 		x = 0;
 		i++;
 	}
@@ -43,7 +41,6 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	value[i] = NULL;
 	envp->value = value;
 	envp->name = name;
-
 	return (0);
 }
 
@@ -76,25 +73,22 @@ int	ft_copy_env(struct s_envp *envp, char **env)
 			nb = ft_atoi(envp->value[x]);
 			nbb = ft_itoa(nb + 1);
 			joined = ft_strjoin("SHLVL=", nbb);
-			envp->environment [x] = joined;
+			envp->environment[x] = joined;
 			free(nbb);
 			x++;
 		}
-		envp->environment [x] = env[x];
+		envp->environment[x] = env[x];
 		x++;
 	}
+		envp->environment[x]  = NULL;
 	return (0);
 }
 
 int	ft_copy_1st_env(struct s_envp *envp, char **env)
-{	
-	char	**new;
-	
+{
 	ft_strlenenv(envp, env);
-		envp->environment = malloc(sizeof(char **) * (envp->envpitems + 1));
-		
-		ft_split_env(envp, env);
-
+	envp->environment = malloc(sizeof(char **) * (envp->envpitems + 1));
+	ft_split_env(envp, env);
 	ft_copy_env(envp, env);
 	return (0);
 }
