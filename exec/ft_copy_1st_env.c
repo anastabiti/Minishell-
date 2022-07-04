@@ -21,7 +21,7 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	char	**value;
 	int		len;
 
-	envp->name = malloc(sizeof(char **) * envp->envpitems + 1);
+	envp->name =malloc(sizeof(char **) * envp->envpitems + 1);
 	envp->value = malloc(sizeof(char **) * envp->envpitems + 1);
 	i = 0;
 	x = 0;
@@ -29,7 +29,7 @@ int	ft_split_env(struct s_envp *envp, char **env)
 
 	while (i < envp->envpitems)
 	{
-		if (env[i][x] != '=')
+		while (env[i][x] != '=' && env[i][x] !=  '\0')
 		{
 			x++;
 		}
@@ -38,9 +38,9 @@ int	ft_split_env(struct s_envp *envp, char **env)
 		x = 0;
 		i++;
 	}
-	envp->name[i] = NULL;
-	envp->value[i] = NULL;
-
+	// envp->name[i] = NULL;
+	// envp->value[i] = NULL;
+	
 	return (0);
 }
 
@@ -89,6 +89,8 @@ int	ft_copy_1st_env(struct s_envp *envp, char **env)
 	ft_strlenenv(envp, env);
 	envp->environment = malloc(sizeof(char **) * (envp->envpitems + 1));
 	ft_split_env(envp, env);
+	int i = 0;
+
 	ft_copy_env(envp, env);
 	return (0);
 }

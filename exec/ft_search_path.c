@@ -18,16 +18,18 @@ char	**ft_search_for_path(t_cmdl *list,  struct s_envp *envp)
 	char	**new;
 	int		i;
 	int		r;
-
 	x = 0;
-	
-	while (!(ft_strncmp(envp->name[x], "PATH", ft_strlen("PATH") + 1)))
+	while(x  < envp->envpitems)
 	{
-		x++;
-		// if (envp->environment[x] == NULL)
+		if(ft_strncmp(envp->name[x], "PATH", 5) == 0)
+		{
+			break;
+		}
 		if(x == envp->envpitems)
-			return (NULL);
+			return NULL;
+		x++;
 	}
+	
 	new = ft_split(envp->environment[x], ':');
 	i = 0;
 	r = ft_strlen(new[0]);
