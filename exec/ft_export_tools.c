@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:26:32 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:55:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/04 18:43:07 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	**join_name_and_value(struct s_envp *envp, t_cmdl *cmd)
 	while (i < envp->envpitems)
 	{
 		tmp1 = ft_strjoin(envp->name[i], "=\"");
+		if(envp->value[i] == NULL)
+		 envp->value[i] = "";
 		joined[i] = ft_strjoin(tmp1, envp->value[i]);
 		// free(tmp1);
 		i++;
