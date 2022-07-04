@@ -50,13 +50,14 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 	int	x;
 
 	x = 0;
-			cmd->findhome = NULL;
+	cmd->findhome = NULL;
 
 	while (x < envp->envpitems)
 	{
-		if (ft_strncmp(envp->value[x], "HOME", 5))
+		if (ft_strncmp(envp->value[x], "HOME", 4) == 0)
 		{
 			cmd->findhome = envp->value[x];
+			printf(" %s chdir\n", envp->value[x] );
 			break ;
 			// 	return (0);
 		}
@@ -70,8 +71,8 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 	
 	if (cmd[cmd->cmd_iteration].args[0] == NULL)
 	{
-		cmd->split = ft_split(cmd->findhome, '=');
-		chdir(cmd->split[1]);
+		// cmd->split = ft_split(cmd->findhome, '=');
+		chdir(cmd->findhome);
 		return (0);
 	}
 	if (cmd[cmd->cmd_iteration].args[1] == NULL)

@@ -12,7 +12,12 @@
 
 #include "parse.h"
 #include "../minishell.h"
-
+/* 
+cases
+declare -x asdf="\\n\\\"s\"df\""
+declare -x sdf="s\"df\"echo"
+bash-3.2$ export asdf='\n\"s"df"'
+*/
 int main(int argc, char **argv, char **env)
 {
 	char *line;
@@ -39,6 +44,8 @@ int main(int argc, char **argv, char **env)
 				if (line[i] == '|')
 					pipe++;
 			cmd = (t_cmdl *)malloc(sizeof(t_cmdl) * (pipe));
+					cmd->fd_out = 1;
+
 			if (!cmd)
 				return (0);
 			i = -1;
