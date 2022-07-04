@@ -33,7 +33,7 @@ char	**ft_search_for_path(t_cmdl *list,  struct s_envp *envp)
 	new = ft_split(envp->environment[x], ':');
 	i = 0;
 	r = ft_strlen(new[0]);
-	if (ft_search(new[0], "PATH=", ft_strlen("PATH=")) == 1)
+	if (ft_search(new[0], "PATH=", 5) == 1)
 	{
 		while (i < r)
 		{
