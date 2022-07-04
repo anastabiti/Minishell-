@@ -54,7 +54,7 @@ int	ftcd(t_cmdl *cmd, struct s_envp *envp)
 
 	while (x < envp->envpitems)
 	{
-		if (ft_strncmp(envp->name[x], "HOME", 4) == 0)
+		if (ft_strncmp(envp->name[x], "HOME", 5) == 0)
 		{
 			cmd->findhome = envp->value[x];
 			printf(" %s chdir\n", envp->value[x] );
