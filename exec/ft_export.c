@@ -103,9 +103,9 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 	new[t] =split[0];
 	new[t + 1] = NULL;
 	envp->envpitems++;
-	envp->environment = new;
+	// envp->environment = new;
 	// ft_split_env(envp, envp->environment);
-	 ft_copy_1st_env(envp, envp->environment);
+	 ft_copy_1st_env(envp, new);
 
 	return (0);
 }

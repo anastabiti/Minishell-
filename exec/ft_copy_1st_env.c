@@ -21,26 +21,26 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	char	**value;
 	int		len;
 
-	name = malloc(sizeof(char **) * envp->envpitems + 1);
-	value = malloc(sizeof(char **) * envp->envpitems + 1);
+	envp->name = malloc(sizeof(char **) * envp->envpitems + 1);
+	envp->value = malloc(sizeof(char **) * envp->envpitems + 1);
 	i = 0;
 	x = 0;
 	len = 0;
+
 	while (i < envp->envpitems)
 	{
-		while (env[i][x] != '=')
+		if (env[i][x] != '=')
 		{
 			x++;
 		}
-		name[i] = ft_substr(env[i], 0, x);
-		value[i] = ft_substr(env[i], x + 1, ft_strlen(env[i]) - x);
+		envp->name[i] = ft_substr(env[i], 0, x);
+		envp->value[i] = ft_substr(env[i], x + 1, ft_strlen(env[i]) - x);
 		x = 0;
 		i++;
 	}
-	// name[i] = NULL;
-	// value[i] = NULL;
-	envp->value = value;
-	envp->name = name;
+	envp->name[i] = NULL;
+	envp->value[i] = NULL;
+
 	return (0);
 }
 
