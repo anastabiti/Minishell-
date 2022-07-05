@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/07/05 22:25:32 by atabiti          ###   ########.fr        #
+#    Updated: 2022/07/05 22:29:34 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ CFALGS = -Wall -Werorr -Wextra
 
 SRC = ./exec/builtins.c \
 	./exec/ft_env.c \
-	./exec/tools.c \
 	./exec/redirections.c \
 	./libft/ft_strnstr.c \
 	./exec/ft_unset.c \
@@ -42,7 +41,11 @@ SRC = ./exec/builtins.c \
 	./exec/ftcd.c \
 	./exec/ft_copy_1st_env.c \
 	./exec/ft_export_tools.c \
-	
+	./libft/ft_strncmp.c  \
+	./libft/ft_itoa.c  \
+	./libft/ft_strjoin.c  \
+	./libft/ft_strlen.c  \
+
 OBJ = $(SRC:.c=.o)
 # ./exec/builtins.o \
 # 	./exec/ft_env.o \
