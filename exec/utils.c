@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:55:04 by mkarim            #+#    #+#             */
-/*   Updated: 2022/07/05 22:44:41 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/05 22:50:17 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,7 @@ int	is_white_space(char c)
 	return (0);
 }
 
-int	ft_is_alpha_mod(char c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == 95)
-		return (1);
-	return (0);
-}
+
 
 char	*rm_spaces(char *s)
 {

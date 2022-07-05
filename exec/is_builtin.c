@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 10:36:00 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/01 09:06:41 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/05 22:50:26 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+int	ft_is_alpha_mod(char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == 95)
+		return (1);
+	return (0);
+}
 int	is_builtin(t_cmdl *list, int i)
 {
 	if (list[i].cmd == NULL)

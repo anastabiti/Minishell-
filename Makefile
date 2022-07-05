@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/07/05 22:48:35 by atabiti          ###   ########.fr        #
+#    Updated: 2022/07/05 22:53:39 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRC = ./exec/builtins.c \
 	./libft/ft_atoi.c  \
 	./libft/ft_isdigit.c  \
 	./exec/ft_here_doc.c \
-	./exec/ft_split.c \
 	./exec/parse.c \
 	./exec/utils.c \
 	./exec/ft_search_path.c \
@@ -46,6 +45,7 @@ SRC = ./exec/builtins.c \
 	./libft/ft_strjoin.c  \
 	./libft/ft_strlen.c  \
 	./libft/ft_substr.c  \
+	./libft/ft_split.c \
 
 OBJ = $(SRC:.c=.o)
 # ./exec/builtins.o \
