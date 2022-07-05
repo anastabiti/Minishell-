@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/07/05 22:29:34 by atabiti          ###   ########.fr        #
+#    Updated: 2022/07/05 22:48:35 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC = ./exec/builtins.c \
 	./libft/ft_itoa.c  \
 	./libft/ft_strjoin.c  \
 	./libft/ft_strlen.c  \
+	./libft/ft_substr.c  \
 
 OBJ = $(SRC:.c=.o)
 # ./exec/builtins.o \

@@ -6,12 +6,13 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:55:04 by mkarim            #+#    #+#             */
-/*   Updated: 2022/07/05 22:29:05 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/05 22:44:41 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "../minishell.h"
+// #include "../libft/libft.h"
 
 
 
@@ -45,17 +46,6 @@ char	*rm_spaces(char *s)
 }
 
 
-void	ft_putstr(char *s)
-{
-	int	i;
-
-	i = -1;
-	if (s)
-	{
-		while (s[++i])
-			ft_putchar(s[i]);
-	}
-}
 
 int	ft_min(int a, int b)
 {
@@ -75,8 +65,8 @@ int	check_err_pipe(char *s)
 {
 	if (s[ft_strlen(s) - 1] == '|')
 	{
-		ft_putstr(SNT_ERR);
-		ft_putstr("|'\n");
+		ft_putstr_fd(SNT_ERR, 2);
+		ft_putstr_fd("|'\n", 2);
 		return (0);
 	}
 	return (1);
@@ -96,17 +86,17 @@ int	check_in_dir(char *s)
 			dir++;
 	if (dir == ft_strlen(s))
 	{
-		ft_putstr(SNT_ERR);
+		ft_putstr_fd(SNT_ERR, 2);
 		if (dir > 3)
 		{
 			rep = ft_min(3, dir - 3);
 			i = -1;
 			while (++i < rep)
 				ft_putchar(s[0]);
-			return (ft_putstr("'\n"), 0);
+			return (ft_putstr_fd("'\n", 1), 0);
 		}
 		else
-			return (ft_putstr("newline'\n"), 0);
+			return (ft_putstr_fd("newline'\n", 1), 0);
 	}
 	return (1);
 }
@@ -128,7 +118,7 @@ int	check_quotes(char *s)
 			dbl_quot++;
 	}
 	if (sngl_qt % 2 || dbl_quot % 2)
-		return (ft_putstr("Not closed quotes\n"), 0);
+		return (ft_putstr_fd("Not closed quotes\n", 1), 0);
 	return (1);
 }
 
@@ -136,8 +126,8 @@ int	check_dir_with_file(char *s)
 {
 	if (s[ft_strlen(s) - 1] == '<' || s[ft_strlen(s) - 1] == '>')
 	{
-		ft_putstr(SNT_ERR);
-		ft_putstr(">'\n");
+		ft_putstr_fd(SNT_ERR, 1);
+		ft_putstr_fd(">'\n", 1);
 		return (0);
 	}
 	return (1);
@@ -154,36 +144,3 @@ int	check_valid(char *s)
 	return (1);
 }
 
-// int	ft_strlen(char *s)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
-
-char	*ft_substr(char *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	j;
-	size_t	len_s;
-	char	*str;
-
-	if (!s)
-		return (NULL);
-	len_s = ft_strlen(s);
-	if (len > len_s)
-		len = len_s;
-	str = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!str)
-		return (NULL);
-	i = -1;
-	j = 0;
-	while (s[++i])
-		if (i >= start && j < len)
-			str[j++] = s[i];
-	str[j] = '\0';
-	return (str);
-}

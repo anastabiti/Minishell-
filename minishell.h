@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:10:47 by atabiti           #+#    #+#             */
-/*   Updated: 2022/07/02 11:39:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/07/05 22:47:48 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ int							ft_strncmp(const char *s1, const char *s2,
 int     ft_memcmp(const void *s1, const void *s2, size_t n);
 char						*ft_strchr(const char *s, int c);
 static char					*ccleaner(char **arr);
-char    *ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 static size_t				countblocks(char const *s1, char delimiter);
 char						**ft_split(char const *s, char c);
 char						*ft_strdup(const char *s1);
@@ -187,7 +187,7 @@ void						*ft_memmove(void *s1, void *s2, size_t len);
 size_t						ft_strlen(char const *s);
 int							ft_search(char *s, char *c, int lenght);
 // output libft
-void						ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(char *s, int fd);
 void						ft_putchar_fd(char c, int fd);
 void						ft_putendl_fd(char *s, int fd);
 // read input
