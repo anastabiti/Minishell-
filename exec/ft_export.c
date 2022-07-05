@@ -83,7 +83,6 @@ int	ft_export(struct s_envp *envp, t_cmdl *cmd, int i)
 	}
 	x = 0;
 	split = ft_split(cmd[cmd->cmd_iteration].args[i], ' ');
-	printf("export %s \n", split[0]);
 	if (check_name_is_valid(cmd[cmd->cmd_iteration].args, i, cmd) == 1)
 		return (1);
 	while (x < envp->envpitems)

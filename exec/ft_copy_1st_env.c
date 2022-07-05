@@ -31,7 +31,7 @@ int	ft_split_env(struct s_envp *envp, char **env)
 	while (i < envp->envpitems)
 	{
 		if (!(strchr(env[i], '=')))
-		{printf("val  =\n");
+		{
 			envp->name[i] = env[i];
 			envp->value[i] = NULL;
 			i++;

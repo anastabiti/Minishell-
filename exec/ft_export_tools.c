@@ -72,6 +72,7 @@ int	ft_export_1(struct s_envp *envp, t_cmdl *cmd)
 
 	x = 0;
 	i = 0;
+		ft_copy_1st_env(envp, envp->environment);
 	joined = ft_sort_env(envp, cmd);
 	i = 0;
 	while (i < envp->envpitems)
