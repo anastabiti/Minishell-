@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
+#    By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 07:58:53 by atabiti           #+#    #+#              #
-#    Updated: 2022/07/02 11:22:00 by atabiti          ###   ########.fr        #
+#    Updated: 2022/07/05 22:25:32 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,11 @@ SRC = ./exec/builtins.c \
 	./libft/ft_putstr_fd.c \
 	./libft/ft_putendl_fd.c \
 	./exec/ftpipe.c \
-	./exec//libft.c \
 	./exec/ft_one_command.c \
 	./exec/ft_multi_cmds.c   \
 	./libft/ft_strdup.c  \
+	./libft/ft_atoi.c  \
+	./libft/ft_isdigit.c  \
 	./exec/ft_here_doc.c \
 	./exec/ft_split.c \
 	./exec/parse.c \
