@@ -34,14 +34,14 @@ char	**create_argv_for_execve(t_cmdl *list)
 			len = cmd_args_len(list);
 	if(len == 0)
 	{
-			list->args_execve = (char**)malloc(sizeof(char *) * (len + 1));
+			list->args_execve = (char**)malloc(sizeof(char *) * (len + 2));
 
 				list->args_execve[0] = list[list->cmd_iteration].cmd;
 
 		list->args_execve[1] = NULL;
 	return (list->args_execve);
 	}
-	list->args_execve = (char**)malloc(sizeof(char*) * (len + 1));
+	list->args_execve = (char**)malloc(sizeof(char*) * (len + 2));
 	while (i < len)
 	{
 		list->args_execve[0] = list[list->cmd_iteration].cmd;

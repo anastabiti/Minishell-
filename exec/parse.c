@@ -141,7 +141,7 @@ int main(int argc, char **argv, char **env)
 			// }
 		
 			cmd->cmd_iteration = 0;
-			if (cmd->cmd_nbr == 1)
+			if (cmd->cmd_nbr == 1 && cmd[0].cmd != NULL)
 			{
 				// heredoc_without_cmd(cmd);
 
