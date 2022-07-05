@@ -17,6 +17,7 @@ cases
 declare -x asdf="\\n\\\"s\"df\""
 declare -x sdf="s\"df\"echo"
 bash-3.2$ export asdf='\n\"s"df"'
+/Users/atabiti/goinfre/.brew/bin/valgrind
 */
 int main(int argc, char **argv, char **env)
 {

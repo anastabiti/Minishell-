@@ -35,13 +35,13 @@ char	**ft_search_for_path(t_cmdl *list,  struct s_envp *envp)
 	r = ft_strlen(new[0]);
 	if (ft_search(new[0], "PATH=", 5) == 1)
 	{
-		while (i < r)
+		while (i < r - 5)
 		{
 			new[0][i] = new[0][i + 5];
 			i++;
 		}
 	}
-	new[i] = NULL;
+	// new[i] = NULL;
 	return (new);
 }
 
