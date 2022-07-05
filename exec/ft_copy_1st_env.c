@@ -50,8 +50,8 @@ int	ft_split_env(struct s_envp *envp, char **env)
 		x = 0;
 		i++;
 	}
-	envp->name[i] = NULL;
-	envp->value[i] = NULL;
+	// envp->name[i] = NULL;
+	// envp->value[i] = NULL;
 	}
 	return (0);
 }

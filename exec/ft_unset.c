@@ -41,7 +41,7 @@ int	ft_search_for_variable_in_env(struct s_envp *envp, t_cmdl *list, int arg)
 	while (x < envp->envpitems)
 	{
 		// list->envsplited = ft_split(envp->environment[x], '=');
-		if (ft_strncmp(envp->name[x], list[list->cmd_iteration].args[0], lenght) == 0)
+		if (ft_strncmp(envp->name[x], list[list->cmd_iteration].args[arg], lenght) == 0)
 		{
 			list->envvarpos = x;
 			return (1);
@@ -57,13 +57,15 @@ int	ft_unset(struct s_envp *envp, t_cmdl *list, int arg)
 	char **new;
 	list->envvarpos = -1;
 	int i = 0;
-	new = malloc(sizeof(char **) * envp->envpitems - 1);
-	int lenght = ft_strlen(list[list->cmd_iteration].args[arg]);
+
 	x = 0;
 	int next = 0;
+			printf("args %s\n",list[list->cmd_iteration].args[arg] );
 
 	if (ft_search_for_variable_in_env(envp, list, arg) == 1)
 	{
+			new = malloc(sizeof(char **) * envp->envpitems - 1);
+	int lenght = ft_strlen(list[list->cmd_iteration].args[arg]);
 		printf("found  in pos %d \n", list->envvarpos);
 		envp->envpitems--;
 		while (x < envp->envpitems)
@@ -78,8 +80,7 @@ int	ft_unset(struct s_envp *envp, t_cmdl *list, int arg)
 		ft_split_env(envp, envp->environment);
 		return (0);
 	}
-	else
-		free(new);
+	
 
 	return (0);
 }

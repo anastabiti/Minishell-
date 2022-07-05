@@ -72,6 +72,7 @@ void	ft_pipe(t_cmdl *list, struct						s_envp * envp)
 
 	i = 0;
 	fd_in = 0;
+	list->fd_in = 0;
 	list->cmd_iteration = 0;
 	while (list->cmd_iteration < list->cmd_nbr)
 	{
